@@ -416,7 +416,7 @@
                         <!-- End mobile menu toggle-->
                     </li>
 
-                    <li class="dropdown d-none d-xl-block">
+                    <%--<li class="dropdown d-none d-xl-block">
                         <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">Create New
                                
                             <i class="mdi mdi-chevron-down"></i>
@@ -455,9 +455,9 @@
                             </a>
 
                         </div>
-                    </li>
+                    </li>--%>
 
-                    <li class="dropdown dropdown-mega d-none d-xl-block">
+<%--                    <li class="dropdown dropdown-mega d-none d-xl-block">
                         <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">Mega Menu
                                
                             <i class="mdi mdi-chevron-down"></i>
@@ -559,7 +559,7 @@
                             </div>
 
                         </div>
-                    </li>
+                    </li>--%>
                 </ul>
                 <div class="clearfix"></div>
             </div>
@@ -599,9 +599,9 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-6">
-                            2015 -
+
                             <script>document.write(new Date().getFullYear())</script>
-                            &copy; UBold theme by <a href="">Coderthemes</a>
+                            &copy; SWCPEDR
                         </div>
                         <div class="col-md-6">
                             <div class="text-md-right footer-links d-none d-sm-block">

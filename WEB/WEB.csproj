@@ -230,6 +230,8 @@
     <Content Include="assets\images\small\img-5.jpg" />
     <Content Include="assets\images\small\img-6.jpg" />
     <Content Include="assets\images\small\img-7.jpg" />
+    <Content Include="assets\images\small\Portada1.png" />
+    <Content Include="assets\images\small\Portada2.png" />
     <Content Include="assets\images\users\user-1.jpg" />
     <Content Include="assets\images\users\user-10.jpg" />
     <Content Include="assets\images\users\user-11.jpg" />
@@ -1915,9 +1917,25 @@
     <Content Include="assets\libs\x-editable\jqueryui-editable\img\clear.png" />
     <Content Include="assets\libs\x-editable\jqueryui-editable\img\loading.gif" />
     <Content Include="assets\libs\x-editable\jqueryui-editable\js\jqueryui-editable.min.js" />
+    <Content Include="Gestionar_Catalogo.aspx" />
+    <Content Include="Home.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Gestionar_Catalogo.aspx.cs">
+      <DependentUpon>Gestionar_Catalogo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Gestionar_Catalogo.aspx.designer.cs">
+      <DependentUpon>Gestionar_Catalogo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MasterAdmin.Master.cs">
       <DependentUpon>MasterAdmin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
