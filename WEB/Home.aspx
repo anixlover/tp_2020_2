@@ -36,4 +36,23 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                    <h4 class=" page-title">LOS MEJORES ACABADOS EN MOLDURAS PARA REALIZAR LOS DISTINTOS AMBIENTES</h4>
+                
+            </div>
+        </div>
+            
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box">
+                <div class="row">
+                    <h4 class="header-title"> Somos una empresa...</h4>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </asp:Content>
