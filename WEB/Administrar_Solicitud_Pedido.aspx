@@ -36,7 +36,7 @@
                     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                     <asp:UpdatePanel ID="UpdatePanel" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="false">
                         <ContentTemplate>
-                            <asp:GridView ID="gvCarrito"  runat="server" DataKeyNames="PK_IMU"></asp:GridView>
+                            <asp:GridView ID="gvCarrito"  runat="server" DataKeyNames="PK_IM_Cod,VTM_Nombre, IMU_Cantidad, DMU_Precio"></asp:GridView>
                         </ContentTemplate>
                     </asp:UpdatePanel>
 
