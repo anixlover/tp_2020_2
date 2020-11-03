@@ -14,6 +14,6 @@ namespace DTO
         public string VU_Correo { get; set; }
         public string VU_Contraseña { get; set; }
         public int FK_ITU_Cod { get; set; }
-
+        public int IU_Estado { get; set; }
     }
 }
