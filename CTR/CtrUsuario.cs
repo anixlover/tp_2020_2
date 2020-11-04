@@ -7,7 +7,7 @@ using DTO;
 
 namespace CTR
 {
-    class CtrUsuario
+    public class CtrUsuario
     {
         DaoUsuario objDaoUsuario;
         public CtrUsuario()
@@ -259,9 +259,13 @@ namespace CTR
                 return;
             }
             //Registro exitoso!
-            objUsuario.VU_Contraseña = GenerarContraseña(objUsuario);
+            objUsuario.VU_Contrasenia = GenerarContraseña(objUsuario);
             objUsuario.IU_Estado = 77;
             objDaoUsuario.InsertUsuarioCliente(objUsuario);
+        }
+        public bool ValidarInicioSesion(DtoUsuario objUsuario)
+        {
+            return objDaoUsuario.SelectUsuarioxDni_Contraseña(objUsuario);
         }
     }
 }

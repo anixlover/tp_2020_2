@@ -12,7 +12,7 @@ namespace DTO
         public int IU_Celular { get; set; }
         public DateTime DTU_FechaNac { get; set; }
         public string VU_Correo { get; set; }
-        public string VU_Contraseña { get; set; }
+        public string VU_Contrasenia { get; set; }
         public int FK_ITU_Cod { get; set; }
         public int IU_Estado { get; set; }
     }
