@@ -22,7 +22,7 @@ namespace DAO
                 //return "data source=DESKTOP-4LVLNRM; initial catalog=BD_SWCPEDR; integrated security=SSPI;";
 
                 //Conexion Mirko
-                return "Data Source=(Local);Initial Catalog=BD_SWCPEDR;Integrated Security=True";
+                //return "Data Source=(Local);Initial Catalog=BD_SWCPEDR;Integrated Security=True";
             }
         }
     }
