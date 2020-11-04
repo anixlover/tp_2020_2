@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DTO
 {
-    public class DtoMolsuraXUsuario
+    public class DtoMolduraXUsuario
     {
         public string FK_VU_Dni { get; set; }
         public int FK_IM_Cod { get; set; }
