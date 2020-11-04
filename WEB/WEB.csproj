@@ -1924,6 +1924,7 @@
     <Content Include="RegistrarClienteUE.aspx" />
     <Content Include="Gestionar_Catalogo.aspx" />
     <Content Include="Home.aspx" />
+    <Content Include="Registrar_Moldura.aspx" />
     <Content Include="Web.config" />
     <Content Include="Iniciar_Sesion.aspx" />
   </ItemGroup>
@@ -1977,6 +1978,13 @@
     </Compile>
     <Compile Include="Iniciar_Sesion.aspx.designer.cs">
       <DependentUpon>Iniciar_Sesion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registrar_Moldura.aspx.cs">
+      <DependentUpon>Registrar_Moldura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registrar_Moldura.aspx.designer.cs">
+      <DependentUpon>Registrar_Moldura.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
