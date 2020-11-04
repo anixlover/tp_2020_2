@@ -110,5 +110,9 @@ namespace CTR
             objUsuario.VU_Contraseña = GenerarContraseña(objUsuario);
             objDaoUsuario.InsertUsuarioCliente(objUsuario);
         }
+        public bool ValidarInicioSesion(DtoUsuario objUsuario)
+        {
+            return objDaoUsuario.SelectUsuarioxDni_Contraseña(objUsuario);
+        }
     }
 }
