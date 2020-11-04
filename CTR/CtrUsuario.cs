@@ -107,7 +107,7 @@ namespace CTR
         }        
         public void RegistrarClienteVendedor(DtoUsuario objUsuario)
         {
-            objUsuario.VU_Contraseña = GenerarContraseña(objUsuario);
+            objUsuario.VU_Contrasenia = GenerarContraseña(objUsuario);
             objDaoUsuario.InsertUsuarioCliente(objUsuario);
         }
         public bool ValidarInicioSesion(DtoUsuario objUsuario)
