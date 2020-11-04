@@ -7,260 +7,107 @@ using DTO;
 
 namespace CTR
 {
-    class CtrUsuario
+    public class CtrUsuario
     {
         DaoUsuario objDaoUsuario;
         public CtrUsuario()
         {
             objDaoUsuario = new DaoUsuario();
         }
-        public void RegistrarClienteUsuarioExterno(DtoUsuario objUsuario)
+        //DNI solo tiene números
+        public bool formatoDni(DtoUsuario objUsuario)
+        {
+            string letras = "";
+            bool correcto = true;            
+            string usuarioDni = objUsuario.PK_VU_Dni;
+            for (int i = 0; i < usuarioDni.Trim().Length; i++)
+            {
+                correcto = char.IsDigit(usuarioDni.Trim()[i]);
+                if (!correcto)
+                {
+                    letras += usuarioDni.Trim()[i];
+                }
+            }
+            if(letras.Length>0)
+            {
+                return false;
+            }
+            else
+            return correcto;
+        }
+        //Nombre solo tiene letras
+        public bool formatoNombre(DtoUsuario objUsuario)
+        {
+            string numeros = "";
+            bool correcto = true;
+            string usuarioNom = objUsuario.VU_Nombre;
+            for (int i = 0; i < usuarioNom.Trim().Length; i++)
+            {
+                correcto = char.IsLetter(usuarioNom.Trim()[i]);
+                if (!correcto)
+                {
+                    numeros += usuarioNom.Trim()[i];
+                }
+            }
+            if (numeros.Length > 0)
+            {
+                return false;
+            }
+            return correcto;
+        }
+        //Apellido solo tiene letras
+        public bool formatoApellido(DtoUsuario objUsuario)
         {
             bool correcto = true;
-            string usuarioNom = "";
-            string usuarioApe = "";
-            string usuarioCor = "";
-            string usuarioDni = "";
+            string usuarioApe = objUsuario.VU_Apellidos;
+            for (int i = 0; i < usuarioApe.Trim().Length; i++)
+            {
+                correcto = char.IsLetter(usuarioApe.Trim()[i]);
+            }
+            return correcto;
+        }
+        //Validación del formato del correo
+        public bool formatoCorreo(DtoUsuario objUsuario)
+        {
+            bool correcto = true;
+            string usuarioCor = objUsuario.VU_Correo;
             string Expression = @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
                 @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$";
-            int usuarioCel = 0;
-            //DNI solo tiene números
-            try
-            {
-                usuarioDni = objUsuario.PK_VU_Dni;
-                for (int i = 0; i < usuarioDni.Trim().Length; i++)
-                {
-                    correcto = char.IsDigit(usuarioNom.Trim()[i]);
-                }
-            }
-            catch
-            {
-                correcto = false;
-            }
-            if (!correcto) 
-            {
-                objUsuario.IU_Estado = 1;
-                return;
-            }
-            //Nombre solo tiene letras
-            try
-            {
-                usuarioNom = objUsuario.VU_Nombre;
-                for (int i = 0; i < usuarioNom.Trim().Length; i++)
-                {
-                    correcto = char.IsLetter(usuarioNom.Trim()[i]);
-                }
-            }
-            catch
-            {
-                correcto = false;
-            }
-            if (!correcto) 
-            {
-                objUsuario.IU_Estado = 2;
-                return;
-            }
-            //Apellido solo tiene letras
-            try
-            {
-                usuarioApe = objUsuario.VU_Apellidos;
-                for (int i = 0; i < usuarioApe.Trim().Length; i++)
-                {
-                    correcto = char.IsLetter(usuarioApe.Trim()[i]);
-                }
-            }
-            catch
-            {
-                correcto = false;
-            }
-            if (!correcto) 
-            {
-                objUsuario.IU_Estado = 3;
-                return;
-            }
-            //Correo escrito correctamente
-            usuarioCor = objUsuario.VU_Correo;
-            correcto = Regex.IsMatch(usuarioCor,Expression);
-            if (!correcto) 
-            {
-                objUsuario.IU_Estado = 4;
-                return;
-            }
-            //Dni duplicado
-            try
-            {
-                usuarioDni = objUsuario.PK_VU_Dni;
-                correcto = !objDaoUsuario.SelectUsuarioxDni(objUsuario);
-            }
-            catch
-            {
-                correcto = false;
-            }
-            if (!correcto) 
-            {
-                objUsuario.IU_Estado = 5;
-                return;
-            }
-            //Celular Duplicado
-            try
-            {
-                usuarioCel = objUsuario.IU_Celular;
-                correcto = !objDaoUsuario.SelectUsuarioxCelular(objUsuario);
-            }
-            catch
-            {
-                correcto = false;
-            }
-            if (!correcto) 
-            {
-                objUsuario.IU_Estado = 6; 
-                return; 
-            }
-            //Correo duplicado
-            try
-            {
-                usuarioCor = objUsuario.VU_Correo;
-                correcto = !objDaoUsuario.SelectUsuarioxCorreo(objUsuario);
-            }
-            catch
-            {
-                correcto = false;
-            }
-            if (!correcto) 
-            {
-                objUsuario.IU_Estado = 7; 
-                return; 
-            }
-            //Registro exitoso!
-            objUsuario.IU_Estado = 77;
-            objDaoUsuario.InsertUsuarioCliente(objUsuario);
+            correcto = Regex.IsMatch(usuarioCor, Expression);
+            return correcto;
         }
-        public string GenerarContraseña(DtoUsuario objUsuario) 
+        //existe DNI=true ^ NO existe DNI=false
+        public bool existenciaDni(DtoUsuario objUsuario)
+        {
+            return objDaoUsuario.SelectUsuarioxDni(objUsuario);
+        }
+        //existe Correo=true ^ NO existe Correo=false
+        public bool existenciaCorreo(DtoUsuario objUsuario)
+        {
+           return objDaoUsuario.SelectUsuarioxCorreo(objUsuario);
+        }
+        //existe número de Celular=true ^ NO existe número de Celular=false
+        public bool existenciaCelular(DtoUsuario objUsuario)
+        {
+            return objDaoUsuario.SelectUsuarioxCelular(objUsuario);
+        }
+        //Creación de contraseña automática
+        public string GenerarContraseña(DtoUsuario objUsuario)
         {
             DateTime fecha = new DateTime();
-            string contraseña = fecha.Year.ToString() + objUsuario.PK_VU_Dni.Trim()[0]+ objUsuario.PK_VU_Dni.Trim()[7] + fecha.Month.ToString();
+            string contraseña = fecha.Year.ToString() + objUsuario.PK_VU_Dni.Trim()[0] + objUsuario.PK_VU_Dni.Trim()[7] + fecha.Month.ToString();
             return contraseña;
         }
+        //Registro del cliente
+        //         |
+        //         V
+        public void RegistrarClienteUsuarioExterno(DtoUsuario objUsuario)
+        {
+            objDaoUsuario.InsertUsuarioCliente(objUsuario);
+        }        
         public void RegistrarClienteVendedor(DtoUsuario objUsuario)
         {
-            bool correcto = true;
-            string usuarioNom = "";
-            string usuarioApe = "";
-            string usuarioCor = "";
-            string usuarioDni = "";
-            string Expression = @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
-                @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$";
-            int usuarioCel = 0;
-            //DNI solo tiene números
-            try
-            {
-                usuarioDni = objUsuario.PK_VU_Dni;
-                for (int i = 0; i < usuarioDni.Trim().Length; i++)
-                {
-                    correcto = char.IsDigit(usuarioNom.Trim()[i]);
-                }
-            }
-            catch
-            {
-                correcto = false;
-            }
-            if (!correcto)
-            {
-                objUsuario.IU_Estado = 1;
-                return;
-            }
-            //Nombre solo tiene letras
-            try
-            {
-                usuarioNom = objUsuario.VU_Nombre;
-                for (int i = 0; i < usuarioNom.Trim().Length; i++)
-                {
-                    correcto = char.IsLetter(usuarioNom.Trim()[i]);
-                }
-            }
-            catch
-            {
-                correcto = false;
-            }
-            if (!correcto)
-            {
-                objUsuario.IU_Estado = 2;
-                return;
-            }
-            //Apellido solo tiene letras
-            try
-            {
-                usuarioApe = objUsuario.VU_Apellidos;
-                for (int i = 0; i < usuarioApe.Trim().Length; i++)
-                {
-                    correcto = char.IsLetter(usuarioApe.Trim()[i]);
-                }
-            }
-            catch
-            {
-                correcto = false;
-            }
-            if (!correcto)
-            {
-                objUsuario.IU_Estado = 3;
-                return;
-            }
-            //Correo escrito correctamente
-            usuarioCor = objUsuario.VU_Correo;
-            correcto = Regex.IsMatch(usuarioCor, Expression);
-            if (!correcto)
-            {
-                objUsuario.IU_Estado = 4;
-                return;
-            }
-            //Dni duplicado
-            try
-            {
-                usuarioDni = objUsuario.PK_VU_Dni;
-                correcto = !objDaoUsuario.SelectUsuarioxDni(objUsuario);
-            }
-            catch
-            {
-                correcto = false;
-            }
-            if (!correcto)
-            {
-                objUsuario.IU_Estado = 5;
-                return;
-            }
-            //Celular Duplicado
-            try
-            {
-                usuarioCel = objUsuario.IU_Celular;
-                correcto = !objDaoUsuario.SelectUsuarioxCelular(objUsuario);
-            }
-            catch
-            {
-                correcto = false;
-            }
-            if (!correcto)
-            {
-                objUsuario.IU_Estado = 6;
-                return;
-            }
-            //Correo duplicado
-            try
-            {
-                usuarioCor = objUsuario.VU_Correo;
-                correcto = !objDaoUsuario.SelectUsuarioxCorreo(objUsuario);
-            }
-            catch
-            {
-                correcto = false;
-            }
-            if (!correcto)
-            {
-                objUsuario.IU_Estado = 7;
-                return;
-            }
-            //Registro exitoso!
             objUsuario.VU_Contraseña = GenerarContraseña(objUsuario);
-            objUsuario.IU_Estado = 77;
             objDaoUsuario.InsertUsuarioCliente(objUsuario);
         }
     }
