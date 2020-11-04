@@ -1921,9 +1921,11 @@
     <Content Include="assets\libs\x-editable\jqueryui-editable\img\clear.png" />
     <Content Include="assets\libs\x-editable\jqueryui-editable\img\loading.gif" />
     <Content Include="assets\libs\x-editable\jqueryui-editable\js\jqueryui-editable.min.js" />
+    <Content Include="RegistrarClienteUE.aspx" />
     <Content Include="Gestionar_Catalogo.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Web.config" />
+    <Content Include="Iniciar_Sesion.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Administrar_Solicitud_Pedido.aspx.cs">
@@ -1932,6 +1934,13 @@
     </Compile>
     <Compile Include="Administrar_Solicitud_Pedido.aspx.designer.cs">
       <DependentUpon>Administrar_Solicitud_Pedido.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarClienteUE.aspx.cs">
+      <DependentUpon>RegistrarClienteUE.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarClienteUE.aspx.designer.cs">
+      <DependentUpon>RegistrarClienteUE.aspx</DependentUpon>
     </Compile>
     <Compile Include="Gestionar_Catalogo.aspx.cs">
       <DependentUpon>Gestionar_Catalogo.aspx</DependentUpon>
@@ -1962,6 +1971,13 @@
       <DependentUpon>MasterCliente.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Iniciar_Sesion.aspx.cs">
+      <DependentUpon>Iniciar_Sesion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Iniciar_Sesion.aspx.designer.cs">
+      <DependentUpon>Iniciar_Sesion.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\app-creative-dark-rtl.min.css.map" />
@@ -2265,6 +2281,10 @@
     <ProjectReference Include="..\CTR\CTR.csproj">
       <Project>{ac56a48c-f0b4-4d8d-9f95-17089ea9e834}</Project>
       <Name>CTR</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{a220650a-2f30-4416-b2b1-be792ce24d54}</Project>
+      <Name>DAO</Name>
     </ProjectReference>
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{b726de89-ae5f-4985-a6ee-2042a3e4a461}</Project>
