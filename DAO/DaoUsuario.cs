@@ -26,7 +26,8 @@ namespace DAO
             cmd.Parameters.AddWithValue("@Cel", Usuario.IU_Celular);            
             cmd.Parameters.AddWithValue("@FechaNac", Usuario.DTU_FechaNac);
             cmd.Parameters.AddWithValue("@Cor", Usuario.VU_Correo);
-            cmd.Parameters.AddWithValue("@Con", Usuario.VU_Contraseña);
+            cmd.Parameters.AddWithValue("@Con", Usuario.VU_Contrasenia);
+            cmd.Parameters.AddWithValue("@Tipo", Usuario.FK_ITU_Cod);
             conexion.Open();
             cmd.ExecuteNonQuery();
             conexion.Close();
@@ -78,6 +79,24 @@ namespace DAO
                 Usuario.VU_Nombre = (string)reader[1];
                 Usuario.VU_Apellidos = (string)reader[2];
                 Usuario.VU_Correo = (string)reader[5];
+            }
+            conexion.Close();
+            return hayRegistros;
+        }
+        public bool SelectUsuarioxDni_Contraseña(DtoUsuario Usuario)
+        {
+            string select = "SELECT * FROM T_Usuario WHERE PK_VU_Dni = '" + Usuario.PK_VU_Dni + "' and VU_Contrasenia = '"+ Usuario.VU_Contrasenia+"'";
+            SqlCommand Comando = new SqlCommand(select, conexion);
+            conexion.Open();
+            SqlDataReader reader = Comando.ExecuteReader();
+            bool hayRegistros = reader.Read();
+            if (hayRegistros)
+            {
+                Usuario.VU_Nombre = (string)reader[1];
+                Usuario.VU_Apellidos = (string)reader[2];
+                Usuario.IU_Celular = (int)reader[3];
+                Usuario.VU_Correo = (string)reader[5];
+                Usuario.FK_ITU_Cod = (int)reader[7];
             }
             conexion.Close();
             return hayRegistros;

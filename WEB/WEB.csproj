@@ -1921,6 +1921,9 @@
     <Content Include="assets\libs\x-editable\jqueryui-editable\img\clear.png" />
     <Content Include="assets\libs\x-editable\jqueryui-editable\img\loading.gif" />
     <Content Include="assets\libs\x-editable\jqueryui-editable\js\jqueryui-editable.min.js" />
+    <Content Include="CambiarContraseña.aspx" />
+    <Content Include="IniciarSesion.aspx" />
+    <Content Include="RegistrarClienteUE.aspx" />
     <Content Include="Gestionar_Catalogo.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Inspeccionar_Catalogo.aspx" />
@@ -1933,6 +1936,27 @@
     </Compile>
     <Compile Include="Administrar_Solicitud_Pedido.aspx.designer.cs">
       <DependentUpon>Administrar_Solicitud_Pedido.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CambiarContraseña.aspx.cs">
+      <DependentUpon>CambiarContraseña.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CambiarContraseña.aspx.designer.cs">
+      <DependentUpon>CambiarContraseña.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IniciarSesion.aspx.cs">
+      <DependentUpon>IniciarSesion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IniciarSesion.aspx.designer.cs">
+      <DependentUpon>IniciarSesion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarClienteUE.aspx.cs">
+      <DependentUpon>RegistrarClienteUE.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarClienteUE.aspx.designer.cs">
+      <DependentUpon>RegistrarClienteUE.aspx</DependentUpon>
     </Compile>
     <Compile Include="Gestionar_Catalogo.aspx.cs">
       <DependentUpon>Gestionar_Catalogo.aspx</DependentUpon>
@@ -2268,6 +2292,20 @@
     <Folder Include="assets\libs\twitter-bootstrap-wizard\examples\" />
     <Folder Include="assets\libs\waypoints\src\" />
     <Folder Include="assets\libs\waypoints\test\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CTR\CTR.csproj">
+      <Project>{ac56a48c-f0b4-4d8d-9f95-17089ea9e834}</Project>
+      <Name>CTR</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{a220650a-2f30-4416-b2b1-be792ce24d54}</Project>
+      <Name>DAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{b726de89-ae5f-4985-a6ee-2042a3e4a461}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
