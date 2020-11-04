@@ -1923,6 +1923,7 @@
     <Content Include="assets\libs\x-editable\jqueryui-editable\js\jqueryui-editable.min.js" />
     <Content Include="Gestionar_Catalogo.aspx" />
     <Content Include="Home.aspx" />
+    <Content Include="Inspeccionar_Catalogo.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -1946,6 +1947,13 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Inspeccionar_Catalogo.aspx.cs">
+      <DependentUpon>Inspeccionar_Catalogo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inspeccionar_Catalogo.aspx.designer.cs">
+      <DependentUpon>Inspeccionar_Catalogo.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterAdmin.Master.cs">
       <DependentUpon>MasterAdmin.Master</DependentUpon>
