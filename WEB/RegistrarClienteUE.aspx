@@ -3,7 +3,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeout="3600"></asp:ScriptManager>
-  <%--<div style="background-position: center center; background-image: url('https://localhost:44363/assets/images/small/Portada2.png'); background-repeat: no-repeat; background-attachment: fixed;background-size:cover">--%>
      <p class="text-dark" style="text-align: center"><strong>REGISTRARSE</strong></p>
       <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6 col-xl-5">
@@ -59,5 +58,4 @@
             </div>
         </div>
     </div>
-<%--</div>--%>
 </asp:Content>

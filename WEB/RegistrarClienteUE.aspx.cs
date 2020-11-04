@@ -27,10 +27,11 @@ namespace WEB
             objUsuario.PK_VU_Dni = txtDNI.Text;
             objUsuario.VU_Nombre = txtNombres.Text;
             objUsuario.VU_Apellidos = txtApellidos.Text;
-            objUsuario.IU_Celular = Convert.ToInt32(txtCelular.Text);
+            objUsuario.IU_Celular = int.Parse(txtCelular.Text);
             objUsuario.DTU_FechaNac = Convert.ToDateTime(txtFechNac.Text);
             objUsuario.VU_Correo = txtCorreo.Text;
             objUsuario.VU_Contrasenia = txtContraseña.Text;
+            objUsuario.FK_ITU_Cod =1;
             RegistrarUE(objUsuario);
         }        
         public void RegistrarUE(DtoUsuario objUsuario)//<----Metodo de Registro
@@ -70,10 +71,9 @@ namespace WEB
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: 'ERROR!',text: 'Correo DUPLICADO!!'});", true);
                 return;
             }
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'success',title: 'Registro Exitoso!',text: 'Datos ENVIADOS!!'},);", true);
             objCtrUsuario.RegistrarClienteUsuarioExterno(objUsuario);
-            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'success',title: 'Registro Exitoso!',text: 'Datos ENVIADOS!!'});", true);
             return;
-
         }
     }
 }
