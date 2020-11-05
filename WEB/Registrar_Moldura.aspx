@@ -18,7 +18,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeout="3600"></asp:ScriptManager>
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
@@ -81,7 +81,6 @@
                     <div class="col-lg-4">
                         <div class="mt-3">
                             <label for="heard">Stock: <span class="text-danger">*</span></label>
-                            <%--<asp:TextBox ID="txtStock" class="form-control autonumber" data-a-sign="u. " data-parsley-type="digits" data-v-max="999" data-v-min="0" runat="server" required></asp:TextBox>--%>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">u.</span>
@@ -94,12 +93,34 @@
                         <div class="mt-3">
                             <label for="heard">Precio: <span class="text-danger">*</span></label>
                             <div class="input-group">
-                                <%--<div class="input-group-prepend">
-                                    <span class="input-group-text">S/.</span>
-                                </div>
-                                <asp:TextBox ID="txtPrecio" runat="server" class="form-control"></asp:TextBox>--%>
                                 <asp:TextBox ID="txtPrecio" data-a-sign="S/. " class="form-control autonumber" data-v-max="3000" data-v-min="0" runat="server"></asp:TextBox>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label for="heard">Descripción: <span class="text-danger">*</span></label>
+                        <asp:TextBox ID="txtDescripcion" class="form-control" runat="server" TextMode="MultiLine" required></asp:TextBox>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group text-right m-b-0">
+                            <asp:UpdatePanel ID="upBotonRegistrar" runat="server">
+                                <ContentTemplate>
+                                    <asp:LinkButton ID="btnRegistrar" class="btn btn-success waves-effect waves-light" runat="server" OnClick="btnRegistrar_Click">
+                                    Registrar<span class="btn-label-right"><i class="mdi mdi-check-all"></i></span>
+                                    </asp:LinkButton>
+
+                                    <asp:LinkButton ID="btnCancelar" class="btn btn-light waves-effect" runat="server" OnClick="btnCancelar_Click">
+                                    Regresar<span class="btn-label-right"><i class="mdi mdi-arrow-right-bold"></i></span>
+                                    </asp:LinkButton>
+
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </div>
                     </div>
                 </div>

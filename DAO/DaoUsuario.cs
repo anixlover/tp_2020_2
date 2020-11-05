@@ -16,28 +16,28 @@ namespace DAO
         }
         public void InsertUsuarioCliente(DtoUsuario Usuario)
         {
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "SP_Usuario_Insert";
-            cmd.Connection = conexion;
-            cmd.Parameters.AddWithValue("@DNI", Usuario.PK_VU_Dni);
-            cmd.Parameters.AddWithValue("@Nom", Usuario.VU_Nombre);
-            cmd.Parameters.AddWithValue("@Ape", Usuario.VU_Apellidos);
-            cmd.Parameters.AddWithValue("@Cel", Usuario.IU_Celular);            
-            cmd.Parameters.AddWithValue("@FechaNac", Usuario.DTU_FechaNac);
-            cmd.Parameters.AddWithValue("@Cor", Usuario.VU_Correo);
-            cmd.Parameters.AddWithValue("@Con", Usuario.VU_Contrasenia);
-            cmd.Parameters.AddWithValue("@Tipo", Usuario.FK_ITU_Cod);
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "SP_Usuario_Insert";
+            command.Connection = conexion;
+            command.Parameters.AddWithValue("@DNI", Usuario.PK_VU_Dni);
+            command.Parameters.AddWithValue("@Nom", Usuario.VU_Nombre);
+            command.Parameters.AddWithValue("@Ape", Usuario.VU_Apellidos);
+            command.Parameters.AddWithValue("@Cel", Usuario.IU_Celular);
+            command.Parameters.AddWithValue("@FechaNac", Usuario.DTU_FechaNac);
+            command.Parameters.AddWithValue("@Cor", Usuario.VU_Correo);
+            command.Parameters.AddWithValue("@Con", Usuario.VU_Contrasenia);
+            command.Parameters.AddWithValue("@Tipo", Usuario.FK_ITU_Cod);
             conexion.Open();
-            cmd.ExecuteNonQuery();
+            command.ExecuteNonQuery();
             conexion.Close();
         }
         public bool SelectUsuarioxDni(DtoUsuario Usuario)
         {
             string select = "SELECT * FROM T_Usuario WHERE PK_VU_Dni = '" +Usuario.PK_VU_Dni+"'" ;
-            SqlCommand Comando = new SqlCommand(select,conexion);
+            SqlCommand command = new SqlCommand(select,conexion);
             conexion.Open();
-            SqlDataReader reader = Comando.ExecuteReader();
+            SqlDataReader reader = command.ExecuteReader();
             bool hayRegistros = reader.Read();
             if (hayRegistros)
             {
@@ -52,9 +52,9 @@ namespace DAO
         public bool SelectUsuarioxCorreo(DtoUsuario Usuario)
         {
             string select = "SELECT * FROM T_Usuario WHERE VU_Correo = '" + Usuario.VU_Correo + "'";
-            SqlCommand Comando = new SqlCommand(select, conexion);
+            SqlCommand command = new SqlCommand(select, conexion);
             conexion.Open();
-            SqlDataReader reader = Comando.ExecuteReader();
+            SqlDataReader reader = command.ExecuteReader();
             bool hayRegistros = reader.Read();
             if (hayRegistros)
             {
@@ -69,9 +69,9 @@ namespace DAO
         public bool SelectUsuarioxCelular(DtoUsuario Usuario)
         {
             string select = "SELECT * FROM T_Usuario WHERE IU_Celular = '" + Usuario.IU_Celular + "'";
-            SqlCommand Comando = new SqlCommand(select, conexion);
+            SqlCommand command = new SqlCommand(select, conexion);
             conexion.Open();
-            SqlDataReader reader = Comando.ExecuteReader();
+            SqlDataReader reader = command.ExecuteReader();
             bool hayRegistros = reader.Read();
             if (hayRegistros)
             {
@@ -86,9 +86,9 @@ namespace DAO
         public bool SelectUsuarioxDni_Contraseña(DtoUsuario Usuario)
         {
             string select = "SELECT * FROM T_Usuario WHERE PK_VU_Dni = '" + Usuario.PK_VU_Dni + "' and VU_Contrasenia = '"+ Usuario.VU_Contrasenia+"'";
-            SqlCommand Comando = new SqlCommand(select, conexion);
+            SqlCommand command = new SqlCommand(select, conexion);
             conexion.Open();
-            SqlDataReader reader = Comando.ExecuteReader();
+            SqlDataReader reader = command.ExecuteReader();
             bool hayRegistros = reader.Read();
             if (hayRegistros)
             {
