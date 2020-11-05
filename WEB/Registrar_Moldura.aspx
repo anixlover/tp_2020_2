@@ -38,7 +38,8 @@
                     <div class="col-lg-4">
                         <div class="mt-3">
                             <label for="heard">Tipo de moldura: <span class="text-danger">*</span></label>
-                            <asp:DropDownList ID="ddlTipoMoldura" class="form-control" runat="server" required=""></asp:DropDownList>
+                            <asp:DropDownList ID="ddlTipoMoldura" class="form-control" runat="server" required>
+                            </asp:DropDownList>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -48,7 +49,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">cm</span>
                                 </div>
-                                <asp:TextBox ID="txtLargo" runat="server" class="form-control" placeholder="Centimetros"></asp:TextBox>
+                                <asp:TextBox ID="txtLargo" runat="server" class="form-control autonumber" data-v-max="250" data-v-min="0" placeholder="Centimetros"></asp:TextBox>
                                 <%--<input type="text" class="form-control" id="validationCustomUsername" placeholder="Centimetros" aria-describedby="inputGroupPrepend"
                                     required>--%>
                                 <%--<div class="invalid-feedback">
@@ -64,13 +65,41 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">cm</span>
                                 </div>
-                                <asp:TextBox ID="txtAncho" runat="server" class="form-control" placeholder="Centimetros"></asp:TextBox>
-                             </div>
+                                <asp:TextBox ID="txtAncho" runat="server" class="form-control autonumber" data-v-max="250" data-v-min="0" placeholder="Centimetros"></asp:TextBox>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-log-4">
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
                         <div class="mt-3">
-
+                            <label for="heard">Estado: <span class="text-danger">*</span></label>
+                            <asp:DropDownList ID="ddlEstadoMoldura" class="form-control" runat="server" required>
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="mt-3">
+                            <label for="heard">Stock: <span class="text-danger">*</span></label>
+                            <%--<asp:TextBox ID="txtStock" class="form-control autonumber" data-a-sign="u. " data-parsley-type="digits" data-v-max="999" data-v-min="0" runat="server" required></asp:TextBox>--%>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">u.</span>
+                                </div>
+                                <asp:TextBox ID="txtStock" class="form-control autonumber" data-parsley-type="digits" data-v-max="999" data-v-min="0" runat="server" required></asp:TextBox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="mt-3">
+                            <label for="heard">Precio: <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <%--<div class="input-group-prepend">
+                                    <span class="input-group-text">S/.</span>
+                                </div>
+                                <asp:TextBox ID="txtPrecio" runat="server" class="form-control"></asp:TextBox>--%>
+                                <asp:TextBox ID="txtPrecio" data-a-sign="S/. " class="form-control autonumber" data-v-max="3000" data-v-min="0" runat="server"></asp:TextBox>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -88,10 +117,15 @@
     <script src="../assets/libs/dropzone/min/dropzone.min.js"></script>
     <script src="../assets/libs/dropify/js/dropify.min.js"></script>
     <script src="../assets/libs/parsleyjs/parsley.min.js"></script>
+    <script src="../assets/libs/jquery-mask-plugin/jquery.mask.min.js"></script>
+    <script src="../assets/libs/autonumeric/autoNumeric-min.js"></script>
 
     <!-- Validation init js-->
     <script src="../assets/js/pages/form-validation.init.js"></script>
     <script src="../assets/js/pages/form-fileuploads.init.js"></script>
+
+    <!-- Init js-->
+    <script src="../assets/js/pages/form-masks.init.js"></script>
 
     <!-- App js -->
     <script src="../assets/js/app.min.js"></script>

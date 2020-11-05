@@ -1927,6 +1927,7 @@
     <Content Include="Gestionar_Catalogo.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Inspeccionar_Catalogo.aspx" />
+    <Content Include="Registrar_Moldura.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -1994,6 +1995,13 @@
       <DependentUpon>MasterCliente.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registrar_Moldura.aspx.cs">
+      <DependentUpon>Registrar_Moldura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registrar_Moldura.aspx.designer.cs">
+      <DependentUpon>Registrar_Moldura.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\app-creative-dark-rtl.min.css.map" />
