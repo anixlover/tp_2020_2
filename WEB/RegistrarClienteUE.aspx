@@ -11,15 +11,15 @@
                     <div class="row">
                         <div class="col-md-6" runat="server">
                             DNI
-                            <asp:TextBox ID="txtDNI" name="texto" runat="server" class="form-control" type="text" placeholder="DNI" MinLength="8" MaxLength="8" BackColor="White" Width="100%"></asp:TextBox>
+                            <asp:TextBox ID="txtDNI" name="texto" runat="server" class="form-control" placeholder="DNI" MinLength="8" MaxLength="8" BackColor="White" Width="100%"></asp:TextBox>
                         </div>
                         <div class="col-md-6">
                             Nombres
-                            <asp:TextBox ID="txtNombres" name="texto" runat="server" class="form-control" type="text" placeholder="Nombres" BackColor="White" Width="100%"></asp:TextBox>
+                            <asp:TextBox ID="txtNombres" name="texto" runat="server" class="form-control" placeholder="Nombres" BackColor="White" Width="100%"></asp:TextBox>
                         </div>
                         <div class="col-md-6">
                             Apellidos
-                            <asp:TextBox ID="txtApellidos" name="texto" runat="server" class="form-control" type="text" placeholder="Apellidos" BackColor="White" Width="100%"></asp:TextBox>
+                            <asp:TextBox ID="txtApellidos" name="texto" runat="server" class="form-control" placeholder="Apellidos" BackColor="White" Width="100%"></asp:TextBox>
                         </div>
                         <div class="col-md-6">
                             Fecha de nacimiento
@@ -29,11 +29,11 @@
                     <br />
                     <div class="form-group">
                         Celular
-                    <asp:TextBox ID="txtCelular" name="texto" runat="server" class="form-control" type="text" placeholder="Celular" pattern="[0-9]+" MinLength="9" BackColor="White" Width="100%"></asp:TextBox>
+                    <asp:TextBox ID="txtCelular" name="texto" runat="server" class="form-control" placeholder="Celular" pattern="[0-9]+" MinLength="9" BackColor="White" Width="100%"></asp:TextBox>
                     </div>
                     <div class="form-group">
                         Correo Electrónico
-                    <asp:TextBox ID="txtCorreo" name="texto" runat="server" class="form-control" type="mail" placeholder="Correo electronico" BackColor="White" Width="100%"></asp:TextBox>
+                    <asp:TextBox ID="txtCorreo" name="texto" runat="server" class="form-control" placeholder="Correo electronico" BackColor="White" Width="100%"></asp:TextBox>
                     </div>
                     Contraseña   
                     <div class="input-group input-group-merge">                                            

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
-using DAO;
+using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Data;
 using DTO;
 
 namespace DAO
@@ -17,7 +18,7 @@ namespace DAO
         }
         public DataTable ListarMoldurasPaginaInicial(DtoTipoMoldura objtipo)
         {
-            DataTable dtmolduras = null;
+            DataTable dtmolduras=null;
             conexion.Open();
             SqlCommand command = new SqlCommand("SP_Detalles_Moldura_by_TipoMoldura", conexion);
             command.Parameters.AddWithValue("@idTipoMold", objtipo.PK_ITM_Tipo);

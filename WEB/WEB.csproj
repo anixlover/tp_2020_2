@@ -2305,16 +2305,12 @@
     <Folder Include="Log\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CTR\CTR.csproj">
-      <Project>{ac56a48c-f0b4-4d8d-9f95-17089ea9e834}</Project>
+    <ProjectReference Include="..\CTR_\CTR.csproj">
+      <Project>{0da26af7-5c0c-4d92-a727-16da2e386c5f}</Project>
       <Name>CTR</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DAO\DAO.csproj">
-      <Project>{a220650a-2f30-4416-b2b1-be792ce24d54}</Project>
-      <Name>DAO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DTO\DTO.csproj">
-      <Project>{b726de89-ae5f-4985-a6ee-2042a3e4a461}</Project>
+    <ProjectReference Include="..\DTO_\DTO.csproj">
+      <Project>{e1522324-3bf7-4fc4-be07-8c3bed959aeb}</Project>
       <Name>DTO</Name>
     </ProjectReference>
   </ItemGroup>

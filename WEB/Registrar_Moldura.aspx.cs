@@ -8,7 +8,6 @@ using System.IO;
 using System.Data;
 using DTO;
 using CTR;
-using DAO;
 using System.Configuration;
 
 using System.Data.SqlClient;
@@ -23,7 +22,7 @@ namespace WEB
         CtrTipoMoldura objCtrTipoMoldura = new CtrTipoMoldura();
         DtoMoldura objDtoMoldura = new DtoMoldura();
         DtoTipoMoldura objDtoTipoMoldura = new DtoTipoMoldura();
-        //Log _log = new Log();
+        Log _log = new Log();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -45,7 +44,7 @@ namespace WEB
                 objDtoMoldura.VM_Descripcion = txtDescripcion.Text;
                 objDtoMoldura.DM_Largo = Double.Parse(txtLargo.Text);
                 objDtoMoldura.DM_Ancho = Double.Parse(txtAncho.Text);
-                objCtrMoldura.RegistrarMoldura(objDtoMoldura);
+                //objCtrMoldura.RegistrarMoldura(objDtoMoldura);
                 int ValorDevuelto = objDtoMoldura.PK_IM_Cod;
                 //_log.CustomWriteOnLog("PropiedadMoldura", "PK_IM_Cod valor retornado " + objDtoMoldura.PK_IM_Cod);
                 Utils.AddScriptClientUpdatePanel(upBotonRegistrar, "uploadFileDocuments(" + objDtoMoldura.PK_IM_Cod + ");");
@@ -56,7 +55,7 @@ namespace WEB
             }
             catch (Exception ex)
             {
-                //_log.CustomWriteOnLog("PropiedadMoldura", "Error  = " + ex.Message + "posicion" + ex.StackTrace);
+                _log.CustomWriteOnLog("PropiedadMoldura", "Error  = " + ex.Message + "posicion" + ex.StackTrace);
 
                 throw;
             }
@@ -68,7 +67,7 @@ namespace WEB
         public void OpcionesTipoMoldura()
         {
             DataSet ds = new DataSet();
-            ds = objCtrTipoMoldura.OpcionesTipoMoldura();
+            //ds = objCtrTipoMoldura.OpcionesTipoMoldura();
             ddlTipoMoldura.DataSource = ds;
             ddlTipoMoldura.DataTextField = "VTM_Nombre";
             ddlTipoMoldura.DataValueField = "PK_ITM_Tipo";
