@@ -22,7 +22,7 @@
                 </asp:UpdatePanel>
             </div>
         </div>
-
+        
         <div class="lista-moldura-tipo">
 
 
@@ -35,4 +35,33 @@
             </asp:UpdatePanel>
         </div>
     </section>
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="cph_Js" runat="Server">
+
+    <script src="js/Aplicacion/UploadFile.js"></script>
+    <script>
+        function showSuccessMessage2() {
+            setTimeout(function () {
+                swal({
+                    title: "Todo guardado",
+                    text: "Pulsa el botón y se te redirigirá",
+                    type: "success"
+                }, function () {
+                    window.location = ".aspx";
+                });
+            }, 1000);
+        }
+
+        function getQueryStringParameter(paramToRetrieve) {
+            if (document.URL.split("?")[1] != undefined) {
+                var params = document.URL.split("?")[1].split("&");
+                var strParams = "";
+                for (var i = 0; i < params.length; i = i + 1) {
+                    var singleParam = params[i].split("=");
+                    if (singleParam[0] == paramToRetrieve)
+                        return singleParam[1].replace("#", "");
+                }
+            }
+        }
+    </script>
 </asp:Content>

@@ -5,9 +5,9 @@ using System.Data;
 using System.Data.SqlClient;
 namespace DAO
 {
-    public class ConexiónBD
+    public class ConexionBD
     {
-        public static string CadenaConexión
+        public static string CadenaConexion
         {
             get 
             {
@@ -20,7 +20,7 @@ namespace DAO
                 //Conexion Alvaro
                 return "data source=DESKTOP-IAELG6V\\SQLEXPRESS; initial catalog=BD_SWCPEDR; integrated security=SSPI;";
                 //return "data source=DESKTOP-4LVLNRM; initial catalog=BD_SWCPEDR; integrated security=SSPI;";
-
+ 
                 //Conexion Mirko
                 //return "Data Source=(Local);Initial Catalog=BD_SWCPEDR;Integrated Security=True";
             }
