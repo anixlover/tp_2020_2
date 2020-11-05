@@ -247,6 +247,7 @@
     <Content Include="assets\images\users\user-7.jpg" />
     <Content Include="assets\images\users\user-8.jpg" />
     <Content Include="assets\images\users\user-9.jpg" />
+    <Content Include="assets\js\Aplicacion\UploadFile.js" />
     <Content Include="assets\js\app.js" />
     <Content Include="assets\js\app.min.js" />
     <Content Include="assets\js\pages\add-product.init.js" />
@@ -2207,6 +2208,7 @@
     <Content Include="assets\libs\x-editable\LICENSE-MIT" />
     <Content Include="MasterCliente.Master" />
     <Content Include="MasterAdmin.Master" />
+    <Content Include="ghUploadFile.ashx" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2300,6 +2302,7 @@
     <Folder Include="assets\libs\twitter-bootstrap-wizard\examples\" />
     <Folder Include="assets\libs\waypoints\src\" />
     <Folder Include="assets\libs\waypoints\test\" />
+    <Folder Include="Log\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CTR\CTR.csproj">

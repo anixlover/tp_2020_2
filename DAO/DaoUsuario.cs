@@ -12,7 +12,7 @@ namespace DAO
         //constructor
         public DaoUsuario()
         {
-            conexion = new SqlConnection(ConexiónBD.CadenaConexión);
+            conexion = new SqlConnection(ConexionBD.CadenaConexion);
         }
         public void InsertUsuarioCliente(DtoUsuario Usuario)
         {
