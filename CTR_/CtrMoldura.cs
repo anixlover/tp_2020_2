@@ -22,5 +22,9 @@ namespace CTR
         {
             objDaoMoldura.RegistrarImgMoldura(bytes, id);
         }
+        public DataTable ListarTodoMoldura(DtoMoldura objDtoMoldura)
+        {
+            return objDaoMoldura.ListarTodoMolduras(objDtoMoldura);
+        }
     }
 }
