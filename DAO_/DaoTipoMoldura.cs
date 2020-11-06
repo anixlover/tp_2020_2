@@ -72,5 +72,13 @@ namespace DAO
             conexion.Close();
             conexion.Dispose();
         }
+        public DataSet SelectTipoMoldura()
+        {
+            SqlDataAdapter tipomol = new SqlDataAdapter("SP_Listar_TipoMoldura", conexion);
+            tipomol.SelectCommand.CommandType = CommandType.StoredProcedure;
+            DataSet DS = new DataSet();
+            tipomol.Fill(DS);
+            return DS;
+        }
     }
 }

@@ -31,7 +31,7 @@ namespace DAO
         }
         public void RegistrarImgMoldura(byte[] bytes, int id)
         {
-            SqlCommand command = new SqlCommand("SP_Registrar_Img_Moldura", conexion);
+            SqlCommand command = new SqlCommand("SP_RegistrarImagen_Moldura", conexion);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@idMol", id);
             command.Parameters.AddWithValue("@imagen", bytes);
@@ -45,6 +45,41 @@ namespace DAO
             //}
             command.ExecuteNonQuery();
             conexion.Close();
+        }
+        public void InsertMoldura(DtoMoldura objmoldura)
+        {
+            SqlCommand command = new SqlCommand("SP_Registrar_Moldura", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@descripcion", objmoldura.VM_Descripcion);
+            //command.Parameters.AddWithValue("@imagen", DBNull.Value);
+            var binary1 = command.Parameters.Add("@imagen", SqlDbType.VarBinary, -1);
+            binary1.Value = DBNull.Value;
+            command.Parameters.AddWithValue("@stock", objmoldura.IM_Stock);
+            command.Parameters.AddWithValue("@largo", objmoldura.DM_Largo);
+            command.Parameters.AddWithValue("@ancho", objmoldura.DM_Ancho);
+            command.Parameters.AddWithValue("@precio", objmoldura.DM_Precio);
+            command.Parameters.AddWithValue("@estado", objmoldura.IM_Estado);
+            command.Parameters.AddWithValue("@idtipom", objmoldura.FK_ITM_Tipo);
+            command.Parameters.Add("@NewId", SqlDbType.Int).Direction = ParameterDirection.Output;
+            conexion.Open();
+            using (SqlDataReader dr = command.ExecuteReader())
+            {
+                objmoldura.PK_IM_Cod = Convert.ToInt32(command.Parameters["@NewId"].Value);
+            }
+            conexion.Close();
+        }
+        
+        public DataTable ListarTodoMolduras(DtoMoldura objmoldura)
+        {
+            DataTable dtmolduras = null;
+            conexion.Open();
+            SqlCommand command = new SqlCommand("SP_Listar_Todo_Moldura", conexion);
+            SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
+            command.CommandType = CommandType.StoredProcedure;
+            dtmolduras = new DataTable();
+            daAdaptador.Fill(dtmolduras);
+            conexion.Close();
+            return dtmolduras;
         }
     }
 }
