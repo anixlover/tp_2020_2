@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+
 using DAO;
 using DTO;
 
@@ -25,6 +29,10 @@ namespace CTR
         public void leerUnidadMetrica(DtoTipoMoldura dtoTipo)
         {
             objDaoTipoMoldura.DetallesTipoMoldura(dtoTipo);
+        }
+        public DataSet SelectTipoMoldura()
+        {
+            return objDaoTipoMoldura.SelectTipoMoldura();
         }
     }
 }

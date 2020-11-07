@@ -31,18 +31,11 @@ namespace DAO
         }
         public void RegistrarImgMoldura(byte[] bytes, int id)
         {
-            SqlCommand command = new SqlCommand("SP_RegistrarImagen_Moldura", conexion);
+            SqlCommand command = new SqlCommand("SP_Registrar_Imagen_Moldura", conexion);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@idMol", id);
             command.Parameters.AddWithValue("@imagen", bytes);
             conexion.Open();
-            //SqlParameter retValue = new SqlParameter("@NewId", SqlDbType.Int);
-            //retValue.Direction = ParameterDirection.ReturnValue;
-            //command.Parameters.Add(retValue);
-            //using (SqlDataReader dr = command.ExecuteReader())
-            //{
-            //    objmoldura.PK_IM_Cod = Convert.ToInt32(retValue.Value);
-            //}
             command.ExecuteNonQuery();
             conexion.Close();
         }
@@ -80,6 +73,17 @@ namespace DAO
             daAdaptador.Fill(dtmolduras);
             conexion.Close();
             return dtmolduras;
+        }
+
+        public void ActualizarImgMoldura(DtoMoldura objmoldura)
+        {
+            SqlCommand command = new SqlCommand("SP_Actualizar_Imagen_Moldura", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@idMol", objmoldura.PK_IM_Cod);
+            command.Parameters.AddWithValue("@imagen", objmoldura.VBM_Imagen);
+            conexion.Open();
+            command.ExecuteNonQuery();
+            conexion.Close();
         }
     }
 }
