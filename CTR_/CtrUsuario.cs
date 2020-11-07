@@ -94,8 +94,8 @@ namespace CTR
         //Creación de contraseña automática
         public string GenerarContraseña(DtoUsuario objUsuario)
         {
-            DateTime fecha = new DateTime();
-            string contraseña = fecha.Year.ToString() + objUsuario.PK_VU_Dni.Trim()[0] + objUsuario.PK_VU_Dni.Trim()[7] + fecha.Month.ToString();
+            DateTime Hoy = DateTime.Today;
+            string contraseña = Hoy.Year.ToString() + objUsuario.PK_VU_Dni.Trim()[4] + objUsuario.PK_VU_Dni.Trim()[5] + objUsuario.PK_VU_Dni.Trim()[6] + objUsuario.PK_VU_Dni.Trim()[7] + Hoy.Month.ToString();
             return contraseña;
         }
         //Registro del cliente

@@ -34,14 +34,14 @@
             <div class="auth-fluid-form-box">
                 <div class="align-items-center d-flex h-100">
                     <div class="card-body bg-White">
-                        <img src="assets/images/logo1.png" style="width:100%"/>
+                        <img src="assets/images/Icono.ico" style="width:50%"/>
                         <div class="form-group" runat="server">
                             Usuario:
-                            <asp:TextBox ID="txtDNI" name="texto" runat="server" class="form-control" type="text" placeholder="DNI" MinLength="8" MaxLength="8" BackColor="White" Width="100%"></asp:TextBox>
+                            <asp:TextBox ID="txtDNI" runat="server" placeholder="DNI" MinLength="8" MaxLength="8" BackColor="White" Width="100%" TextMode="SingleLine" CssClass="form-control"></asp:TextBox>
                         </div>
                         Contraseña:
                     <div class="input-group input-group-merge">                                            
-                        <asp:TextBox ID="txtContraseña" name="texto" runat="server" class="form-control" type="password" placeholder="Contraseña" BackColor="White" ></asp:TextBox>
+                        <asp:TextBox ID="txtContraseña"  runat="server" CssClass="form-control" placeholder="Contraseña" BackColor="White" ></asp:TextBox>
                         <div class="input-group-append" data-password="false">
                             <div class="input-group-text">
                                 <span class="password-eye font-12"></span>
@@ -54,9 +54,9 @@
                         <br />
                         <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                             <ContentTemplate>
-                                <asp:Button ID="btnIniciarSesion" class="btn btn-primary" runat="server" Text="Iniciar sesión" OnClick="btnIniciarSesion_Click" />
+                                <asp:Button ID="btnIniciarSesion" CssClass="btn-lg btn-primary" runat="server" Text="Iniciar sesión" OnClick="btnIniciarSesion_Click" />
                                 &nbsp;
-                                <asp:Button ID="btnCancelar" class="btn btn-secondary" runat="server" Text="Cancelar" />
+                                <asp:Button ID="btnCancelar" CssClass="btn-lg btn-secondary" runat="server" Text="Cancelar" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>

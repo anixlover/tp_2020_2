@@ -15,7 +15,7 @@
     <AssemblyName>WEB</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress />
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <IISExpressSSLPort>44363</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -208,10 +208,14 @@
     <Content Include="assets\images\logo-light.png" />
     <Content Include="assets\images\logo-sm-light.png" />
     <Content Include="assets\images\logo-sm.png" />
+    <Content Include="assets\images\Logo0.png" />
     <Content Include="assets\images\logo1-sm.png" />
     <Content Include="assets\images\logo1.png" />
     <Content Include="assets\images\logo2-sm.png" />
     <Content Include="assets\images\logo2.png" />
+    <Content Include="assets\images\logo3.png" />
+    <Content Include="assets\images\logo4.png" />
+    <Content Include="assets\images\logo8.png" />
     <Content Include="assets\images\macbook.png" />
     <Content Include="assets\images\megamenu-bg.png" />
     <Content Include="assets\images\multiple-arrow.png" />
@@ -1923,6 +1927,7 @@
     <Content Include="assets\libs\x-editable\jqueryui-editable\img\loading.gif" />
     <Content Include="assets\libs\x-editable\jqueryui-editable\js\jqueryui-editable.min.js" />
     <Content Include="CambiarContraseña.aspx" />
+    <Content Include="RegistrarClienteVendedor.aspx" />
     <Content Include="IniciarSesion.aspx" />
     <Content Include="RegistrarClienteUE.aspx" />
     <Content Include="Gestionar_Catalogo.aspx" />
@@ -1945,6 +1950,13 @@
     </Compile>
     <Compile Include="CambiarContraseña.aspx.designer.cs">
       <DependentUpon>CambiarContraseña.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarClienteVendedor.aspx.cs">
+      <DependentUpon>RegistrarClienteVendedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarClienteVendedor.aspx.designer.cs">
+      <DependentUpon>RegistrarClienteVendedor.aspx</DependentUpon>
     </Compile>
     <Compile Include="IniciarSesion.aspx.cs">
       <DependentUpon>IniciarSesion.aspx</DependentUpon>

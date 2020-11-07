@@ -24,7 +24,7 @@ namespace WEB
             objUsuario.VU_Contrasenia = txtContraseña.Text;
             if (!objCtrUsuario.ValidarInicioSesion(objUsuario))
             {
-                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: 'ERROR!',text: 'Usuario o contraseña INCORRECTOS!!'});", true);
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Usuario o contraseña INCORRECTOS!!'});", true);
                 return;
             }
             int tipoUsuario = objUsuario.FK_ITU_Cod;
