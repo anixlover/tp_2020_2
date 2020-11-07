@@ -34,28 +34,36 @@ namespace WEB
         }
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
+            _log.CustomWriteOnLog("RegistrarMoldura", "-------------------------------------------------------------Evento Click-----------------------");
+            _log.CustomWriteOnLog("RegistrarMoldura", "Entró a evento de Registro ");
             try
             {
-                //_log.CustomWriteOnLog("PropiedadMoldura", "La función es de creación");
-                objDtoMoldura.DM_Precio = Double.Parse(txtPrecio.Text);
+                _log.CustomWriteOnLog("RegistrarMoldura", "La función es de creación");
+                objDtoMoldura.DM_Precio = double.Parse(txtPrecio.Text);
+                _log.CustomWriteOnLog("RegistrarMoldura", "DM_Precio valor ingresado " + objDtoMoldura.DM_Precio);
                 objDtoMoldura.IM_Estado = int.Parse(ddlEstadoMoldura.SelectedValue);
+                _log.CustomWriteOnLog("RegistrarMoldura", "IM_Estado valor ingresado " + objDtoMoldura.IM_Estado);
                 objDtoMoldura.IM_Stock = int.Parse(txtStock.Text);
+                _log.CustomWriteOnLog("RegistrarMoldura", "IM_Stock valor ingresado " + objDtoMoldura.IM_Stock);
                 objDtoMoldura.FK_ITM_Tipo = int.Parse(ddlTipoMoldura.SelectedValue);
+                _log.CustomWriteOnLog("RegistrarMoldura", "FK_ITM_Tipo valor ingresado " + objDtoMoldura.FK_ITM_Tipo);
                 objDtoMoldura.VM_Descripcion = txtDescripcion.Text;
+                _log.CustomWriteOnLog("RegistrarMoldura", "VM_Descripcion valor ingresado " + objDtoMoldura.VM_Descripcion);
                 objDtoMoldura.DM_Largo = Double.Parse(txtLargo.Text);
+                _log.CustomWriteOnLog("RegistrarMoldura", "DM_Largo valor ingresado " + objDtoMoldura.DM_Largo);
                 objDtoMoldura.DM_Ancho = Double.Parse(txtAncho.Text);
-                //objCtrMoldura.RegistrarMoldura(objDtoMoldura);
+                _log.CustomWriteOnLog("RegistrarMoldura", "DM_Ancho valor ingresado " + objDtoMoldura.DM_Ancho);
+                objCtrMoldura.InsertMoldura(objDtoMoldura);
                 int ValorDevuelto = objDtoMoldura.PK_IM_Cod;
-                //_log.CustomWriteOnLog("PropiedadMoldura", "PK_IM_Cod valor retornado " + objDtoMoldura.PK_IM_Cod);
-                Utils.AddScriptClientUpdatePanel(upBotonRegistrar, "uploadFileDocuments(" + objDtoMoldura.PK_IM_Cod + ");");
-                //_log.CustomWriteOnLog("PropiedadMoldura", "Agregado");
+                _log.CustomWriteOnLog("RegistrarMoldura", "PK_IM_Cod valor retornado " + objDtoMoldura.PK_IM_Cod);
+                Utils.AddScriptClientUpdatePanel(upBotonRegistrar, "uploadFileDocuments('" + objDtoMoldura.PK_IM_Cod + "');");
+                _log.CustomWriteOnLog("RegistrarMoldura", "Agregado");
                 Utils.AddScriptClientUpdatePanel(upBotonRegistrar, "showSuccessMessage2()");
-                //_log.CustomWriteOnLog("PropiedadMoldura", "Completado");
-
+                _log.CustomWriteOnLog("RegistrarMoldura", "Completado");
             }
             catch (Exception ex)
             {
-                _log.CustomWriteOnLog("PropiedadMoldura", "Error  = " + ex.Message + "posicion" + ex.StackTrace);
+                _log.CustomWriteOnLog("RegistrarMoldura", "Error  = " + ex.Message + "posicion" + ex.StackTrace);
 
                 throw;
             }
@@ -67,13 +75,13 @@ namespace WEB
         public void OpcionesTipoMoldura()
         {
             DataSet ds = new DataSet();
-            //ds = objCtrTipoMoldura.OpcionesTipoMoldura();
+            ds = objCtrTipoMoldura.SelectTipoMoldura();
             ddlTipoMoldura.DataSource = ds;
             ddlTipoMoldura.DataTextField = "VTM_Nombre";
             ddlTipoMoldura.DataValueField = "PK_ITM_Tipo";
             ddlTipoMoldura.DataBind();
             ddlTipoMoldura.Items.Insert(0, new ListItem("Seleccione", "0"));
-            //_log.CustomWriteOnLog("PropiedadMoldura", "Termino de llenar el ddl");
+            _log.CustomWriteOnLog("RegistrarMoldura", "Termino de llenar el ddl");
         }
     }
 }

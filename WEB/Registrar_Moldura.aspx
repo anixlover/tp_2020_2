@@ -16,6 +16,9 @@
     <!-- icons -->
     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
+    <!-- Libreria -->
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeout="3600"></asp:ScriptManager>
@@ -31,7 +34,7 @@
             <div class="card-box">
 
                 <label for="heard">Adjunte imagen: <span class="text-danger">*</span></label>
-                <input type="file" data-plugins="dropify" data-height="300" />
+                <input name="fileAnexo" type="file" id="FileUpload1" accept="image/*" data-plugins="dropify" data-height="300" />
 
 
                 <div class="row">
@@ -75,6 +78,9 @@
                         <div class="mt-3">
                             <label for="heard">Estado: <span class="text-danger">*</span></label>
                             <asp:DropDownList ID="ddlEstadoMoldura" class="form-control" runat="server" required>
+                                <asp:ListItem Value="">--Seleccione--</asp:ListItem>
+                                <asp:ListItem Value="1">Habilitado</asp:ListItem>
+                                <asp:ListItem Value="0">Deshabilitado</asp:ListItem>
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -93,7 +99,7 @@
                         <div class="mt-3">
                             <label for="heard">Precio: <span class="text-danger">*</span></label>
                             <div class="input-group">
-                                <asp:TextBox ID="txtPrecio" data-a-sign="S/. " class="form-control autonumber" data-v-max="3000" data-v-min="0" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtPrecio" class="form-control autonumber" runat="server"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -109,7 +115,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group text-right m-b-0">
-                            <asp:UpdatePanel ID="upBotonRegistrar" runat="server">
+                            <asp:UpdatePanel ID="upBotonRegistrar" runat="server" UpdateMode="Conditional">
                                 <ContentTemplate>
                                     <asp:LinkButton ID="btnRegistrar" class="btn btn-success waves-effect waves-light" runat="server" OnClick="btnRegistrar_Click">
                                     Registrar<span class="btn-label-right"><i class="mdi mdi-check-all"></i></span>
@@ -118,6 +124,8 @@
                                     <asp:LinkButton ID="btnCancelar" class="btn btn-light waves-effect" runat="server" OnClick="btnCancelar_Click">
                                     Regresar<span class="btn-label-right"><i class="mdi mdi-arrow-right-bold"></i></span>
                                     </asp:LinkButton>
+
+                                    <input type="hidden" runat="server" id="hftxtimg" clientidmode="Static" value="vacio" />
 
                                 </ContentTemplate>
                             </asp:UpdatePanel>
@@ -150,5 +158,22 @@
 
     <!-- App js -->
     <script src="../assets/js/app.min.js"></script>
+    <script src="assets/js/Aplicacion/UploadFile.js"></script>
+
+    <script>
+        function getQueryStringParameter(paramToRetrieve) {
+            if (document.URL.split("?")[1] != undefined) {
+                var params = document.URL.split("?")[1].split("&");
+                var strParams = "";
+                for (var i = 0; i < params.length; i = i + 1) {
+                    var singleParam = params[i].split("=");
+                    if (singleParam[0] == paramToRetrieve)
+                        return singleParam[1].replace("#", "");
+                }
+            }
+        }
+    </script>
+
+
 
 </asp:Content>
