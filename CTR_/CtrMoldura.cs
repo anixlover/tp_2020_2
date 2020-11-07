@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using DAO;
 using DTO;
 
@@ -18,13 +20,17 @@ namespace CTR
         {
             return objDaoMoldura.ListarMoldurasPaginaInicial(objDtoTipoMoldura);
         }
-        public void registrarImgMoldura(byte[] bytes, int id)
+        public void registrarImgMoldura(byte[] arreglo, int id)
         {
-            objDaoMoldura.RegistrarImgMoldura(bytes, id);
+            objDaoMoldura.RegistrarImgMoldura(arreglo, id);
         }
         public DataTable ListarTodoMoldura(DtoMoldura objDtoMoldura)
         {
             return objDaoMoldura.ListarTodoMolduras(objDtoMoldura);
+        }
+        public void InsertMoldura(DtoMoldura objDtoMoldura)
+        {
+            objDaoMoldura.InsertMoldura(objDtoMoldura);
         }
     }
 }
