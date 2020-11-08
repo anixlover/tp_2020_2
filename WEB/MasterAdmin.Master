@@ -13,8 +13,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="../assets/images/Icono.ico">
+
       <!-- Sweet Alert-->
     <link href="../assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
     <!-- plugin css -->
     <link href="../assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" />
         <link href="../assets/libs/selectize/css/selectize.bootstrap3.css" rel="stylesheet" type="text/css" />
@@ -1424,6 +1426,8 @@
 
     <!-- Sweet alert init js-->
     <script src="../assets/js/pages/sweet-alerts.init.js"></script>
+
+    
 
 
 </body>

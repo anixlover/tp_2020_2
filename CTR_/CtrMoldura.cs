@@ -16,6 +16,7 @@ namespace CTR
         {
             objDaoMoldura = new DaoMoldura();
         }
+        
         public DataTable ListarMoldurasPaginaInicial(DtoTipoMoldura objDtoTipoMoldura)
         {
             return objDaoMoldura.ListarMoldurasPaginaInicial(objDtoTipoMoldura);
@@ -35,6 +36,10 @@ namespace CTR
         public void InsertMoldura(DtoMoldura objDtoMoldura)
         {
             objDaoMoldura.InsertMoldura(objDtoMoldura);
+        }
+        public DataTable ListarMolduras()
+        {
+            return objDaoMoldura.ListarMolduras();
         }
     }
 }

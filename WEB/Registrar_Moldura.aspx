@@ -24,7 +24,7 @@
         function leerImagen(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
-                reader.onload = function (e) {                    
+                reader.onload = function (e) {
                     $('#hfileupload').val("Lleno");
                     console.log(reader.result);
                     convertDataURIToBinary(reader.result);
@@ -64,7 +64,7 @@
 
                 <label for="heard">Adjunte imagen: <span class="text-danger">*</span></label>
                 <input type="file" id="FileUpload1" accept="image/*" onchange="leerImagen(this);" data-plugins="dropify" data-height="300" />
-<%--                <asp:FileUpload ID="fileanexo" accept="image/*" runat="server" data-plugins="dropify" data-height="300" />--%>
+                <%--                <asp:FileUpload ID="fileanexo" accept="image/*" runat="server" data-plugins="dropify" data-height="300" />--%>
 
                 <div class="row">
                     <div class="col-lg-4">
@@ -149,7 +149,6 @@
                                     <asp:LinkButton ID="btnRegistrar" class="btn btn-success waves-effect waves-light" runat="server" OnClick="btnRegistrar_Click">
                                     Registrar<span class="btn-label-right"><i class="mdi mdi-check-all"></i></span>        
                                     </asp:LinkButton>
-                                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
                                     <asp:LinkButton ID="btnCancelar" class="btn btn-light waves-effect" runat="server" OnClick="btnCancelar_Click">
                                     Regresar<span class="btn-label-right"><i class="mdi mdi-arrow-right-bold"></i></span>
                                     </asp:LinkButton>
@@ -188,6 +187,20 @@
     <script src="assets/js/Aplicacion/UploadFile.js"></script>
 
     <script>
+
+        function showSuccessMessage2() {
+            setTimeout(function () {
+                swal({
+                    title: "Enviado correctamente",
+                    text: "Pulsa el botón y se te redirigirá",
+                    type: "success"
+                }, function () {
+                    window.location = "ConsultarEstadoPago.aspx";
+                });
+            }, 1000);
+        }
+
+
         function getQueryStringParameter(paramToRetrieve) {
             if (document.URL.split("?")[1] != undefined) {
                 var params = document.URL.split("?")[1].split("&");
@@ -200,6 +213,8 @@
             }
         }
     </script>
+
+
 
 
 
