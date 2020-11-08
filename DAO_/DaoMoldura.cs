@@ -44,9 +44,6 @@ namespace DAO
             SqlCommand command = new SqlCommand("SP_Registrar_Moldura", conexion);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@descripcion", objmoldura.VM_Descripcion);
-            //command.Parameters.AddWithValue("@imagen", DBNull.Value);
-            var binary1 = command.Parameters.Add("@imagen", SqlDbType.VarBinary, -1);
-            binary1.Value = DBNull.Value;
             command.Parameters.AddWithValue("@stock", objmoldura.IM_Stock);
             command.Parameters.AddWithValue("@largo", objmoldura.DM_Largo);
             command.Parameters.AddWithValue("@ancho", objmoldura.DM_Ancho);

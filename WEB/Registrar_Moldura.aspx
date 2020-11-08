@@ -16,9 +16,38 @@
     <!-- icons -->
     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
-    <!-- Libreria -->
+    <!-- Libreria JQuery -->
     <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="assets/js/Aplicacion/UploadFile.js"></script>
+    <!--JS leerImagen-->
+    <script type="text/javascript">
+        function leerImagen(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {                    
+                    $('#hfileupload').val("Lleno");
+                    console.log(reader.result);
+                    convertDataURIToBinary(reader.result);
+                };
+                var BASE64_MARKER = ';base64,';
 
+                function convertDataURIToBinary(dataURI) {
+                    var base64Index = dataURI.indexOf(BASE64_MARKER) + BASE64_MARKER.length;
+                    var base64 = dataURI.substring(base64Index);
+                    var raw = window.atob(base64);
+                    var rawLength = raw.length;
+                    var array = new Uint8Array(new ArrayBuffer(rawLength));
+
+                    for (i = 0; i < rawLength; i++) {
+                        array[i] = raw.charCodeAt(i);
+                    }
+                    $('#hftxtimg').val(array);
+                    console.log(array);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeout="3600"></asp:ScriptManager>
@@ -34,14 +63,14 @@
             <div class="card-box">
 
                 <label for="heard">Adjunte imagen: <span class="text-danger">*</span></label>
-                <input name="fileAnexo" type="file" id="FileUpload1" accept="image/*" data-plugins="dropify" data-height="300" />
-
+                <input type="file" id="FileUpload1" accept="image/*" onchange="leerImagen(this);" data-plugins="dropify" data-height="300" />
+<%--                <asp:FileUpload ID="fileanexo" accept="image/*" runat="server" data-plugins="dropify" data-height="300" />--%>
 
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="mt-3">
                             <label for="heard">Tipo de moldura: <span class="text-danger">*</span></label>
-                            <asp:DropDownList ID="ddlTipoMoldura" class="form-control" runat="server" required>
+                            <asp:DropDownList ID="ddlTipoMoldura" class="form-control" runat="server">
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -108,7 +137,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <label for="heard">Descripción: <span class="text-danger">*</span></label>
-                        <asp:TextBox ID="txtDescripcion" class="form-control" runat="server" TextMode="MultiLine" required></asp:TextBox>
+                        <asp:TextBox ID="txtDescripcion" class="form-control" runat="server" TextMode="MultiLine"></asp:TextBox>
                     </div>
                 </div>
                 <br />
@@ -118,15 +147,13 @@
                             <asp:UpdatePanel ID="upBotonRegistrar" runat="server" UpdateMode="Conditional">
                                 <ContentTemplate>
                                     <asp:LinkButton ID="btnRegistrar" class="btn btn-success waves-effect waves-light" runat="server" OnClick="btnRegistrar_Click">
-                                    Registrar<span class="btn-label-right"><i class="mdi mdi-check-all"></i></span>
+                                    Registrar<span class="btn-label-right"><i class="mdi mdi-check-all"></i></span>        
                                     </asp:LinkButton>
-
+                                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
                                     <asp:LinkButton ID="btnCancelar" class="btn btn-light waves-effect" runat="server" OnClick="btnCancelar_Click">
                                     Regresar<span class="btn-label-right"><i class="mdi mdi-arrow-right-bold"></i></span>
                                     </asp:LinkButton>
-
                                     <input type="hidden" runat="server" id="hftxtimg" clientidmode="Static" value="vacio" />
-
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>

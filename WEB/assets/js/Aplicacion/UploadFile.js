@@ -43,7 +43,7 @@ function uploadFileDocuments(codigoMoldura) {
     function ObtenerAnexos() {
         var varAnexos = new Array();
 
-        var $targetval = $("#ContentPlaceHolder1_FileUpload1");
+        var $targetval = $("#ContentPlaceHolder1");
         var varDocumentoAnexo = $targetval.prop("files");
         if (!varDocumentoAnexo == false) {
             varAnexos.push(varDocumentoAnexo[0]);

@@ -24,6 +24,10 @@ namespace CTR
         {
             objDaoMoldura.RegistrarImgMoldura(arreglo, id);
         }
+        public void registrarMoldura(DtoMoldura objDtoMoldura)
+        {
+            objDaoMoldura.InsertMoldura(objDtoMoldura);
+        }
         public DataTable ListarTodoMoldura(DtoMoldura objDtoMoldura)
         {
             return objDaoMoldura.ListarTodoMolduras(objDtoMoldura);

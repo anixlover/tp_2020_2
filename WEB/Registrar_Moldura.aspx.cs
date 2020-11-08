@@ -38,6 +38,10 @@ namespace WEB
             _log.CustomWriteOnLog("RegistrarMoldura", "Entró a evento de Registro ");
             try
             {
+                string cadena  = hftxtimg.Value.ToString();
+                List<byte> imagen = Array.ConvertAll(cadena.Split(','), byte.Parse).ToList();
+                byte[] bimagen = imagen.ToArray();
+
                 _log.CustomWriteOnLog("RegistrarMoldura", "La función es de creación");
                 objDtoMoldura.DM_Precio = double.Parse(txtPrecio.Text);
                 _log.CustomWriteOnLog("RegistrarMoldura", "DM_Precio valor ingresado " + objDtoMoldura.DM_Precio);
@@ -55,16 +59,16 @@ namespace WEB
                 _log.CustomWriteOnLog("RegistrarMoldura", "DM_Ancho valor ingresado " + objDtoMoldura.DM_Ancho);
                 objCtrMoldura.InsertMoldura(objDtoMoldura);
                 int ValorDevuelto = objDtoMoldura.PK_IM_Cod;
-                _log.CustomWriteOnLog("RegistrarMoldura", "PK_IM_Cod valor retornado " + objDtoMoldura.PK_IM_Cod);
-                Utils.AddScriptClientUpdatePanel(upBotonRegistrar, "uploadFileDocuments('" + objDtoMoldura.PK_IM_Cod + "');");
-                _log.CustomWriteOnLog("RegistrarMoldura", "Agregado");
-                Utils.AddScriptClientUpdatePanel(upBotonRegistrar, "showSuccessMessage2()");
-                _log.CustomWriteOnLog("RegistrarMoldura", "Completado");
+                objCtrMoldura.registrarImgMoldura(bimagen, ValorDevuelto);
+                //_log.CustomWriteOnLog("RegistrarMoldura", "PK_IM_Cod valor retornado " + objDtoMoldura.PK_IM_Cod);
+                //Utils.AddScriptClientUpdatePanel(upBotonRegistrar, "uploadFileDocuments('" + objDtoMoldura.PK_IM_Cod+ "');");
+                //_log.CustomWriteOnLog("RegistrarMoldura", "Agregado");
+                //Utils.AddScriptClientUpdatePanel(upBotonRegistrar, "showSuccessMessage2()");
+                //_log.CustomWriteOnLog("RegistrarMoldura", "Completado");
             }
             catch (Exception ex)
             {
                 _log.CustomWriteOnLog("RegistrarMoldura", "Error  = " + ex.Message + "posicion" + ex.StackTrace);
-
                 throw;
             }
         }

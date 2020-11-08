@@ -74,8 +74,7 @@ namespace DAO
         }
         public DataSet SelectTipoMoldura()
         {
-            SqlDataAdapter tipomol = new SqlDataAdapter("SP_Listar_TipoMoldura", conexion);
-            tipomol.SelectCommand.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter tipomol = new SqlDataAdapter("select * from T_TIPO_MOLDURA", conexion);
             DataSet DS = new DataSet();
             tipomol.Fill(DS);
             return DS;
