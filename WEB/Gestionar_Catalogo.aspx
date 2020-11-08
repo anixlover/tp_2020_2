@@ -32,23 +32,28 @@
                 <asp:UpdatePanel ID="UpdatePanel" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="false">
                     <ContentTemplate>
                         <div>
-                            <asp:GridView ID="gvCatalogo" CssClass="table-borderless table table-bordered table-hover"
-                                DataKeyNames="PK_IM_Cod,VTM_Nombre" runat="server" AutoGenerateColumns="False"
+                            <asp:GridView ID="gvCatalogo" runat="server" CssClass="table-borderless table table-bordered table-hover"
+                                DataKeyNames="Codigo,T. de Moldura" AutoGenerateColumns="False"
                                 EmptyDataText="No existen registros, agreguen molduras a su carrito" ShowHeaderWhenEmpty="True" OnRowDataBound="gvCatalogo_RowDataBound" OnRowCommand="gvCatalogo_RowCommand">
-                                <Columns>
+                               <Columns>
                                     <%--<asp:TemplateField HeaderText="Agregar al carrito de compras">
                                         <ItemTemplate>
                                             <asp:CheckBox ID="CheckBox1" CssClass="checkbox" runat="server" />
                                         </ItemTemplate>
                                     </asp:TemplateField>--%>
-                                    <asp:BoundField DataField="PK_IM_Cod" HeaderText="Codigo" />
-                                    <asp:BoundField DataField="VTM_Nombre" HeaderText="Tipo de Moldura" />
-                                    <asp:BoundField DataField="DM_Largo" HeaderText="Largo" />
-                                    <asp:BoundField DataField="DM_Ancho" HeaderText="Ancho" />
-                                    <asp:BoundField DataField="VTM_UnidadMetrica" HeaderText="U. Metrica" />
-                                    <asp:BoundField DataField="IM_Stock" HeaderText="Stock" />
-                                    <asp:BoundField DataField="DM_Precio" HeaderText="Precio" />
-                                    <asp:BoundField DataField="IM_Estado" HeaderText="Estado" />
+                                   <asp:TemplateField HeaderText="Imagen">
+                                       <ItemTemplate>
+                                           <img src='ObtieneImagen.ashx?id=<%# Eval("Codigo")%>' height="80px" width="80px" />
+                                       </ItemTemplate>
+                                   </asp:TemplateField>
+                                   <asp:BoundField DataField="Codigo" HeaderText="Codigo" />
+                                   <asp:BoundField DataField="T. de Moldura" HeaderText="T. de Moldura" />
+                                   <asp:BoundField DataField="Largo" HeaderText="Largo" />
+                                   <asp:BoundField DataField="Ancho" HeaderText="Ancho" />
+                                   <asp:BoundField DataField="U. Metrica" HeaderText="U. Metrica" />
+                                   <asp:BoundField DataField="Stock" HeaderText="Stock" />
+                                   <asp:BoundField DataField="Precio V." HeaderText="Precio V." />
+                                   <asp:BoundField DataField="Estado" HeaderText="Estado" />
                                     <%--<asp:TemplateField HeaderText="Country" ItemStyle-Width="150" Visible="false">
                                         <ItemTemplate>
                                             <asp:Label ID="lblCountry" runat="server" Text='<%# Eval("PK_IM_Cod") %>'></asp:Label>
