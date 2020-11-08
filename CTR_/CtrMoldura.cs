@@ -37,6 +37,10 @@ namespace CTR
         {
             objDaoMoldura.InsertMoldura(objDtoMoldura);
         }
+        public DataTable RetornarImagenMoldura(int id)
+        {
+            return objDaoMoldura.SelectImagenMoldura(id);
+        }
         public DataTable ListarMolduras()
         {
             return objDaoMoldura.ListarMolduras();

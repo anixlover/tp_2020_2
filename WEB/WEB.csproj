@@ -1952,6 +1952,9 @@
     <Compile Include="CambiarContraseña.aspx.designer.cs">
       <DependentUpon>CambiarContraseña.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ObtieneImagen.ashx.cs">
+      <DependentUpon>ObtieneImagen.ashx</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarClienteVendedor.aspx.cs">
       <DependentUpon>RegistrarClienteVendedor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2222,6 +2225,7 @@
     <Content Include="MasterCliente.Master" />
     <Content Include="MasterAdmin.Master" />
     <Content Include="ghUploadFile.ashx" />
+    <Content Include="ObtieneImagen.ashx" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

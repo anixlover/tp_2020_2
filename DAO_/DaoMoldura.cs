@@ -95,5 +95,19 @@ namespace DAO
             conexion.Close();
             return dtmolduras;
         }
+        public DataTable SelectImagenMoldura(int id)
+        {
+            DataTable dtmolduras = null;
+            conexion.Open();
+            SqlCommand command = new SqlCommand("SP_Obtener_Imagen_Moldura", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@id", id);
+            SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
+            command.CommandType = CommandType.StoredProcedure;
+            dtmolduras = new DataTable();
+            daAdaptador.Fill(dtmolduras);
+            conexion.Close();
+            return dtmolduras;
+        }
     }
 }
