@@ -82,5 +82,18 @@ namespace DAO
             command.ExecuteNonQuery();
             conexion.Close();
         }
+
+        public DataTable ListarMolduras()
+        {
+            DataTable dtmolduras = null;
+            conexion.Open();
+            SqlCommand command = new SqlCommand("SP_Listar_Molduras", conexion);
+            SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
+            command.CommandType = CommandType.StoredProcedure;
+            dtmolduras = new DataTable();
+            daAdaptador.Fill(dtmolduras);
+            conexion.Close();
+            return dtmolduras;
+        }
     }
 }
