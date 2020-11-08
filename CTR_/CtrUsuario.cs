@@ -114,5 +114,15 @@ namespace CTR
         {
             return objDaoUsuario.SelectUsuarioxDni_Contraseña(objUsuario);
         }
+
+        public bool ValidarUsuarioxDni_Correo_Celular(DtoUsuario dtoUsuario)
+        {
+            return objDaoUsuario.SelectUsuarioxDni_Correo_Celular(dtoUsuario);
+        }
+
+        public void CambiarContraseña(DtoUsuario dtoUsuario)
+        {
+            objDaoUsuario.UpdateContraseña(dtoUsuario);
+        }
     }
 }

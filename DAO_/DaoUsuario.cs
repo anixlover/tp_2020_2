@@ -101,5 +101,32 @@ namespace DAO
             conexion.Close();
             return hayRegistros;
         }
+
+        public bool SelectUsuarioxDni_Correo_Celular(DtoUsuario Usuario)
+        {
+            string select = "SELECT * FROM T_Usuario WHERE PK_VU_Dni = '" + Usuario.PK_VU_Dni + "' and VU_Correo = '" + Usuario.VU_Correo + "' and IU_Celular = '"+Usuario.IU_Celular+"'";
+            SqlCommand command = new SqlCommand(select, conexion);
+            conexion.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            bool hayRegistros = reader.Read();
+            if (hayRegistros)
+            {
+                Usuario.VU_Nombre = (string)reader[1];
+                Usuario.VU_Apellidos = (string)reader[2];
+                Usuario.IU_Celular = (int)reader[3];
+                Usuario.VU_Correo = (string)reader[5];
+                Usuario.FK_ITU_Cod = (int)reader[7];
+            }
+            conexion.Close();
+            return hayRegistros;
+        }
+
+        public void UpdateContraseña(DtoUsuario Usuario)
+        {
+            string update = "UPDATE T_Usuario SET VU_Contrasenia = '"+Usuario.VU_Contrasenia+"' WHERE PK_VU_Dni = '"+Usuario.PK_VU_Dni+"'";
+            SqlCommand command = new SqlCommand(update, conexion);
+            conexion.Open();
+            conexion.Close();
+        }
     }
 }
