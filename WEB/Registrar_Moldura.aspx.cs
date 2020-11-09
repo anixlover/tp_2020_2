@@ -101,6 +101,32 @@ namespace WEB
         {
             _log.CustomWriteOnLog("RegistrarMoldura", "-------------------------------------------------- Entro a actualización ----------------------------------------");
             objDtoMoldura.PK_IM_Cod = int.Parse(id);
+            objCtrMoldura.ObtenerMoldura(objDtoMoldura, objDtoTipoMoldura);
+
+            _log.CustomWriteOnLog("RegistrarMoldura", "Valores retornados");
+            _log.CustomWriteOnLog("RegistrarMoldura", "PK_IM_Cod" + objDtoMoldura.PK_IM_Cod);
+            _log.CustomWriteOnLog("RegistrarMoldura", "VM_Descripcion" + objDtoMoldura.VM_Descripcion);
+            _log.CustomWriteOnLog("RegistrarMoldura", "PK_ITM_Tipo " + objDtoTipoMoldura.PK_ITM_Tipo);
+            _log.CustomWriteOnLog("RegistrarMoldura", "VTM_Nombre" + objDtoTipoMoldura.VTM_Nombre);
+            _log.CustomWriteOnLog("RegistrarMoldura", "DM_Medida" + objDtoMoldura.DM_Largo);
+            _log.CustomWriteOnLog("RegistrarMoldura", "DM_Medida" + objDtoMoldura.DM_Ancho);
+            _log.CustomWriteOnLog("RegistrarMoldura", "VTM_UnidadMetrica" + objDtoTipoMoldura.VTM_UnidadMetrica);
+            _log.CustomWriteOnLog("RegistrarMoldura", "IM_Estado" + objDtoMoldura.IM_Estado);
+            _log.CustomWriteOnLog("RegistrarMoldura", "IM_Stock" + objDtoMoldura.IM_Stock);
+            _log.CustomWriteOnLog("RegistrarMoldura", "DM_Precio" + objDtoMoldura.DM_Precio);
+
+
+            ddlTipoMoldura.SelectedValue = objDtoTipoMoldura.PK_ITM_Tipo.ToString();
+            txtPrecio.Text = objDtoMoldura.DM_Precio.ToString();
+            txtStock.Text = objDtoMoldura.IM_Stock.ToString();
+            txtLargo.Text = objDtoMoldura.DM_Largo.ToString();
+            txtAncho.Text = objDtoMoldura.DM_Ancho.ToString();
+            ddlEstadoMoldura.SelectedValue = objDtoMoldura.IM_Estado.ToString();
+            txtDescripcion.Text = objDtoMoldura.VM_Descripcion;
+
+
+
+
         }
     }
 }

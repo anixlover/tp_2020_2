@@ -109,5 +109,38 @@ namespace DAO
             conexion.Close();
             return dtmolduras;
         }
+
+        public void ObtenerMoldura(DtoMoldura objmoldura, DtoTipoMoldura objtipo)
+        {
+            SqlCommand command = new SqlCommand("SP_Obtener_Moldura", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@codMol", objmoldura.PK_IM_Cod);
+            DataSet ds = new DataSet();
+            conexion.Open();
+            SqlDataAdapter moldura = new SqlDataAdapter(command);
+            moldura.Fill(ds);
+            moldura.Dispose();
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                objmoldura.PK_IM_Cod = int.Parse(reader[0].ToString());
+                objmoldura.VM_Descripcion = reader[1].ToString();
+                objtipo.PK_ITM_Tipo = int.Parse(reader[2].ToString());
+                objtipo.VTM_Nombre = reader[3].ToString();
+                objmoldura.DM_Largo = Convert.ToDouble(reader[4].ToString());
+                objmoldura.DM_Ancho = Convert.ToDouble(reader[5].ToString());
+                objtipo.VTM_UnidadMetrica = reader[6].ToString();
+                objmoldura.IM_Estado = int.Parse(reader[7].ToString());
+                objmoldura.IM_Stock = int.Parse(reader[8].ToString());
+                objmoldura.DM_Precio = Convert.ToDouble(reader[9].ToString());
+                objmoldura.VBM_Imagen = Encoding.ASCII.GetBytes(reader[10].ToString());
+            }
+
+            conexion.Close();
+            conexion.Dispose();
+        }
+
     }
 }
