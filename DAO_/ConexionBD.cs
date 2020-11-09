@@ -15,7 +15,7 @@ namespace DAO
                 //return @"data source=HELLO; initial catalog=BD_SWCPEDR; integrated security=SSPI;";
 
                 //Conexion Ana
-                //return @"data source=DESKTOP-4LVLNRM; initial catalog=BD_SWCPEDR; integrated security=SSPI;";
+                return @"data source=DESKTOP-4LVLNRM; initial catalog=BD_SWCPEDR; integrated security=SSPI;";
 
                 //Conexion Alvaro
                 //return "data source=DESKTOP-IAELG6V\\SQLEXPRESS; initial catalog=BD_SWCPEDR; integrated security=SSPI;";

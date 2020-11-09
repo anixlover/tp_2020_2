@@ -43,7 +43,13 @@ namespace WEB
         //Opciones de botones
         protected void gvCatalogo_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-
+            if (e.CommandName == "Actualizar")
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+                var colsNoVisible = gvCatalogo.DataKeys[index].Values;
+                string id = colsNoVisible[0].ToString();
+                Response.Redirect("~/Registrar_Moldura.aspx?ID=" + id);
+            }
         }
         
         protected void gvCatalogo_RowDataBound(object sender, GridViewRowEventArgs e)

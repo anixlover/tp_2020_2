@@ -27,6 +27,11 @@ namespace WEB
         {
             if (!Page.IsPostBack)
             {
+                if (Request.Params["Id"] != null)
+                {
+                    obtenerInformacionMoldura(Request.Params["Id"]);
+
+                }
                 OpcionesTipoMoldura();
                 ddlEstadoMoldura.SelectedValue = "1";
             }
@@ -91,6 +96,11 @@ namespace WEB
             ddlTipoMoldura.DataBind();
             ddlTipoMoldura.Items.Insert(0, new ListItem("Seleccione", "0"));
             _log.CustomWriteOnLog("RegistrarMoldura", "Termino de llenar el ddl");
+        }
+        public void obtenerInformacionMoldura(string id)
+        {
+            _log.CustomWriteOnLog("RegistrarMoldura", "-------------------------------------------------- Entro a actualización ----------------------------------------");
+            objDtoMoldura.PK_IM_Cod = int.Parse(id);
         }
     }
 }

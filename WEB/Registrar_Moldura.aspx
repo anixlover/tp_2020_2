@@ -146,6 +146,9 @@
                         <div class="form-group text-right m-b-0">
                             <asp:UpdatePanel ID="upBotonRegistrar" runat="server" UpdateMode="Conditional">
                                 <ContentTemplate>
+                                    <asp:LinkButton ID="btnActualizar" Visible="true" class="btn btn-primary waves-effect waves-light" runat="server">
+                                    Actualizar<span class="btn-label-right"><i class="mdi mdi-content-save-edit"></i></span>        
+                                    </asp:LinkButton>
                                     <asp:LinkButton ID="btnRegistrar" class="btn btn-success waves-effect waves-light" runat="server" OnClick="btnRegistrar_Click">
                                     Registrar<span class="btn-label-right"><i class="mdi mdi-check-all"></i></span>        
                                     </asp:LinkButton>
