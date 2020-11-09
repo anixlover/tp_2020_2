@@ -48,7 +48,7 @@ namespace WEB
                 int index = Convert.ToInt32(e.CommandArgument);
                 var colsNoVisible = gvCatalogo.DataKeys[index].Values;
                 string id = colsNoVisible[0].ToString();
-                Response.Redirect("~/Registrar_Moldura.aspx?ID=" + id);
+                Response.Redirect("~/Registrar_Moldura.aspx?ID=" + id+"&act=1");
             }
         }
         

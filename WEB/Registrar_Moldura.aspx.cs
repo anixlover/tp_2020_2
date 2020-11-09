@@ -27,10 +27,10 @@ namespace WEB
         {
             if (!Page.IsPostBack)
             {
-                if (Request.Params["Id"] != null)
+                if (Request.Params["Id"] != null & Request.Params["act"]=="1")
                 {
                     obtenerInformacionMoldura(Request.Params["Id"]);
-
+                    
                 }
                 OpcionesTipoMoldura();
                 ddlEstadoMoldura.SelectedValue = "1";

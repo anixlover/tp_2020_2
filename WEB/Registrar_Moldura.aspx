@@ -63,8 +63,7 @@
             <div class="card-box">
 
                 <label for="heard">Adjunte imagen: <span class="text-danger">*</span></label>
-                <input type="file" id="FileUpload1" accept="image/*" onchange="leerImagen(this);" data-plugins="dropify" data-height="300" />
-                <%--                <asp:FileUpload ID="fileanexo" accept="image/*" runat="server" data-plugins="dropify" data-height="300" />--%>
+                <input type="file" id="FileUpload1" accept="image/*" onchange="leerImagen(this);" data-plugins="dropify" data-height="300"/>
 
                 <div class="row">
                     <div class="col-lg-4">
