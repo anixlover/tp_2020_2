@@ -1,18 +1,12 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CambiarContraseña.aspx.cs" Inherits="WEB.CambiarContraseña" %>
 
 <!DOCTYPE html>
-<script runat="server">
-
-    protected void btnContraseña_Click(object sender, EventArgs e)
-    {
-
-    }
+<script type="text/javascript">
 </script>
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <style>
         body {
@@ -42,48 +36,41 @@
             <div class="auth-fluid-form-box">
                 <div class="align-items-center d-flex h-100">
                     <div class="card-body bg-White">
-                        <img src="assets/images/logo1.png" style="width:100%"/>
+                        <img src="assets/images/logo1.png" style="width: 100%" />
                         <div class="form-group" runat="server">
                             <div class="form-group mb-auto">
-                                <br/>
-                            Correo Electronico:
-                            <asp:TextBox ID="txtCorreo" name="texto" runat="server" class="form-control" type="email" placeholder="Correo Electronico" MinLength="8" MaxLength="150" BackColor="White" Width="100%"></asp:TextBox>
-                            <br/>
+                                <br />
+                                Correo Electronico:&nbsp;<asp:TextBox ID="txtCorreo" name="texto" runat="server" class="form-control" type="email" placeholder="Correo Electronico" MinLength="8" MaxLength="150" BackColor="White" Width="100%"></asp:TextBox>
+                                <br />
+                                Contraseña:&nbsp;<asp:TextBox ID="txtContraseña" name="texto" runat="server" class="form-control" type="password" placeholder="Confirmar Contraseña" MinLength="8" MaxLength="50" BackColor="White" Width="100%"></asp:TextBox>
+                                <br />
+                                Confirmar:<asp:TextBox ID="txtContraseña2" name="texto" runat="server" class="form-control" type="password" placeholder="Confirmar Contraseña" MinLength="8" MaxLength="50" BackColor="White" Width="100%"></asp:TextBox>
+                                <br />
 
-                            DNI:
-                            <asp:TextBox ID="txtDNI" name="texto" runat="server" class="form-control" type="text" placeholder="DNI" MinLength="8" MaxLength="8" BackColor="White" Width="100%"></asp:TextBox>
-                        
-                            <br/>
-                            Celular:
-                            <asp:TextBox ID="txtnumber" name="texto" runat="server" class="form-control" type="text" placeholder="Celular" MinLength="8" MaxLength="9" BackColor="White" Width="100%"></asp:TextBox>
-                        
-                            <br/>
-                            Contraseña:
-                                                            
-                        <asp:TextBox ID="txtContraseña" name="texto" runat="server" class="form-control" type="password" placeholder="Confirmar Contraseña" MinLength="8" MaxLength="50" BackColor="White" Width="100%" ></asp:TextBox>
-                        
-                    
-                        <br/>
-                    Confirmar:
-                                                            
-                        <asp:TextBox ID="txtContraseña2" name="texto" runat="server" class="form-control" type="password" placeholder="Confirmar Contraseña" MinLength="8" MaxLength="50" BackColor="White" Width="100%" ></asp:TextBox>
-                        
-                    
-                            
-                        <br/>
-            
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
-                            <ContentTemplate>
-                                <asp:Button ID="btnContraseña" class="btn btn-primary" runat="server" Text="Cambiar" OnClick="btnContraseña_Click" />
-                                &nbsp;
+                                <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <asp:Button ID="btnContraseña" class="btn btn-primary" runat="server" Text="Cambiar" OnClick="btnContraseña_Click" />
+                                        &nbsp;
                                 <asp:Button ID="btnCancelar1" class="btn btn-secondary" runat="server" Text="Cancelar" />
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </div>
+                        </div>
                     </div>
-               </div>
                 </div>
             </div>
         </div>
-            </div>
     </form>
 </body>
+<!-- Plugins js-->
+<script src="../assets/libs/flatpickr/flatpickr.min.js"></script>
+<script src="../assets/libs/apexcharts/apexcharts.min.js"></script>
+<script src="../assets/libs/selectize/js/standalone/selectize.min.js"></script>
+<script src="assets/libs/sweetalert2/sweetalert2.all.min.js"></script>
+<script src="assets/libs/sweetalert2/sweetalert2.min.js"></script>
+<script src="../assets/libs/jquery-sparkline/jquery.sparkline.min.js"></script>
+<!-- Vendor js -->
+<script src="../assets/js/vendor.min.js"></script>
+<!-- App js -->
+<script src="../assets/js/app.min.js"></script>
+</html>
