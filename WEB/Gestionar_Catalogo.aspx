@@ -70,10 +70,13 @@
                                     <%--                                    <asp:LinkButton runat="server" ID="btnSearch" CssClass="btn btn-danger btn-circle-lg waves-effect waves-circle waves-float" OnClick="btnSearch_Click">
                                             <i class="material-icons">search</i>
                                         </asp:LinkButton>--%>
-
-                                    <asp:ButtonField ButtonType="Button" AccessibleHeaderText="btnDetalle" Text="🔍" CommandName="Detalle">
-                                        <ControlStyle CssClass="btn btn-sm btn-info" />
-                                    </asp:ButtonField>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:Button ID="btnGetMoldura" Text="ver 🔍" class="btn btn-danger"
+                                                CommandArgument="<%# Container.DataItemIndex %>" CommandName="getMoldura"
+                                                runat="server" data-toggle="modal" data-target="#modalDetalle" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                     <asp:ButtonField ButtonType="Button" AccessibleHeaderText="btnActualizar" Text="✏️" CommandName="Actualizar">
                                         <ControlStyle CssClass="btn btn-sm btn-blue" />
                                     </asp:ButtonField>
@@ -98,24 +101,26 @@
 
 <%--class="swal2-popup swal2-modal swal2-show"--%>
         <%--swal2-fade--%>
-        <div class="modal fade"  id="defaultmodal" tabindex="-1" role="dialog">
+        <div class="modal fade"  id="modalDetalle"  role="dialog">
             <div class="modal-dialog modal-lg" role="dialog">
                 <div class="modal-content">
                     <asp:UpdatePanel runat="server" ID="upPanelModal" UpdateMode="Always">
                         <ContentTemplate>
-                            <div class="modal-header navbar">
-                                <h4 class="modal-title" id="tituloModal" runat="server" style="color: white;">Moldura N°</h4>
+                            <div class="modal-header">
+                                <p class="modal-title" id="tituloModal" runat="server" style="color: Black;">Moldura N° <asp:Label ID="lblId" runat="server" Text="..."></asp:Label></p>                                
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div>
-                                        <asp:Image ID="Img1" Height="300px" Width="300px" runat="server" class="img-thumbnail"/>
+                                        <asp:Image ID="Img1" Height="300px" Width="300px" runat="server" class="img-thumbnail" />
+                                        
                                     </div>
                                 </div>
                                 <div class="col-md6">
-                                    <div class="form-group form-float">
-
-                                    </div>
+                                    <p>Medida: <asp:Label ID="txtmetrica" runat="server"></asp:Label></p>
+                                    <p>Tipo: <asp:Label ID="txtTipo" runat="server"></asp:Label></p>
+                                    <p>Precio: S./<asp:Label ID="txtprecio" runat="server" ClientIDMode="Static"></asp:Label></p>
+                                    <p>Descripción: <asp:Label ID="txtdescripcion" runat="server"></asp:Label></p>
                                 </div>
                             </div>
                         </ContentTemplate>

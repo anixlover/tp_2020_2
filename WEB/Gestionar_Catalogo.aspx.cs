@@ -50,19 +50,27 @@ namespace WEB
                 string id = colsNoVisible[0].ToString();
                 Response.Redirect("~/Registrar_Moldura.aspx?ID=" + id+"&act=1");
             }
-            else if (e.CommandName == "Ver")
+            else if (e.CommandName == "getMoldura")
             {
                 try
                 {
+                    //int index = Convert.ToInt32(e.CommandArgument);
+                    //var colsNoVisible = gvCatalogo.DataKeys[index].Values;
+                    //string id = colsNoVisible[0].ToString();
+                    //string Nombre = colsNoVisible[1].ToString();
                     int index = Convert.ToInt32(e.CommandArgument);
-                    var colsNoVisible = gvCatalogo.DataKeys[index].Values;
-                    string id = colsNoVisible[0].ToString();
-                    string Nombre = colsNoVisible[1].ToString();
+                    GridViewRow row = gvCatalogo.Rows[index];
+                    Button b = (Button)row.FindControl("btnGetMoldura");
+                    string id = row.Cells[1].Text;
+                    lblId.Text = id;
                     objDtoMoldura.PK_IM_Cod = int.Parse(id);
-
-
-
-                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "none", "<script>$('#defaultmodal').modal('show');</script>", false);
+                    objCtrMoldura.ObtenerMoldura(objDtoMoldura,objDtoTipoMoldura);
+                    lblId.Text = id;
+                    Img1.ImageUrl = "data:image/png;base64," + Convert.ToBase64String(objDtoMoldura.VBM_Imagen);
+                    txtTipo.Text = objDtoTipoMoldura.VTM_Nombre;
+                    txtmetrica.Text = objDtoTipoMoldura.VTM_UnidadMetrica;
+                    txtprecio.Text = objDtoMoldura.DM_Precio.ToString();
+                    txtdescripcion.Text = objDtoMoldura.VM_Descripcion;
                 }
                 catch (Exception ex)
                 {
