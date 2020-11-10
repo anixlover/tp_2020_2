@@ -84,15 +84,9 @@
                                     <%--                                    <asp:ButtonField ButtonType="Image" HeaderText="Detalles" CommandName="Detalles" >
                                         <i class="mdi mdi-eye"></i>
                                     </asp:ButtonField>--%>
-                                </Columns>
-                            </asp:GridView>
-
-                        </div>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
 
 
-            </div>
+
 
         </div>
 
@@ -134,10 +128,12 @@
 
 
 
+            </div>
+
+                            
+
+        </div>
     </div>
-
-
-
 
     <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
@@ -153,6 +149,4 @@
 
     <!-- App js -->
     <script src="../assets/js/app.min.js"></script>
-
-
 </asp:Content>
