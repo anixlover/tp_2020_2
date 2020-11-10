@@ -27,10 +27,21 @@ namespace WEB
         {
             if (!Page.IsPostBack)
             {
+                imgdefault.Visible = false;
+                btnActualizar.Visible = false;
+                txtTitulo2.Visible=false;
+                Div.Visible = true;
                 if (Request.Params["Id"] != null)
                 {
-                    obtenerInformacionMoldura(Request.Params["Id"]);
-
+                    txtTitulo.Text = "ACTUALIZAR LA MOLDURA ";
+                    lblId.Text = Request.Params["Id"];
+                    imgdefault.Visible = true;
+                    btnActualizar.Visible = true;
+                    btnRegistrar.Visible = false;
+                    txtTitulo2.Visible = true;
+                    Div.Visible = false;
+                    objDtoMoldura.PK_IM_Cod = int.Parse(Request.Params["Id"]);
+                    obtenerInformacionMoldura(Request.Params["Id"]);                    
                 }
                 OpcionesTipoMoldura();
                 ddlEstadoMoldura.SelectedValue = "1";
@@ -71,7 +82,7 @@ namespace WEB
                     objCtrMoldura.registrarImgMoldura(bimagen, ValorDevuelto);
                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Moldura registrada!',text: 'Datos ENVIADOS!!'}).then(function(){window.location.href='Gestionar_Catalogo.aspx'})", true);
                 }
-                
+
 
 
 
@@ -103,6 +114,7 @@ namespace WEB
             objDtoMoldura.PK_IM_Cod = int.Parse(id);
             objCtrMoldura.ObtenerMoldura(objDtoMoldura, objDtoTipoMoldura);
 
+            
             _log.CustomWriteOnLog("RegistrarMoldura", "Valores retornados");
             _log.CustomWriteOnLog("RegistrarMoldura", "PK_IM_Cod" + objDtoMoldura.PK_IM_Cod);
             _log.CustomWriteOnLog("RegistrarMoldura", "VM_Descripcion" + objDtoMoldura.VM_Descripcion);
@@ -115,7 +127,6 @@ namespace WEB
             _log.CustomWriteOnLog("RegistrarMoldura", "IM_Stock" + objDtoMoldura.IM_Stock);
             _log.CustomWriteOnLog("RegistrarMoldura", "DM_Precio" + objDtoMoldura.DM_Precio);
 
-
             ddlTipoMoldura.SelectedValue = objDtoTipoMoldura.PK_ITM_Tipo.ToString();
             txtPrecio.Text = objDtoMoldura.DM_Precio.ToString();
             txtStock.Text = objDtoMoldura.IM_Stock.ToString();
@@ -123,10 +134,56 @@ namespace WEB
             txtAncho.Text = objDtoMoldura.DM_Ancho.ToString();
             ddlEstadoMoldura.SelectedValue = objDtoMoldura.IM_Estado.ToString();
             txtDescripcion.Text = objDtoMoldura.VM_Descripcion;
+            byte[] ByteArray = objDtoMoldura.VBM_Imagen;
+            string strbase64 = Convert.ToBase64String(ByteArray);
+            imgdefault.ImageUrl = "data:image/png;base64," + strbase64;
+        }
 
+        protected void btnRemover_Click(object sender, EventArgs e)
+        {
+            imgdefault.Visible = false;
+            btnRemover.Visible = false;
+            txtTitulo2.Visible = false;
+            Div.Visible = true;
+        }
 
-
-
+        protected void btnActualizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (true)
+                {
+                    string cadena = hftxtimg.Value.ToString();
+                    List<byte> imagen = Array.ConvertAll(cadena.Split(','), byte.Parse).ToList();
+                    byte[] bimagen = imagen.ToArray();
+                    int ValorDevuelto = int.Parse(lblId.Text);
+                    _log.CustomWriteOnLog("ActualizarMoldura", "La función es de creación");
+                    objDtoMoldura.PK_IM_Cod = ValorDevuelto;
+                    _log.CustomWriteOnLog("ActualizarMoldura", "PK_IM_Cod valor ingresado " + objDtoMoldura.PK_IM_Cod);
+                    objDtoMoldura.DM_Precio = double.Parse(txtPrecio.Text);
+                    _log.CustomWriteOnLog("ActualizarMoldura", "DM_Precio valor ingresado " + objDtoMoldura.DM_Precio);
+                    objDtoMoldura.IM_Estado = int.Parse(ddlEstadoMoldura.SelectedValue);
+                    _log.CustomWriteOnLog("ActualizarMoldura", "IM_Estado valor ingresado " + objDtoMoldura.IM_Estado);
+                    objDtoMoldura.IM_Stock = int.Parse(txtStock.Text);
+                    _log.CustomWriteOnLog("ActualizarMoldura", "IM_Stock valor ingresado " + objDtoMoldura.IM_Stock);
+                    objDtoMoldura.FK_ITM_Tipo = int.Parse(ddlTipoMoldura.SelectedValue);
+                    _log.CustomWriteOnLog("ActualizarMoldura", "FK_ITM_Tipo valor ingresado " + objDtoMoldura.FK_ITM_Tipo);
+                    objDtoMoldura.VM_Descripcion = txtDescripcion.Text;
+                    _log.CustomWriteOnLog("ActualizarMoldura", "VM_Descripcion valor ingresado " + objDtoMoldura.VM_Descripcion);
+                    objDtoMoldura.DM_Largo = Double.Parse(txtLargo.Text);
+                    _log.CustomWriteOnLog("ActualizarMoldura", "DM_Largo valor ingresado " + objDtoMoldura.DM_Largo);
+                    objDtoMoldura.DM_Ancho = Double.Parse(txtAncho.Text);
+                    _log.CustomWriteOnLog("ActualizarMoldura", "DM_Ancho valor ingresado " + objDtoMoldura.DM_Ancho);
+                    objCtrMoldura.ActulizarMoldura(objDtoMoldura);
+                    objCtrMoldura.registrarImgMoldura(bimagen, ValorDevuelto);
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Moldura Actualizada!',text: 'Datos ENVIADOS!!'}).then(function(){window.location.href='Gestionar_Catalogo.aspx'})", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.CustomWriteOnLog("ActualizarMoldura", "Error  = " + ex.Message + "posicion" + ex.StackTrace);
+                throw;
+            }
         }
     }
 }

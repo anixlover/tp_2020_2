@@ -54,7 +54,8 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title">REGISTRAR MOLDURA</h4>
+                <asp:Label ID="txtTitulo" CssClass="page-title" runat="server" Text="REGISTRAR MOLDURA" Font-Bold="True"></asp:Label>
+                <asp:Label ID="lblId" runat="server" Text=""></asp:Label>
             </div>
         </div>
     </div>
@@ -63,10 +64,19 @@
             <div class="card-box">
 
                 <label for="heard">Adjunte imagen: <span class="text-danger">*</span></label>
-                
+                <br />
+                <div style="text-align: center">
 
-                <input type="file" id="FileUpload1" accept="image/*" onchange="leerImagen(this);" data-plugins="dropify" data-height="300"   />
-
+                    <asp:Label ID="txtTitulo2" runat="server" Text="Imagen de la moldura:"></asp:Label>
+                    <br />
+                    <asp:Image ID="imgdefault" runat="server" Height="300px" Width="300px" CssClass="img-thumbnail" />
+                    <br />
+                    <asp:Button ID="btnRemover" runat="server" Text="Remover" OnClick="btnRemover_Click" />
+                </div>
+                <br />
+                <div runat="server" id="Div">
+                    <input type="file" id="FileUpload1" accept="image/*" onchange="leerImagen(this);" data-plugins="dropify" />
+                </div>
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="mt-3">
@@ -147,7 +157,7 @@
                         <div class="form-group text-right m-b-0">
                             <asp:UpdatePanel ID="upBotonRegistrar" runat="server" UpdateMode="Conditional">
                                 <ContentTemplate>
-                                    <asp:LinkButton ID="btnActualizar" Visible="true" class="btn btn-primary waves-effect waves-light" runat="server">
+                                    <asp:LinkButton ID="btnActualizar" Visible="true" class="btn btn-primary waves-effect waves-light" runat="server" OnClick="btnActualizar_Click">
                                     Actualizar<span class="btn-label-right"><i class="mdi mdi-content-save-edit"></i></span>        
                                     </asp:LinkButton>
                                     <asp:LinkButton ID="btnRegistrar" class="btn btn-success waves-effect waves-light" runat="server" OnClick="btnRegistrar_Click">
@@ -156,7 +166,7 @@
                                     <asp:LinkButton ID="btnCancelar" class="btn btn-light waves-effect" runat="server" OnClick="btnCancelar_Click">
                                     Regresar<span class="btn-label-right"><i class="mdi mdi-arrow-right-bold"></i></span>
                                     </asp:LinkButton>
-                                    <input type="hidden" runat="server" id="hftxtimg" clientidmode="Static" value="vacio" />
+                                    <input type="hidden" runat="server" id="hftxtimg" clientidmode="Static" value="vacio" />                                    
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>

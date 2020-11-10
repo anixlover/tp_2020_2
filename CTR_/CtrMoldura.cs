@@ -50,5 +50,9 @@ namespace CTR
         {
             objDaoMoldura.ObtenerMoldura(objmoldura, objtipo);
         }
+        public void ActulizarMoldura(DtoMoldura objMoldura)
+        {
+            objDaoMoldura.UpdateMoldura(objMoldura);
+        }
     }
 }
