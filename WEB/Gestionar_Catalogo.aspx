@@ -24,6 +24,9 @@
             <div class="page-title-box">
                 <h4 class="page-title">GESTIONAR CATALOGO</h4>
             </div>
+            <div class="form-group text-right m-b-0">
+                <asp:Button ID="btnAgregarMoldura" class="btn btn-danger" runat="server" Text="➕ Agregar" OnClick="btnAgregarMoldura_Click" />
+            </div>
             <div class="card-box">
                 <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
@@ -72,7 +75,7 @@
                                         </asp:LinkButton>--%>
                                     <asp:TemplateField>
                                         <ItemTemplate>
-                                            <asp:Button ID="btnGetMoldura" Text="ver 🔍" class="btn btn-danger"
+                                            <asp:Button ID="btnGetMoldura" Text="🔍" class="btn btn-sm btn-warning"
                                                 CommandArgument="<%# Container.DataItemIndex %>" CommandName="getMoldura"
                                                 runat="server" data-toggle="modal" data-target="#modalDetalle" />
                                         </ItemTemplate>
@@ -80,58 +83,54 @@
                                     <asp:ButtonField ButtonType="Button" AccessibleHeaderText="btnActualizar" Text="✏️" CommandName="Actualizar">
                                         <ControlStyle CssClass="btn btn-sm btn-blue" />
                                     </asp:ButtonField>
-
-                                    <%--                                    <asp:ButtonField ButtonType="Image" HeaderText="Detalles" CommandName="Detalles" >
-                                        <i class="mdi mdi-eye"></i>
-                                    </asp:ButtonField>--%>
-
-
-
-
-        </div>
-
-
+                                </Columns>
+                            </asp:GridView>
+                        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
+        </div>        
         <%--MODAL--%>
 
-<%--class="swal2-popup swal2-modal swal2-show"--%>
+        <%--class="swal2-popup swal2-modal swal2-show"--%>
         <%--swal2-fade--%>
-        <div class="modal fade"  id="modalDetalle"  role="dialog">
+        <div class="modal fade" id="modalDetalle" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="dialog">
                 <div class="modal-content">
                     <asp:UpdatePanel runat="server" ID="upPanelModal" UpdateMode="Always">
                         <ContentTemplate>
                             <div class="modal-header">
-                                <p class="modal-title" id="tituloModal" runat="server" style="color: Black;">Moldura N° <asp:Label ID="lblId" runat="server" Text="..."></asp:Label></p>                                
+                                <p class="modal-title" id="tituloModal" runat="server" style="color: Black;">
+                                    Moldura N°
+                                        <asp:Label ID="lblId" runat="server" Text="..."></asp:Label>
+                                </p>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div>
                                         <asp:Image ID="Img1" Height="300px" Width="300px" runat="server" class="img-thumbnail" />
-                                        
                                     </div>
                                 </div>
                                 <div class="col-md6">
-                                    <p>Medida: <asp:Label ID="txtmetrica" runat="server"></asp:Label></p>
-                                    <p>Tipo: <asp:Label ID="txtTipo" runat="server"></asp:Label></p>
+                                    <p>
+                                        Medida:
+                                            <asp:Label ID="txtmetrica" runat="server"></asp:Label>
+                                    </p>
+                                    <p>
+                                        Tipo:
+                                            <asp:Label ID="txtTipo" runat="server"></asp:Label>
+                                    </p>
                                     <p>Precio: S./<asp:Label ID="txtprecio" runat="server" ClientIDMode="Static"></asp:Label></p>
-                                    <p>Descripción: <asp:Label ID="txtdescripcion" runat="server"></asp:Label></p>
+                                    <p>
+                                        Descripción:
+                                            <asp:Label ID="txtdescripcion" runat="server"></asp:Label>
+                                    </p>
                                 </div>
                             </div>
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
             </div>
-        </div>
-
-
-
-
-
-
-            </div>
-
-                            
-
         </div>
     </div>
 

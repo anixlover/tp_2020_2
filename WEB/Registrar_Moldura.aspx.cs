@@ -27,6 +27,7 @@ namespace WEB
         {
             if (!Page.IsPostBack)
             {
+                btnRemover.Visible = false;
                 imgdefault.Visible = false;
                 btnActualizar.Visible = false;
                 txtTitulo2.Visible=false;
@@ -41,7 +42,8 @@ namespace WEB
                     txtTitulo2.Visible = true;
                     Div.Visible = false;
                     objDtoMoldura.PK_IM_Cod = int.Parse(Request.Params["Id"]);
-                    obtenerInformacionMoldura(Request.Params["Id"]);                    
+                    obtenerInformacionMoldura(Request.Params["Id"]);
+                    btnRemover.Visible = true;
                 }
                 OpcionesTipoMoldura();
                 ddlEstadoMoldura.SelectedValue = "1";
@@ -175,7 +177,12 @@ namespace WEB
                     objDtoMoldura.DM_Ancho = Double.Parse(txtAncho.Text);
                     _log.CustomWriteOnLog("ActualizarMoldura", "DM_Ancho valor ingresado " + objDtoMoldura.DM_Ancho);
                     objCtrMoldura.ActulizarMoldura(objDtoMoldura);
-                    objCtrMoldura.registrarImgMoldura(bimagen, ValorDevuelto);
+                    if (hftxtimg.Value.ToString() != "Vacio")
+                    {
+
+                        objCtrMoldura.registrarImgMoldura(bimagen, ValorDevuelto);
+                    }
+                    else
                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Moldura Actualizada!',text: 'Datos ENVIADOS!!'}).then(function(){window.location.href='Gestionar_Catalogo.aspx'})", true);
                 }
             }

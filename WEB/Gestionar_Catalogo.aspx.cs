@@ -94,5 +94,10 @@ namespace WEB
                 }
             }
         }
+
+        protected void btnAgregarMoldura_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Registrar_Moldura.aspx");
+        }
     }
 }

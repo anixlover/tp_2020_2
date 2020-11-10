@@ -42,7 +42,7 @@
                                 <br />
                                 Correo Electronico:&nbsp;<asp:TextBox ID="txtCorreo" name="texto" runat="server" class="form-control" type="email" placeholder="Correo Electronico" MinLength="8" MaxLength="150" BackColor="White" Width="100%"></asp:TextBox>
                                 <br />
-                                Contraseña:&nbsp;<asp:TextBox ID="txtContraseña" name="texto" runat="server" class="form-control" type="password" placeholder="Confirmar Contraseña" MinLength="8" MaxLength="50" BackColor="White" Width="100%"></asp:TextBox>
+                                Contraseña:&nbsp;<asp:TextBox ID="txtContraseña" name="texto" runat="server" class="form-control" type="password" placeholder="Nueva Contraseña" MinLength="8" MaxLength="50" BackColor="White" Width="100%"></asp:TextBox>
                                 <br />
                                 Confirmar:<asp:TextBox ID="txtContraseña2" name="texto" runat="server" class="form-control" type="password" placeholder="Confirmar Contraseña" MinLength="8" MaxLength="50" BackColor="White" Width="100%"></asp:TextBox>
                                 <br />

@@ -143,21 +143,21 @@ namespace DAO
 
             if (reader.Read())
             {
-                string senderr = "decormoldurassac@gmail.com";
+                string senderr = "DecormoldurasRosetonesSAC@gmail.com";
                 string senderrPass = "decormolduras";
                 string displayName = "DECORMOLDURAS & ROSETONES SAC";
 
                 var recipient = reader["VU_Correo"].ToString();
                 var pass = reader["VU_Contrasenia"].ToString();
                 var nombre = reader["VU_Nombre"].ToString();
+                var dni = reader["PK_VU_Dni"].ToString();
 
                 string body =
                     "<body>" +
                         "<h1>DECORMOLDURAS & ROSETONES SAC</h1>" +
                         "<h4>Bienvenid@ " + nombre + "</h4>" +
                         "<span>No comparta esto con nadie." +
-                        "<br></br><span>Su contraseña actual es: " + pass + "</span>" +
-                        //"<br></br><span>link de confirmación: "+ "https://localhost:44363/CambiarContraseña.aspx?act=" + recipient +
+                        "<br></br><span>link de confirmación: " + "https://localhost:44363/CambiarContraseña.aspx?act=" + dni +
                         "<br></br><span> Saludos cordiales.<span>" +
                     "</body>";
 
