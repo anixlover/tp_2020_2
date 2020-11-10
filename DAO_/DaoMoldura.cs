@@ -58,7 +58,23 @@ namespace DAO
             }
             conexion.Close();
         }
-        
+        public void UpdateMoldura(DtoMoldura objmoldura)
+        {
+            SqlCommand command = new SqlCommand("SP_Actualizar_Moldura", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@idMol", objmoldura.PK_IM_Cod);
+            command.Parameters.AddWithValue("@descripcion", objmoldura.VM_Descripcion);
+            command.Parameters.AddWithValue("@stock", objmoldura.IM_Stock);
+            command.Parameters.AddWithValue("@largo", objmoldura.DM_Largo);
+            command.Parameters.AddWithValue("@ancho", objmoldura.DM_Ancho);
+            command.Parameters.AddWithValue("@precio", objmoldura.DM_Precio);
+            command.Parameters.AddWithValue("@estado", objmoldura.IM_Estado);
+            command.Parameters.AddWithValue("@idtipom", objmoldura.FK_ITM_Tipo);
+            conexion.Open();
+            command.ExecuteNonQuery();
+            conexion.Close();
+        }
+
         public DataTable ListarTodoMolduras(DtoMoldura objmoldura)
         {
             DataTable dtmolduras = null;
@@ -135,7 +151,7 @@ namespace DAO
                 objmoldura.IM_Estado = int.Parse(reader[7].ToString());
                 objmoldura.IM_Stock = int.Parse(reader[8].ToString());
                 objmoldura.DM_Precio = Convert.ToDouble(reader[9].ToString());
-                objmoldura.VBM_Imagen = Encoding.ASCII.GetBytes(reader[10].ToString());
+                objmoldura.VBM_Imagen = (byte[])reader[10];
             }
 
             conexion.Close();

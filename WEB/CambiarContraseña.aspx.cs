@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using DTO;
 using CTR;
 using System.Windows.Forms;
+using System.ComponentModel.Design;
 
 namespace WEB
 {
@@ -16,34 +17,41 @@ namespace WEB
         CtrUsuario objCtrUsuario = new CtrUsuario();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Page.IsPostBack)
+            {
+                //txtContraseña.Visible = false;
+                //txtContraseña2.Visible = false;
+                //if (Request.Params["act"] != null)
+                //{
+                //    txtContraseña.Visible = true;
+                //    txtContraseña2.Visible = true;
+                //}
+            }
         }
 
         protected void btnContraseña_Click(object sender, EventArgs e)
         {
-            objUsuario.PK_VU_Dni = txtDNI.Text;
-            objUsuario.VU_Correo = txtCorreo.Text;
-            objUsuario.IU_Celular = int.Parse(txtnumber.Text);
-            if(!objCtrUsuario.ValidarUsuarioxDni_Correo_Celular(objUsuario))
+            if (txtContraseña.Text == "" | txtContraseña2.Text == "" | txtCorreo.Text == "")
             {
-                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: 'ERROR!',text: 'Datos NO VALIDOS!!'});", true);
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!!',text: 'Espacios en BLANCO!!'});", true);
                 return;
             }
-
-            else
-            {
-                if(txtContraseña.Text == txtContraseña2.Text)
+            objUsuario.VU_Correo = txtCorreo.Text;
+            if (objCtrUsuario.existenciaCorreo(objUsuario)==true)
+            {                
+                objUsuario.VU_Contrasenia = txtContraseña.Text;
+                if (txtContraseña.Text != txtContraseña2.Text) 
                 {
-                    objUsuario.VU_Contrasenia = txtContraseña.Text;
-                    objCtrUsuario.CambiarContraseña(objUsuario);
-                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: '',text: 'Contraseña cambiada con éxito!!'});", true);
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'las contraseñas deben coincidir!!'});", true);
+                    return;
                 }
-
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: 'ERROR!',text: 'Las contraseñas no coinciden!!'});", true);
-                }
+                objCtrUsuario.CambiarContraseña(objUsuario);
+                //objCtrUsuario.EnviarCorreo(objUsuario);
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Revisa tu correo!',text: 'Contraseña actualizada y enviada!!'});", true);
+                return;
             }
+            else
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'Correo no existente!',text: 'Porfavor ingresar su correo!!'});", true);
         }
     }
 }
