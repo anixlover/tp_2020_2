@@ -50,6 +50,25 @@ namespace WEB
                 string id = colsNoVisible[0].ToString();
                 Response.Redirect("~/Registrar_Moldura.aspx?ID=" + id);
             }
+            else if (e.CommandName == "Ver")
+            {
+                try
+                {
+                    int index = Convert.ToInt32(e.CommandArgument);
+                    var colsNoVisible = gvCatalogo.DataKeys[index].Values;
+                    string id = colsNoVisible[0].ToString();
+                    string Nombre = colsNoVisible[1].ToString();
+                    objDtoMoldura.PK_IM_Cod = int.Parse(id);
+
+
+
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "none", "<script>$('#defaultmodal').modal('show');</script>", false);
+                }
+                catch (Exception ex)
+                {
+                    _log.CustomWriteOnLog("GestionCatalogo", "Error = " + ex.Message + "Stac" + ex.StackTrace);
+                }
+            }
         }
         
         protected void gvCatalogo_RowDataBound(object sender, GridViewRowEventArgs e)

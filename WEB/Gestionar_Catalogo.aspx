@@ -30,32 +30,32 @@
                 <%--TABLA--%>
                 <%--HeaderStyle-CssClass="table-borderless"--%>
 
-                
+
                 <asp:UpdatePanel ID="UpdatePanel" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="false">
                     <ContentTemplate>
                         <div>
                             <asp:GridView ID="gvCatalogo" runat="server" CssClass="table-borderless table table-bordered table-hover"
                                 DataKeyNames="Codigo,T. de Moldura" AutoGenerateColumns="False"
                                 EmptyDataText="No existen registros, agreguen molduras a su carrito" ShowHeaderWhenEmpty="True" OnRowDataBound="gvCatalogo_RowDataBound" OnRowCommand="gvCatalogo_RowCommand">
-                               <Columns>
+                                <Columns>
                                     <%--<asp:TemplateField HeaderText="Agregar al carrito de compras">
                                         <ItemTemplate>
                                             <asp:CheckBox ID="CheckBox1" CssClass="checkbox" runat="server" />
                                         </ItemTemplate>
                                     </asp:TemplateField>--%>
-                                   <asp:TemplateField HeaderText="Imagen">
-                                       <ItemTemplate>
-                                           <img src='ObtieneImagen.ashx?id=<%# Eval("Codigo")%>' height="80px" width="80px" />
-                                       </ItemTemplate>
-                                   </asp:TemplateField>
-                                   <asp:BoundField DataField="Codigo" HeaderText="Codigo" />
-                                   <asp:BoundField DataField="T. de Moldura" HeaderText="T. de Moldura" />
-                                   <asp:BoundField DataField="Largo" HeaderText="Largo" />
-                                   <asp:BoundField DataField="Ancho" HeaderText="Ancho" />
-                                   <asp:BoundField DataField="U. Metrica" HeaderText="U. Metrica" />
-                                   <asp:BoundField DataField="Stock" HeaderText="Stock" />
-                                   <asp:BoundField DataField="Precio V." HeaderText="Precio V." />
-                                   <asp:BoundField DataField="Estado" HeaderText="Estado" />
+                                    <asp:TemplateField HeaderText="Imagen">
+                                        <ItemTemplate>
+                                            <img src='ObtieneImagen.ashx?id=<%# Eval("Codigo")%>' height="80px" width="80px" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="Codigo" HeaderText="Codigo" />
+                                    <asp:BoundField DataField="T. de Moldura" HeaderText="T. de Moldura" />
+                                    <asp:BoundField DataField="Largo" HeaderText="Largo" />
+                                    <asp:BoundField DataField="Ancho" HeaderText="Ancho" />
+                                    <asp:BoundField DataField="U. Metrica" HeaderText="U. Metrica" />
+                                    <asp:BoundField DataField="Stock" HeaderText="Stock" />
+                                    <asp:BoundField DataField="Precio V." HeaderText="Precio V." />
+                                    <asp:BoundField DataField="Estado" HeaderText="Estado" />
                                     <%--<asp:TemplateField HeaderText="Country" ItemStyle-Width="150" Visible="false">
                                         <ItemTemplate>
                                             <asp:Label ID="lblCountry" runat="server" Text='<%# Eval("PK_IM_Cod") %>'></asp:Label>
@@ -67,7 +67,7 @@
                                         </ItemTemplate>
                                     </asp:TemplateField>--%>
 
-<%--                                    <asp:LinkButton runat="server" ID="btnSearch" CssClass="btn btn-danger btn-circle-lg waves-effect waves-circle waves-float" OnClick="btnSearch_Click">
+                                    <%--                                    <asp:LinkButton runat="server" ID="btnSearch" CssClass="btn btn-danger btn-circle-lg waves-effect waves-circle waves-float" OnClick="btnSearch_Click">
                                             <i class="material-icons">search</i>
                                         </asp:LinkButton>--%>
 
@@ -78,26 +78,57 @@
                                         <ControlStyle CssClass="btn btn-sm btn-blue" />
                                     </asp:ButtonField>
 
-<%--                                    <asp:ButtonField ButtonType="Image" HeaderText="Detalles" CommandName="Detalles" >
+                                    <%--                                    <asp:ButtonField ButtonType="Image" HeaderText="Detalles" CommandName="Detalles" >
                                         <i class="mdi mdi-eye"></i>
                                     </asp:ButtonField>--%>
-
-
-
-
                                 </Columns>
                             </asp:GridView>
 
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-                   
+
 
             </div>
 
-                            
-
         </div>
+
+
+        <%--MODAL--%>
+
+<%--class="swal2-popup swal2-modal swal2-show"--%>
+        <%--swal2-fade--%>
+        <div class="modal fade"  id="defaultmodal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="dialog">
+                <div class="modal-content">
+                    <asp:UpdatePanel runat="server" ID="upPanelModal" UpdateMode="Always">
+                        <ContentTemplate>
+                            <div class="modal-header navbar">
+                                <h4 class="modal-title" id="tituloModal" runat="server" style="color: white;">Moldura N°</h4>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div>
+                                        <asp:Image ID="Img1" Height="300px" Width="300px" runat="server" class="img-thumbnail"/>
+                                    </div>
+                                </div>
+                                <div class="col-md6">
+                                    <div class="form-group form-float">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
     </div>
 
 
