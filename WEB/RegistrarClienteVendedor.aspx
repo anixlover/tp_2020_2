@@ -10,7 +10,7 @@
     <div class="card" style="background-color: #DDD9D9">        
         <div class="card-body bg-white">
             <p style="text-align: center; font-size: large; font-style: normal; color: #CC0000; font-weight: bold;">╣❖ REGISTRAR CLIENTE ❖╠</p>
-            <i data-feather="user-plus" class="icons-xxl" style="text-align: center"></i>
+            <div style="text-align:center"><i data-feather="user-plus" class="icons-xxl" style="text-align: center"></i></div>
             <div class="row">
                 <div class="col-md-6" runat="server">
                     DNI

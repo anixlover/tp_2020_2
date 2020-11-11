@@ -125,62 +125,11 @@ namespace DAO
 
         public void UpdateContraseña(DtoUsuario Usuario)
         {
-            string update = "UPDATE T_Usuario SET VU_Contrasenia = '" + Usuario.VU_Contrasenia + "' WHERE VU_Correo = '" + Usuario.VU_Correo + "'";
+            string update = "UPDATE T_Usuario SET VU_Contrasenia = '" + Usuario.VU_Contrasenia + "' WHERE PK_VU_Dni = '" + Usuario.PK_VU_Dni + "'";
             SqlCommand command = new SqlCommand(update, conexion);
             conexion.Open();
             command.ExecuteNonQuery();
             conexion.Close();
-        }
-
-        public void EnviarCorreoaUsuario(DtoUsuario objuser)
-        {
-            string Select = "SELECT VU_Correo, VU_Contrasenia, VU_Nombre from T_Usuario where VU_Correo ='"
-                + objuser.VU_Correo + "'";
-
-            SqlCommand unComando = new SqlCommand(Select, conexion);
-            conexion.Open();
-            SqlDataReader reader = unComando.ExecuteReader();
-
-            if (reader.Read())
-            {
-                string senderr = "DecormoldurasRosetonesSAC@gmail.com";
-                string senderrPass = "decormolduras";
-                string displayName = "DECORMOLDURAS & ROSETONES SAC";
-
-                var recipient = reader["VU_Correo"].ToString();
-                var pass = reader["VU_Contrasenia"].ToString();
-                var nombre = reader["VU_Nombre"].ToString();
-                var dni = reader["PK_VU_Dni"].ToString();
-
-                string body =
-                    "<body>" +
-                        "<h1>DECORMOLDURAS & ROSETONES SAC</h1>" +
-                        "<h4>Bienvenid@ " + nombre + "</h4>" +
-                        "<span>No comparta esto con nadie." +
-                        "<br></br><span>link de confirmación: " + "https://localhost:44363/CambiarContraseña.aspx?act=" + dni +
-                        "<br></br><span> Saludos cordiales.<span>" +
-                    "</body>";
-
-                MailMessage mail = new MailMessage();
-                mail.Subject = "Bienvenido";
-                mail.From = new MailAddress(senderr.Trim(), displayName);
-                mail.Body = body;
-                mail.To.Add(recipient.Trim());
-                mail.IsBodyHtml = true;
-                //mail.Priority = MailPriority.Normal;
-
-                SmtpClient smtp = new SmtpClient();
-                smtp.Host = "smtp.gmail.com";
-                smtp.Port = 44363;
-                smtp.UseDefaultCredentials = false;
-                smtp.EnableSsl = true;
-                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                //smtp.Credentials = new System.Net.NetworkCredential(senderr.Trim(), senderrPass.Trim());
-                NetworkCredential nc = new NetworkCredential(senderr, senderrPass);
-                smtp.Credentials = nc;
-
-                smtp.Send(mail);
-            }
         }
     }
 }

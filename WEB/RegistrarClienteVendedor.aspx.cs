@@ -34,6 +34,8 @@ namespace WEB
             objDtoUsuario.VU_Correo = txtCorreo.Text;
             objDtoUsuario.FK_ITU_Cod = 1;
             RegistrarVendedor(objDtoUsuario);
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Registro Exitoso!',text: 'Datos ENVIADOS!!'});", true);
+            EnviarCorreo(objDtoUsuario);
         }
         public void RegistrarVendedor(DtoUsuario objUsuario)//<----Metodo de Registro
         {
@@ -73,8 +75,7 @@ namespace WEB
                 return;
             }
             //Registra al usuario tipo cliente y redirije al iniciarsesion.aspx
-            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Registro Exitoso!',text: 'Datos ENVIADOS!!'})", true);
-            objCtrUsuario.RegistrarClienteVendedor(objUsuario);
+            objCtrUsuario.RegistrarClienteVendedor(objUsuario);            
         }
         public void EnviarCorreo(DtoUsuario objDtoUsuario)
         {
@@ -85,8 +86,8 @@ namespace WEB
             smtp.EnableSsl = true;
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
 
-            string Emisor = "decormoldurassac@gmail.com";
-            string EmisorPass = "decormolduras";
+            string Emisor = "decormoldurasyrosetonessac@gmail.com";
+            string EmisorPass = "decor$molduras$";
             string displayName = "DECORMOLDURAS & ROSETONES SAC";
             string Receptor = objDtoUsuario.VU_Correo;
             string body =
@@ -100,7 +101,7 @@ namespace WEB
 
             MailMessage mail = new MailMessage();
             mail.Subject = "Bienvenido";
-            mail.From = new MailAddress(Emisor, displayName);
+            mail.From = new MailAddress(Emisor.Trim(), displayName);
             mail.Body = body;
             mail.To.Add(new MailAddress(Receptor));
             mail.IsBodyHtml = true;
