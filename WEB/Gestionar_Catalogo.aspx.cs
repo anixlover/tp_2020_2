@@ -24,7 +24,6 @@ namespace WEB
             {
                 try
                 {
-                    OpcionesTipoMoldura();
                     UpdatePanel.Update();
                     gvCatalogo.DataSource = objCtrMoldura.ListarMolduras();
                     gvCatalogo.DataBind();
@@ -35,10 +34,6 @@ namespace WEB
                     throw;
                 }
             }
-        }
-        public void OpcionesTipoMoldura()
-        {
-
         }
         //Opciones de botones
         protected void gvCatalogo_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -67,10 +62,12 @@ namespace WEB
                     objCtrMoldura.ObtenerMoldura(objDtoMoldura,objDtoTipoMoldura);
                     lblId.Text = id;
                     Img1.ImageUrl = "data:image/png;base64," + Convert.ToBase64String(objDtoMoldura.VBM_Imagen);
-                    txtTipo.Text = objDtoTipoMoldura.VTM_Nombre;
-                    txtmetrica.Text = objDtoTipoMoldura.VTM_UnidadMetrica;
-                    txtprecio.Text = objDtoMoldura.DM_Precio.ToString();
-                    txtdescripcion.Text = objDtoMoldura.VM_Descripcion;
+                    lblTipo.Text = objDtoTipoMoldura.VTM_Nombre;                    
+                    lblmetrica.Text = objDtoTipoMoldura.VTM_UnidadMetrica;
+                    lblAncho.Text = objDtoMoldura.DM_Ancho + lblmetrica.Text;
+                    lblLargo.Text = objDtoMoldura.DM_Largo+ lblmetrica.Text;
+                    lblprecio.Text = objDtoMoldura.DM_Precio.ToString();
+                    txtDescripcion.Text = objDtoMoldura.VM_Descripcion;
                 }
                 catch (Exception ex)
                 {
