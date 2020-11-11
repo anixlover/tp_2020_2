@@ -32,8 +32,8 @@
                     <p>Precio: S./<asp:Label ID="txtprecio" runat="server" ClientIDMode="Static"></asp:Label></p>
                     <p>Descripción:<asp:Label ID="txtdescripcion" runat="server"></asp:Label></p>
                     <asp:Button runat="server" ID="Button1" CssClass="button" Text="Regresar" OnClick="Button1_Click" />
-
-                    <a href="#" class="button" onclick="btn_regresar()"><i class="far fa-star"></i></a>
+                    <asp:LinkButton runat="server" ID="Button2" CssClass="button" Text="Agregar al carrito" OnClick="Button1_Click"></asp:LinkButton>
+                    <a href="#" class="button" onclick="btn_regresar()"><i class="fas fa-shopping-cart"></i></a>
 
                     <%--<asp:Button runat="server" ID="btnModal" CssClass="button" Text="Agregar a carrito de compra" data-target="#defaultmodal" data-toggle="modal" />--%>
                 </ContentTemplate>

@@ -93,11 +93,9 @@ namespace WEB
                                         "<h4 class='font-16 mt-0'>" + VM_Descripcion + "</h4>" +
                                          "<h4 class='font-16 mt-0'>" + DM_Precio + "</h4>" +
                                         "<a href = javascript: void(0);>" +
-                                       
                                             "<button id='btnSave' class='text-muted ml-1' onClick='cargarInformacion(" + PK_IM_Cod + ")'>" +
                                              "<span class='text-muted ml-1'>Detalles</span>" +
                                             "</asp:button>" +
-                                             
                                         "</a>" +
                                         "<a href = javascript: void(0); class='gal-like-btn'><i class='mdi mdi-heart-outline text-danger'></i></a>" +
                                     "</div>" +
