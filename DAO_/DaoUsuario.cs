@@ -125,7 +125,7 @@ namespace DAO
 
         public void UpdateContraseña(DtoUsuario Usuario)
         {
-            string update = "UPDATE T_Usuario SET VU_Contrasenia = '" + Usuario.VU_Contrasenia + "' WHERE VU_Correo = '" + Usuario.VU_Correo + "'";
+            string update = "UPDATE T_Usuario SET VU_Contrasenia = '" + Usuario.VU_Contrasenia + "' WHERE PK_VU_Dni = '" + Usuario.PK_VU_Dni + "'";
             SqlCommand command = new SqlCommand(update, conexion);
             conexion.Open();
             command.ExecuteNonQuery();

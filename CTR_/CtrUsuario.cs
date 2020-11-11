@@ -119,10 +119,6 @@ namespace CTR
         {
             return objDaoUsuario.SelectUsuarioxDni_Correo_Celular(dtoUsuario);
         }
-        public void EnviarCorreo(DtoUsuario objUsuario)
-        {
-            objDaoUsuario.EnviarCorreoaUsuario(objUsuario);
-        }
         public void CambiarContraseña(DtoUsuario dtoUsuario)
         {
             objDaoUsuario.UpdateContraseña(dtoUsuario);

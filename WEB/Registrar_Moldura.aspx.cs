@@ -84,10 +84,6 @@ namespace WEB
                     objCtrMoldura.registrarImgMoldura(bimagen, ValorDevuelto);
                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Moldura registrada!',text: 'Datos ENVIADOS!!'}).then(function(){window.location.href='Gestionar_Catalogo.aspx'})", true);
                 }
-
-
-
-
             }
             catch (Exception ex)
             {
@@ -181,6 +177,7 @@ namespace WEB
                     {
 
                         objCtrMoldura.registrarImgMoldura(bimagen, ValorDevuelto);
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Moldura Actualizada!',text: 'Datos ENVIADOS!!'}).then(function(){window.location.href='Gestionar_Catalogo.aspx'})", true);
                     }
                     else
                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Moldura Actualizada!',text: 'Datos ENVIADOS!!'}).then(function(){window.location.href='Gestionar_Catalogo.aspx'})", true);

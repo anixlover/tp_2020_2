@@ -100,30 +100,32 @@
                     <asp:UpdatePanel runat="server" ID="upPanelModal" UpdateMode="Always">
                         <ContentTemplate>
                             <div class="modal-header">
-                                <p class="modal-title" id="tituloModal" runat="server" style="color: Black;">
+                                <p class="modal-title" id="tituloModal" runat="server"  style="color: #000000; font-weight: bold">
                                     Moldura N°
                                         <asp:Label ID="lblId" runat="server" Text="..."></asp:Label>
                                 </p>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-6">
                                     <div>
                                         <asp:Image ID="Img1" Height="300px" Width="300px" runat="server" class="img-thumbnail" />
                                     </div>
                                 </div>
-                                <div class="col-md6">
-                                    <p>
+                                <div class="col-6">
+                                    <p style="color: #000000; font-style: normal; font-weight: bold">
                                         Medida:
-                                            <asp:Label ID="txtmetrica" runat="server"></asp:Label>
+                                            <asp:Label ID="lblmetrica" runat="server"></asp:Label>
                                     </p>
-                                    <p>
+                                     <p style="color: #000000; font-style: normal; font-weight: bold">Ancho: <asp:Label ID="lblAncho" runat="server" ClientIDMode="Static"></asp:Label></p>
+                                    <p style="color: #000000; font-style: normal; font-weight: bold">Largo: <asp:Label ID="lblLargo" runat="server" ClientIDMode="Static"></asp:Label></p>
+                                    <p style="color: #000000; font-style: normal; font-weight: bold">
                                         Tipo:
-                                            <asp:Label ID="txtTipo" runat="server"></asp:Label>
+                                            <asp:Label ID="lblTipo" runat="server"></asp:Label>
                                     </p>
-                                    <p>Precio: S./<asp:Label ID="txtprecio" runat="server" ClientIDMode="Static"></asp:Label></p>
-                                    <p>
-                                        Descripción:
-                                            <asp:Label ID="txtdescripcion" runat="server"></asp:Label>
+                                    <p style="color: #000000; font-style: normal; font-weight: bold">Precio: S./<asp:Label ID="lblprecio" runat="server" ClientIDMode="Static"></asp:Label></p>
+                                    <p  style="color: #000000; font-style: normal; font-weight: bold">
+                                        Descripción:<br />
+                                        <asp:TextBox ID="txtDescripcion" runat="server" TextMode="MultiLine" Enabled="False" Width="90%"></asp:TextBox>
                                     </p>
                                 </div>
                             </div>

@@ -79,6 +79,16 @@ namespace WEB
             }
             #endregion
 
+            if (objDtoMoldura.IM_Stock != 0)
+            {
+                txtestadostock.Text = "En stock";
+            }
+            else
+            {
+                txtestadostock.Text = "Fuera de stock";
+            }
+
+
             //txtCodigo.Text = objDtoMoldura.PK_IM_Cod.ToString();
             //ddlTipoMoldura.SelectedValue = objDtoTipoMoldura.PK_ITM_Tipo.ToString();
             //txtmetrica.Text = objDtoTipoMoldura.VTM_UnidadMetrica.ToString();
@@ -86,6 +96,11 @@ namespace WEB
             //txtStock.Text = objDtoMoldura.IM_Stock.ToString();
             //txtMedida.Text = objDtoMoldura.DM_Medida.ToString();
             //ddlEstadoMoldura.SelectedValue = objDtoMoldura.IM_Estado.ToString();
+            txtlargo.Text = objDtoMoldura.DM_Largo.ToString();
+            txtancho.Text = objDtoMoldura.DM_Ancho.ToString();
+            txtstock.Text = objDtoMoldura.IM_Stock.ToString();
+            txtcodigomoldura.Text = objDtoMoldura.PK_IM_Cod.ToString();
+            txtnombre.Text = objDtoTipoMoldura.VTM_Nombre;
             txtdescripcion.Text = objDtoMoldura.VM_Descripcion;
 
         }
