@@ -58,11 +58,11 @@ namespace WEB
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'las contraseñas deben coincidir!!'});", true);
                 return;
             }
-            objUsuario.VU_Contrasenia = txtContraseña.Text;
+            objUsuario.VU_Contrasenia = txtContraseña.Text;           
             objCtrUsuario.CambiarContraseña(objUsuario);
-            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Revisa tu correo!',text: 'Contraseña actualizada y enviada!!'});", true);
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Cambio EXITOSO!',text: 'Contraseña actualizada!!'});", true);
         }
-        public void EnviarCorreo(DtoUsuario objDtoUsuario)
+        public void EnviarCorreo(DtoUsuario objDtoUsuario, string body)
         {
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com";
@@ -75,18 +75,11 @@ namespace WEB
             string EmisorPass = "decor$molduras$";
             string displayName = "DECORMOLDURAS & ROSETONES SAC";
             string Receptor = objDtoUsuario.VU_Correo;
-            string  body =
-                "<body>" +
-                        "<h1>DECORMOLDURAS & ROSETONES SAC</h1>" +
-                        "<h4>Bienvenid@ " + objDtoUsuario.VU_Nombre + "</h4>" +
-                        "<span>No comparta esto con nadie." +
-                        "<br></br><span>link de confirmación: " + "https://localhost:44363/CambiarContraseña.aspx?act=" + objDtoUsuario.PK_VU_Dni +
-                        "<br></br><span> Saludos cordiales.<span>" +
-                    "</body>";                
+            string htmlbody = body;            
             MailMessage mail = new MailMessage();
             mail.Subject = "Bienvenido";
             mail.From = new MailAddress(Emisor.Trim(), displayName);
-            mail.Body = body;
+            mail.Body = htmlbody;
             mail.To.Add(new MailAddress(Receptor));
             mail.IsBodyHtml = true;
             NetworkCredential nc = new NetworkCredential(Emisor, EmisorPass);
@@ -100,7 +93,14 @@ namespace WEB
                 objUsuario.VU_Correo = txtCorreo.Text;
                 if (objCtrUsuario.existenciaCorreo(objUsuario))
                 {
-                    EnviarCorreo(objUsuario);
+                    string body = "<body>" +
+                       "<h1>DECORMOLDURAS & ROSETONES SAC</h1>" +
+                       "<h4>Bienvenid@ " + objUsuario.VU_Nombre + "</h4>" +
+                       "<span>No comparta esto con nadie." +
+                       "<br></br><span>link de confirmación: " + "https://localhost:44363/CambiarContraseña.aspx?act=" + objUsuario.PK_VU_Dni + "<span>"+
+                       "<br></br><span> Saludos cordiales.<span>" +
+                   "</body>";
+                    EnviarCorreo(objUsuario,body);
                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Revisa tu correo!',text: 'Link de confirmación enviada!!'});", true);
                 }
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'Correo no existente!',text: 'Porfavor ingresar su correo!!'});", true);

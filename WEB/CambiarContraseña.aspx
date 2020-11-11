@@ -28,6 +28,10 @@
     <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
     <link href="../assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" />
     <link href="../assets/libs/selectize/css/selectize.bootstrap3.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/app-dark.min.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap-creative-dark.min.css" rel="stylesheet" />
+    <link href="assets/css/app.min.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
