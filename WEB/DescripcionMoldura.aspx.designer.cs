@@ -42,13 +42,49 @@ namespace WEB
         protected global::System.Web.UI.WebControls.Image Image1;
 
         /// <summary>
-        /// txtmedida control.
+        /// txtcodigomoldura control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtmedida;
+        protected global::System.Web.UI.WebControls.Label txtcodigomoldura;
+
+        /// <summary>
+        /// txtnombre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtnombre;
+
+        /// <summary>
+        /// txtestadostock control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtestadostock;
+
+        /// <summary>
+        /// txtlargo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtlargo;
+
+        /// <summary>
+        /// txtancho control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtancho;
 
         /// <summary>
         /// txtprecio control.
@@ -60,6 +96,15 @@ namespace WEB
         protected global::System.Web.UI.WebControls.Label txtprecio;
 
         /// <summary>
+        /// txtstock control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtstock;
+
+        /// <summary>
         /// txtdescripcion control.
         /// </summary>
         /// <remarks>
@@ -67,23 +112,5 @@ namespace WEB
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label txtdescripcion;
-
-        /// <summary>
-        /// Button1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-
-        /// <summary>
-        /// Button2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton Button2;
     }
 }
