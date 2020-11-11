@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <style>
         body {
@@ -34,14 +34,14 @@
             <div class="auth-fluid-form-box">
                 <div class="align-items-center d-flex h-100">
                     <div class="card-body bg-White">
-                        <img src="assets/images/Icono.ico" style="width:50%"/>
+                        <img src="assets/images/Icono.ico" style="width: 50%" />
                         <div class="form-group" runat="server">
                             Usuario:
                             <asp:TextBox ID="txtDNI" runat="server" placeholder="DNI" MinLength="8" MaxLength="8" BackColor="White" Width="100%" TextMode="SingleLine" CssClass="form-control"></asp:TextBox>
                         </div>
                         Contraseña:
-                    <div class="input-group input-group-merge">                                            
-                        <asp:TextBox ID="txtContraseña"  runat="server" CssClass="form-control" placeholder="Contraseña" BackColor="White" ></asp:TextBox>
+                    <div class="input-group input-group-merge">
+                        <asp:TextBox ID="txtContraseña" runat="server" CssClass="form-control" placeholder="Contraseña" BackColor="White"></asp:TextBox>
                         <div class="input-group-append" data-password="false">
                             <div class="input-group-text">
                                 <span class="password-eye font-12"></span>
@@ -64,6 +64,37 @@
             </div>
         </div>
     </form>
+
+    <script type="text/javascript">
+        function validarInput() {
+            document.getElementById("btnLogin").disabled = !document.getElementById("txtDni").value.length;
+        }
+    </script>
+
+
+
+    <script type="text/javascript">
+        function solonumeros(n) {
+            key = e.keyCode || e.which;
+            teclado = Int32Array(key);
+            numeros = "0123456789";
+            especiales = "8-37-38-46-146";
+            teclado_especial = false;
+            for (var i in especiales) {
+                if (key == especiales[i]) {
+                    teclado_especial = true; break;
+                }
+            }
+            if (numeros.indexOf(teclado) == -1 && !teclado_especial) {
+                return false;
+            }
+
+        }
+    </script>
+
+
+
+
 </body>
 <!-- Plugins js-->
 <script src="../assets/libs/flatpickr/flatpickr.min.js"></script>
@@ -76,4 +107,11 @@
 <script src="../assets/js/vendor.min.js"></script>
 <!-- App js -->
 <script src="../assets/js/app.min.js"></script>
+
+
+
+
+
+
+
 </html>
