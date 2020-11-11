@@ -40,15 +40,30 @@
                         <div class="form-group" runat="server">
                             <div class="form-group mb-auto">
                                 <br />
-                                Correo Electronico:&nbsp;<asp:TextBox ID="txtCorreo" name="texto" runat="server" class="form-control" type="email" placeholder="Correo Electronico" MinLength="8" MaxLength="150" BackColor="White" Width="100%"></asp:TextBox>
+                                <asp:TextBox ID="txtCorreo" name="texto" runat="server" class="form-control" type="email" placeholder="Correo Electronico" MinLength="8" MaxLength="150" BackColor="White" Width="100%"></asp:TextBox>
                                 <br />
-                                Contraseña:&nbsp;<asp:TextBox ID="txtContraseña" name="texto" runat="server" class="form-control" type="password" placeholder="Nueva Contraseña" MinLength="8" MaxLength="50" BackColor="White" Width="100%"></asp:TextBox>
+                                <div class="input-group input-group-merge">
+                                    <asp:TextBox ID="txtContraseña" name="texto" runat="server" CssClass="form-control" type="password" placeholder="Nueva Contraseña" MinLength="8" MaxLength="50" BackColor="White" Width="100%"></asp:TextBox>
+                                    <div id="txtpass1" runat="server" class="input-group-append" data-password="false">
+                                        <div class="input-group-text">
+                                            <span class="password-eye font-12"></span>
+                                        </div>
+                                    </div>
+                                </div>
                                 <br />
-                                Confirmar:<asp:TextBox ID="txtContraseña2" name="texto" runat="server" class="form-control" type="password" placeholder="Confirmar Contraseña" MinLength="8" MaxLength="50" BackColor="White" Width="100%"></asp:TextBox>
+                                <div class="input-group input-group-merge">
+                                    <asp:TextBox ID="txtContraseña2" name="texto" runat="server" CssClass="form-control" type="password" placeholder="Confirmar Contraseña" MinLength="8" MaxLength="50" BackColor="White" Width="100%"></asp:TextBox>
+                                    <div id="txtpass2" runat="server" class="input-group-append" data-password="false">
+                                        <div class="input-group-text">
+                                            <span class="password-eye font-12"></span>
+                                        </div>
+                                    </div>
+                                </div>
                                 <br />
 
                                 <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                                     <ContentTemplate>
+                                        <asp:Button ID="btnEnviar" runat="server" Text="Enviar 📧" CssClass="btn btn-xl btn-success" OnClick="btnEnviar_Click" />
                                         <asp:Button ID="btnContraseña" class="btn btn-primary" runat="server" Text="Cambiar" OnClick="btnContraseña_Click" />
                                         &nbsp;
                                 <asp:Button ID="btnCancelar1" class="btn btn-secondary" runat="server" Text="Cancelar" />
