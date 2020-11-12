@@ -67,11 +67,11 @@
                 <br />
                 <div style="text-align: center">
 
-                    <asp:Label ID="txtTitulo2" runat="server" Text="Imagen de la moldura:"></asp:Label>
+                    <asp:Label ID="txtTitulo2" runat="server" Text=""></asp:Label>
                     <br />
                     <asp:Image ID="imgdefault" runat="server" Height="300px" Width="300px" CssClass="img-thumbnail" />
                     <br />
-                    <asp:Button ID="btnRemover" runat="server" Text="Remover" OnClick="btnRemover_Click" />
+                    <asp:Button ID="btnRemover" runat="server"  Text="Remover" OnClick="btnRemover_Click" />
                 </div>
                 <br />
                 <div runat="server" id="Div">
@@ -95,7 +95,7 @@
                                             <span class="input-group-text">
                                                 <asp:Label ID="lblLargo" runat="server" Text="Cm"></asp:Label></span>
                                         </div>
-                                        <asp:TextBox ID="txtLargo" runat="server" parsley-trigger="change" class="form-control autonumber " data-v-max="250" data-v-min="0" placeholder="Centimetros"></asp:TextBox>
+                                        <asp:TextBox ID="txtLargo" runat="server" parsley-trigger="change" class="form-control autonumber " data-v-max="250" data-v-min="1"></asp:TextBox>
                                         <%--<input type="text" class="form-control" id="validationCustomUsername" placeholder="Centimetros" aria-describedby="inputGroupPrepend"
                                     required>--%>
                                         <%--<div class="invalid-feedback">
@@ -112,7 +112,7 @@
                                             <span class="input-group-text">
                                                 <asp:Label ID="lblAncho" runat="server" Text="Cm"></asp:Label></span>
                                         </div>
-                                        <asp:TextBox ID="txtAncho" runat="server" class="form-control autonumber" data-v-max="250" data-v-min="0" placeholder="Centimetros"></asp:TextBox>
+                                        <asp:TextBox ID="txtAncho" runat="server" class="form-control autonumber" data-v-max="250" data-v-min="1"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +137,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">u.</span>
                                 </div>
-                                <asp:TextBox ID="txtStock" class="form-control autonumber" data-parsley-type="digits" data-v-max="999" data-v-min="0" runat="server" required></asp:TextBox>
+                                <asp:TextBox ID="txtStock" class="form-control autonumber" data-parsley-type="digits" data-v-max="600" data-v-min="0" runat="server" required></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -145,7 +145,10 @@
                         <div class="mt-3">
                             <label for="heard">Precio: <span class="text-danger">*</span></label>
                             <div class="input-group">
-                                <asp:TextBox ID="txtPrecio" class="form-control autonumber" runat="server"></asp:TextBox>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">S/.</span>
+                                </div>
+                                <asp:TextBox ID="txtPrecio" class="form-control autonumber" data-v-max="900" data-v-min="1"  runat="server" required></asp:TextBox>
                             </div>
                         </div>
                     </div>

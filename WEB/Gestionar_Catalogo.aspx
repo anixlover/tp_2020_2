@@ -65,22 +65,6 @@
                                     <asp:BoundField DataField="Precio V." HeaderText="Precio V." />
                                     <asp:BoundField DataField="Estado" HeaderText="Estado" />
 
-                                    <%--<asp:TemplateField HeaderText="Country" ItemStyle-Width="150" Visible="false">
-                                        <ItemTemplate>
-                                            <asp:Label ID="lblCountry" runat="server" Text='<%# Eval("PK_IM_Cod") %>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-
-                                    <asp:TemplateField HeaderText="Country" ItemStyle-Width="150" Visible="false">
-                                        <ItemTemplate>
-                                            <asp:Label ID="lblPrecioItems" runat="server" Text='<%# Eval("DMU_Precio") %>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>--%>
-
-                                    <%--<asp:LinkButton runat="server" ID="btnSearch" CssClass="btn btn-danger btn-circle-lg waves-effect waves-circle waves-float" OnClick="btnSearch_Click">
-                                            <i class="material-icons">search</i>
-                                        </asp:LinkButton>--%>
-
                                     <asp:TemplateField>
                                         <ItemTemplate>
                                             <asp:Button ID="btnGetMoldura" Text="🔍" class="btn btn-sm btn-warning"

@@ -64,7 +64,7 @@ namespace WEB
                                     Hola Gerente <i class='mdi mdi-chevron-down'></i> 
                                 </span>
                             </a>
-            <div class='dropdown-menu dropdown-menu-right profile-dropdown'>
+                            <div class='dropdown-menu dropdown-menu-right profile-dropdown'>
                                 
 
                                 <a id='btnCerrarSesion' href='IniciarSesion.aspx' runat='server' onserverclick='btnCerrarSesion_ServerClick' class='dropdown-item notify-item'>
@@ -113,7 +113,7 @@ namespace WEB
                                     Hola Vendedor <i class='mdi mdi-chevron-down'></i> 
                                 </span>
                             </a>
-            <div class='dropdown-menu dropdown-menu-right profile-dropdown'>
+                            <div class='dropdown-menu dropdown-menu-right profile-dropdown'>
                                 
 
                                 <a id='btnCerrarSesion' href='IniciarSesion.aspx' runat='server' onserverclick='btnCerrarSesion_ServerClick' class='dropdown-item notify-item'>
