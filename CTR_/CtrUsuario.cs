@@ -123,5 +123,20 @@ namespace CTR
         {
             objDaoUsuario.UpdateContraseña(dtoUsuario);
         }
+
+        public DtoUsuario Login(DtoUsuario dtoUsuario)
+        {
+
+            int persona_id = objDaoUsuario.validacionLogin(dtoUsuario.PK_VU_Dni, dtoUsuario.VU_Contrasenia);
+
+            if (persona_id == 0)
+            {
+                throw new Exception("Usuario y/o contrase&ntilde;a incorrecta(s)");
+            }
+            else
+            {
+                return objDaoUsuario.datosUsuario(dtoUsuario.PK_VU_Dni);
+            }
+        }
     }
 }

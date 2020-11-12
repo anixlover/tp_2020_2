@@ -131,5 +131,111 @@ namespace DAO
             command.ExecuteNonQuery();
             conexion.Close();
         }
+
+        public void EnviarCorreoaUsuario(DtoUsuario objuser)
+        {
+            string Select = "SELECT VU_Correo, VU_Contrasenia, VU_Nombre from T_Usuario where VU_Correo ='"
+                + objuser.VU_Correo + "'";
+
+            SqlCommand unComando = new SqlCommand(Select, conexion);
+            conexion.Open();
+            SqlDataReader reader = unComando.ExecuteReader();
+
+            if (reader.Read())
+            {
+                string senderr = "DecormoldurasRosetonesSAC@gmail.com";
+                string senderrPass = "decormolduras";
+                string displayName = "DECORMOLDURAS & ROSETONES SAC";
+
+                var recipient = reader["VU_Correo"].ToString();
+                var pass = reader["VU_Contrasenia"].ToString();
+                var nombre = reader["VU_Nombre"].ToString();
+                var dni = reader["PK_VU_Dni"].ToString();
+
+                string body =
+                    "<body>" +
+                        "<h1>DECORMOLDURAS & ROSETONES SAC</h1>" +
+                        "<h4>Bienvenid@ " + nombre + "</h4>" +
+                        "<span>No comparta esto con nadie." +
+                        "<br></br><span>link de confirmación: " + "https://localhost:44363/CambiarContraseña.aspx?act=" + dni +
+                        "<br></br><span> Saludos cordiales.<span>" +
+                    "</body>";
+
+                MailMessage mail = new MailMessage();
+                mail.Subject = "Bienvenido";
+                mail.From = new MailAddress(senderr.Trim(), displayName);
+                mail.Body = body;
+                mail.To.Add(recipient.Trim());
+                mail.IsBodyHtml = true;
+                //mail.Priority = MailPriority.Normal;
+
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 44363;
+                smtp.UseDefaultCredentials = false;
+                smtp.EnableSsl = true;
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                //smtp.Credentials = new System.Net.NetworkCredential(senderr.Trim(), senderrPass.Trim());
+                NetworkCredential nc = new NetworkCredential(senderr, senderrPass);
+                smtp.Credentials = nc;
+
+                smtp.Send(mail);
+            }
+        }
+        public int validacionLogin(string usuario, string clave)
+        {
+
+            int valor_retornado = 0;
+            SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM T_USUARIO as U WHERE" +
+                " U.PK_VU_Dni = '" + usuario + "' AND U.VU_Contrasenia = '" + clave + "'", conexion);
+
+
+
+            Console.WriteLine(cmd);
+            conexion.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {    //valor_retornado = reader[0].ToString();
+                valor_retornado = int.Parse(reader[0].ToString());
+
+            }
+            conexion.Close();
+
+            return valor_retornado;
+        }
+        public DtoUsuario datosUsuario(String usuario)
+        {
+            SqlCommand cmd = new SqlCommand("select U.FK_ITU_Cod," +
+                "U.VU_Nombre," +
+                "U.VU_Apellidos," +
+                "U.VU_Correo, " +
+                "U.PK_VU_Dni," +
+                "U.IU_Celular," +
+                "U.DTU_FechaNac" +
+                " from T_Usuario as U " +
+                "where U.PK_VU_Dni = '" + usuario + "'", conexion);
+
+            DtoUsuario usuarioDto = new DtoUsuario();
+            DtoTipoUsuario tipousuarioDto = new DtoTipoUsuario();
+            conexion.Open();
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                tipousuarioDto.PK_ITU_Cod = int.Parse(reader[0].ToString());
+                usuarioDto.FK_ITU_Cod = int.Parse(reader[0].ToString());
+                usuarioDto.VU_Nombre = reader[1].ToString();
+                usuarioDto.VU_Apellidos = reader[2].ToString();
+                usuarioDto.VU_Correo = reader[3].ToString();
+                usuarioDto.PK_VU_Dni = reader[4].ToString();
+                usuarioDto.IU_Celular = int.Parse(reader[5].ToString());
+                usuarioDto.DTU_FechaNac = DateTime.Parse(reader[6].ToString());
+
+            }
+            conexion.Close();
+            return (usuarioDto);
+        }
+
     }
 }

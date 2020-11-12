@@ -10,7 +10,6 @@
 namespace WEB
 {
 
-
     public partial class DescripcionMoldura
     {
 
