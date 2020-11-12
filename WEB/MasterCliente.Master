@@ -90,12 +90,13 @@
 
 
                     <li class="dropdown notification-list topbar-dropdown">
-                        <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" href="IniciarSesion.aspx" >
+                        <%--<a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" href="IniciarSesion.aspx" >
 
                             <i class="fe-log-in"></i>
                             <span class="pro-user-name ml-1">Iniciar Sesión
                             </span>
-                        </a>
+                        </a>--%>
+                        <asp:Literal ID="Literal1" runat="server"></asp:Literal>
 
                     </li>
 
