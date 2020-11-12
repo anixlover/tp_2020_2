@@ -74,6 +74,11 @@ namespace WEB
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Correo DUPLICADO!!'});", true);
                 return;
             }
+            if (DateTime.Now.Year - objUsuario.DTU_FechaNac.Year < 18)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Debe ser mayor de EDAD!!'});", true);
+                return;
+            }
             //Registra al usuario tipo cliente y redirije al iniciarsesion.aspx
             objCtrUsuario.RegistrarClienteVendedor(objUsuario);            
         }

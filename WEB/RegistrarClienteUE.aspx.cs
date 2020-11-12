@@ -71,6 +71,11 @@ namespace WEB
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Correo DUPLICADO!!'});", true);
                 return;
             }
+            if (DateTime.Now.Year-objUsuario.DTU_FechaNac.Year<18)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Correo DUPLICADO!!'});", true);
+                return;
+            }
             //Registra al usuario tipo cliente y redirije al iniciarsesion.aspx
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Registro Exitoso!',text: 'Datos ENVIADOS!!'}).then(function(){window.location.href='IniciarSesion.aspx'})", true);
             objCtrUsuario.RegistrarClienteUsuarioExterno(objUsuario);
