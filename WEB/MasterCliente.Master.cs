@@ -31,8 +31,8 @@ namespace WEB
                         default:
                             perfil_Socio();
                             Session.Clear();
-                            //Session.Abandon();
-                            //Response.Redirect("~/Login.aspx");
+                            Session.Abandon();
+                            Response.Redirect("~/IniciarSesion.aspx");
                             break;
                     }
                 }
@@ -41,6 +41,7 @@ namespace WEB
             {
                 Session.Clear();
                 Session.Abandon();
+                Response.Redirect("~/IniciarSesion.aspx");
             }
         }
         public void perfil_Socio()
@@ -73,12 +74,12 @@ namespace WEB
                                 <div class='dropdown-header noti-title'>
                                     <h6 class='text-overflow m-0'>Bienvenid@ !</h6>
                                 </div>
-                                <a href = 'CambiarContraseña.aspx' id='btnCambiarContra' runat='server' onClick='cargarId(" + dni + @")' class='dropdown-item notify-item'>
+                                <a href= 'CambiarContraseña.aspx' id='btnCambiarContra' runat='server' onClick='cargarId(" + dni + @")' class='dropdown-item notify-item'>
                                     <i class='fe-user'></i>
                                     <span>Cambiar Contraseña</span>
                                 </a>
 
-                                <a id='btnCerrarSesion' runat='server' role='button' onserverclick='btnCerrarSesion_ServerClick' class='dropdown-item notify-item'>
+                                <a id='btnCerrarSesion' href='IniciarSesion.aspx' runat='server' onserverclick='btnCerrarSesion_ServerClick' class='dropdown-item notify-item'>
                                     <i class='fe-log-out'></i>
                                     <span>Cerrar Sesión</span>
                                 </a>
@@ -97,6 +98,9 @@ namespace WEB
             Session.RemoveAll();
             Session["id_perfil"] = null;
             Response.Redirect("~/IniciarSesion.aspx");
+            //Session.Clear();
+            //Session.Abandon();
+            //Response.Redirect("~/IniciarSesion.aspx");
 
         }
     }
