@@ -56,14 +56,15 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <!-- end col -->
+
                                     <%--descripcion--%>
                                     <div class="col-lg-7">
                                         <div class="pl-xl-3 mt-3 mt-xl-0">
                                             <%--categoria--%>
                                             <%--<a href="#" class="text-primary">Jack & Jones</a>--%>
                                             <%--end categoria--%>
+
                                             <%--Codigo de la moldura--%>
                                             <h1>Codigo: #<asp:Label ID="txtcodigomoldura" runat="server"></asp:Label></h1>
                                             <%--end codigo de la moldura--%>
@@ -102,12 +103,14 @@
                                             </p>
                                             <%--end ancho--%>
 
-
                                             <%--Precio--%>
                                             <h4 class="mb-4">
-                                                <%--Precio : --%>
-                                            <p>Precio: S./<asp:Label ID="txtprecio" runat="server" ClientIDMode="Static"></asp:Label></p>
+                                            <p>
+                                                Precio: S./
+                                                <asp:Label ID="txtprecio" runat="server" ClientIDMode="Static"></asp:Label>
+                                            </p>
                                             <%--<span class="text-muted mr-2"><del>$80 USD</del></span> <b>$64 USD</b></h4>--%>
+                                            <%--End Precio--%>
 
                                             <%--stock--%>
                                             <h4 class="mb-4">
@@ -115,45 +118,26 @@
                                                 Stock:
                                                 <asp:Label ID="txtstock" runat="server" ClientIDMode="Static"></asp:Label>
                                             </p>
-
                                             <%--end stock--%>
 
-
-                                            <%--end precio--%>
-                                            
                                             <%--Descripcion mas a detalle del producto--%>
                                             <h4 class="mb-4">
                                             <p class="text-muted mb-4">
                                                 <asp:Label ID="txtdescripcion" runat="server"></asp:Label></>
-                                                <%--The languages only differ in their grammar, their pronunciation 
-                                                and their most common words. Everyone realizes why a new common language would be desirable: 
-                                                one could refuse to pay expensive translators.--%>
                                             </p>
                                             <%--end descripcion--%>
 
-                                           <%-- <form class="form-inline mb-4">
-                                                <label class="my-1 mr-2" for="quantityinput">Quantity</label>
-                                                <select class="custom-select my-1 mr-sm-3" id="quantityinput">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                    <option value="6">6</option>
-                                                    <option value="7">7</option>
-                                                </select>
-                                            </form>--%>
-
+                                            <%--boton atras y agregar al carrito--%>
                                             <div>
-                                                <%--<button type="button" class="btn btn-danger mr-2"><i class="mdi mdi-heart-outline"></i></button>--%>
-                                                <button type="button" class="btn btn-danger waves-effect">
-                                                    <span class="btn-label"><i class="mdi dripicons-return"></i></span>Atras 
+                                                <button type="button" onclick="" class="btn btn-danger waves-effect" > 
+                                                    <a href="javascript:history.back()" style="color: white"><span class="btn-label"><i class="mdi dripicons-return"></i></span> Volver Atrás</a>
                                                 </button>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 <button type="button" class="btn btn-success waves-effect waves-light">
                                                     <span class="btn-label"><i class="mdi mdi-cart"></i></span>Add to cart
                                                 </button>
                                             </div>
+                                            <%--end boton atras y agregar al carrito--%>
                                         </div>
                                     </div>
                                     <!-- end col -->
@@ -161,9 +145,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>

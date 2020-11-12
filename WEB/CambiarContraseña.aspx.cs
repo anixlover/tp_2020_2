@@ -109,7 +109,7 @@ namespace WEB
 
         protected void btnCancelar1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("IniciarSesion.aspx");
+            Response.Redirect("~/IniciarSesion.aspx");
         }
     }
 }

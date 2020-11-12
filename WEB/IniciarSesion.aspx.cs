@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using DTO;
 using CTR;
+using DAO;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -27,7 +28,7 @@ namespace WEB
                 HttpContext.Current.Session.Abandon();
                 Session.RemoveAll();
                 Session["id_perfil"] = null;
-                //conexion = new SqlConnection(ConexionBD.CadenaConexion);
+                conexion = new SqlConnection(ConexionBD.CadenaConexion);
             }
         }
 
@@ -36,19 +37,6 @@ namespace WEB
 
         protected void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            //objUsuario.PK_VU_Dni = txtDNI.Text;
-            //objUsuario.VU_Contrasenia = txtContraseña.Text;
-            //if (!objCtrUsuario.ValidarInicioSesion(objUsuario))
-            //{
-            //    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Usuario o contraseña INCORRECTOS!!'});", true);
-            //    return;
-            //}
-            //int tipoUsuario = objUsuario.FK_ITU_Cod;
-            //switch (tipoUsuario)
-            //{
-            //    case 1: Response.Redirect("Home.aspx"); break;
-            //}
-
             try
             {
                 string dni = txtDNI.Text;
