@@ -91,7 +91,7 @@
                                                     <h4 class="mb-4">
                                             <p>
                                                 Largo:
-                                                <asp:Label ID="txtlargo" runat="server" ClientIDMode="Static"></asp:Label>cm
+                                                <asp:Label ID="txtlargo" runat="server" ClientIDMode="Static"></asp:Label>
                                             </p>
                                             <%--end largo--%>
 
@@ -99,7 +99,7 @@
                                             <h4 class="mb-4">
                                             <p>
                                                 Ancho:
-                                                <asp:Label ID="txtancho" runat="server" ClientIDMode="Static"></asp:Label>cm
+                                                <asp:Label ID="txtancho" runat="server" ClientIDMode="Static"></asp:Label>
                                             </p>
                                             <%--end ancho--%>
 
