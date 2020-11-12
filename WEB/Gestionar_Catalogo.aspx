@@ -24,14 +24,11 @@
             <div class="page-title-box">
                 <h4 class="page-title">GESTIONAR CATALOGO</h4>
             </div>
-           
+
             <div class="card-box">
                 <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-
                 <%--TABLA--%>
                 <%--HeaderStyle-CssClass="table-borderless"--%>
-
-                
                 <asp:UpdatePanel ID="UpdatePanel" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
                         <div>
@@ -67,20 +64,23 @@
                                     <asp:BoundField DataField="Stock" HeaderText="Stock" />
                                     <asp:BoundField DataField="Precio V." HeaderText="Precio V." />
                                     <asp:BoundField DataField="Estado" HeaderText="Estado" />
+
                                     <%--<asp:TemplateField HeaderText="Country" ItemStyle-Width="150" Visible="false">
                                         <ItemTemplate>
                                             <asp:Label ID="lblCountry" runat="server" Text='<%# Eval("PK_IM_Cod") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
+
                                     <asp:TemplateField HeaderText="Country" ItemStyle-Width="150" Visible="false">
                                         <ItemTemplate>
                                             <asp:Label ID="lblPrecioItems" runat="server" Text='<%# Eval("DMU_Precio") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>--%>
 
-                                    <%--                                    <asp:LinkButton runat="server" ID="btnSearch" CssClass="btn btn-danger btn-circle-lg waves-effect waves-circle waves-float" OnClick="btnSearch_Click">
+                                    <%--<asp:LinkButton runat="server" ID="btnSearch" CssClass="btn btn-danger btn-circle-lg waves-effect waves-circle waves-float" OnClick="btnSearch_Click">
                                             <i class="material-icons">search</i>
                                         </asp:LinkButton>--%>
+
                                     <asp:TemplateField>
                                         <ItemTemplate>
                                             <asp:Button ID="btnGetMoldura" Text="🔍" class="btn btn-sm btn-warning"
@@ -97,7 +97,7 @@
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>
-        </div>        
+        </div>
         <%--MODAL--%>
 
         <%--class="swal2-popup swal2-modal swal2-show"--%>
@@ -108,7 +108,7 @@
                     <asp:UpdatePanel runat="server" ID="upPanelModal" UpdateMode="Always">
                         <ContentTemplate>
                             <div class="modal-header">
-                                <p class="modal-title" id="tituloModal" runat="server"  style="color: #000000; font-weight: bold">
+                                <p class="modal-title" id="tituloModal" runat="server" style="color: #000000; font-weight: bold">
                                     Moldura N°
                                         <asp:Label ID="lblId" runat="server" Text="..."></asp:Label>
                                 </p>
@@ -116,7 +116,7 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div>
-                                        <asp:Image ID="Img1" Height="300px" Width="300px" runat="server" class="img-thumbnail" />
+                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Image ID="Img1" Height="300px" Width="300px" runat="server" class="img-thumbnail" />
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -124,18 +124,20 @@
                                         Medida:
                                             <asp:Label ID="lblmetrica" runat="server"></asp:Label>
                                     </p>
-                                     <p style="color: #000000; font-style: normal; font-weight: bold">Ancho: <asp:Label ID="lblAncho" runat="server" ClientIDMode="Static"></asp:Label></p>
-                                    <p style="color: #000000; font-style: normal; font-weight: bold">Largo: <asp:Label ID="lblLargo" runat="server" ClientIDMode="Static"></asp:Label></p>
+                                    <p style="color: #000000; font-style: normal; font-weight: bold">Ancho:
+                                        <asp:Label ID="lblAncho" runat="server" ClientIDMode="Static"></asp:Label></p>
+                                    <p style="color: #000000; font-style: normal; font-weight: bold">Largo:
+                                        <asp:Label ID="lblLargo" runat="server" ClientIDMode="Static"></asp:Label></p>
                                     <p style="color: #000000; font-style: normal; font-weight: bold">
                                         Tipo:
                                             <asp:Label ID="lblTipo" runat="server"></asp:Label>
                                     </p>
                                     <p style="color: #000000; font-style: normal; font-weight: bold">Precio: S./<asp:Label ID="lblprecio" runat="server" ClientIDMode="Static"></asp:Label></p>
-                                    <p  style="color: #000000; font-style: normal; font-weight: bold">
+                                    <p style="color: #000000; font-style: normal; font-weight: bold">
                                         Descripción:<br />
-                                        <asp:TextBox ID="txtDescripcion" Rows="5" Columns="50" runat="server" MaxLength='1999' TextMode="MultiLine" Enabled="False" Width="90%" ReadOnly="True"></asp:TextBox>
+                                        <asp:TextBox  style=" resize:none;" ID="txtDescripcion" Rows="5" Columns="50" runat="server" MaxLength='1999' TextMode="MultiLine" Enabled="False" Width="90%" ReadOnly="True"></asp:TextBox>
                                     </p>
-                                </div>
+                                </div>  
                             </div>
                         </ContentTemplate>
                     </asp:UpdatePanel>

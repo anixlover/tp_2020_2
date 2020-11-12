@@ -83,7 +83,6 @@ namespace WEB
                     Image1 = "data:Image/png;base64," + strbase64;
                 }
                 HtmlRepeater +=
-
                        "<div class='col-sm-6 col-xl-3 filter-item all web illustrator'>" +
                             "<div class=gal-box>" +
                                 "<a src = '" + Image1 + "' class='image-popup' title='Baqueton-1'>" +
@@ -91,20 +90,15 @@ namespace WEB
                                "</a>" +
                                 "<div class='gall-info'>" +
                                     "<h4 class='font-16 mt-0'>" + VTM_Nombre + " - #" + PK_IM_Cod + "</h4>" +
-                                     "<h4 class='font-16 mt-0'>" + DM_Precio + "</h4>" +
+                                     "<h4 class='font-16 mt-0'>" +" S/. " + DM_Precio + "</h4>" +
                                     "<a href = javascript: void(0);>" +
-
-                                        "<button id='btnSave' class='text-muted ml-1' onClick='cargarInformacion(" + PK_IM_Cod + ")'>" +
-                                         "<span class='text-muted ml-1'>Detalles</span>" +
-                                        "</asp:button>" +
-
+                                        "<input type='button' value='Detalles' id='btnSave' class='text-muted ml-1' onClick='cargarInformacion(" + PK_IM_Cod + ")'>" +
+                                        "</asp:input>" +
                                     "</a>" +
-                                    "<a href = javascript: void(0); class='gal-like-btn'><i class='mdi mdi-heart-outline text-danger'></i></a>" +
+                                    "<a href = javascript: void(0); class='gal-like-btn'><i class='mdi mdi-cart'></i></a>" +
                                 "</div>" +
                             "</div>" +
                         "</div>";
-
-
                 ListaMoldura.InnerHtml = HtmlRepeater;
             }
         }
@@ -156,28 +150,22 @@ namespace WEB
                         Image1 = "data:Image/png;base64," + strbase64;
                     }
                     HtmlRepeater +=
-
                            "<div class='col-sm-6 col-xl-3 filter-item all web illustrator'>" +
-                                "<div class=gal-box>" +
-                                    "<a src = '" + Image1 + "' class='image-popup' title='Baqueton-1'>" +
-                                        "<img src = '" + Image1 + "' class='img-fluid' alt=Baqueton 01' width='550px' height='412px'>" +
-                                   "</a>" +
-                                    "<div class='gall-info'>" +
-                                        "<h4 class='font-16 mt-0'>" + VTM_Nombre + " - #" + PK_IM_Cod + "</h4>" +
-                                         "<h4 class='font-16 mt-0'>" + DM_Precio + "</h4>" +
-                                        "<a href = javascript: void(0);>" +
-
-                                            "<button id='btnSave' class='text-muted ml-1' onClick='cargarInformacion(" + PK_IM_Cod + ")'>" +
-                                             "<span class='text-muted ml-1'>Detalles</span>" +
-                                            "</asp:button>" +
-
-                                        "</a>" +
-                                        "<a href = javascript: void(0); class='gal-like-btn'><i class='mdi mdi-heart-outline text-danger'></i></a>" +
-                                    "</div>" +
+                            "<div class=gal-box>" +
+                                "<a src = '" + Image1 + "' class='image-popup' title='Baqueton-1'>" +
+                                    "<img src = '" + Image1 + "' class='img-fluid' alt=Baqueton 01' width='550px' height='412px'>" +
+                               "</a>" +
+                                "<div class='gall-info'>" +
+                                    "<h4 class='font-16 mt-0'>" + VTM_Nombre + " - #" + PK_IM_Cod + "</h4>" +
+                                     "<h4 class='font-16 mt-0'>" + " S/. " + DM_Precio + "</h4>" +
+                                    "<a href = javascript: void(0);>" +
+                                        "<input type='button' value='Detalles' id='btnSave' class='text-muted ml-1' onClick='cargarInformacion(" + PK_IM_Cod + ")'>" +
+                                        "</asp:input>" +
+                                    "</a>" +
+                                    "<a href = javascript: void(0); class='gal-like-btn'><i class='mdi mdi-cart'></i></a>" +
                                 "</div>" +
-                            "</div>";
-
-
+                            "</div>" +
+                        "</div>";
                     ListaMoldura.InnerHtml = HtmlRepeater;
                 }
             }
@@ -239,27 +227,22 @@ namespace WEB
                         Image1 = "data:Image/png;base64," + strbase64;
                     }
                     HtmlRepeater +=
-                           "<div class='col-sm-6 col-xl-3 filter-item all web illustrator'>" +
-                                "<div class=gal-box>" +
-                                    "<a src = '" + Image1 + "' class='image-popup' title='Baqueton-1'>" +
-                                        "<img src = '" + Image1 + "' class='img-fluid' alt=Baqueton 01' width='550px' height='412px'>" +
-                                   "</a>" +
-                                    "<div class='gall-info'>" +
-                                        "<h4 class='font-16 mt-0'>" + VTM_Nombre + " - #" + PK_IM_Cod + "</h4>" +
-                                         "<h4 class='font-16 mt-0'>" + DM_Precio + "</h4>" +
-                                        "<a href = javascript: void(0);>" +
-
-                                            "<button id='btnSave' class='text-muted ml-1' onClick='cargarInformacion(" + PK_IM_Cod + ")'>" +
-                                             "<span class='text-muted ml-1'>Detalles</span>" +
-                                            "</asp:button>" +
-
-                                        "</a>" +
-                                        "<a href = javascript: void(0); class='gal-like-btn'><i class='mdi mdi-heart-outline text-danger'></i></a>" +
-                                    "</div>" +
+                        "<div class='col-sm-6 col-xl-3 filter-item all web illustrator'>" +
+                            "<div class=gal-box>" +
+                                "<a src = '" + Image1 + "' class='image-popup' title='Baqueton-1'>" +
+                                    "<img src = '" + Image1 + "' class='img-fluid' alt=Baqueton 01' width='550px' height='412px'>" +
+                               "</a>" +
+                                "<div class='gall-info'>" +
+                                    "<h4 class='font-16 mt-0'>" + VTM_Nombre + " - #" + PK_IM_Cod + "</h4>" +
+                                     "<h4 class='font-16 mt-0'>" + " S/. " + DM_Precio + "</h4>" +
+                                    "<a href = javascript: void(0);>" +
+                                        "<input type='button' value='Detalles' id='btnSave' class='text-muted ml-1' onClick='cargarInformacion(" + PK_IM_Cod + ")'>" +
+                                        "</asp:input>" +
+                                    "</a>" +
+                                    "<a href = javascript: void(0); class='gal-like-btn'><i class='mdi mdi-cart'></i></a>" +
                                 "</div>" +
-                            "</div>";
-
-
+                            "</div>" +
+                        "</div>";
                     ListaMoldura.InnerHtml = HtmlRepeater;
                 }
             }
@@ -322,26 +305,21 @@ namespace WEB
                     }
                     HtmlRepeater +=
                        "<div class='col-sm-6 col-xl-3 filter-item all web illustrator'>" +
-                                "<div class=gal-box>" +
-                                    "<a src = '" + Image1 + "' class='image-popup' title='Baqueton-1'>" +
-                                        "<img src = '" + Image1 + "' class='img-fluid' alt=Baqueton 01' width='550px' height='412px'>" +
-                                   "</a>" +
-                                    "<div class='gall-info'>" +
-                                        "<h4 class='font-16 mt-0'>" + VTM_Nombre + " - #" + PK_IM_Cod + "</h4>" +
-                                         "<h4 class='font-16 mt-0'>" + DM_Precio + "</h4>" +
-                                        "<a href = javascript: void(0);>" +
-
-                                            "<button id='btnSave' class='text-muted ml-1' onClick='cargarInformacion(" + PK_IM_Cod + ")'>" +
-                                             "<span class='text-muted ml-1'>Detalles</span>" +
-                                            "</asp:button>" +
-
-                                        "</a>" +
-                                        "<a href = javascript: void(0); class='gal-like-btn'><i class='mdi mdi-heart-outline text-danger'></i></a>" +
-                                    "</div>" +
+                            "<div class=gal-box>" +
+                                "<a src = '" + Image1 + "' class='image-popup' title='Baqueton-1'>" +
+                                    "<img src = '" + Image1 + "' class='img-fluid' alt=Baqueton 01' width='550px' height='412px'>" +
+                               "</a>" +
+                                "<div class='gall-info'>" +
+                                    "<h4 class='font-16 mt-0'>" + VTM_Nombre + " - #" + PK_IM_Cod + "</h4>" +
+                                     "<h4 class='font-16 mt-0'>" + " S/. " + DM_Precio + "</h4>" +
+                                    "<a href = javascript: void(0);>" +
+                                        "<input type='button' value='Detalles' id='btnSave' class='text-muted ml-1' onClick='cargarInformacion(" + PK_IM_Cod + ")'>" +
+                                        "</asp:input>" +
+                                    "</a>" +
+                                    "<a href = javascript: void(0); class='gal-like-btn'><i class='mdi mdi-cart'></i></a>" +
                                 "</div>" +
-                            "</div>";
-
-
+                            "</div>" +
+                        "</div>";
                     ListaMoldura.InnerHtml = HtmlRepeater;
                 }
             }
@@ -405,25 +383,21 @@ namespace WEB
                     }
                     HtmlRepeater +=
                            "<div class='col-sm-6 col-xl-3 filter-item all web illustrator'>" +
-                                "<div class=gal-box>" +
-                                    "<a src = '" + Image1 + "' class='image-popup' title='Baqueton-1'>" +
-                                        "<img src = '" + Image1 + "' class='img-fluid' alt=Baqueton 01' width='550px' height='412px'>" +
-                                   "</a>" +
-                                    "<div class='gall-info'>" +
-                                        "<h4 class='font-16 mt-0'>" + VTM_Nombre + " - #" + PK_IM_Cod + "</h4>" +
-                                         "<h4 class='font-16 mt-0'>" + DM_Precio + "</h4>" +
-                                        "<a href = javascript: void(0);>" +
-
-                                            "<button id='btnSave' class='text-muted ml-1' onClick='cargarInformacion(" + PK_IM_Cod + ")'>" +
-                                             "<span class='text-muted ml-1'>Detalles</span>" +
-                                            "</asp:button>" +
-
-                                        "</a>" +
-                                        "<a href = javascript: void(0); class='gal-like-btn'><i class='mdi mdi-heart-outline text-danger'></i></a>" +
-                                    "</div>" +
+                            "<div class=gal-box>" +
+                                "<a src = '" + Image1 + "' class='image-popup' title='Baqueton-1'>" +
+                                    "<img src = '" + Image1 + "' class='img-fluid' alt=Baqueton 01' width='550px' height='412px'>" +
+                               "</a>" +
+                                "<div class='gall-info'>" +
+                                    "<h4 class='font-16 mt-0'>" + VTM_Nombre + " - #" + PK_IM_Cod + "</h4>" +
+                                     "<h4 class='font-16 mt-0'>" + " S/. " + DM_Precio + "</h4>" +
+                                    "<a href = javascript: void(0);>" +
+                                        "<input type='button' value='Detalles' id='btnSave' class='text-muted ml-1' onClick='cargarInformacion(" + PK_IM_Cod + ")'>" +
+                                        "</asp:input>" +
+                                    "</a>" +
+                                    "<a href = javascript: void(0); class='gal-like-btn'><i class='mdi mdi-cart'></i></a>" +
                                 "</div>" +
-                            "</div>";
-
+                            "</div>" +
+                        "</div>";
                     ListaMoldura.InnerHtml = HtmlRepeater;
                 }
             }
@@ -486,25 +460,21 @@ namespace WEB
                     }
                     HtmlRepeater +=
                              "<div class='col-sm-6 col-xl-3 filter-item all web illustrator'>" +
-                                "<div class=gal-box>" +
-                                    "<a src = '" + Image1 + "' class='image-popup' title='Baqueton-1'>" +
-                                        "<img src = '" + Image1 + "' class='img-fluid' alt=Baqueton 01' width='550px' height='412px'>" +
-                                   "</a>" +
-                                    "<div class='gall-info'>" +
-                                        "<h4 class='font-16 mt-0'>" + VTM_Nombre + " - #" + PK_IM_Cod + "</h4>" +
-                                         "<h4 class='font-16 mt-0'>" + DM_Precio + "</h4>" +
-                                        "<a href = javascript: void(0);>" +
-
-                                            "<button id='btnSave' class='text-muted ml-1' onClick='cargarInformacion(" + PK_IM_Cod + ")'>" +
-                                             "<span class='text-muted ml-1'>Detalles</span>" +
-                                            "</asp:button>" +
-
-                                        "</a>" +
-                                        "<a href = javascript: void(0); class='gal-like-btn'><i class='mdi mdi-heart-outline text-danger'></i></a>" +
-                                    "</div>" +
+                            "<div class=gal-box>" +
+                                "<a src = '" + Image1 + "' class='image-popup' title='Baqueton-1'>" +
+                                    "<img src = '" + Image1 + "' class='img-fluid' alt=Baqueton 01' width='550px' height='412px'>" +
+                               "</a>" +
+                                "<div class='gall-info'>" +
+                                    "<h4 class='font-16 mt-0'>" + VTM_Nombre + " - #" + PK_IM_Cod + "</h4>" +
+                                     "<h4 class='font-16 mt-0'>" + " S/. " + DM_Precio + "</h4>" +
+                                    "<a href = javascript: void(0);>" +
+                                        "<input type='button' value='Detalles' id='btnSave' class='text-muted ml-1' onClick='cargarInformacion(" + PK_IM_Cod + ")'>" +
+                                        "</asp:input>" +
+                                    "</a>" +
+                                    "<a href = javascript: void(0); class='gal-like-btn'><i class='mdi mdi-cart'></i></a>" +
                                 "</div>" +
-                            "</div>";
-
+                            "</div>" +
+                        "</div>";
                     ListaMoldura.InnerHtml = HtmlRepeater;
                 }
             }
@@ -567,25 +537,21 @@ namespace WEB
                     }
                     HtmlRepeater +=
                        "<div class='col-sm-6 col-xl-3 filter-item all web illustrator'>" +
-                                "<div class=gal-box>" +
-                                    "<a src = '" + Image1 + "' class='image-popup' title='Baqueton-1'>" +
-                                        "<img src = '" + Image1 + "' class='img-fluid' alt=Baqueton 01' width='550px' height='412px'>" +
-                                   "</a>" +
-                                    "<div class='gall-info'>" +
-                                        "<h4 class='font-16 mt-0'>" + VTM_Nombre + " - #" + PK_IM_Cod + "</h4>" +
-                                         "<h4 class='font-16 mt-0'>" + DM_Precio + "</h4>" +
-                                        "<a href = javascript: void(0);>" +
-
-                                            "<button id='btnSave' class='text-muted ml-1' onClick='cargarInformacion(" + PK_IM_Cod + ")'>" +
-                                             "<span class='text-muted ml-1'>Detalles</span>" +
-                                            "</asp:button>" +
-
-                                        "</a>" +
-                                        "<a href = javascript: void(0); class='gal-like-btn'><i class='mdi mdi-heart-outline text-danger'></i></a>" +
-                                    "</div>" +
+                            "<div class=gal-box>" +
+                                "<a src = '" + Image1 + "' class='image-popup' title='Baqueton-1'>" +
+                                    "<img src = '" + Image1 + "' class='img-fluid' alt=Baqueton 01' width='550px' height='412px'>" +
+                               "</a>" +
+                                "<div class='gall-info'>" +
+                                    "<h4 class='font-16 mt-0'>" + VTM_Nombre + " - #" + PK_IM_Cod + "</h4>" +
+                                     "<h4 class='font-16 mt-0'>" + " S/. " + DM_Precio + "</h4>" +
+                                    "<a href = javascript: void(0);>" +
+                                        "<input type='button' value='Detalles' id='btnSave' class='text-muted ml-1' onClick='cargarInformacion(" + PK_IM_Cod + ")'>" +
+                                        "</asp:input>" +
+                                    "</a>" +
+                                    "<a href = javascript: void(0); class='gal-like-btn'><i class='mdi mdi-cart'></i></a>" +
                                 "</div>" +
-                            "</div>";
-
+                            "</div>" +
+                        "</div>";
                     ListaMoldura.InnerHtml = HtmlRepeater;
                 }
             }
@@ -648,25 +614,21 @@ namespace WEB
                     }
                     HtmlRepeater +=
                         "<div class='col-sm-6 col-xl-3 filter-item all web illustrator'>" +
-                                "<div class=gal-box>" +
-                                    "<a src = '" + Image1 + "' class='image-popup' title='Baqueton-1'>" +
-                                        "<img src = '" + Image1 + "' class='img-fluid' alt=Baqueton 01' width='550px' height='412px'>" +
-                                   "</a>" +
-                                    "<div class='gall-info'>" +
-                                        "<h4 class='font-16 mt-0'>" + VTM_Nombre + " - #" + PK_IM_Cod + "</h4>" +
-                                         "<h4 class='font-16 mt-0'>" + DM_Precio + "</h4>" +
-                                        "<a href = javascript: void(0);>" +
-
-                                            "<button id='btnSave' class='text-muted ml-1' onClick='cargarInformacion(" + PK_IM_Cod + ")'>" +
-                                             "<span class='text-muted ml-1'>Detalles</span>" +
-                                            "</asp:button>" +
-
-                                        "</a>" +
-                                        "<a href = javascript: void(0); class='gal-like-btn'><i class='mdi mdi-heart-outline text-danger'></i></a>" +
-                                    "</div>" +
+                            "<div class=gal-box>" +
+                                "<a src = '" + Image1 + "' class='image-popup' title='Baqueton-1'>" +
+                                    "<img src = '" + Image1 + "' class='img-fluid' alt=Baqueton 01' width='550px' height='412px'>" +
+                               "</a>" +
+                                "<div class='gall-info'>" +
+                                    "<h4 class='font-16 mt-0'>" + VTM_Nombre + " - #" + PK_IM_Cod + "</h4>" +
+                                     "<h4 class='font-16 mt-0'>" + " S/. " + DM_Precio + "</h4>" +
+                                    "<a href = javascript: void(0);>" +
+                                        "<input type='button' value='Detalles' id='btnSave' class='text-muted ml-1' onClick='cargarInformacion(" + PK_IM_Cod + ")'>" +
+                                        "</asp:input>" +
+                                    "</a>" +
+                                    "<a href = javascript: void(0); class='gal-like-btn'><i class='mdi mdi-cart'></i></a>" +
                                 "</div>" +
-                            "</div>";
-
+                            "</div>" +
+                        "</div>";
                     ListaMoldura.InnerHtml = HtmlRepeater;
                 }
             }
@@ -730,26 +692,21 @@ namespace WEB
                     }
                     HtmlRepeater +=
                            "<div class='col-sm-6 col-xl-3 filter-item all web illustrator'>" +
-                                "<div class=gal-box>" +
-                                    "<a src = '" + Image1 + "' class='image-popup' title='Baqueton-1'>" +
-                                        "<img src = '" + Image1 + "' class='img-fluid' alt=Baqueton 01' width='550px' height='412px'>" +
-                                   "</a>" +
-                                    "<div class='gall-info'>" +
-                                        "<h4 class='font-16 mt-0'>" + VTM_Nombre + " - #" + PK_IM_Cod + "</h4>" +
-                                         "<h4 class='font-16 mt-0'>" + DM_Precio + "</h4>" +
-                                        "<a href = javascript: void(0);>" +
-
-                                            "<button id='btnSave' class='text-muted ml-1' onClick='cargarInformacion(" + PK_IM_Cod + ")'>" +
-                                             "<span class='text-muted ml-1'>Detalles</span>" +
-                                            "</asp:button>" +
-
-                                        "</a>" +
-                                        "<a href = javascript: void(0); class='gal-like-btn'><i class='mdi mdi-heart-outline text-danger'></i></a>" +
-                                    "</div>" +
+                            "<div class=gal-box>" +
+                                "<a src = '" + Image1 + "' class='image-popup' title='Baqueton-1'>" +
+                                    "<img src = '" + Image1 + "' class='img-fluid' alt=Baqueton 01' width='550px' height='412px'>" +
+                               "</a>" +
+                                "<div class='gall-info'>" +
+                                    "<h4 class='font-16 mt-0'>" + VTM_Nombre + " - #" + PK_IM_Cod + "</h4>" +
+                                     "<h4 class='font-16 mt-0'>" + " S/. " + DM_Precio + "</h4>" +
+                                    "<a href = javascript: void(0);>" +
+                                        "<input type='button' value='Detalles' id='btnSave' class='text-muted ml-1' onClick='cargarInformacion(" + PK_IM_Cod + ")'>" +
+                                        "</asp:input>" +
+                                    "</a>" +
+                                    "<a href = javascript: void(0); class='gal-like-btn'><i class='mdi mdi-cart'></i></a>" +
                                 "</div>" +
-                            "</div>";
-
-
+                            "</div>" +
+                        "</div>";
                     ListaMoldura.InnerHtml = HtmlRepeater;
                 }
             }

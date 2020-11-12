@@ -38,7 +38,6 @@
                 </div>
             </div>
         </div>
-
         <asp:UpdatePanel runat="server" ID="UpdatePanel1" UpdateMode="Always">
             <ContentTemplate>
                 <ul class="row filterable-content" id="ListaMoldura" runat="server">
@@ -84,6 +83,4 @@
     <!-- /Right-bar -->
 
     <!-- Right bar overlay-->
-
-
 </asp:Content>

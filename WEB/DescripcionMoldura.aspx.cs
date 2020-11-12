@@ -37,7 +37,6 @@ namespace WEB
                 throw;
             }
         }
-
         protected void Button1_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Inspeccionar_Catalogo.aspx");
@@ -46,8 +45,8 @@ namespace WEB
         {
             _log.CustomWriteOnLog("PropiedadMoldura", "-------------------------------------------------- Entro a descripcion moldura ----------------------------------------");
             objDtoMoldura.PK_IM_Cod = int.Parse(id);
-
             objCtrMoldura.ObtenerMoldura(objDtoMoldura, objDtoTipoMoldura);
+
             _log.CustomWriteOnLog("DescripcionMoldura", "Valores retornados");
             _log.CustomWriteOnLog("DescripcionMoldura", "PK_IM_Cod" + objDtoMoldura.PK_IM_Cod);
             //_log.CustomWriteOnLog("DescripcionMoldura", "VTM_UnidadMetrica" + objDtoTipoMoldura.VTM_UnidadMetrica);
@@ -91,8 +90,6 @@ namespace WEB
                 lblNostock.Visible = true;
                 lblestadostock.Visible = false;
             }
-
-
             //txtCodigo.Text = objDtoMoldura.PK_IM_Cod.ToString();
             //ddlTipoMoldura.SelectedValue = objDtoTipoMoldura.PK_ITM_Tipo.ToString();
             //txtmetrica.Text = objDtoTipoMoldura.VTM_UnidadMetrica.ToString();
@@ -106,7 +103,6 @@ namespace WEB
             txtcodigomoldura.Text = objDtoMoldura.PK_IM_Cod.ToString();
             txtnombre.Text = objDtoTipoMoldura.VTM_Nombre;
             txtdescripcion.Text = objDtoMoldura.VM_Descripcion;
-
         }
     }
 }
