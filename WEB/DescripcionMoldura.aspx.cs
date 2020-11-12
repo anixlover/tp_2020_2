@@ -97,8 +97,8 @@ namespace WEB
             //txtStock.Text = objDtoMoldura.IM_Stock.ToString();
             //txtMedida.Text = objDtoMoldura.DM_Medida.ToString();
             //ddlEstadoMoldura.SelectedValue = objDtoMoldura.IM_Estado.ToString();
-            txtlargo.Text = objDtoMoldura.DM_Largo.ToString();
-            txtancho.Text = objDtoMoldura.DM_Ancho.ToString();
+            txtlargo.Text = objDtoMoldura.DM_Largo.ToString() + " " + objDtoTipoMoldura.VTM_UnidadMetrica;
+            txtancho.Text = objDtoMoldura.DM_Ancho.ToString() + " " +objDtoTipoMoldura.VTM_UnidadMetrica;
             txtstock.Text = objDtoMoldura.IM_Stock.ToString();
             txtcodigomoldura.Text = objDtoMoldura.PK_IM_Cod.ToString();
             txtnombre.Text = objDtoTipoMoldura.VTM_Nombre;
