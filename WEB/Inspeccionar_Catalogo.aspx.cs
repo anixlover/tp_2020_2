@@ -27,7 +27,7 @@ namespace WEB
                 try
                 {
                     //btnTodos_Click(sender,e);
-                    mostrarTodos();
+                    //mostrarTodos();
                 }
                 catch (Exception ex)
                 {

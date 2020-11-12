@@ -45,7 +45,7 @@
                         <div class="col-12">
                             <div class="card-box">
                                 <div class="row">
-                                    <div class="col-lg-5">
+                                    <div class="col-lg-7">
 
                                         <%--Imagen del producto--%>
                                         <div class="tab-content pt-0">
@@ -59,7 +59,7 @@
                                     <!-- end col -->
 
                                     <%--descripcion--%>
-                                    <div class="col-lg-7">
+                                    <div class="col-lg-5">
                                         <div class="pl-xl-3 mt-3 mt-xl-0">
                                             <%--categoria--%>
                                             <%--<a href="#" class="text-primary">Jack & Jones</a>--%>

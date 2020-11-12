@@ -25,6 +25,7 @@ namespace WEB
                 {
                     case 2://vendedor
                         perfilVendedor();
+                        userVendedor();
                         break;
 
                     case 3://trabajador
@@ -32,6 +33,7 @@ namespace WEB
                         break;
                     case 4://gerente
                         perfilGerente();
+                        userGerente();
                         break;
 
                     default:
@@ -52,6 +54,28 @@ namespace WEB
                 Response.Redirect("~/IniciarSesion.aspx");
             }
 
+        }
+        public void userGerente()
+        {
+            string html = string.Format(@"
+            <a class='nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light' data-toggle='dropdown' href='#' role='button' aria-haspopup='false' aria-expanded='false'>
+                                
+                                <span class='pro-user-name ml-1'>
+                                    Hola Gerente <i class='mdi mdi-chevron-down'></i> 
+                                </span>
+                            </a>
+            <div class='dropdown-menu dropdown-menu-right profile-dropdown'>
+                                
+
+                                <a id='btnCerrarSesion' href='IniciarSesion.aspx' runat='server' onserverclick='btnCerrarSesion_ServerClick' class='dropdown-item notify-item'>
+                                    <i class='fe-log-out'></i>
+                                    <span>Cerrar Sesión</span>
+                                </a>
+    
+                            </div>
+          
+        ");
+            this.Literal2.Text = html;
         }
         public void perfilGerente()
         {
@@ -79,6 +103,28 @@ namespace WEB
                             </li>
         ");
             this.Literal1.Text = html;
+        }
+        public void userVendedor()
+        {
+            string html = string.Format(@"
+            <a class='nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light' data-toggle='dropdown' href='#' role='button' aria-haspopup='false' aria-expanded='false'>
+                                
+                                <span class='pro-user-name ml-1'>
+                                    Hola Vendedor <i class='mdi mdi-chevron-down'></i> 
+                                </span>
+                            </a>
+            <div class='dropdown-menu dropdown-menu-right profile-dropdown'>
+                                
+
+                                <a id='btnCerrarSesion' href='IniciarSesion.aspx' runat='server' onserverclick='btnCerrarSesion_ServerClick' class='dropdown-item notify-item'>
+                                    <i class='fe-log-out'></i>
+                                    <span>Cerrar Sesión</span>
+                                </a>
+    
+                            </div>
+          
+        ");
+            this.Literal2.Text = html;
         }
         public void perfilTrabajador()
         {
@@ -112,7 +158,7 @@ namespace WEB
             Response.Redirect("~/IniciarSesion.aspx");
         }
 
-        
+
 
 
 

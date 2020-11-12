@@ -60,7 +60,7 @@ namespace WEB
             }
             objUsuario.VU_Contrasenia = txtContraseña.Text;           
             objCtrUsuario.CambiarContraseña(objUsuario);
-            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Cambio EXITOSO!',text: 'Contraseña actualizada!!'});", true);
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Cambio EXITOSO!',text: 'Contraseña actualizada!!'}).then(function(){window.location.href='IniciarSesion.aspx'});", true);
         }
         public void EnviarCorreo(DtoUsuario objDtoUsuario, string body)
         {
