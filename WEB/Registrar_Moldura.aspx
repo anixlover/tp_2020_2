@@ -77,42 +77,48 @@
                 <div runat="server" id="Div">
                     <input type="file" id="FileUpload1" accept="image/*" onchange="leerImagen(this);" data-plugins="dropify" />
                 </div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="mt-3">
-                            <label for="heard">Tipo de moldura: <span class="text-danger">*</span></label>
-                            <asp:DropDownList ID="ddlTipoMoldura" class="form-control" runat="server">
-                            </asp:DropDownList>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="mt-3">
-                            <label for="heard">Largo: <span class="text-danger">*</span></label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">cm</span>
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+                    <ContentTemplate>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="mt-3">
+                                    <label for="heard">Tipo de moldura: <span class="text-danger">*</span></label>
+                                    <asp:DropDownList ID="ddlTipoMoldura" class="form-control" OnSelectedIndexChanged="ddlTipoMoldura_SelectedIndexChanged" runat="server" AutoPostBack="True">
+                                    </asp:DropDownList>
                                 </div>
-                                <asp:TextBox ID="txtLargo" runat="server" parsley-trigger="change"  class="form-control autonumber " data-v-max="250" data-v-min="0" placeholder="Centimetros"></asp:TextBox>
-                                <%--<input type="text" class="form-control" id="validationCustomUsername" placeholder="Centimetros" aria-describedby="inputGroupPrepend"
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="mt-3">
+                                    <label for="heard">Largo: <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <asp:Label ID="lblLargo" runat="server" Text="Cm"></asp:Label></span>
+                                        </div>
+                                        <asp:TextBox ID="txtLargo" runat="server" parsley-trigger="change" class="form-control autonumber " data-v-max="250" data-v-min="0" placeholder="Centimetros"></asp:TextBox>
+                                        <%--<input type="text" class="form-control" id="validationCustomUsername" placeholder="Centimetros" aria-describedby="inputGroupPrepend"
                                     required>--%>
-                                <%--<div class="invalid-feedback">
+                                        <%--<div class="invalid-feedback">
                                     Please choose a username.
                                 </div>--%>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="mt-3">
-                            <label for="heard">Ancho: <span class="text-danger">*</span></label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">cm</span>
+                                    </div>
                                 </div>
-                                <asp:TextBox ID="txtAncho" runat="server" class="form-control autonumber" data-v-max="250" data-v-min="0" placeholder="Centimetros"></asp:TextBox>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="mt-3">
+                                    <label for="heard">Ancho: <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <asp:Label ID="lblAncho" runat="server" Text="Cm"></asp:Label></span>
+                                        </div>
+                                        <asp:TextBox ID="txtAncho" runat="server" class="form-control autonumber" data-v-max="250" data-v-min="0" placeholder="Centimetros"></asp:TextBox>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="mt-3">

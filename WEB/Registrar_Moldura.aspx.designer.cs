@@ -78,6 +78,15 @@ namespace WEB
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div;
 
         /// <summary>
+        /// Control UpdatePanel1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+
+        /// <summary>
         /// Control ddlTipoMoldura.
         /// </summary>
         /// <remarks>
@@ -87,6 +96,15 @@ namespace WEB
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoMoldura;
 
         /// <summary>
+        /// Control lblLargo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLargo;
+
+        /// <summary>
         /// Control txtLargo.
         /// </summary>
         /// <remarks>
@@ -94,6 +112,15 @@ namespace WEB
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtLargo;
+
+        /// <summary>
+        /// Control lblAncho.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAncho;
 
         /// <summary>
         /// Control txtAncho.

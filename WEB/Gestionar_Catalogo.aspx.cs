@@ -44,8 +44,10 @@ namespace WEB
             {
                 int index = Convert.ToInt32(e.CommandArgument);
                 var colsNoVisible = gvCatalogo.DataKeys[index].Values;
+                GridViewRow row = gvCatalogo.Rows[index];
                 string id = colsNoVisible[0].ToString();
-                Response.Redirect("~/Registrar_Moldura.aspx?ID=" + id+"&act=1");
+                string md = row.Cells[5].Text;
+                Response.Redirect("~/Registrar_Moldura.aspx?ID=" + id+"&act=1&md="+md);
             }
             else if (e.CommandName == "getMoldura")
             {
@@ -58,7 +60,7 @@ namespace WEB
                     int index = Convert.ToInt32(e.CommandArgument);
                     GridViewRow row = gvCatalogo.Rows[index];
                     Button b = (Button)row.FindControl("btnGetMoldura");
-                    string id = row.Cells[1].Text;
+                    string id = row.Cells[1].Text;                   
                     lblId.Text = id;
                     objDtoMoldura.PK_IM_Cod = int.Parse(id);
                     objCtrMoldura.ObtenerMoldura(objDtoMoldura,objDtoTipoMoldura);

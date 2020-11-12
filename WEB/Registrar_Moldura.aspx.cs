@@ -44,6 +44,8 @@ namespace WEB
                     objDtoMoldura.PK_IM_Cod = int.Parse(Request.Params["Id"]);
                     obtenerInformacionMoldura(Request.Params["Id"]);
                     btnRemover.Visible = true;
+                    lblAncho.Text= Request.Params["md"];
+                    lblLargo.Text= Request.Params["md"];
                 }
                 OpcionesTipoMoldura();
                 ddlEstadoMoldura.SelectedValue = "1";
@@ -241,6 +243,20 @@ namespace WEB
                 _log.CustomWriteOnLog("ActualizarMoldura", "Error  = " + ex.Message + "posicion" + ex.StackTrace);
                 throw;
             }
+        }
+
+        protected void ddlTipoMoldura_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            objDtoTipoMoldura.PK_ITM_Tipo = int.Parse(ddlTipoMoldura.SelectedValue.ToString());
+            if (ddlTipoMoldura.SelectedValue.ToString() == "0")
+            {
+                lblLargo.Text = Request.Params["md"];
+                lblAncho.Text = Request.Params["md"];
+            }
+            else
+            objCtrTipoMoldura.leerUnidadMetrica(objDtoTipoMoldura);
+            lblLargo.Text = objDtoTipoMoldura.VTM_UnidadMetrica;
+            lblAncho.Text = objDtoTipoMoldura.VTM_UnidadMetrica;
         }
     }
 }
