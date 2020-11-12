@@ -70,7 +70,7 @@
                                         <asp:Button ID="btnEnviar" runat="server" Text="Enviar 📧" CssClass="btn btn-xl btn-success" OnClick="btnEnviar_Click" />
                                         <asp:Button ID="btnContraseña" class="btn btn-primary" runat="server" Text="Cambiar" OnClick="btnContraseña_Click" />
                                         &nbsp;
-                                <asp:Button ID="btnCancelar1" class="btn btn-secondary" runat="server" Text="Cancelar" />
+                                <asp:Button ID="btnCancelar1" class="btn btn-secondary" runat="server" Text="Cancelar" OnClick="btnCancelar1_Click" />
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                             </div>

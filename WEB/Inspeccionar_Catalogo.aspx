@@ -5,9 +5,6 @@
     <link href="../assets/css/app-saas.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
     <link href="../assets/css/bootstrap-saas-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
     <link href="../assets/css/app-saas-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="../assets/images/favicon.ico">
-
     <!-- Lightbox css -->
     <link href="../assets/libs/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
 

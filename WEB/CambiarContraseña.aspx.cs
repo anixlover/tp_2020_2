@@ -106,5 +106,10 @@ namespace WEB
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'Correo no existente!',text: 'Porfavor ingresar su correo!!'});", true);
             }
         }
+
+        protected void btnCancelar1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("IniciarSesion.aspx");
+        }
     }
 }
