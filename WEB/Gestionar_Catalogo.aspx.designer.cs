@@ -15,15 +15,6 @@ namespace WEB
     {
 
         /// <summary>
-        /// Control btnAgregarMoldura.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregarMoldura;
-
-        /// <summary>
         /// Control ScriptManager1.
         /// </summary>
         /// <remarks>
@@ -40,6 +31,24 @@ namespace WEB
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel;
+
+        /// <summary>
+        /// Control ddlTipoMoldura.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoMoldura;
+
+        /// <summary>
+        /// Control btnAgregarMoldura.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAgregarMoldura;
 
         /// <summary>
         /// Control gvCatalogo.

@@ -92,7 +92,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">cm</span>
                                 </div>
-                                <asp:TextBox ID="txtLargo" runat="server" class="form-control autonumber" data-v-max="250" data-v-min="0" placeholder="Centimetros"></asp:TextBox>
+                                <asp:TextBox ID="txtLargo" runat="server" parsley-trigger="change"  class="form-control autonumber " data-v-max="250" data-v-min="0" placeholder="Centimetros"></asp:TextBox>
                                 <%--<input type="text" class="form-control" id="validationCustomUsername" placeholder="Centimetros" aria-describedby="inputGroupPrepend"
                                     required>--%>
                                 <%--<div class="invalid-feedback">
@@ -227,8 +227,8 @@
             }
         }
     </script>
-
-
+    <!-- Validation init js-->
+        <script src="../assets/js/pages/form-validation.init.js"></script>
 
 
 

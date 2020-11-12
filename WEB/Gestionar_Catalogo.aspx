@@ -24,22 +24,30 @@
             <div class="page-title-box">
                 <h4 class="page-title">GESTIONAR CATALOGO</h4>
             </div>
-            <div class="form-group text-right m-b-0">
-                <asp:Button ID="btnAgregarMoldura" class="btn btn-danger" runat="server" Text="➕ Agregar" OnClick="btnAgregarMoldura_Click" />
-            </div>
+           
             <div class="card-box">
                 <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
                 <%--TABLA--%>
                 <%--HeaderStyle-CssClass="table-borderless"--%>
 
-
-                <asp:UpdatePanel ID="UpdatePanel" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="false">
+                
+                <asp:UpdatePanel ID="UpdatePanel" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
                         <div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <asp:DropDownList ID="ddlTipoMoldura" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlTipoMoldura_SelectedIndexChanged1" CssClass="form-control" Width="50%"></asp:DropDownList>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group text-right m-b-0">
+                                        <asp:Button ID="btnAgregarMoldura" class="btn btn-danger" runat="server" Text="➕ Agregar" OnClick="btnAgregarMoldura_Click" />
+                                    </div>
+                                </div>
+                            </div>
                             <asp:GridView ID="gvCatalogo" runat="server" CssClass="table-borderless table table-bordered table-hover"
                                 DataKeyNames="Codigo,T. de Moldura" AutoGenerateColumns="False"
-                                EmptyDataText="No existen registros, agreguen molduras a su carrito" ShowHeaderWhenEmpty="True" OnRowDataBound="gvCatalogo_RowDataBound" OnRowCommand="gvCatalogo_RowCommand">
+                                EmptyDataText="No existen registros, agreguen molduras a su catálogo" ShowHeaderWhenEmpty="True" OnRowDataBound="gvCatalogo_RowDataBound" OnRowCommand="gvCatalogo_RowCommand">
                                 <Columns>
                                     <%--<asp:TemplateField HeaderText="Agregar al carrito de compras">
                                         <ItemTemplate>
@@ -125,7 +133,7 @@
                                     <p style="color: #000000; font-style: normal; font-weight: bold">Precio: S./<asp:Label ID="lblprecio" runat="server" ClientIDMode="Static"></asp:Label></p>
                                     <p  style="color: #000000; font-style: normal; font-weight: bold">
                                         Descripción:<br />
-                                        <asp:TextBox ID="txtDescripcion" runat="server" TextMode="MultiLine" Enabled="False" Width="90%"></asp:TextBox>
+                                        <asp:TextBox ID="txtDescripcion" Rows="5" Columns="50" runat="server" MaxLength='1999' TextMode="MultiLine" Enabled="False" Width="90%" ReadOnly="True"></asp:TextBox>
                                     </p>
                                 </div>
                             </div>

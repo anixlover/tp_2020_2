@@ -79,5 +79,18 @@ namespace DAO
             tipomol.Fill(DS);
             return DS;
         }
+        public DataTable SelectMoldurasxTipo(DtoTipoMoldura objDtoTipoMoldura)
+        {
+            DataTable dtmolduras;
+            conexion.Open();
+            SqlCommand command = new SqlCommand("SP_Listar_MoldurasxTipo", conexion);
+            SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@tipo", objDtoTipoMoldura.VTM_Nombre);
+            dtmolduras = new DataTable();
+            daAdaptador.Fill(dtmolduras);
+            conexion.Close();
+            return dtmolduras;
+        }
     }
 }

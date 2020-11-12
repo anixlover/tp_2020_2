@@ -45,7 +45,6 @@ namespace CTR
         {
             return objDaoMoldura.ListarMolduras();
         }
-
         public void ObtenerMoldura(DtoMoldura objmoldura, DtoTipoMoldura objtipo)
         {
             objDaoMoldura.ObtenerMoldura(objmoldura, objtipo);

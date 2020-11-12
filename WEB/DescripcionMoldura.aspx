@@ -80,7 +80,8 @@
                                                 <%--estado stock--%>
                                                 <h4 class="mb-4">
                                                     <h4>
-                                                        <asp:Label ID="txtestadostock" runat="server" ClientIDMode="Static" class="badge bg-soft-success text-success mb-4"></asp:Label>
+                                                        <asp:Label ID="lblestadostock" runat="server" ClientIDMode="Static" class="badge bg-soft-success text-success mb-4"></asp:Label>
+                                                        <asp:Label ID="lblNostock" runat="server" ClientIDMode="Static" class="badge badge-soft-danger mb-4"></asp:Label>
                                                         <%--end estado stock--%>
 
                                                         <%--<span class="badge bg-soft-success text-success mb-4">Instock</span>\--%>

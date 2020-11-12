@@ -17,6 +17,7 @@ namespace WEB
         CtrMoldura objCtrMoldura = new CtrMoldura();
         DtoMoldura objDtoMoldura = new DtoMoldura();
         DtoTipoMoldura objDtoTipoMoldura = new DtoTipoMoldura();
+        CtrTipoMoldura objCtrTipoMoldura = new CtrTipoMoldura();
         Log _log = new Log();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,6 +28,7 @@ namespace WEB
                     UpdatePanel.Update();
                     gvCatalogo.DataSource = objCtrMoldura.ListarMolduras();
                     gvCatalogo.DataBind();
+                    OpcionesTipoMoldura();
                 }
                 catch (Exception ex)
                 {
@@ -75,7 +77,17 @@ namespace WEB
                 }
             }
         }
-        
+        public void OpcionesTipoMoldura()
+        {
+            DataSet ds;
+            ds = objCtrTipoMoldura.SelectTipoMoldura();
+            ddlTipoMoldura.DataSource = ds;
+            ddlTipoMoldura.DataTextField = "VTM_Nombre";
+            ddlTipoMoldura.DataValueField = "VTM_Nombre";
+            ddlTipoMoldura.DataBind();
+            ddlTipoMoldura.Items.Insert(0, new ListItem("Todos", "Todos"));
+            _log.CustomWriteOnLog("RegistrarMoldura", "Termino de llenar el ddl");
+        }
         protected void gvCatalogo_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -95,6 +107,22 @@ namespace WEB
         protected void btnAgregarMoldura_Click(object sender, EventArgs e)
         {
             Response.Redirect("Registrar_Moldura.aspx");
+        }
+
+        protected void ddlTipoMoldura_SelectedIndexChanged1(object sender, EventArgs e)
+        {
+            string tipo = ddlTipoMoldura.Text;
+            if (tipo == "Todos")
+            {
+                gvCatalogo.DataSource = objCtrMoldura.ListarMolduras();
+                gvCatalogo.DataBind();
+            }
+            else
+            {
+                objDtoTipoMoldura.VTM_Nombre = ddlTipoMoldura.Text;
+                gvCatalogo.DataSource = objCtrTipoMoldura.ListarMoldurasxTipo(objDtoTipoMoldura);
+                gvCatalogo.DataBind();
+            }            
         }
     }
 }
