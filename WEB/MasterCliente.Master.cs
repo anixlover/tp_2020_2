@@ -31,8 +31,8 @@ namespace WEB
                         default:
                             perfil_Socio();
                             Session.Clear();
-                            //Session.Abandon();
-                            //Response.Redirect("~/Login.aspx");
+                            Session.Abandon();
+                            Response.Redirect("~/IniciarSesion.aspx");
                             break;
                     }
                 }
@@ -41,12 +41,14 @@ namespace WEB
             {
                 Session.Clear();
                 Session.Abandon();
+                Response.Redirect("~/IniciarSesion.aspx");
             }
         }
         public void perfil_Socio()
         {
             string html = string.Format(@"
                         <a class='nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light' href='IniciarSesion.aspx'>
+
                             <i class='fe-log-in'></i>
                             <span class='pro-user-name ml-1'>Iniciar Sesión
                             </span>
@@ -60,32 +62,34 @@ namespace WEB
             string dni = Session["DNIUsuario"].ToString();
 
             string html = string.Format(@"
+
                         <a class='nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light' data-toggle='dropdown' href='#' role='button' aria-haspopup='false' aria-expanded='false'>
+                                
                                 <span class='pro-user-name ml-1'>
                                     Hola "+ nombreusuario + @"<i class='mdi mdi-chevron-down'></i> 
                                 </span>
                             </a>
-                        <ul class='dropdown-menu dropdown-menu-right profile-dropdown'>
+                        <div class='dropdown-menu dropdown-menu-right profile-dropdown'>
                                 
                                 <div class='dropdown-header noti-title'>
                                     <h6 class='text-overflow m-0'>Bienvenid@ !</h6>
                                 </div>
-
-                                <a href = 'CambiarContraseña.aspx' id='btnCambiarContra' runat='server' onClick='cargarId(" + dni + @")' class='dropdown-item notify-item'>
+                                <a href= 'CambiarContraseña.aspx' id='btnCambiarContra' runat='server' onClick='cargarId(" + dni + @")' class='dropdown-item notify-item'>
                                     <i class='fe-user'></i>
                                     <span>Cambiar Contraseña</span>
                                 </a>
 
-                                 <a id='btnCerrarSesion' runat='server' type='button' onserverclick='btnCerrarSesion' class='dropdown-item notify-item'>
+                                <a id='btnCerrarSesion' href='IniciarSesion.aspx' runat='server' onserverclick='btnCerrarSesion_ServerClick' class='dropdown-item notify-item'>
                                     <i class='fe-log-out'></i>
                                     <span>Cerrar Sesión</span>
                                 </a>
-                        </ul>
-                        ");
+    
+                            </div>
+
+                    ");
             this.Literal1.Text = html;
         }
-
-        protected void btnCerrarSesion(object sender, EventArgs e)
+        protected void btnCerrarSesion_ServerClick(object sender, EventArgs e)
         {
             Session.Clear();
             Session.Remove("id_perfil");
@@ -94,6 +98,9 @@ namespace WEB
             Session.RemoveAll();
             Session["id_perfil"] = null;
             Response.Redirect("~/IniciarSesion.aspx");
+            //Session.Clear();
+            //Session.Abandon();
+            //Response.Redirect("~/IniciarSesion.aspx");
 
         }
     }

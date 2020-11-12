@@ -40,7 +40,8 @@
             <div class="auth-fluid-form-box">
                 <div class="align-items-center d-flex h-100">
                     <div class="card-body bg-White">
-                        <img src="assets/images/logo1.png" style="width: 100%" />
+                        <a href="IniciarSesion.aspx">
+                            <img src="assets/images/logo1.png" style="width: 100%" /></a>
                         <div class="form-group" runat="server">
                             <div class="form-group mb-auto">
                                 <br />

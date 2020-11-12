@@ -15,7 +15,8 @@
     <AssemblyName>WEB</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>true</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <IISExpressSSLPort>44363</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -2334,6 +2335,10 @@
     <ProjectReference Include="..\CTR_\CTR.csproj">
       <Project>{0da26af7-5c0c-4d92-a727-16da2e386c5f}</Project>
       <Name>CTR</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAO_\DAO.csproj">
+      <Project>{2f89c693-b908-4617-9b8d-7e8ff12d4438}</Project>
+      <Name>DAO</Name>
     </ProjectReference>
     <ProjectReference Include="..\DTO_\DTO.csproj">
       <Project>{e1522324-3bf7-4fc4-be07-8c3bed959aeb}</Project>
