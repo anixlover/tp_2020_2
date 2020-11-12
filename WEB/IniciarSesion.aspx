@@ -34,7 +34,10 @@
             <div class="auth-fluid-form-box">
                 <div class="align-items-center d-flex h-100">
                     <div class="card-body bg-White">
-                        <img src="assets/images/Icono.ico" style="width: 50%" />
+                        <a href="Home.aspx">
+                            <img src="assets/images/Icono.ico" style="width: 50%" />
+                        </a>
+
                         <div class="form-group" runat="server">
                             Usuario:
                             <asp:TextBox ID="txtDNI" runat="server" placeholder="DNI" MinLength="8" MaxLength="8" BackColor="White" Width="100%" TextMode="SingleLine" CssClass="form-control"></asp:TextBox>
@@ -49,14 +52,15 @@
                         </div>
                     </div>
                         <br />
-                        <asp:HyperLink ID="hlCambiarContraseña" runat="server" NavigateUrl="~/CambiarContraseña.aspx">Olvido su contraseña?</asp:HyperLink>
+                        <asp:HyperLink ID="hlCambiarContraseña" runat="server" NavigateUrl="~/CambiarContraseña.aspx">¿Olvido su contraseña?</asp:HyperLink>
+                        <asp:HyperLink ID="hlRegistrarCliente" runat="server" NavigateUrl="~/RegistrarClienteUE.aspx">¡Registrese!</asp:HyperLink>
                         <br />
                         <br />
                         <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                             <ContentTemplate>
                                 <asp:Button ID="btnIniciarSesion" CssClass="btn-lg btn-primary" runat="server" Text="Iniciar sesión" OnClick="btnIniciarSesion_Click" />
                                 &nbsp;
-                                <asp:Button ID="btnCancelar" CssClass="btn-lg btn-secondary" runat="server" Text="Cancelar" />
+                                <asp:Button ID="btnCancelar" CssClass="btn-lg btn-secondary" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>

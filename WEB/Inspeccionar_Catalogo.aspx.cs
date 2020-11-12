@@ -91,7 +91,7 @@ namespace WEB
                                         "<img src = '" + Image1 + "' class='img-fluid' alt=Baqueton 01' width='550px' height='412px'>" +
                                    "</a>" +
                                     "<div class='gall-info'>" +
-                                        "<h4 class='font-16 mt-0'>"+ VTM_Nombre + " - #"+ PK_IM_Cod + "</h4>" +
+                                        "<h4 class='font-16 mt-0'>" + VTM_Nombre + " - #" + PK_IM_Cod + "</h4>" +
                                          "<h4 class='font-16 mt-0'>" + DM_Precio + "</h4>" +
                                         "<a href = javascript: void(0);>" +
 
@@ -359,7 +359,7 @@ namespace WEB
             {
                 _log.CustomWriteOnLog("Roseton Clasic ERROR", "Error :" + ex.Message + "StackTrace" + ex.StackTrace);
                 throw;
-            }   
+            }
         }
 
         //Muestra listado de molduras Roseton decorado con su imagen, descripcion, precio y boton detalle

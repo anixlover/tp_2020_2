@@ -60,6 +60,15 @@ namespace WEB
         protected global::System.Web.UI.WebControls.HyperLink hlCambiarContraseña;
 
         /// <summary>
+        /// Control hlRegistrarCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlRegistrarCliente;
+
+        /// <summary>
         /// Control UpdatePanel1.
         /// </summary>
         /// <remarks>
