@@ -58,6 +58,36 @@ namespace WEB
             {
                 if (true)
                 {
+                    if (txtAncho.Equals(null) | txtLargo.Equals(null))
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Complete las MEDIDAS!!'})", true);
+                        return;
+                    }
+                    else if (txtDescripcion.Equals(null))
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Inserte una DESCRIPCIÓN!!'})", true);
+                        return;
+                    }
+                    else if (txtPrecio.Equals(null))
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Inserte un PRECIO!!'})", true);
+                        return;
+                    }
+                    else if (txtStock.Equals(null))
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Inserte STOCK!!'})", true);
+                        return;
+                    }
+                    else if (ddlEstadoMoldura.ToString()== "--Seleccione--" | ddlTipoMoldura.ToString()=="Seleccione")
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Selecciones un TIPO DE MOLDURA o ESTADO!!'})", true);
+                        return;
+                    }
+                    else if (hftxtimg.Value.ToString()== "vacio")
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Inserte una IMAGEN!!'})", true);
+                        return;
+                    }
                     string cadena = hftxtimg.Value.ToString();
                     List<byte> imagen = Array.ConvertAll(cadena.Split(','), byte.Parse).ToList();
                     byte[] bimagen = imagen.ToArray();
@@ -151,10 +181,32 @@ namespace WEB
             {
                 if (true)
                 {
-                    string cadena = hftxtimg.Value.ToString();
-                    List<byte> imagen = Array.ConvertAll(cadena.Split(','), byte.Parse).ToList();
-                    byte[] bimagen = imagen.ToArray();
                     int ValorDevuelto = int.Parse(lblId.Text);
+                    if (txtAncho.Equals(null) | txtLargo.Equals(null))
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Complete las MEDIDAS!!'})", true);
+                        return;
+                    }
+                    else if (txtDescripcion.Equals(null))
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Inserte una DESCRIPCIÓN!!'})", true);
+                        return;
+                    }
+                    else if (txtPrecio.Equals(null))
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Inserte un PRECIO!!'})", true);
+                        return;
+                    }
+                    else if (txtStock.Equals(null))
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Inserte STOCK!!'})", true);
+                        return;
+                    }
+                    else if (ddlEstadoMoldura.ToString() == "--Seleccione--" | ddlTipoMoldura.ToString() == "Seleccione")
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Selecciones un TIPO DE MOLDURA o ESTADO!!'})", true);
+                        return;
+                    }
                     _log.CustomWriteOnLog("ActualizarMoldura", "La función es de creación");
                     objDtoMoldura.PK_IM_Cod = ValorDevuelto;
                     _log.CustomWriteOnLog("ActualizarMoldura", "PK_IM_Cod valor ingresado " + objDtoMoldura.PK_IM_Cod);
@@ -173,14 +225,15 @@ namespace WEB
                     objDtoMoldura.DM_Ancho = Double.Parse(txtAncho.Text);
                     _log.CustomWriteOnLog("ActualizarMoldura", "DM_Ancho valor ingresado " + objDtoMoldura.DM_Ancho);
                     objCtrMoldura.ActulizarMoldura(objDtoMoldura);
-                    if (hftxtimg.Value.ToString() != "Vacio")
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Moldura Actualizada!',text: 'Datos MODIFICADOS!!'}).then(function(){window.location.href='Gestionar_Catalogo.aspx'})", true);
+                    if (hftxtimg.Value.ToString() != "vacio")
                     {
-
+                        string cadena = hftxtimg.Value.ToString();
+                        List<byte> imagen = Array.ConvertAll(cadena.Split(','), byte.Parse).ToList();
+                        byte[] bimagen = imagen.ToArray();
+                        objDtoMoldura.VBM_Imagen = bimagen;
                         objCtrMoldura.registrarImgMoldura(bimagen, ValorDevuelto);
-                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Moldura Actualizada!',text: 'Datos ENVIADOS!!'}).then(function(){window.location.href='Gestionar_Catalogo.aspx'})", true);
-                    }
-                    else
-                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Moldura Actualizada!',text: 'Datos ENVIADOS!!'}).then(function(){window.location.href='Gestionar_Catalogo.aspx'})", true);
+                    } 
                 }
             }
             catch (Exception ex)

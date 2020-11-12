@@ -79,13 +79,17 @@ namespace WEB
             }
             #endregion
 
-            if (objDtoMoldura.IM_Stock != 0)
+            if (objDtoMoldura.IM_Stock != 0 && objDtoMoldura.IM_Estado!=0)
             {
-                txtestadostock.Text = "En stock";
+                lblestadostock.Text = "En stock";
+                lblestadostock.Visible = true;
+                lblNostock.Visible = false;
             }
             else
             {
-                txtestadostock.Text = "Fuera de stock";
+                lblNostock.Text = "Fuera de stock";
+                lblNostock.Visible = true;
+                lblestadostock.Visible = false;
             }
 
 

@@ -34,5 +34,9 @@ namespace CTR
         {
             return objDaoTipoMoldura.SelectTipoMoldura();
         }
+        public DataTable ListarMoldurasxTipo(DtoTipoMoldura objDtoTipoMoldura)
+        {
+            return objDaoTipoMoldura.SelectMoldurasxTipo(objDtoTipoMoldura);
+        }
     }
 }
