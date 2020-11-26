@@ -7,7 +7,6 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using DTO;
 using CTR;
-using DAO;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -28,7 +27,6 @@ namespace WEB
                 HttpContext.Current.Session.Abandon();
                 Session.RemoveAll();
                 Session["id_perfil"] = null;
-                conexion = new SqlConnection(ConexionBD.CadenaConexion);
             }
         }
 

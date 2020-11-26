@@ -15,8 +15,7 @@
     <AssemblyName>WEB</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <IISExpressSSLPort>44363</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -255,6 +254,7 @@
     <Content Include="assets\images\users\user-7.jpg" />
     <Content Include="assets\images\users\user-8.jpg" />
     <Content Include="assets\images\users\user-9.jpg" />
+    <Content Include="assets\js\Aplicacion\RealizarCompra.js" />
     <Content Include="assets\js\Aplicacion\UploadFile.js" />
     <Content Include="assets\js\app.js" />
     <Content Include="assets\js\app.min.js" />
@@ -1932,6 +1932,7 @@
     <Content Include="assets\libs\x-editable\jqueryui-editable\js\jqueryui-editable.min.js" />
     <Content Include="CambiarContraseña.aspx" />
     <Content Include="DescripcionMoldura.aspx" />
+    <Content Include="RealizarCompra.aspx" />
     <Content Include="RegistrarClienteVendedor.aspx" />
     <Content Include="IniciarSesion.aspx" />
     <Content Include="RegistrarClienteUE.aspx" />
@@ -1969,6 +1970,16 @@
     </Compile>
     <Compile Include="DescripcionMoldura.aspx.designer.cs">
       <DependentUpon>DescripcionMoldura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ObtenerImagenPersonalizada.ashx.cs">
+      <DependentUpon>ObtenerImagenPersonalizada.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="RealizarCompra.aspx.cs">
+      <DependentUpon>RealizarCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RealizarCompra.aspx.designer.cs">
+      <DependentUpon>RealizarCompra.aspx</DependentUpon>
     </Compile>
     <Compile Include="ObtieneImagen.ashx.cs">
       <DependentUpon>ObtieneImagen.ashx</DependentUpon>
@@ -2244,6 +2255,7 @@
     <Content Include="MasterAdmin.Master" />
     <Content Include="ghUploadFile.ashx" />
     <Content Include="ObtieneImagen.ashx" />
+    <Content Include="ObtenerImagenPersonalizada.ashx" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -7,8 +7,7 @@
     <link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:ScriptManager ID
-        ="ScriptManager1" runat="server" AsyncPostBackTimeout="3600"></asp:ScriptManager>    
+    <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeout="3600"></asp:ScriptManager>    
     <div class="auth-fluid" style="background-image: url('https://localhost:44363/assets/images/logo8.png'); background-position: left; background-repeat: no-repeat; background-attachment: inherit">
         <div class="auth-fluid-form-box" style="background-color: #FFFFFF">
             <div class="align-items-center d-flex h-100">

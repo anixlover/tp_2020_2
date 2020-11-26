@@ -60,22 +60,22 @@ namespace WEB
             {
                 if (true)
                 {
-                    if (txtAncho.Equals(null) | txtLargo.Equals(null))
+                    if (txtAncho.Text=="" | txtLargo.Text == "")
                     {
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Complete las MEDIDAS!!'})", true);
                         return;
                     }
-                    else if (txtDescripcion.Equals(null))
+                    else if (txtDescripcion.Text == "")
                     {
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Inserte una DESCRIPCIÓN!!'})", true);
                         return;
                     }
-                    else if (txtPrecio.Equals(null))
+                    else if (txtPrecio.Text == "")
                     {
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Inserte un PRECIO!!'})", true);
                         return;
                     }
-                    else if (txtStock.Equals(null))
+                    else if (txtStock.Text == "")
                     {
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Inserte STOCK!!'})", true);
                         return;
@@ -184,27 +184,27 @@ namespace WEB
                 if (true)
                 {
                     int ValorDevuelto = int.Parse(lblId.Text);
-                    if (txtAncho.Equals(null) | txtLargo.Equals(null))
+                    if (txtAncho.Text == "" | txtLargo.Text == "")
                     {
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Complete las MEDIDAS!!'})", true);
                         return;
                     }
-                    else if (txtDescripcion.Equals(null))
+                    else if (txtDescripcion.Text == "")
                     {
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Inserte una DESCRIPCIÓN!!'})", true);
                         return;
                     }
-                    else if (txtPrecio.Equals(null))
+                    else if (txtPrecio.Text == "")
                     {
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Inserte un PRECIO!!'})", true);
                         return;
                     }
-                    else if (txtStock.Equals(null))
+                    else if (txtStock.Text == "")
                     {
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Inserte STOCK!!'})", true);
                         return;
                     }
-                    else if (ddlEstadoMoldura.ToString() == "--Seleccione--" | ddlTipoMoldura.ToString() == "Seleccione")
+                    else if (ddlEstadoMoldura.Text == "--Seleccione--" | ddlTipoMoldura.SelectedValue.ToString() == "0")
                     {
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Selecciones un TIPO DE MOLDURA o ESTADO!!'})", true);
                         return;
