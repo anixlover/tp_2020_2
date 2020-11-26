@@ -20,7 +20,6 @@ namespace WEB
                 Log.WriteOnLog("-----------------------------Ingresando a masterpage y Obtener pestañas disponibles--------------------------");
                 Log.WriteOnLog("-------------------------------------------------------------------------------------------------------------");
                 int perfil = int.Parse(Session["id_perfil"].ToString());
-
                 switch (perfil)
                 {
                     case 2://vendedor
@@ -57,24 +56,22 @@ namespace WEB
         }
         public void userGerente()
         {
-            string html = string.Format(@"
-            <a class='nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light' data-toggle='dropdown' href='#' role='button' aria-haspopup='false' aria-expanded='false'>
-                                
-                                <span class='pro-user-name ml-1'>
-                                    Hola Gerente <i class='mdi mdi-chevron-down'></i> 
-                                </span>
-                            </a>
-                            <div class='dropdown-menu dropdown-menu-right profile-dropdown'>
-                                
+            string nombre = Session["NombreUsuario"].ToString();
 
-                                <a id='btnCerrarSesion' href='IniciarSesion.aspx' runat='server' onserverclick='btnCerrarSesion_ServerClick' class='dropdown-item notify-item'>
-                                    <i class='fe-log-out'></i>
-                                    <span>Cerrar Sesión</span>
-                                </a>
-    
-                            </div>
-          
-        ");
+            string html = string.Format (
+
+               @"
+            <a class='nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light' data-toggle='dropdown' href='#' role='button' aria-haspopup='false' aria-expanded='false'>"+
+                                "<span class=pro-user-name ml-1>" +
+                                    "Hola " + nombre + "<i class='mdi mdi-chevron-down'></i>" +
+                                "</span>" +
+                            "</a>" +
+                            "<div class='dropdown-menu dropdown-menu-right profile-dropdown'>" +
+                                "<a id='btnCerrarSesion' href='IniciarSesion.aspx' runat='server' onserverclick='btnCerrarSesion_ServerClick' class='dropdown-item notify-item'>" +
+                                    "<i class='fe-log-out'></i>" +
+                                    "<span>Cerrar Sesión</span>" +
+                                "</a>" +
+                            "</div>");
             this.Literal2.Text = html;
         }
         public void perfilGerente()
@@ -85,6 +82,12 @@ namespace WEB
                                 <a href='Gestionar_Catalogo.aspx' class='collapse'>
                                     <i data-feather='book-open'></i>
                                     <span>Gestionar Catalogo</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href='Administrar_Pedido.aspx' class='collapse'>
+                                    <i data-feather='book-open'></i>
+                                    <span>Administrar Pedido</span>
                                 </a>
                             </li>
 
@@ -106,24 +109,21 @@ namespace WEB
         }
         public void userVendedor()
         {
-            string html = string.Format(@"
-            <a class='nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light' data-toggle='dropdown' href='#' role='button' aria-haspopup='false' aria-expanded='false'>
-                                
-                                <span class='pro-user-name ml-1'>
-                                    Hola Vendedor <i class='mdi mdi-chevron-down'></i> 
-                                </span>
-                            </a>
-                            <div class='dropdown-menu dropdown-menu-right profile-dropdown'>
-                                
+            string nombreusr = Session["NombreUsuario"].ToString();
 
-                                <a id='btnCerrarSesion' href='IniciarSesion.aspx' runat='server' onserverclick='btnCerrarSesion_ServerClick' class='dropdown-item notify-item'>
-                                    <i class='fe-log-out'></i>
-                                    <span>Cerrar Sesión</span>
-                                </a>
-    
-                            </div>
-          
-        ");
+            string html = string.Format(
+                @"
+            <a class='nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light' data-toggle='dropdown' href='#' role='button' aria-haspopup='false' aria-expanded='false'>" +
+                                "<span class=pro-user-name ml-1>" +
+                                    "Hola " + nombreusr + "<i class='mdi mdi-chevron-down'></i>" +
+                                "</span>" +
+                            "</a>" +
+                            "<div class='dropdown-menu dropdown-menu-right profile-dropdown'>" +
+                                "<a id='btnCerrarSesion' href='IniciarSesion.aspx' runat='server' onserverclick='btnCerrarSesion_ServerClick' class='dropdown-item notify-item'>" +
+                                    "<i class='fe-log-out'></i>" +
+                                    "<span>Cerrar Sesión</span>" +
+                                "</a>" +
+                            "</div>");
             this.Literal2.Text = html;
         }
         public void perfilTrabajador()

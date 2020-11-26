@@ -119,7 +119,7 @@ namespace WEB
                     {
 
                         string script = @"<script type='text/javascript'>
-                                      location.href='../Gestionar_Catalogo.aspx';
+                                      location.href='../Administrar_Pedido.aspx';
                                   </script>";
                         ScriptManager.RegisterStartupScript(this, typeof(Page), "alert", script, false);
 
