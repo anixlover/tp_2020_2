@@ -37,5 +37,9 @@ namespace CTR
         {
             return objDaoSolicitud.SelectSolicitudDiseñoPropioIMG(objDtoSolicitud);
         }
+        public void Actualizar_a_EstadoRevisiónPago(DtoSolicitud objDtoSolicitud)
+        {
+            objDaoSolicitud.UpdateEstadoSolicitud_RevisióPago(objDtoSolicitud);
+        }
     }
 }

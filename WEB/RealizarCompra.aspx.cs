@@ -25,8 +25,8 @@ namespace WEB
         {
             if (!Page.IsPostBack)
             {
-                //CargarMolduras();
-                //CargarRUCS();
+                CargarMolduras();
+                CargarRUCS();
                 txtNuevoRUC.Visible = false;
                 ddlRUC.Visible = false;
                 chbNuevoRUC.Visible = false;
@@ -70,6 +70,7 @@ namespace WEB
         {
             double costo = double.Parse(lblcosto.Text);
             objDtoDatoFactura.FK_VU_Dni = Session["DNIUsuario"].ToString();
+            objDtoSolicitud.PK_IS_Cod = int.Parse(Session["idSolicitudPago"].ToString());
             if (hftxtimg.Value.ToString() == "vacio")
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Suba Imagen del VOUCHER!!'})", true);
@@ -132,8 +133,9 @@ namespace WEB
             objDtoPago.FK_IS_Cod = Convert.ToInt32(Session["idSolicitudPago"].ToString());
             objCtrPago.RegistrarPago(objDtoPago);
             objCtrPago.ExistenciaPago(objDtoPago);
-            objDtoVoucher.FK_VP_Cod = objDtoPago.PK_VP_Cod;
+            objDtoVoucher.FK_VP_Cod = objDtoPago.PK_VP_Cod;            
             objCtrVoucher.RegistrarVoucher(objDtoVoucher);
+            objCtrSolicitud.Actualizar_a_EstadoRevisiónPago(objDtoSolicitud);
         }
         public void CargarMolduras()
         {
