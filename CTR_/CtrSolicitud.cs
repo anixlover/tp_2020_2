@@ -37,6 +37,18 @@ namespace CTR
         {
             return objDaoSolicitud.SelectSolicitudDiseñoPropioIMG(objDtoSolicitud);
         }
+        public DataTable ListaSolicitudes()
+        {
+            return objDaoSolicitud.SelectSolicitudes();
+        }
+        public DataSet OpcionesSolicitudEstado()
+        {
+            return objDaoSolicitud.desplegableSolicitudEstado();
+        }
+        public DataTable Listar_Solicitud_tipo(string tipo)
+        {
+            return objDaoSolicitud.SelectSolicitudes(tipo);
+        }
         public void Actualizar_a_EstadoRevisiónPago(DtoSolicitud objDtoSolicitud)
         {
             objDaoSolicitud.UpdateEstadoSolicitud_RevisióPago(objDtoSolicitud);

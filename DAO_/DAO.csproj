@@ -47,10 +47,10 @@
     <Compile Include="DaoMoldura.cs" />
     <Compile Include="DaoMolduraXUsuario.cs" />
     <Compile Include="DaoPago.cs" />
-    <Compile Include="DaoSolicitud.cs" />
     <Compile Include="DaoTipoMoldura.cs" />
     <Compile Include="DaoUsuario.cs" />
     <Compile Include="Dao_Voucher.cs" />
+    <Compile Include="DaoSolicitud.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

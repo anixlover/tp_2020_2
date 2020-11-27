@@ -1,22 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterAdmin.Master" AutoEventWireup="true" CodeBehind="Gestionar_Catalogo.aspx.cs" Inherits="WEB.Gestionar_Catalogo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
-
     <!-- Bootstrap Tables css -->
     <link href="../assets/libs/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
-
     <!-- App css -->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
     <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
-
     <link href="../assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
     <link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
-
     <!-- icons -->
     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
@@ -24,7 +17,6 @@
             <div class="page-title-box">
                 <h4 class="page-title">GESTIONAR CATALOGO</h4>
             </div>
-
             <div class="card-box">
                 <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                 <%--TABLA--%>
@@ -64,7 +56,6 @@
                                     <asp:BoundField DataField="Stock" HeaderText="Stock" />
                                     <asp:BoundField DataField="Precio V." HeaderText="Precio V." />
                                     <asp:BoundField DataField="Estado" HeaderText="Estado" />
-
                                     <asp:TemplateField>
                                         <ItemTemplate>
                                             <asp:Button ID="btnGetMoldura" Text="🔍" class="btn btn-sm btn-warning"
@@ -143,5 +134,5 @@
     <script src="../assets/js/pages/bootstrap-tables.init.js"></script>
 
     <!-- App js -->
-    <script src="../assets/js/app.min.js"></script>
+    <%--<script src="../assets/js/app.min.js"></script>--%>
 </asp:Content>

@@ -71,6 +71,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Administrar_Pedido.aspx" />
     <Content Include="Administrar_Solicitud_Pedido.aspx" />
     <Content Include="assets\css\app-creative-dark-rtl.css" />
     <Content Include="assets\css\app-creative-dark-rtl.min.css" />
@@ -1942,6 +1943,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrar_Pedido.aspx.cs">
+      <DependentUpon>Administrar_Pedido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrar_Pedido.aspx.designer.cs">
+      <DependentUpon>Administrar_Pedido.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Administrar_Solicitud_Pedido.aspx.cs">
       <DependentUpon>Administrar_Solicitud_Pedido.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

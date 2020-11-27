@@ -7,8 +7,8 @@
     <ProjectGuid>{0DA26AF7-5C0C-4D92-A727-16DA2E386C5F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CTR_</RootNamespace>
-    <AssemblyName>CTR_</AssemblyName>
+    <RootNamespace>CTR</RootNamespace>
+    <AssemblyName>CTR</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -49,10 +49,10 @@
     <Compile Include="CtrMoldura.cs" />
     <Compile Include="CtrMolduraXUsuario.cs" />
     <Compile Include="CtrPago.cs" />
-    <Compile Include="CtrSolicitud.cs" />
     <Compile Include="CtrTipoMoldura.cs" />
     <Compile Include="CtrUsuario.cs" />
     <Compile Include="Ctr_Voucher.cs" />
+    <Compile Include="CtrSolicitud.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils.cs" />
