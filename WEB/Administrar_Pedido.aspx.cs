@@ -13,7 +13,7 @@ namespace WEB
     public partial class Administrar_Pedidos : System.Web.UI.Page
     {
         DtoSolicitud objDtoSolicitud = new DtoSolicitud();
-        Ctr_Solicitud objCtrSolicitud = new Ctr_Solicitud();
+        CtrSolicitud objCtrSolicitud = new CtrSolicitud();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

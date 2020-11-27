@@ -49,7 +49,6 @@
     <Compile Include="CtrMoldura.cs" />
     <Compile Include="CtrMolduraXUsuario.cs" />
     <Compile Include="CtrPago.cs" />
-    <Compile Include="CtrSolicitud.cs" />
     <Compile Include="CtrTipoMoldura.cs" />
     <Compile Include="CtrUsuario.cs" />
     <Compile Include="Ctr_Voucher.cs" />
