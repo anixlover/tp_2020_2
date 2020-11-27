@@ -37,7 +37,6 @@ namespace CTR
         {
             return objDaoSolicitud.SelectSolicitudDiseñoPropioIMG(objDtoSolicitud);
         }
-
         public DataTable ListaSolicitudes()
         {
             return objDaoSolicitud.SelectSolicitudes();

@@ -7,8 +7,8 @@
     <ProjectGuid>{0DA26AF7-5C0C-4D92-A727-16DA2E386C5F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CTR_</RootNamespace>
-    <AssemblyName>CTR_</AssemblyName>
+    <RootNamespace>CTR</RootNamespace>
+    <AssemblyName>CTR</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
