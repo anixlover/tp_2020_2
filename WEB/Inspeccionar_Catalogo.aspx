@@ -51,8 +51,7 @@
             }
         </script>
     </section>
-</asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="cph_Js" runat="Server">
+
 
     <script src="js/Aplicacion/UploadFile.js"></script>
     <script>
@@ -80,7 +79,12 @@
             }
         }
     </script>
+
+</asp:Content>
+<%--<asp:Content ID="Content4" ContentPlaceHolderID="cph_Js" runat="Server">
+
+    
     <!-- /Right-bar -->
 
     <!-- Right bar overlay-->
-</asp:Content>
+</asp:Content>--%>

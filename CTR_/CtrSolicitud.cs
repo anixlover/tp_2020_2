@@ -49,5 +49,9 @@ namespace CTR
         {
             return objDaoSolicitud.SelectSolicitudes(tipo);
         }
+        public void Actualizar_a_EstadoRevisiónPago(DtoSolicitud objDtoSolicitud)
+        {
+            objDaoSolicitud.UpdateEstadoSolicitud_RevisióPago(objDtoSolicitud);
+        }
     }
 }

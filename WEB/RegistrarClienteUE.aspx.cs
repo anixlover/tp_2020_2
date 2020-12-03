@@ -73,7 +73,7 @@ namespace WEB
             }
             if (DateTime.Now.Year-objUsuario.DTU_FechaNac.Year<18)
             {
-                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Correo DUPLICADO!!'});", true);
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Debe ser mayor de edad!!'});", true);
                 return;
             }
             //Registra al usuario tipo cliente y redirije al iniciarsesion.aspx
