@@ -21,5 +21,10 @@ namespace CTR
         {
             return objDaoMolduraXUsuario.ListaMoldurasSolicitud(objDtoMolduraXUsuario);
         }
+        public void registrarNuevaMoldura(DtoMolduraXUsuario objDtoMolduraxUsuario)
+        {
+            objDaoMolduraXUsuario.InsertarMolduraxUsuario(objDtoMolduraxUsuario);
+        }
+
     }
 }

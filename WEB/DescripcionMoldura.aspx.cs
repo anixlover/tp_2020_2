@@ -20,6 +20,7 @@ namespace WEB
         DtoMoldura objDtoMoldura = new DtoMoldura();
         DtoTipoMoldura objDtoTipoMoldura = new DtoTipoMoldura();
         DtoMolduraXUsuario objDtoMolduraxUsuario = new DtoMolduraXUsuario();
+        CtrMolduraXUsuario objCtrMolduraXUsuario = new CtrMolduraXUsuario();
         Log _log = new Log();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -138,7 +139,7 @@ namespace WEB
                             _log.CustomWriteOnLog("AgregarCompraMoldura", " objDtoMolduraxUsuario.ISM_Cantidad = " + objDtoMolduraxUsuario.IMU_Cantidad.ToString());
                             _log.CustomWriteOnLog("AgregarCompraMoldura", " objDtoMolduraxUsuario.DSM_Precio = " + objDtoMolduraxUsuario.DMU_Precio.ToString());
 
-                            objCtrMolduraxUsuario.registrarNuevaMoldura(objDtoMolduraxUsuario);
+                            objCtrMolduraXUsuario.registrarNuevaMoldura(objDtoMolduraxUsuario);
                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "none", "<script>$('#confirmacionmodal').modal('show');</script>", false);
 
                         }
