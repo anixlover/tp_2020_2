@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="ConexionBD.cs" />
     <Compile Include="DaoMoldura.cs" />
+    <Compile Include="DaoMolduraXUsuario.cs" />
     <Compile Include="DaoTipoMoldura.cs" />
     <Compile Include="DaoUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

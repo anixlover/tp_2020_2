@@ -47,8 +47,9 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-    <asp:ContentPlaceHolder ID="cph_Js" runat="server">
-    </asp:ContentPlaceHolder>
+
+    <%--<asp:ContentPlaceHolder ID="cph_Js" runat="server">
+    </asp:ContentPlaceHolder>--%>
 <body class="loading" data-layout-mode="horizontal" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
     <!-- Begin page -->
     <div id="wrapper">

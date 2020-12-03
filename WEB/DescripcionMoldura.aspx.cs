@@ -19,6 +19,7 @@ namespace WEB
         CtrTipoMoldura objCtrTipoMoldura = new CtrTipoMoldura();
         DtoMoldura objDtoMoldura = new DtoMoldura();
         DtoTipoMoldura objDtoTipoMoldura = new DtoTipoMoldura();
+        DtoMolduraXUsuario objDtoMolduraxUsuario = new DtoMolduraXUsuario();
         Log _log = new Log();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -103,6 +104,67 @@ namespace WEB
             txtcodigomoldura.Text = objDtoMoldura.PK_IM_Cod.ToString();
             txtnombre.Text = objDtoTipoMoldura.VTM_Nombre;
             txtdescripcion.Text = objDtoMoldura.VM_Descripcion;
+        }
+
+        protected void btnAgregarCarrito_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Session["DNIUsuario"] == null)
+                {
+                    Response.Cookies.Add(new HttpCookie("returnUrl", Request.Url.PathAndQuery));
+                    Response.Redirect("IniciarSesion.aspx");
+                }
+                else
+                {
+                    _log.CustomWriteOnLog("AgregarCompraMoldura", "moldura" + Request.Params["Id"].ToString());
+                    objDtoMoldura.PK_IM_Cod = int.Parse(Request.Params["Id"]);
+                    int stock = objCtrMoldura.StockMoldura(objDtoMoldura);
+                    _log.CustomWriteOnLog("AgregarCompraMoldura", "stock: " + stock.ToString());
+                    int cant = Convert.ToInt32(txtCantidad.Text);
+
+                    if (cant < stock)
+                    {
+                        if (objDtoTipoMoldura.VTM_UnidadMetrica == "Mt" && cant < 150 || objDtoTipoMoldura.VTM_UnidadMetrica == "Cm" && cant < 30 || objDtoTipoMoldura.VTM_UnidadMetrica == "M2" && cant < 40)
+                        {
+
+                            objDtoMolduraxUsuario.FK_VU_Dni = Session["DNIUsuario"].ToString();
+                            objDtoMolduraxUsuario.FK_IM_Cod = int.Parse(Request.Params["Id"]);
+                            objDtoMolduraxUsuario.IMU_Cantidad = int.Parse(txtCantidad.Text);
+                            objDtoMolduraxUsuario.DMU_Precio = double.Parse(txtprecio.Value);
+
+                            _log.CustomWriteOnLog("AgregarCompraMoldura", " objDtoMolduraxUsuario.FK_VU_Cod = " + objDtoMolduraxUsuario.FK_VU_Dni);
+                            _log.CustomWriteOnLog("AgregarCompraMoldura", " objDtoMolduraxUsuario.FK_IM_Cod = " + objDtoMolduraxUsuario.FK_IM_Cod.ToString());
+                            _log.CustomWriteOnLog("AgregarCompraMoldura", " objDtoMolduraxUsuario.ISM_Cantidad = " + objDtoMolduraxUsuario.IMU_Cantidad.ToString());
+                            _log.CustomWriteOnLog("AgregarCompraMoldura", " objDtoMolduraxUsuario.DSM_Precio = " + objDtoMolduraxUsuario.DMU_Precio.ToString());
+
+                            objCtrMolduraxUsuario.registrarNuevaMoldura(objDtoMolduraxUsuario);
+                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "none", "<script>$('#confirmacionmodal').modal('show');</script>", false);
+
+                        }
+                        else //tipo baquetones
+                        {
+                            string m = "cantidad supera el limmite permitido";
+                            _log.CustomWriteOnLog("carrito de compra", m);
+                            mensaje.InnerText = m;
+                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "none", "<script>$('#confirmacionmodal1').modal('show');</script>", false);
+                        }
+                    }
+                    else //supera stock
+                    {
+                        string m = "cantidad supera al stock";
+                        _log.CustomWriteOnLog("carrito de compra", m);
+                        mensaje.InnerText = m;
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "none", "<script>$('#confirmacionmodal1').modal('show');</script>", false);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.CustomWriteOnLog("AgregarCompraMoldura", "Error en agregar a carrito" + ex.Message + " StackTrace " + ex.StackTrace);
+
+                throw;
+            }
         }
     }
 }

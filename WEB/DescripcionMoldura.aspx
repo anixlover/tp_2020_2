@@ -120,6 +120,18 @@
                                             </p>
                                             <%--end stock--%>
 
+                                            <%--Cantidad--%>
+
+                                            <h4 class="mb-4">
+                                            <p>
+                                                Cantidad:
+                                                <asp:TextBox ID="txtCantidad" textmode="Number" Text="1" class="form-control autonumber" data-v-max="600" data-v-min="1" runat="server" required></asp:TextBox>
+
+                                            </p>
+
+
+                                            <%--End cantidad--%>
+
                                             <%--Descripcion mas a detalle del producto--%>
                                             <h4 class="mb-4">
                                             <p class="text-muted mb-4">
@@ -129,13 +141,19 @@
 
                                             <%--boton atras y agregar al carrito--%>
                                             <div>
-                                                <button type="button" onclick="" class="btn btn-danger waves-effect" > 
-                                                    <a href="javascript:history.back()" style="color: white"><span class="btn-label"><i class="mdi dripicons-return"></i></span> Volver Atrás</a>
+                                                <button type="button" onclick="" class="btn btn-danger waves-effect">
+                                                    <a href="javascript:history.back()" style="color: white"><span class="btn-label"><i class="mdi dripicons-return"></i></span>Volver Atrás</a>
                                                 </button>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <button type="button" class="btn btn-success waves-effect waves-light">
-                                                    <span class="btn-label"><i class="mdi mdi-cart"></i></span>Add to cart
-                                                </button>
+
+                                                <%--<asp:Button class="btn btn-success waves-effect waves-light fa" Text="&#xf217; Agregar al carrito" runat="server" />--%>
+                                                <asp:LinkButton ID="btnAgregarCarrito" runat="server" type="button" class="btn btn-success waves-effect waves-light" OnClick="btnAgregarCarrito_Click">
+                                                    <span class="btn-label"><i class="mdi mdi-cart"></i></span>Agregar al carrito
+                                                </asp:LinkButton>
+                                                
+                                                <%--<button type="button" class="btn btn-success waves-effect waves-light">
+                                                    <span class="btn-label"><i class="mdi mdi-cart"></i></span>Agregar al carrito
+                                                </button>--%>
                                             </div>
                                             <%--end boton atras y agregar al carrito--%>
                                         </div>
@@ -149,5 +167,31 @@
             </asp:UpdatePanel>
         </div>
     </section>
+
+    <!-- Right bar overlay-->
+    <div class="rightbar-overlay"></div>
+
+    <!-- Vendor js -->
+    <script src="../assets/js/vendor.min.js"></script>
+
+    <!-- Plugin js-->
+    <script src="../assets/libs/dropzone/min/dropzone.min.js"></script>
+    <script src="../assets/libs/dropify/js/dropify.min.js"></script>
+    <script src="../assets/libs/parsleyjs/parsley.min.js"></script>
+    <script src="../assets/libs/jquery-mask-plugin/jquery.mask.min.js"></script>
+    <script src="../assets/libs/autonumeric/autoNumeric-min.js"></script>
+
+    <!-- Validation init js-->
+    <script src="../assets/js/pages/form-validation.init.js"></script>
+    <script src="../assets/js/pages/form-fileuploads.init.js"></script>
+
+    <!-- Init js-->
+    <script src="../assets/js/pages/form-masks.init.js"></script>
+
+    <!-- App js -->
+    <script src="../assets/js/app.min.js"></script>
+    <script src="assets/js/Aplicacion/UploadFile.js"></script>
+
+
 </asp:Content>
 
