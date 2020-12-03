@@ -16,6 +16,13 @@
     <!-- icons -->
     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
+    <style type="text/css">
+        textarea
+        {
+            resize: none;
+        }
+    </style>
+
     <!-- Libreria JQuery -->
     <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
     <script src="assets/js/Aplicacion/UploadFile.js"></script>
@@ -148,7 +155,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">S/.</span>
                                 </div>
-                                <asp:TextBox ID="txtPrecio" runat="server" parsley-trigger="change" class="form-control autonumber"  data-v-max="900" data-v-min="1" required></asp:TextBox>
+                                <asp:TextBox ID="txtPrecio" class="form-control" data-v-max="900" data-v-min="1"  runat="server" required></asp:TextBox>
                             </div>
                         </div>
                     </div>

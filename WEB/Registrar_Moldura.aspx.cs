@@ -60,7 +60,7 @@ namespace WEB
             {
                 if (true)
                 {
-                    if (txtAncho.Text == "" | txtLargo.Text == "")
+                    if (txtAncho.Text=="" | txtLargo.Text == "")
                     {
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Complete las MEDIDAS!!'})", true);
                         return;
@@ -204,7 +204,7 @@ namespace WEB
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Inserte STOCK!!'})", true);
                         return;
                     }
-                    else if (ddlEstadoMoldura.ToString() == "--Seleccione--" | ddlTipoMoldura.ToString() == "Seleccione")
+                    else if (ddlEstadoMoldura.Text == "--Seleccione--" | ddlTipoMoldura.SelectedValue.ToString() == "0")
                     {
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Selecciones un TIPO DE MOLDURA o ESTADO!!'})", true);
                         return;

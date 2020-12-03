@@ -16,18 +16,18 @@ namespace DAO
         {
             conexion = new SqlConnection(ConexionBD.CadenaConexion);
         }
-        public void InsertarMolduraxUsuario(DtoMolduraXUsuario objMolduraxUsuario)
+        public DataTable ListaMoldurasSolicitud(DtoMolduraXUsuario objDtoMolduraXUsuario)
         {
-            SqlCommand command = new SqlCommand("SP_Registrar_MXU_C", conexion);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@idU", objMolduraxUsuario.FK_VU_Dni);
-            command.Parameters.AddWithValue("@idM", objMolduraxUsuario.FK_IM_Cod);
-            command.Parameters.AddWithValue("@cant", objMolduraxUsuario.IMU_Cantidad);
-            command.Parameters.AddWithValue("@pre", objMolduraxUsuario.DMU_Precio);
-
+            DataTable dtsolicitudes = null;
             conexion.Open();
-            command.ExecuteNonQuery();
+            SqlCommand command = new SqlCommand("SP_Listar_Molduras_Solicitud", conexion);
+            command.Parameters.AddWithValue("@sol", objDtoMolduraXUsuario.FK_IS_Cod);
+            SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
+            command.CommandType = CommandType.StoredProcedure;
+            dtsolicitudes = new DataTable();
+            daAdaptador.Fill(dtsolicitudes);
             conexion.Close();
+            return dtsolicitudes;
         }
     }
 }

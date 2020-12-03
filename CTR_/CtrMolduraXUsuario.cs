@@ -1,27 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Data;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data.SqlClient;
+using System.Data;
 using DAO;
 using DTO;
 
 namespace CTR
 {
-    class CtrMolduraXUsuario
+    public class CtrMolduraXUsuario
     {
-        DaoMolduraxUsuario objDaoSXM;
-
-        public CtrMolduraxUsuario()
+        DaoMolduraXUsuario objDaoMolduraXUsuario;
+        public CtrMolduraXUsuario()
         {
-            objDaoSXM = new DaoMolduraxUsuario();
+            objDaoMolduraXUsuario = new DaoMolduraXUsuario();
         }
-
-        public void registrarNuevaMoldura(DtoMolduraxUsuario objDtoMolduraxUsuario)
+        public DataTable ListarMoldurasXUsuario(DtoMolduraXUsuario objDtoMolduraXUsuario)
         {
-            objDaoSXM.InsertarMolduraxUsuario(objDtoMolduraxUsuario);
+            return objDaoMolduraXUsuario.ListaMoldurasSolicitud(objDtoMolduraXUsuario);
         }
     }
 }
