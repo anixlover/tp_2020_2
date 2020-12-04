@@ -113,6 +113,15 @@ namespace WEB
                         ScriptManager.RegisterStartupScript(this, typeof(Page), "alert", script, false);
 
                     }
+                    else if (Session["id_perfil"].ToString() == "3")
+                    {
+
+                        string script = @"<script type='text/javascript'>
+                                       location.href='../Administrar_Pedido.aspx';
+                                  </script>";
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "alert", script, false);
+
+                    }
                     else if (Session["id_perfil"].ToString() == "4")
                     {
 

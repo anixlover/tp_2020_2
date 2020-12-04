@@ -132,7 +132,7 @@ namespace WEB
                             objDtoMolduraxUsuario.FK_VU_Dni = Session["DNIUsuario"].ToString();
                             objDtoMolduraxUsuario.FK_IM_Cod = int.Parse(Request.Params["Id"]);
                             objDtoMolduraxUsuario.IMU_Cantidad = int.Parse(txtCantidad.Text);
-                            objDtoMolduraxUsuario.DMU_Precio = double.Parse(txtprecio.Value);
+                            objDtoMolduraxUsuario.DMU_Precio = double.Parse(txtprecio.Text);
 
                             _log.CustomWriteOnLog("AgregarCompraMoldura", " objDtoMolduraxUsuario.FK_VU_Cod = " + objDtoMolduraxUsuario.FK_VU_Dni);
                             _log.CustomWriteOnLog("AgregarCompraMoldura", " objDtoMolduraxUsuario.FK_IM_Cod = " + objDtoMolduraxUsuario.FK_IM_Cod.ToString());
@@ -147,7 +147,7 @@ namespace WEB
                         {
                             string m = "cantidad supera el limmite permitido";
                             _log.CustomWriteOnLog("carrito de compra", m);
-                            mensaje.InnerText = m;
+                            //mensaje.InnerText = m;
                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "none", "<script>$('#confirmacionmodal1').modal('show');</script>", false);
                         }
                     }
@@ -155,7 +155,7 @@ namespace WEB
                     {
                         string m = "cantidad supera al stock";
                         _log.CustomWriteOnLog("carrito de compra", m);
-                        mensaje.InnerText = m;
+                        //mensaje.InnerText = m;
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "none", "<script>$('#confirmacionmodal1').modal('show');</script>", false);
                     }
                 }
