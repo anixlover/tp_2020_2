@@ -132,7 +132,7 @@ namespace WEB
                             objDtoMolduraxUsuario.FK_VU_Dni = Session["DNIUsuario"].ToString();
                             objDtoMolduraxUsuario.FK_IM_Cod = int.Parse(Request.Params["Id"]);
                             objDtoMolduraxUsuario.IMU_Cantidad = int.Parse(txtCantidad.Text);
-                            //objDtoMolduraxUsuario.DMU_Precio = double.Parse(txtprecio.Value);
+                            objDtoMolduraxUsuario.DMU_Precio = double.Parse(txtprecio.Text);
 
                             _log.CustomWriteOnLog("AgregarCompraMoldura", " objDtoMolduraxUsuario.FK_VU_Cod = " + objDtoMolduraxUsuario.FK_VU_Dni);
                             _log.CustomWriteOnLog("AgregarCompraMoldura", " objDtoMolduraxUsuario.FK_IM_Cod = " + objDtoMolduraxUsuario.FK_IM_Cod.ToString());

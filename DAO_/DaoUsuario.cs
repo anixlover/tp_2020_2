@@ -237,5 +237,10 @@ namespace DAO
             return (usuarioDto);
         }
 
+        public void UptadeDatosPerfil(DtoUsuario usuario)
+        {
+
+        }
+
     }
 }

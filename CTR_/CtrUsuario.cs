@@ -138,5 +138,10 @@ namespace CTR
                 return objDaoUsuario.datosUsuario(dtoUsuario.PK_VU_Dni);
             }
         }
+
+        public void ActualizarDatos(DtoUsuario dtoUsuario)
+        {
+            objDaoUsuario.UptadeDatosPerfil(dtoUsuario);
+        }
     }
 }

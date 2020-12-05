@@ -41,5 +41,27 @@ namespace DAO
             command.ExecuteNonQuery();
             conexion.Close();
         }
+        public DataTable ListarMXU(DtoMolduraXUsuario objmxu)
+        {
+            DataTable dtmxu = null;
+            conexion.Open();
+            SqlCommand command = new SqlCommand("SP_Listar_MXU_C", conexion);
+            command.Parameters.AddWithValue("@idU", objmxu.FK_VU_Dni);
+            SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
+            command.CommandType = CommandType.StoredProcedure;
+            dtmxu = new DataTable();
+            daAdaptador.Fill(dtmxu);
+            conexion.Close();
+            return dtmxu;
+        }
+        public void eliminarMXU(DtoMolduraXUsuario objmxu)
+        {
+            SqlCommand command = new SqlCommand("SP_Eliminar_MXU_C", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@id", objmxu.FK_IM_Cod);
+            conexion.Open();
+            command.ExecuteNonQuery();
+            conexion.Close();
+        }
     }
 }
