@@ -5,8 +5,8 @@
     <link href="../assets/css/bootstrap-saas-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
     <link href="../assets/css/app-saas-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="cph_Js" runat="server">
-</asp:Content>
+
+
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
         <div class="card-box" style="background-color: #FFFFFF">
