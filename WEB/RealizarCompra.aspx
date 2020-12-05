@@ -54,8 +54,9 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="row">
-                                <asp:GridView ID="gvDetalles" runat="server" DataKeyNames="PK_IM_Cod" AutoGenerateColumns="False"
-                                    EmptyDataText="No existen registros" ShowHeaderWhenEmpty="True">
+                                <br />
+                                <asp:GridView ID="gvDetalles" runat="server" CssClass="table-borderless table table-bordered table-hover" DataKeyNames="PK_IM_Cod" AutoGenerateColumns="False"
+                                    EmptyDataText="No existen registros" ShowHeaderWhenEmpty="True" Width="90%">
                                     <Columns>
                                         <asp:TemplateField HeaderText="Imagen">
                                             <ItemTemplate>
@@ -76,7 +77,7 @@
                                     <Columns>
                                         <asp:TemplateField HeaderText="Imagen">
                                             <ItemTemplate>
-                                                <img src='ObtenerImagenPersonalizada.ashx?id=<%# Eval("PK_IS_Cod")%>' height="80px" width="80px" />
+                                                <img src='ObtenerImagenPersonalizada.ashx?id=<%# Eval("PK_IS_Cod")%>' height="60px" width="60px" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:BoundField DataField="PK_IS_Cod" ItemStyle-HorizontalAlign="Center" HeaderText="Código de solicitud" />
@@ -88,8 +89,9 @@
                                     </Columns>
                                 </asp:GridView>
                             </div>
-                            <div class="row">
-                                <asp:Label ID="lblcosto" runat="server" Text="0.00"></asp:Label>
+                            <br />
+                            <div class="row" style="position: fixed; text-align: right; color: #008000; font-weight: bold; font-style: inherit;">
+                                Total: S/. <asp:Label ID="lblcosto" runat="server" Text="0.00"></asp:Label>
                             </div>
                         </div>
                         <div class="col-lg-8">
@@ -133,7 +135,7 @@
                                             <asp:Button ID="btnEnviar" runat="server" Text="Enviar" CssClass="btn btn-success" Width="50%" OnClick="btnEnviar_Click" />
                                         </div>
                                         <div class="col" style="text-align: center">
-                                            <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-danger" Width="50%" />
+                                            <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-danger" Width="50%" OnClick="btnCancelar_Click" />
                                         </div>
                                         <input type="hidden" runat="server" id="hftxtimg" clientidmode="Static" value="vacio" />     
                                     </div>

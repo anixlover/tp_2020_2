@@ -1932,6 +1932,7 @@
     <Content Include="assets\libs\x-editable\jqueryui-editable\js\jqueryui-editable.min.js" />
     <Content Include="CambiarContraseña.aspx" />
     <Content Include="DescripcionMoldura.aspx" />
+    <Content Include="ConsultarEstadosPago.aspx" />
     <Content Include="RealizarCompra.aspx" />
     <Content Include="RegistrarClienteVendedor.aspx" />
     <Content Include="IniciarSesion.aspx" />
@@ -1970,6 +1971,13 @@
     </Compile>
     <Compile Include="DescripcionMoldura.aspx.designer.cs">
       <DependentUpon>DescripcionMoldura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarEstadosPago.aspx.cs">
+      <DependentUpon>ConsultarEstadosPago.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarEstadosPago.aspx.designer.cs">
+      <DependentUpon>ConsultarEstadosPago.aspx</DependentUpon>
     </Compile>
     <Compile Include="ObtenerImagenPersonalizada.ashx.cs">
       <DependentUpon>ObtenerImagenPersonalizada.ashx</DependentUpon>

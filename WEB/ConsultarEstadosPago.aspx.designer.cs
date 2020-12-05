@@ -11,7 +11,7 @@ namespace WEB
 {
 
 
-    public partial class Gestionar_Catalogo
+    public partial class Formulario_web12
     {
 
         /// <summary>
@@ -33,31 +33,22 @@ namespace WEB
         protected global::System.Web.UI.UpdatePanel UpdatePanel;
 
         /// <summary>
-        /// Control ddlTipoMoldura.
+        /// Control ddlEstadoSolicitud.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoMoldura;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEstadoSolicitud;
 
         /// <summary>
-        /// Control btnAgregarMoldura.
+        /// Control gvPedidos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregarMoldura;
-
-        /// <summary>
-        /// Control gvCatalogo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvCatalogo;
+        protected global::System.Web.UI.WebControls.GridView gvPedidos;
 
         /// <summary>
         /// Control upPanelModal.
@@ -78,75 +69,30 @@ namespace WEB
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl tituloModal;
 
         /// <summary>
-        /// Control lblId.
+        /// Control lblid.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblId;
+        protected global::System.Web.UI.WebControls.Label lblid;
 
         /// <summary>
-        /// Control Img1.
+        /// Control gvPersonalizado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Img1;
+        protected global::System.Web.UI.WebControls.GridView gvPersonalizado;
 
         /// <summary>
-        /// Control lblmetrica.
+        /// Control gvDetalles.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblmetrica;
-
-        /// <summary>
-        /// Control lblAncho.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAncho;
-
-        /// <summary>
-        /// Control lblLargo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLargo;
-
-        /// <summary>
-        /// Control lblTipo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTipo;
-
-        /// <summary>
-        /// Control lblprecio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblprecio;
-
-        /// <summary>
-        /// Control txtDescripcion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
+        protected global::System.Web.UI.WebControls.GridView gvDetalles;
     }
 }

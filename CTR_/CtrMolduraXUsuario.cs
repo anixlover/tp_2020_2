@@ -21,5 +21,13 @@ namespace CTR
         {
             return objDaoMolduraXUsuario.ListaMoldurasSolicitud(objDtoMolduraXUsuario);
         }
+        public DataTable ListarSolicitudesxDNI(DtoMolduraXUsuario objDtoMolduraXUsuario)
+        {
+            return objDaoMolduraXUsuario.SelectSolicitudesxDNI(objDtoMolduraXUsuario);
+        }
+        public DataTable ListarMoldurasxDNI_y_Estado(DtoMolduraXUsuario objDtoMolduraXUsuario, int estado)
+        {
+            return objDaoMolduraXUsuario.SelectSolicitudesxDNI_y_Estado(objDtoMolduraXUsuario, estado);
+        }
     }
 }

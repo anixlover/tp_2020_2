@@ -38,17 +38,12 @@ namespace DAO
             conexion.Close();
             return hayRegistros;
         }
-        public DataTable SelectRUCxDNI(DtoDatoFactura objDtoDatoFactura)
+        public DataSet SelectRUCxDNI(DtoDatoFactura objDtoDatoFactura)
         {
-            DataTable dtRUCS = null;
-            string Select = "SELECT VDF_Ruc from T_DATO_FACTURA where FK_VU_Dni ='" + objDtoDatoFactura.FK_VU_Dni + "'";
-            SqlCommand unComando = new SqlCommand(Select, conexion);
-            conexion.Open();
-            SqlDataAdapter daAdaptador = new SqlDataAdapter(unComando);
-            dtRUCS = new DataTable();
-            daAdaptador.Fill(dtRUCS);
-            conexion.Close();
-            return dtRUCS;
+            SqlDataAdapter dsRUCS = new SqlDataAdapter("SELECT VDF_Ruc from T_DATO_FACTURA where FK_VU_Dni ='" + objDtoDatoFactura.FK_VU_Dni + "'", conexion);
+            DataSet DS = new DataSet();
+            dsRUCS.Fill(DS);
+            return DS;
         }
     }
 }

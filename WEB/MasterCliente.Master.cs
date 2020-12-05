@@ -78,7 +78,10 @@ namespace WEB
                                     <i class='fe-user'></i>
                                     <span>Cambiar Contraseña</span>
                                 </a>
-
+                                <a href= 'ConsultarEstadosPago.aspx' id='btnPedidos' runat='server' onClick='cargarId(" + dni + @")' class='dropdown-item notify-item'>
+                                    <i class='fe-user'></i>
+                                    <span>Mis pedidos</span>
+                                </a>
                                 <a id='btnCerrarSesion' href='IniciarSesion.aspx' runat='server' onserverclick='btnCerrarSesion_ServerClick' class='dropdown-item notify-item'>
                                     <i class='fe-log-out'></i>
                                     <span>Cerrar Sesión</span>

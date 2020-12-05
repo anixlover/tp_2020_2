@@ -42,8 +42,8 @@ namespace DAO
             {
                 objDtoPago.PK_VP_Cod = (string)reader[0];
                 objDtoPago.IP_TipoPago = (int)reader[2];
-                objDtoPago.DP_ImportePagado = (double)reader[3];
-                objDtoPago.DP_ImporteRestante = (double)reader[4];
+                objDtoPago.DP_ImportePagado = double.Parse(reader[3].ToString());
+                objDtoPago.DP_ImporteRestante = double.Parse(reader[4].ToString());
                 objDtoPago.IP_TipoCertificado = (int)reader[5];
                 objDtoPago.VP_RUC = (string)reader[6];
             }

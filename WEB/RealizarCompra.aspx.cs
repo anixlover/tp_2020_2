@@ -25,12 +25,19 @@ namespace WEB
         {
             if (!Page.IsPostBack)
             {
-                CargarMolduras();
-                CargarRUCS();
-                txtNuevoRUC.Visible = false;
-                ddlRUC.Visible = false;
-                chbNuevoRUC.Visible = false;
-                lblTitulo1.Visible = false;
+                if (Session["DNIUsuario"] == null | Request.Params["sol"] == null)
+                {
+                    Response.Redirect("~/IniciarSesion.aspx");
+                }
+                else
+                {
+                    CargarMolduras();
+                    CargarRUCS();
+                    txtNuevoRUC.Visible = false;
+                    ddlRUC.Visible = false;
+                    chbNuevoRUC.Visible = false;
+                    lblTitulo1.Visible = false;
+                }
             }
         }
 
@@ -70,7 +77,7 @@ namespace WEB
         {
             double costo = double.Parse(lblcosto.Text);
             objDtoDatoFactura.FK_VU_Dni = Session["DNIUsuario"].ToString();
-            objDtoSolicitud.PK_IS_Cod = int.Parse(Session["idSolicitudPago"].ToString());
+            objDtoSolicitud.PK_IS_Cod = int.Parse(Request.Params["sol"]);
             if (hftxtimg.Value.ToString() == "vacio")
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Suba Imagen del VOUCHER!!'})", true);
@@ -130,17 +137,20 @@ namespace WEB
             {
                 objDtoPago.IP_TipoPago = 2;
             }
-            objDtoPago.FK_IS_Cod = Convert.ToInt32(Session["idSolicitudPago"].ToString());
+            objDtoPago.FK_IS_Cod = int.Parse(Request.Params["sol"]);
             objCtrPago.RegistrarPago(objDtoPago);
             objCtrPago.ExistenciaPago(objDtoPago);
             objDtoVoucher.FK_VP_Cod = objDtoPago.PK_VP_Cod;            
             objCtrVoucher.RegistrarVoucher(objDtoVoucher);
             objCtrSolicitud.Actualizar_a_EstadoRevisiónPago(objDtoSolicitud);
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Registro Exitoso!',text: 'Datos ENVIADOS!!'}).then(function(){window.location.href='ConsultarEstadosPago.aspx'})", true);
         }
         public void CargarMolduras()
         {
-            objDtoMolduraXUsuario.FK_IS_Cod = int.Parse(Session["idSolicitudPago"].ToString());
-            objDtoSolicitud.PK_IS_Cod= int.Parse(Session["idSolicitudPago"].ToString());
+            //objDtoMolduraXUsuario.FK_IS_Cod = int.Parse(Session["idSolicitudPago"].ToString());
+            objDtoMolduraXUsuario.FK_IS_Cod = int.Parse(Request.Params["sol"]);
+            //objDtoSolicitud.PK_IS_Cod= int.Parse(Session["idSolicitudPago"].ToString());
+            objDtoSolicitud.PK_IS_Cod = int.Parse(Request.Params["sol"]);
             if (objCtrSolicitud.LeerSolicitudTipo(objDtoSolicitud))
             {
                 if (objDtoSolicitud.VS_TipoSolicitud == "Personalizado por catalogo" || objDtoSolicitud.VS_TipoSolicitud == "Catalogo")
@@ -167,7 +177,14 @@ namespace WEB
         {
             objDtoDatoFactura.FK_VU_Dni= Session["DNIUsuario"].ToString();
             ddlRUC.DataSource=objCtrDatoFactura.ListarRucs(objDtoDatoFactura);
+            ddlRUC.DataTextField = "VDF_Ruc";
+            ddlRUC.DataValueField = "VDF_Ruc";
             ddlRUC.DataBind();
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ConsultarEstadosPago.aspx");
         }
     }
 }
