@@ -15,7 +15,8 @@
     <AssemblyName>WEB</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>true</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <IISExpressSSLPort>44363</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -1933,6 +1934,7 @@
     <Content Include="CambiarContraseña.aspx" />
     <Content Include="DescripcionMoldura.aspx" />
     <Content Include="RealizarCompra.aspx" />
+    <Content Include="Realizar_Pedido_Personalizado.aspx" />
     <Content Include="RegistrarClienteVendedor.aspx" />
     <Content Include="IniciarSesion.aspx" />
     <Content Include="RegistrarClienteUE.aspx" />
@@ -1983,6 +1985,13 @@
     </Compile>
     <Compile Include="ObtieneImagen.ashx.cs">
       <DependentUpon>ObtieneImagen.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Realizar_Pedido_Personalizado.aspx.cs">
+      <DependentUpon>Realizar_Pedido_Personalizado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Realizar_Pedido_Personalizado.aspx.designer.cs">
+      <DependentUpon>Realizar_Pedido_Personalizado.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarClienteVendedor.aspx.cs">
       <DependentUpon>RegistrarClienteVendedor.aspx</DependentUpon>
