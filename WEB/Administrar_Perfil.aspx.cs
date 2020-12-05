@@ -14,6 +14,8 @@ namespace WEB
     {
         DtoUsuario objUsuario = new DtoUsuario();
         CtrUsuario objCtrUsuario = new CtrUsuario();
+        DtoDatoFactura objDatoFactura = new DtoDatoFactura();
+        CtrDatoFactura objCtrDatoFactura = new CtrDatoFactura();
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
@@ -23,7 +25,7 @@ namespace WEB
                 txtCorreo.Text = (string)Session["CorreoUsuario"];
                 DateTime FechaNac = (DateTime)Session["FechaNacUsuario"];
                 txtFechaNac.Text = FechaNac.ToString("yyyy-MM-dd");
-                LRucs.Items.Add("0");
+                LRucs.Items.Add(objCtrDatoFactura.ListarRucs(objDatoFactura));
             }
             
         }
