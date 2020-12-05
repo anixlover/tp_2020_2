@@ -74,6 +74,10 @@ namespace WEB
                                 <div class='dropdown-header noti-title'>
                                     <h6 class='text-overflow m-0'>Bienvenid@ !</h6>
                                 </div>
+                                <a href= 'Administrar_Perfil.aspx' id='btnAdministrarPerfil' runat='server' onClick='cargarId(" + dni + @")' class='dropdown-item notify-item'>
+                                    <i class='fe-user'></i>
+                                    <span>Perfil</span>
+                                </a>
                                 <a href= 'CambiarContraseña.aspx' id='btnCambiarContra' runat='server' onClick='cargarId(" + dni + @")' class='dropdown-item notify-item'>
                                     <i class='fe-user'></i>
                                     <span>Cambiar Contraseña</span>

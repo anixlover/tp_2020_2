@@ -53,5 +53,9 @@ namespace CTR
         {
             objDaoMoldura.UpdateMoldura(objMoldura);
         }
+        public int StockMoldura(DtoMoldura objDtoMoldura)
+        {
+            return objDaoMoldura.StockMoldura(objDtoMoldura);
+        }
     }
 }

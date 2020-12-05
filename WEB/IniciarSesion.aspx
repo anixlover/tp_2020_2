@@ -31,6 +31,8 @@
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeout="3600"></asp:ScriptManager>
         <div class="auth-fluid" style="background-image: url('https://localhost:44363/assets/images/small/Portada2.png'); background-position: center; background-attachment: fixed; background-repeat: no-repeat">
+            
+            
             <div class="auth-fluid-form-box">
                 <div class="align-items-center d-flex h-100">
                     <div class="card-body bg-White">
