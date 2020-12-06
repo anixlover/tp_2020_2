@@ -66,6 +66,7 @@ namespace WEB
                     objCtrMXU.eliminarMXU(objDtoMXU);
                     objDtoMXU.FK_VU_Dni = Session["DNIUsuario"].ToString();
                     UpdatePanel.Update();
+                    //explotaaaaaa
                     gvCarrito.DataSource = objCtrMXU.listarMoldurasxusuario(objDtoMXU);
                     gvCarrito.DataBind();
                 }
