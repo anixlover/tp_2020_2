@@ -9,7 +9,7 @@ using CTR;
 
 namespace WEB
 {
-    public partial class Formulario_web12 : System.Web.UI.Page
+    public partial class ConsultarEstadosPago : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -100,7 +100,7 @@ namespace WEB
                     gvPersonalizado.Visible = false;
                     gvDetalles.Visible = true;
                     objCtrSolicitud.LeerSolicitudImporte(objDtoSolicitud);
-                    gvDetalles.DataSource = objCtrMolduraxUsuario.ListarMoldurasXUsuario(objDtoMolduraxUsuario);
+                    gvDetalles.DataSource = objCtrMolduraxUsuario.ListarMoldurasXsolicitud(objDtoMolduraxUsuario);
                     gvDetalles.DataBind();
                 }
                 else if (objDtoSolicitud.VS_TipoSolicitud == "Personalizado por diseño propio")

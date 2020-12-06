@@ -24,6 +24,14 @@ namespace DAO
             command.ExecuteNonQuery();
             conexion.Close();
         }
+        public void DeleteDatoFatcura(DtoDatoFactura objDtoDatoFactura)
+        {
+            string insert = "DELETE T_DATO_FACTURA WHERE VDF_Ruc='"+objDtoDatoFactura.VDF_Ruc+"'"+"and FK_VU_Dni='"+objDtoDatoFactura.FK_VU_Dni+"'";
+            SqlCommand command = new SqlCommand(insert, conexion);
+            conexion.Open();
+            command.ExecuteNonQuery();
+            conexion.Close();
+        }
         public bool SelectDatoFacturaxRUC_Dni(DtoDatoFactura objDtoDatoFactura)
         {
             string Select = "SELECT * from T_DATO_FACTURA where FK_VU_Dni ='" + objDtoDatoFactura.FK_VU_Dni + "' and VDF_Ruc='" + objDtoDatoFactura.VDF_Ruc + "'";

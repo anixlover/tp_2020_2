@@ -13,8 +13,6 @@
 
     <!-- icons -->
     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="cph_Js" runat="server">
     <!--JS leerImagen-->
     <script type="text/javascript">
         function leerImagen(input) {
@@ -45,6 +43,8 @@
         }
     </script>
 </asp:Content>
+<%--<asp:Content ID="Content2" ContentPlaceHolderID="cph_Js" runat="server">    
+</asp:Content>--%>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeout="3600"></asp:ScriptManager>
     <div class="row">

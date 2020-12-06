@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAO", "DAO_\DAO.csproj", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CTR", "CTR_\CTR.csproj", "{0DA26AF7-5C0C-4D92-A727-16DA2E386C5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pruebas_Unitarias", "Pruebas_Unia\Pruebas_Unitarias.csproj", "{888E84A9-94AF-476A-9D62-7AD023D936B1}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{0DA26AF7-5C0C-4D92-A727-16DA2E386C5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DA26AF7-5C0C-4D92-A727-16DA2E386C5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DA26AF7-5C0C-4D92-A727-16DA2E386C5F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{888E84A9-94AF-476A-9D62-7AD023D936B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{888E84A9-94AF-476A-9D62-7AD023D936B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{888E84A9-94AF-476A-9D62-7AD023D936B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{888E84A9-94AF-476A-9D62-7AD023D936B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

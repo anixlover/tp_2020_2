@@ -25,6 +25,10 @@ namespace CTR
         {
             return objDaoMolduraXUsuario.ListarMXU(objdtoMolduraxUsuario);
         }
+        public DataTable ListarMoldurasXsolicitud(DtoMolduraXUsuario objdtoMolduraxUsuario)
+        {
+            return objDaoMolduraXUsuario.ListaMoldurasSolicitud(objdtoMolduraxUsuario);
+        }
         public void eliminarMXU(DtoMolduraXUsuario objdtoMolduraxUsuario)
         {
             objDaoMolduraXUsuario.eliminarMXU(objdtoMolduraxUsuario);

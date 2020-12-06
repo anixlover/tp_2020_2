@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterCliente.Master" AutoEventWireup="true" CodeBehind="ConsultarEstadosPago.aspx.cs" Inherits="WEB.Formulario_web12" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterCliente.Master" AutoEventWireup="true" CodeBehind="ConsultarEstadosPago.aspx.cs" Inherits="WEB.ConsultarEstadosPago" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
  <!-- Plugins css -->
     <link href="../assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
@@ -14,8 +14,8 @@
     <!-- icons -->
     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="cph_Js" runat="server">
-</asp:Content>
+<%--<asp:Content ID="Content2" ContentPlaceHolderID="cph_Js" runat="server">
+</asp:Content>--%>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeout="3600"></asp:ScriptManager>
     <div class="row">

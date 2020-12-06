@@ -29,5 +29,9 @@ namespace CTR
         {
             return objDaoDatoFactura.SelectRUCxDNI(objDtoDatoFactura);
         }
+        public void EliminarRUC(DtoDatoFactura objDtoDatoFactura)
+        {
+            objDaoDatoFactura.DeleteDatoFatcura(objDtoDatoFactura);
+        }
     }
 }

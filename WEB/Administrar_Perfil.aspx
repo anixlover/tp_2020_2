@@ -8,11 +8,12 @@
 
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeout="3600"></asp:ScriptManager>
     <div class="container">
         <div class="card-box" style="background-color: #FFFFFF">
             <div class="row">
                 <div class="col">
-                    <asp:Image ID="Image1" runat="server" ImageUrl="https://www.expreso.com.pe/wp-content/uploads/2020/07/abimael-guzman1.jpg" Height="100%" Width="100%" ImageAlign="Middle" />
+                    <asp:Image ID="Image1" runat="server" ImageUrl="assets/images/icono2.png" Height="100%" Width="100%" ImageAlign="Middle" />
                 </div>
                 <div class="col">
                     <asp:Label ID="Label1" runat="server" Text="Nombre:"></asp:Label>
@@ -33,30 +34,41 @@
                     <br />
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    <asp:Label ID="Label5" runat="server" Text="RUCs:"></asp:Label>
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <div class="row">
+                        <div class="col">
+                            <asp:Label ID="Label5" runat="server" Text="RUCs:"></asp:Label>
+                            <br />
+                            <asp:ListBox ID="LRucs" runat="server" CssClass="form-comtrol" Height="100%" Width="100%"></asp:ListBox>
+                        </div>
+                        <div class="col" style="text-align: center">
+                            <asp:Button ID="btnMoverDerecha" runat="server" CssClass="btn-lg btn-success" Text=" ▶ " OnClick="btnMoverDerecha_Click" />
+                            <br />
+                            <asp:Button ID="btnMoverIzquierda" runat="server" CssClass="btn-lg btn-success" Text=" ◀ " OnClick="btnMoverIzquierda_Click" />
+                            <br />
+                            <asp:Button ID="btnMoverTodoDerecha" runat="server" CssClass="btn-lg btn-pink" Text="⏩"  OnClick="btnMoverTodoDerecha_Click"/>
+                            <br />
+                            <asp:Button ID="btnMoverTTodoIzquierda" runat="server" CssClass="btn-lg btn-pink" Text="⏪" OnClick="btnMoverTTodoIzquierda_Click" />                      
+                        </div>
+                        <div class="col">
+                            <asp:Label ID="Label6" runat="server" Text="Eliminar:"></asp:Label>
+                            <br />
+                            <asp:ListBox ID="LEliminar" runat="server" CssClass="form-comtrol" Height="100%" Width="100%"></asp:ListBox>
+                        </div>
+                    </div>
                     <br />
-                    <asp:ListBox ID="LRucs" runat="server" CssClass="form-comtrol" Height="100%" Width="100%" OnSelectedIndexChanged="LRucs_SelectedIndexChanged"></asp:ListBox>
-                </div>
-                <div class="col">
-                    <asp:Label ID="Label6" runat="server" Text="Eliminar:"></asp:Label>
                     <br />
-                    <asp:ListBox ID="LEliminar" runat="server" CssClass="form-comtrol" Height="100%" Width="100%" OnSelectedIndexChanged="LRucs_SelectedIndexChanged"></asp:ListBox>
-
-                </div>
-
-            </div>
-            <br />
-            <div class="row">
-                <div class="col" style="text-align:center">
-                    <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="btn btn-success" Width="50%" OnClick="btnModificar_Click" />
-                </div>
-                <div class="col" style="text-align:center">
-                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-danger" Width="50%" />
-                </div>
-
-            </div>
+                    <div class="row">
+                        <div class="col" style="text-align: center">
+                            <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="btn btn-success" Width="50%" OnClick="btnModificar_Click" />
+                        </div>
+                        <div class="col" style="text-align: center">
+                            <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-danger" Width="50%" OnClick="btnCancelar_Click" />
+                        </div>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
     </div>
 
