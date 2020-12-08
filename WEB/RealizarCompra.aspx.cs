@@ -149,7 +149,7 @@ namespace WEB
                     gvDetalles.Visible = true;
                     objCtrSolicitud.LeerSolicitudImporte(objDtoSolicitud);
                     lblcosto.Text = objDtoSolicitud.DS_ImporteTotal.ToString();
-                    gvDetalles.DataSource = objCtrMolduraXUsuario.ListarMoldurasXUsuario(objDtoMolduraXUsuario);
+                    gvDetalles.DataSource = objCtrMolduraXUsuario.listarMoldurasxusuario(objDtoMolduraXUsuario);
                     gvDetalles.DataBind();
                 }
                 else if (objDtoSolicitud.VS_TipoSolicitud == "Personalizado por diseño propio")
