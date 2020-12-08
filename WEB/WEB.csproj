@@ -15,7 +15,8 @@
     <AssemblyName>WEB</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>true</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <IISExpressSSLPort>44363</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -72,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Administrar_Pedido.aspx" />
+    <Content Include="Administrar_Perfil.aspx" />
     <Content Include="Administrar_Solicitud_Pedido.aspx" />
     <Content Include="assets\css\app-creative-dark-rtl.css" />
     <Content Include="assets\css\app-creative-dark-rtl.min.css" />
@@ -203,6 +205,7 @@
     <Content Include="assets\images\flags\spain.jpg" />
     <Content Include="assets\images\flags\us.jpg" />
     <Content Include="assets\images\Icono.ico" />
+    <Content Include="assets\images\icono2.png" />
     <Content Include="assets\images\jsgrid.png" />
     <Content Include="assets\images\loading.gif" />
     <Content Include="assets\images\logo-dark-2.png" />
@@ -1932,7 +1935,9 @@
     <Content Include="assets\libs\x-editable\jqueryui-editable\js\jqueryui-editable.min.js" />
     <Content Include="CambiarContraseña.aspx" />
     <Content Include="DescripcionMoldura.aspx" />
+    <Content Include="ConsultarEstadosPago.aspx" />
     <Content Include="RealizarCompra.aspx" />
+    <Content Include="Realizar_Pedido_Personalizado.aspx" />
     <Content Include="RegistrarClienteVendedor.aspx" />
     <Content Include="IniciarSesion.aspx" />
     <Content Include="RegistrarClienteUE.aspx" />
@@ -1949,6 +1954,13 @@
     </Compile>
     <Compile Include="Administrar_Pedido.aspx.designer.cs">
       <DependentUpon>Administrar_Pedido.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrar_Perfil.aspx.cs">
+      <DependentUpon>Administrar_Perfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrar_Perfil.aspx.designer.cs">
+      <DependentUpon>Administrar_Perfil.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrar_Solicitud_Pedido.aspx.cs">
       <DependentUpon>Administrar_Solicitud_Pedido.aspx</DependentUpon>
@@ -1971,6 +1983,13 @@
     <Compile Include="DescripcionMoldura.aspx.designer.cs">
       <DependentUpon>DescripcionMoldura.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ConsultarEstadosPago.aspx.cs">
+      <DependentUpon>ConsultarEstadosPago.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarEstadosPago.aspx.designer.cs">
+      <DependentUpon>ConsultarEstadosPago.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ObtenerImagenPersonalizada.ashx.cs">
       <DependentUpon>ObtenerImagenPersonalizada.ashx</DependentUpon>
     </Compile>
@@ -1983,6 +2002,13 @@
     </Compile>
     <Compile Include="ObtieneImagen.ashx.cs">
       <DependentUpon>ObtieneImagen.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Realizar_Pedido_Personalizado.aspx.cs">
+      <DependentUpon>Realizar_Pedido_Personalizado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Realizar_Pedido_Personalizado.aspx.designer.cs">
+      <DependentUpon>Realizar_Pedido_Personalizado.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarClienteVendedor.aspx.cs">
       <DependentUpon>RegistrarClienteVendedor.aspx</DependentUpon>

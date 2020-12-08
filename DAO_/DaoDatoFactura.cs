@@ -24,6 +24,14 @@ namespace DAO
             command.ExecuteNonQuery();
             conexion.Close();
         }
+        public void DeleteDatoFatcura(DtoDatoFactura objDtoDatoFactura)
+        {
+            string insert = "DELETE T_DATO_FACTURA WHERE VDF_Ruc='"+objDtoDatoFactura.VDF_Ruc+"'"+"and FK_VU_Dni='"+objDtoDatoFactura.FK_VU_Dni+"'";
+            SqlCommand command = new SqlCommand(insert, conexion);
+            conexion.Open();
+            command.ExecuteNonQuery();
+            conexion.Close();
+        }
         public bool SelectDatoFacturaxRUC_Dni(DtoDatoFactura objDtoDatoFactura)
         {
             string Select = "SELECT * from T_DATO_FACTURA where FK_VU_Dni ='" + objDtoDatoFactura.FK_VU_Dni + "' and VDF_Ruc='" + objDtoDatoFactura.VDF_Ruc + "'";
@@ -38,17 +46,12 @@ namespace DAO
             conexion.Close();
             return hayRegistros;
         }
-        public DataTable SelectRUCxDNI(DtoDatoFactura objDtoDatoFactura)
+        public DataSet SelectRUCxDNI(DtoDatoFactura objDtoDatoFactura)
         {
-            DataTable dtRUCS = null;
-            string Select = "SELECT VDF_Ruc from T_DATO_FACTURA where FK_VU_Dni ='" + objDtoDatoFactura.FK_VU_Dni + "'";
-            SqlCommand unComando = new SqlCommand(Select, conexion);
-            conexion.Open();
-            SqlDataAdapter daAdaptador = new SqlDataAdapter(unComando);
-            dtRUCS = new DataTable();
-            daAdaptador.Fill(dtRUCS);
-            conexion.Close();
-            return dtRUCS;
+            SqlDataAdapter dsRUCS = new SqlDataAdapter("SELECT VDF_Ruc from T_DATO_FACTURA where FK_VU_Dni ='" + objDtoDatoFactura.FK_VU_Dni + "'", conexion);
+            DataSet DS = new DataSet();
+            dsRUCS.Fill(DS);
+            return DS;
         }
     }
 }

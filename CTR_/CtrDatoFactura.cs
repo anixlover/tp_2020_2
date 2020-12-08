@@ -25,9 +25,13 @@ namespace CTR
         {
             return objDaoDatoFactura.SelectDatoFacturaxRUC_Dni(objDtoDatoFactura);
         }
-        public DataTable ListarRucs(DtoDatoFactura objDtoDatoFactura)
+        public DataSet ListarRucs(DtoDatoFactura objDtoDatoFactura)
         {
             return objDaoDatoFactura.SelectRUCxDNI(objDtoDatoFactura);
+        }
+        public void EliminarRUC(DtoDatoFactura objDtoDatoFactura)
+        {
+            objDaoDatoFactura.DeleteDatoFatcura(objDtoDatoFactura);
         }
     }
 }

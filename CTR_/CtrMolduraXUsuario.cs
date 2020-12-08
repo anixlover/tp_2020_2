@@ -25,9 +25,21 @@ namespace CTR
         {
             return objDaoMolduraXUsuario.ListarMXU(objdtoMolduraxUsuario);
         }
+        public DataTable ListarMoldurasXsolicitud(DtoMolduraXUsuario objdtoMolduraxUsuario)
+        {
+            return objDaoMolduraXUsuario.ListaMoldurasSolicitud(objdtoMolduraxUsuario);
+        }
         public void eliminarMXU(DtoMolduraXUsuario objdtoMolduraxUsuario)
         {
             objDaoMolduraXUsuario.eliminarMXU(objdtoMolduraxUsuario);
+        }
+        public DataTable ListarSolicitudesxDNI(DtoMolduraXUsuario objDtoMolduraXUsuario)
+        {
+            return objDaoMolduraXUsuario.SelectSolicitudesxDNI(objDtoMolduraXUsuario);
+        }
+        public DataTable ListarMoldurasxDNI_y_Estado(DtoMolduraXUsuario objDtoMolduraXUsuario, int estado)
+        {
+            return objDaoMolduraXUsuario.SelectSolicitudesxDNI_y_Estado(objDtoMolduraXUsuario, estado);
         }
     }
 }

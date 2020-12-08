@@ -74,11 +74,18 @@ namespace WEB
                                 <div class='dropdown-header noti-title'>
                                     <h6 class='text-overflow m-0'>Bienvenid@ !</h6>
                                 </div>
+                                <a href= 'Administrar_Perfil.aspx' id='btnAdministrarPerfil' runat='server' onClick='cargarId(" + dni + @")' class='dropdown-item notify-item'>
+                                    <i class='fe-user'></i>
+                                    <span>Perfil</span>
+                                </a>
                                 <a href= 'CambiarContraseña.aspx' id='btnCambiarContra' runat='server' onClick='cargarId(" + dni + @")' class='dropdown-item notify-item'>
                                     <i class='fe-user'></i>
                                     <span>Cambiar Contraseña</span>
                                 </a>
-
+                                <a href= 'ConsultarEstadosPago.aspx' id='btnPedidos' runat='server' onClick='cargarId(" + dni + @")' class='dropdown-item notify-item'>
+                                    <i class='fe-user'></i>
+                                    <span>Mis pedidos</span>
+                                </a>
                                 <a id='btnCerrarSesion' href='IniciarSesion.aspx' runat='server' onserverclick='btnCerrarSesion_ServerClick' class='dropdown-item notify-item'>
                                     <i class='fe-log-out'></i>
                                     <span>Cerrar Sesión</span>

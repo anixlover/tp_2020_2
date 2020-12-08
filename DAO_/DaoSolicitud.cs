@@ -91,7 +91,7 @@ namespace DAO
         }
         public void UpdateEstadoSolicitud_RevisióPago(DtoSolicitud objsolicitud)
         {
-            string update = "UPDATE T_Solicitud SET FK_ISE_Cod = 6, DTS_FechaEmicion= GETDATE()  Where PK_IS_Cod=" + objsolicitud.PK_IS_Cod;
+            string update = "UPDATE T_SOLICITUD SET FK_ISE_Cod = 6, DTS_FechaEmicion= GETDATE()  Where PK_IS_Cod=" + objsolicitud.PK_IS_Cod;
             //string update = "UPDATE T_Solicitud SET FK_ISE_Cod = 6, DTS_FechaEmicion='"+ DateTime.Today.Date +"' Where PK_IS_Cod=" + objsolicitud.PK_IS_Cod;
             SqlCommand unComando = new SqlCommand(update, conexion);
             conexion.Open();
