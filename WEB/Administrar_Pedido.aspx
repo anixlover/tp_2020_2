@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterAdmin.Master" AutoEventWireup="true" CodeBehind="Administrar_Pedido.aspx.cs" Inherits="WEB.Administrar_Pedidos" %>
-
+<%--dev alvaro--%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <!-- Bootstrap Tables css -->
     <link href="../assets/libs/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
@@ -37,22 +37,23 @@
                         <asp:UpdatePanel ID="UpdateSolicitudes" runat="server">
                             <ContentTemplate>
                                 <asp:DropDownList ID="ddltipo" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddltipo_SelectedIndexChanged" 
-                                    CssClass="form-control" Width="30%"></asp:DropDownList><br />
+                                    CssClass="form-control" Width="30%">
+                                </asp:DropDownList><br />
                                 <br />
-                                <asp:GridView ID="gvSolicitudes" DataKeyNames="PK_IS_Cod,V_SE_Nombre,PK_VU_Dni" 
+                                <asp:GridView ID="gvSolicitudes" DataKeyNames="PK_IS_Cod,VSE_Nombre,PK_VU_Dni" 
                                     runat="server" AutoGenerateColumns="false" OnRowCommand="gvSolicitudes_RowCommand" 
                                     EmptyDataText="No existen registros, agreguen molduras a su catálogo"
                                     ShowHeaderWhenEmpty="True" CssClass="table-borderless table table-bordered table-hover" >
                                     <Columns>
-                                        <asp:BoundField DataField="PK_IS_Cod" ItemStyle-HorizontalAlign="Center" HeaderText="Codigo de solicitud" />
-                                        <asp:BoundField DataField="VS_TipoSolicitud" ItemStyle-HorizontalAlign="Center" HeaderText="Tipo" />
-                                        <asp:BoundField DataField="PK_VU_Dni" ItemStyle-HorizontalAlign="Center" HeaderText="DNI" />
-                                        <asp:BoundField DataField="Cliente" ItemStyle-HorizontalAlign="Center" HeaderText="Cliente" />
-                                        <asp:BoundField DataField="VSE_Nombre" ItemStyle-HorizontalAlign="Center" HeaderText="Estado" />
-                                        <asp:TemplateField HeaderText="Detalles" ItemStyle-HorizontalAlign="Center">
+                                        <asp:BoundField DataField="PK_IS_Cod"  HeaderText="Codigo de solicitud" />
+                                        <asp:BoundField DataField="VS_TipoSolicitud" HeaderText="Tipo" />
+                                        <asp:BoundField DataField="PK_VU_Dni"  HeaderText="DNI" />
+                                        <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
+                                        <asp:BoundField DataField="VSE_Nombre"  HeaderText="Estado" />
+                                        <asp:TemplateField HeaderText="Detalles" >
                                             <ItemTemplate>
-                                                <asp:Button runat="server" Text=" Evaluar" ItemStyle-HorizontalAlign="Center" Visible='<%# ValidacionEstado(Eval("VSE_Nombre").ToString()) %>' CommandName="Evaluar" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-warning" />
-                                                <asp:Button runat="server" Text=" Ver" ItemStyle-HorizontalAlign="Center" CommandName="Ver detalles" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-success" />
+                                                <asp:Button runat="server" Text="Evaluar" ItemStyle-HorizontalAlign="Center" Visible='<%# ValidacionEstado(Eval("VSE_Nombre").ToString()) %>' CommandName="Evaluar" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-warning" />
+                                                <asp:Button runat="server" Text="Ver" ItemStyle-HorizontalAlign="Center" CommandName="Ver detalles" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-success" />
                                                 <asp:Button runat="server" Text="Asignar Fecha" ItemStyle-HorizontalAlign="Center" CommandName="asignar fecha" Visible='<%# ValidacionEstado2(Eval("VSE_Nombre").ToString()) %>' CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-primary" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
