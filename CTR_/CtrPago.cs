@@ -23,5 +23,9 @@ namespace CTR
         {
             return objDaoPago.SelectPagoxCod_Solicitud(objDtoPago);
         }
+        public bool HayRUC(DtoPago p)
+        {
+            return objDaoPago.SelectPagoRUC(p);
+        }
     }
 }

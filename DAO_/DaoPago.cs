@@ -50,6 +50,19 @@ namespace DAO
             conexion.Close();
             return hayRegistros;
         }
-
+        public bool SelectPagoRUC(DtoPago p)
+        {
+            string Select = "SELECT * from T_Pago where FK_IS_Cod ='" + p.FK_IS_Cod + "'";
+            SqlCommand unComando = new SqlCommand(Select, conexion);
+            conexion.Open();
+            SqlDataReader reader = unComando.ExecuteReader();
+            bool hayRegistros = reader.Read();
+            if (hayRegistros)
+            {
+                p.VP_RUC = (string)reader[6];
+            }
+            conexion.Close();
+            return hayRegistros;
+        }
     }
 }

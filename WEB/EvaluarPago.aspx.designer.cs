@@ -33,22 +33,22 @@ namespace WEB
         protected global::System.Web.UI.WebControls.Image Image1;
 
         /// <summary>
-        /// txtcodigomoldura control.
+        /// txtNumOperacion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtcodigomoldura;
+        protected global::System.Web.UI.WebControls.Label txtNumOperacion;
 
         /// <summary>
-        /// Label1 control.
+        /// txtmonto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label txtmonto;
 
         /// <summary>
         /// updPanelddl control.
@@ -60,12 +60,21 @@ namespace WEB
         protected global::System.Web.UI.UpdatePanel updPanelddl;
 
         /// <summary>
-        /// ddl_TipoComprobante control.
+        /// ddl_decision control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_TipoComprobante;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_decision;
+
+        /// <summary>
+        /// btnConfirmar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnConfirmar;
     }
 }

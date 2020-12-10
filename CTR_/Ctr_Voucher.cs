@@ -19,5 +19,9 @@ namespace CTR
         {
             objDaoVoucher.InsertarVoucher(objDtoVoucher);
         }
+        public bool hayVoucher(Dto_Voucher voucher)
+        {
+            return objDaoVoucher.SelectPagoVoucher(voucher);
+        }
     }
 }

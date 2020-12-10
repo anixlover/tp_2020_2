@@ -53,5 +53,25 @@ namespace CTR
         {
             objDaoSolicitud.UpdateEstadoSolicitud_RevisióPago(objDtoSolicitud);
         }
+        public string HayPago(DtoSolicitud objsol)
+        {
+            return objDaoSolicitud.SelectSolicitudPago(objsol);
+        }
+        public bool leerSolicitudTipo(DtoSolicitud objsol)
+        {
+            return objDaoSolicitud.SelectSolicitudTipo(objsol);
+        }
+        public bool LeerSolicitud(DtoSolicitud objsol)
+        {
+            return objDaoSolicitud.SelectSolicitud(objsol);
+        }
+        public DataTable ListaMolduras(DtoSolicitud objsol)
+        {
+            return objDaoSolicitud.ListaMoldurasSolicitud(objsol);
+        }
+        public DataTable ListaMoldurasxDiseñoPropio (DtoSolicitud objsol)
+        {
+            return objDaoSolicitud.ListaMoldurasSolicitudXDiseñoPropio(objsol);
+        }
     }
 }

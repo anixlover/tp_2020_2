@@ -48,7 +48,7 @@ namespace DAO
         }
         public bool SelectSolicitudDiseñoPersonalizado(DtoSolicitud objsol)
         {
-            string Select = "SELECT * from T_Solicitud where PK_IS_Cod =" + objsol.PK_IS_Cod;
+            string Select = "SELECT * from T_SOLICITUD where PK_IS_Cod =" + objsol.PK_IS_Cod;
             SqlCommand unComando = new SqlCommand(Select, conexion);
             conexion.Open();
             SqlDataReader reader = unComando.ExecuteReader();
@@ -57,8 +57,8 @@ namespace DAO
             {
                 objsol.VS_TipoSolicitud = (string)reader[1];
                 objsol.DS_PrecioAprox = Convert.ToDouble(reader[6].ToString());
-                objsol.VBS_Imagen = (byte[])reader[2];
-                objsol.VS_Comentario = (string)reader[9];
+                //objsol.VBS_Imagen = (byte[])reader[2];
+                //objsol.VS_Comentario = (string)reader[9];
             }
             conexion.Close();
             return hayRegistros;
@@ -126,6 +126,62 @@ namespace DAO
             SqlCommand command = new SqlCommand("SP_Administrar_Solicitudes_Filtro", conexion);
             SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
             command.Parameters.AddWithValue("@tipo", tipo);
+            command.CommandType = CommandType.StoredProcedure;
+            dtsolicitudes = new DataTable();
+            daAdaptador.Fill(dtsolicitudes);
+            conexion.Close();
+            return dtsolicitudes;
+        }
+        public string SelectSolicitudPago(DtoSolicitud objsol)
+        {
+            string v = "";
+            SqlCommand unComando = new SqlCommand("SP_SelectPagos", conexion);
+            conexion.Open();
+            unComando.CommandType = CommandType.StoredProcedure;
+            unComando.Parameters.AddWithValue("@sol", objsol.PK_IS_Cod);
+            SqlDataReader reader = unComando.ExecuteReader();
+            bool hayRegistros = reader.Read();
+            if (hayRegistros)
+            {
+                v = (string)reader[0];
+            }
+            conexion.Close();
+            return v;
+        }
+        public bool SelectSolicitud(DtoSolicitud objsol)
+        {
+            string Select = "SELECT * from T_SOLICITUD where PK_IS_Cod =" + objsol.PK_IS_Cod;
+            SqlCommand unComando = new SqlCommand(Select, conexion);
+            conexion.Open();
+            SqlDataReader reader = unComando.ExecuteReader();
+            bool hayRegistros = reader.Read();
+            if (hayRegistros)
+            {
+                objsol.VS_TipoSolicitud = (string)reader[1];
+            }
+            conexion.Close();
+            return hayRegistros;
+        }
+        public DataTable ListaMoldurasSolicitud(DtoSolicitud objSol)
+        {
+            DataTable dtsolicitudes = null;
+            conexion.Open();
+            SqlCommand command = new SqlCommand("SP_Listar_Molduras_Solicitud", conexion);
+            command.Parameters.AddWithValue("@sol", objSol.PK_IS_Cod);
+            SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
+            command.CommandType = CommandType.StoredProcedure;
+            dtsolicitudes = new DataTable();
+            daAdaptador.Fill(dtsolicitudes);
+            conexion.Close();
+            return dtsolicitudes;
+        }
+        public DataTable ListaMoldurasSolicitudXDiseñoPropio(DtoSolicitud objSol)
+        {
+            DataTable dtsolicitudes = null;
+            conexion.Open();
+            SqlCommand command = new SqlCommand("SP_Listar_Molduras_Solicitud_Diseño_Propio", conexion);
+            command.Parameters.AddWithValue("@sol", objSol.PK_IS_Cod);
+            SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
             command.CommandType = CommandType.StoredProcedure;
             dtsolicitudes = new DataTable();
             daAdaptador.Fill(dtsolicitudes);

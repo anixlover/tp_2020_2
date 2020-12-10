@@ -16,7 +16,7 @@
 
     <div class="col-12">
         <div class="page-title-box">
-            <h4 style="text-align: center;" class="page-title">ADMINISTRAR PEDIDO</h4>
+            <h2 style="text-align: center;" class="page-title">ADMINISTRAR PEDIDO</h2>
         </div>
         <div class="card-box">
             <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeout="3600"></asp:ScriptManager>
@@ -40,18 +40,18 @@
                         <!-- end col -->
 
                         <%--Numero de operacion--%>
-                        <h1>No. Operacion: #<asp:Label ID="txtcodigomoldura" runat="server"></asp:Label></h1>
+                        <h1>No. Operacion: #<asp:Label ID="txtNumOperacion" runat="server"></asp:Label></h1>
                         <%--end numero de operacion--%>
 
                         <%--Monto--%>
-                        <h1>Monto: S/.<asp:Label ID="Label1" runat="server"></asp:Label></h1>
+                        <h1>Monto: S/.<asp:Label ID="txtmonto" runat="server"></asp:Label></h1>
                         <%--end monto--%>
 
                         <%--ddl decision--%>
-                        <asp:UpdatePanel  runat="server" UpdateMode="Conditional" ID="updPanelddl" ClientIDMode="Static">
+                        <asp:UpdatePanel runat="server" UpdateMode="Conditional" ID="updPanelddl" ClientIDMode="Static">
                             <ContentTemplate>
-                                <asp:DropDownList runat="server" ID="ddl_TipoComprobante" ClientIDMode="Static" CssClass="form-control" Width="30%" OnSelectedIndexChanged="ddl_TipoComprobante_SelectedIndexChanged"  >
-                                    <asp:ListItem Text="Seleccionar" Selected="True" />
+                                <asp:DropDownList runat="server" ID="ddl_decision" ClientIDMode="Static" CssClass="form-control" Width="30%" OnSelectedIndexChanged="ddl_TipoComprobante_SelectedIndexChanged">
+                                    <asp:ListItem Value="0" Text="Seleccionar" Selected="True" />
                                     <asp:ListItem Value="1" Text="Aprobar" />
                                     <asp:ListItem Value="2" Text="Reportar" />
                                 </asp:DropDownList>
@@ -61,6 +61,12 @@
                         <br>
                         <br>
                         <br>
+                        <%--boton confirmar--%>
+                        <asp:LinkButton ID="btnConfirmar" runat="server" type="button" class="btn btn-success waves-effect waves-light" OnClick="btnConfirmar_Click">
+                                                    <span class="btn-label"></span>Confirmar
+                        </asp:LinkButton>
+                        <%--end boto confirmar--%>
+
                         <%--boton regresar--%>
                         <button type="button" onclick="" class="btn btn-danger waves-effect">
                             <a href="javascript:history.back()" style="color: white"><span class="btn-label"><i class="mdi dripicons-return"></i></span>Volver Atrás</a>
@@ -71,6 +77,45 @@
             </div>
         </div>
     </div>
+    <script>
+        function showSuccessMessage1() {
+            swal({
+                title: "ERROR!",
+                text: "UPS! No se pudo completar la accion, vuelva a recargar la pagina!    ",
+                type: "error"
+            });
+        }
+        function showSuccessMessage2() {
+            swal({
+                title: "Actualizado Correctamente!",
+                text: "Pulsa el botón y se te redirigirá",
+                type: "success"
+            }, function (redirect) {
+                if (redirect) {
+                    window.location.href = "Administrar_Pedido.aspx"
+                }
+            });
+        }
+        function showSuccessMessage3() {
+            swal({
+                title: "Se le reporto al usuario correctamente!",
+                text: "Pulsa el botón y se te redirigirá",
+                type: "success"
+            }, function (redirect) {
+                if (redirect) {
+                    window.location.href = "Administrar_Pedido.aspx"
+                }
+            });
+        }
+        function showSuccessMessage4() {
+            swal({
+                title: "SELECCIONAR OPCION!",
+                text: "UPS! No selecciono ninguna opcion!",
+                type: "error"
+            });
+        }
+        
+    </script>
     <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
 
