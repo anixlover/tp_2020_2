@@ -25,6 +25,7 @@ namespace WEB
                 txtCorreo.Text = (string)Session["CorreoUsuario"];
                 DateTime FechaNac = (DateTime)Session["FechaNacUsuario"];
                 txtFechaNac.Text = FechaNac.ToString("yyyy-MM-dd");
+                
                 CargarRUCS();
                 //LRucs.Items.Add(objCtrDatoFactura.ListarRucs(objDatoFactura));                
             }
@@ -42,10 +43,16 @@ namespace WEB
             objUsuario.VU_Apellidos = Apellidos;
             objUsuario.VU_Correo = Correo;
             objUsuario.DTU_FechaNac = FechaNac;
+            objUsuario.PK_VU_Dni = Session["DNIUsuario"].ToString();
             objDatoFactura.FK_VU_Dni = Session["DNIUsuario"].ToString();
             objCtrUsuario.ActualizarDatos(objUsuario);
             EliminarRUCS();
             LEliminar.Items.Clear();
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Excelente',text: 'Cambios guardados con éxito'});", true);
+            Session["NombreUsuario"] = Nombre;
+            Session["ApellidosUsuario"] = Apellidos;
+            Session["CorreoUsuario"] = Correo;
+            Session["FechaNacUsuario"] = FechaNac;
         }
 
         public void EliminarRUCS()
