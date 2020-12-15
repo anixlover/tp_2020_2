@@ -17,6 +17,7 @@ namespace WEB
         SqlConnection conexion;
         DtoUsuario objUsuario = new DtoUsuario();
         CtrUsuario objCtrUsuario = new CtrUsuario();
+        //NO TOCAR EXPLOTA
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -83,7 +84,7 @@ namespace WEB
                     log.CustomWriteOnLog("Login_V2", " Session['Contrasenia'] " + Session["Contrasenia"]);
                     log.CustomWriteOnLog("Login_V2", "--------------------------------------------Fin Login Aspx----------------------------------------------------");
 
-
+                    //CLIENTE
                     if (Session["id_perfil"].ToString() == "1")
                     {
                         HttpCookie returnCookie = Request.Cookies["returnUrl"];
@@ -104,6 +105,7 @@ namespace WEB
                         }
 
                     }
+                    //GERENTE
                     else if (Session["id_perfil"].ToString() == "2")
                     {
 
@@ -113,6 +115,7 @@ namespace WEB
                         ScriptManager.RegisterStartupScript(this, typeof(Page), "alert", script, false);
 
                     }
+                    //VENDEDOR
                     else if (Session["id_perfil"].ToString() == "3")
                     {
 
@@ -122,6 +125,7 @@ namespace WEB
                         ScriptManager.RegisterStartupScript(this, typeof(Page), "alert", script, false);
 
                     }
+                    //TRABAJADOR
                     else if (Session["id_perfil"].ToString() == "4")
                     {
 

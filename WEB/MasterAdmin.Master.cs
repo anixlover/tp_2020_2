@@ -59,7 +59,6 @@ namespace WEB
             string nombre = Session["NombreUsuario"].ToString();
 
             string html = string.Format (
-
                @"
             <a class='nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light' data-toggle='dropdown' href='#' role='button' aria-haspopup='false' aria-expanded='false'>"+
                                 "<span class=pro-user-name ml-1>" +
@@ -128,11 +127,22 @@ namespace WEB
         }
         public void perfilTrabajador()
         {
-            string html = string.Format(@"
-            
-          
-        ");
-            this.Literal1.Text = html;
+            string nombreusr = Session["NombreUsuario"].ToString();
+
+            string html = string.Format(
+                @"
+            <a class='nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light' data-toggle='dropdown' href='#' role='button' aria-haspopup='false' aria-expanded='false'>" +
+                                "<span class=pro-user-name ml-1>" +
+                                    "Hola " + nombreusr + "<i class='mdi mdi-chevron-down'></i>" +
+                                "</span>" +
+                            "</a>" +
+                            "<div class='dropdown-menu dropdown-menu-right profile-dropdown'>" +
+                                "<a id='btnCerrarSesion' href='IniciarSesion.aspx' runat='server' onserverclick='btnCerrarSesion_ServerClick' class='dropdown-item notify-item'>" +
+                                    "<i class='fe-log-out'></i>" +
+                                    "<span>Cerrar Sesión</span>" +
+                                "</a>" +
+                            "</div>");
+            this.Literal2.Text = html;
         }
         protected void UsuarioOption_ServerClick(object sender, EventArgs e)
         {

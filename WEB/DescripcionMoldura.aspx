@@ -52,7 +52,6 @@
                                             <div class="tab-pane active show" id="product-1-item">
                                                 <%--<img src="../assets/images/products/product-9.jpg" alt="" class="img-fluid mx-auto d-block rounded">--%>
                                                 <asp:Image ID="Image1" Height="700px" Width="680px" runat="server" class="rounded" />
-
                                             </div>
                                         </div>
                                     </div>

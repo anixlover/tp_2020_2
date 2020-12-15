@@ -29,5 +29,21 @@ namespace DAO
             cmd.ExecuteNonQuery();
             conexion.Close();
         }
+        public bool SelectPagoVoucher(Dto_Voucher voucher)
+        {
+            string Select = "SELECT * from T_Voucher where PK_VV_NumVoucher ='" + voucher.PK_VV_NumVoucher + "'";
+            SqlCommand unComando = new SqlCommand(Select, conexion);
+            conexion.Open();
+            SqlDataReader reader = unComando.ExecuteReader();
+            bool hayRegistros = reader.Read();
+            if (hayRegistros)
+            {
+                //voucher.VBV_Foto = (byte[])reader[1];
+                voucher.DV_ImporteDepositado = Convert.ToDouble(reader[2].ToString());
+                voucher.FK_VP_Cod = (string)reader[4];
+            }
+            conexion.Close();
+            return hayRegistros;
+        }
     }
 }

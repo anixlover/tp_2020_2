@@ -49,15 +49,21 @@ namespace WEB
                     Session["estado"] = "0";
                     Response.Redirect("Detalles_Solicitud.aspx");
                     break;
-                case "Evaluar": /*editar*/
+                case "Evaluar": 
                     Session["idSolicitudPago"] = sol;
-                    Response.Redirect("EvaluarPagos.aspx");
+                    Response.Redirect("EvaluarPago.aspx");
+                    break;
+                case "asignar fecha":
+                    Session["idSolicitudPago"] = sol;
+                    Session["clienteDNI"] = dni;
+                    Session["estado"] = "2";
+                    Response.Redirect("Detalles_Solicitud.aspx");
                     break;
             }
         }
         protected bool ValidacionEstado(string estado)
         {
-            return estado == "En revision de pago";
+            return estado == "Pendiente de pago";
         }
         protected bool ValidacionEstado2(string estado)
         {

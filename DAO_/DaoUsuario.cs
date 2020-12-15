@@ -237,9 +237,13 @@ namespace DAO
             return (usuarioDto);
         }
 
-        public void UptadeDatosPerfil(DtoUsuario usuario)
+        public void UptadeDatosPerfil(DtoUsuario Usuario)
         {
-
+            string update = "UPDATE T_Usuario SET VU_Nombre = '" + Usuario.VU_Nombre + "', VU_Apellidos = '" + Usuario.VU_Apellidos + "', VU_Correo = '" + Usuario.VU_Correo + "', DTU_FechaNac = '"+ Usuario.DTU_FechaNac.ToString("yyyy-MM-dd") +"' WHERE PK_VU_Dni = '" + Usuario.PK_VU_Dni + "'";
+            SqlCommand command = new SqlCommand(update, conexion);
+            conexion.Open();
+            command.ExecuteNonQuery();
+            conexion.Close();
         }
 
     }

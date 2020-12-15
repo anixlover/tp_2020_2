@@ -1936,6 +1936,8 @@
     <Content Include="CambiarContraseña.aspx" />
     <Content Include="DescripcionMoldura.aspx" />
     <Content Include="ConsultarEstadosPago.aspx" />
+    <Content Include="Detalles_Solicitud.aspx" />
+    <Content Include="EvaluarPago.aspx" />
     <Content Include="RealizarCompra.aspx" />
     <Content Include="Realizar_Pedido_Personalizado.aspx" />
     <Content Include="RegistrarClienteVendedor.aspx" />
@@ -1989,6 +1991,20 @@
     </Compile>
     <Compile Include="ConsultarEstadosPago.aspx.designer.cs">
       <DependentUpon>ConsultarEstadosPago.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Detalles_Solicitud.aspx.cs">
+      <DependentUpon>Detalles_Solicitud.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Detalles_Solicitud.aspx.designer.cs">
+      <DependentUpon>Detalles_Solicitud.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EvaluarPago.aspx.cs">
+      <DependentUpon>EvaluarPago.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EvaluarPago.aspx.designer.cs">
+      <DependentUpon>EvaluarPago.aspx</DependentUpon>
     </Compile>
     <Compile Include="ObtenerImagenPersonalizada.ashx.cs">
       <DependentUpon>ObtenerImagenPersonalizada.ashx</DependentUpon>
