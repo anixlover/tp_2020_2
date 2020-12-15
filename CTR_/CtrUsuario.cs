@@ -58,11 +58,20 @@ namespace CTR
         //Apellido solo tiene letras
         public bool formatoApellido(DtoUsuario objUsuario)
         {
+            string numeros = "";
             bool correcto = true;
             string usuarioApe = objUsuario.VU_Apellidos;
             for (int i = 0; i < usuarioApe.Trim().Length; i++)
             {
                 correcto = char.IsLetter(usuarioApe.Trim()[i]);
+                if (!correcto)
+                {
+                    numeros += usuarioApe.Trim()[i];
+                }
+            }
+            if (numeros.Length > 0)
+            {
+                return false;
             }
             return correcto;
         }

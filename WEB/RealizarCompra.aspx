@@ -13,6 +13,15 @@
 
     <!-- icons -->
     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+
     <!--JS leerImagen-->
     <script type="text/javascript">
         function leerImagen(input) {
@@ -53,7 +62,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-4">
-                            <div class="row">
+                            <div class="row-cols-lg-4">
                                 <br />
                                 <asp:GridView ID="gvDetalles" runat="server" CssClass="table-borderless table table-bordered table-hover" DataKeyNames="PK_IM_Cod" AutoGenerateColumns="False"
                                     EmptyDataText="No existen registros" ShowHeaderWhenEmpty="True" Width="90%">
@@ -71,7 +80,7 @@
                                     </Columns>
                                 </asp:GridView>
                             </div>
-                            <div class="row">
+                            <div class="row-cols-lg-4">
                                 <asp:GridView ID="gvPersonalizado" runat="server" DataKeyNames="PK_IS_Cod" AutoGenerateColumns="False"
                                     EmptyDataText="No existen registros" ShowHeaderWhenEmpty="True">
                                     <Columns>
@@ -90,7 +99,7 @@
                                 </asp:GridView>
                             </div>
                             <br />
-                            <div class="row" style="position: fixed; text-align: right; color: #008000; font-weight: bold; font-style: inherit;">
+                            <div class="row" style="color: #008000; font-weight: bold; font-style: inherit;">
                                 Total: S/. <asp:Label ID="lblcosto" runat="server" Text="0.00"></asp:Label>
                             </div>
                         </div>
@@ -116,7 +125,7 @@
                                     <br />
                                     <div class="row">
                                         <label for="heard">Importe: <span class="text-danger">*</span></label>
-                                        <asp:TextBox ID="txtImporte" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtImporte" type="number" runat="server" CssClass="form-control"></asp:TextBox>
                                     </div>
                                     <br />
                                     <div class="row">

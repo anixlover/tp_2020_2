@@ -33,5 +33,25 @@ namespace CTR
         {
             objDaoDatoFactura.DeleteDatoFatcura(objDtoDatoFactura);
         }
+        public bool formatoRUC(DtoDatoFactura objDtoDatoFactura)
+        {
+            string letras = "";
+            bool correcto = true;
+            string ruc = objDtoDatoFactura.VDF_Ruc;
+            for (int i = 0; i < ruc.Trim().Length; i++)
+            {
+                correcto = char.IsDigit(ruc.Trim()[i]);
+                if (!correcto)
+                {
+                    letras += ruc.Trim()[i];
+                }
+            }
+            if (letras.Length > 0)
+            {
+                return false;
+            }
+            else
+                return correcto;
+        }
     }
 }

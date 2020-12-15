@@ -33,6 +33,11 @@ namespace WEB
 
         protected void btnModificar_Click(object sender, EventArgs e)
         {
+            if (txtNombre.Text == ""|txtApellidos.Text==""|txtCorreo.Text==""|txtFechaNac.Text=="")
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Complete espacios en BLANCO!!'})", true);
+                return;
+            }
             string Nombre = txtNombre.Text;
             string Apellidos = txtApellidos.Text;
             string Correo = txtCorreo.Text;
@@ -43,9 +48,8 @@ namespace WEB
             objUsuario.VU_Correo = Correo;
             objUsuario.DTU_FechaNac = FechaNac;
             objDatoFactura.FK_VU_Dni = Session["DNIUsuario"].ToString();
-            objCtrUsuario.ActualizarDatos(objUsuario);
-            EliminarRUCS();
-            LEliminar.Items.Clear();
+            
+            
         }
 
         public void EliminarRUCS()
@@ -66,6 +70,53 @@ namespace WEB
             LRucs.DataValueField = "VDF_Ruc";
             LRucs.DataTextField = "VDF_Ruc";
             LRucs.DataBind();
+        }
+        public void ModificarDatos(DtoUsuario objUsuario)//<----Metodo de Registro
+        {
+            if (objCtrUsuario.formatoNombre(objUsuario) == false)//Probar si el Nombre introducido cumple con el formato
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Nombre INVALIDO!!'});", true);
+                return;
+            }
+            if (objCtrUsuario.formatoApellido(objUsuario) == false)//Probar si el Apellido introducido cumple con el formato
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Apellido INVALIDO!!'});", true);
+                return;
+            }
+            if (objCtrUsuario.formatoCorreo(objUsuario) == false)//Probar si el correo introducido cumple con el formato
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Correo INVALIDO!!'});", true);
+                return;
+            }
+            if (objCtrUsuario.existenciaCelular(objUsuario))//probar si el Número de celular introducido ya estaba registrado en la base de dato
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Número de celular DUPLICADO!!'});", true);
+                return;
+            }
+            if (objCtrUsuario.existenciaCorreo(objUsuario))//probar si el Correo introducido ya estaba registrado en la base de dato
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Correo DUPLICADO!!'});", true);
+                return;
+            }
+            if (DateTime.Now.Year - objUsuario.DTU_FechaNac.Year < 18)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Debe ser mayor de edad!!'});", true);
+                return;
+            }
+            //Modifica los datos del usuario tipo cliente
+            if (LEliminar.Items.Count != 0)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Modificación Exitosa!',text: 'Datos MODIFICADOS y RUC(s) ELIMINADOS!!'})", true);
+                objCtrUsuario.ActualizarDatos(objUsuario);
+                EliminarRUCS();
+                LEliminar.Items.Clear();
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Modificación Exitosa!',text: 'Datos MODIFICADOS!!'})", true);
+                objCtrUsuario.ActualizarDatos(objUsuario);
+            }
+            
         }
         protected void btnCancelar_Click(object sender, EventArgs e)
         {

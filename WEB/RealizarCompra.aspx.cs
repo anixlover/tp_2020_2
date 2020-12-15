@@ -78,29 +78,40 @@ namespace WEB
             double costo = double.Parse(lblcosto.Text);
             objDtoDatoFactura.FK_VU_Dni = Session["DNIUsuario"].ToString();
             objDtoSolicitud.PK_IS_Cod = int.Parse(Request.Params["sol"]);
+            objDtoDatoFactura.VDF_Ruc = txtNuevoRUC.Text;
             if (hftxtimg.Value.ToString() == "vacio")
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Suba Imagen del VOUCHER!!'})", true);
                 return;
             }
-            else if (txtNumOP.Text==""| txtImporte.Text=="")
+            else if (txtNumOP.Text == "" | txtImporte.Text == "")
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Complete espacios en BLANCO!!'})", true);
                 return;
             }
-            else if(rbBoleta.Checked == false && rbFactura.Checked == false)
+            else if (rbBoleta.Checked == false && rbFactura.Checked == false)
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Seleccione BOLETA o FACTURA!!'})", true);
                 return;
             }
-            else if(chbNuevoRUC.Checked == true & rbFactura.Checked == true & txtNuevoRUC.Text == "")
+            else if (chbNuevoRUC.Checked == true & rbFactura.Checked == true & txtNuevoRUC.Text == "")
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Complete espacios en BLANCO!!'})", true);
                 return;
             }
-            else if(chbNuevoRUC.Checked == false & rbFactura.Checked == true & ddlRUC.Text == "")
+            else if (chbNuevoRUC.Checked == false & rbFactura.Checked == true & ddlRUC.Text == "")
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'No hay RUC'S!!'})", true);
+                return;
+            }
+            else if (double.Parse(txtImporte.Text) < costo / 2)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Importe INVALIDO!!'})", true);
+                return;
+            }
+            else if (objCtrDatoFactura.formatoRUC(objDtoDatoFactura) == false && rbFactura.Checked==true && chbNuevoRUC.Checked==true)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'RUC INVALIDO!!'})", true);
                 return;
             }
             objDtoVoucher.PK_VV_NumVoucher = txtNumOP.Text;
@@ -121,7 +132,6 @@ namespace WEB
             }
             if (chbNuevoRUC.Checked == true)
             {
-                objDtoDatoFactura.VDF_Ruc = txtNuevoRUC.Text;
                 objCtrDatoFactura.RegistrarDatoFatcura(objDtoDatoFactura);
                 objDtoPago.VP_RUC = txtNuevoRUC.Text;
                 objDtoPago.IP_TipoCertificado = 2;
