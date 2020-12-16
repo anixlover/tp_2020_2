@@ -73,5 +73,9 @@ namespace CTR
         {
             return objDaoSolicitud.ListaMoldurasSolicitudXDiseñoPropio(objsol);
         }
+        public void Actualizar_Estado_Solicitud(DtoSolicitud objDtoSolicitud)
+        {
+            objDaoSolicitud.Actualizar_Estado_SolicitudX1(objDtoSolicitud);
+        }
     }
 }
