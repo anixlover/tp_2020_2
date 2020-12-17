@@ -36,7 +36,7 @@
                                     <Columns>
                                         <asp:BoundField DataField="PK_IM_Cod" HeaderText="Codigo Moldura" />
                                         <asp:BoundField DataField="VM_Descripcion" HeaderText="Descripcion Moldura" />
-                                        <asp:BoundField DataField="VSE_Nombre" HeaderText="Estado" />
+                                        <asp:BoundField DataField="VTM_Nombre" HeaderText="Estado" />
                                         <asp:BoundField DataField="DMU_Precio" HeaderText="Precio" />
                                     </Columns>
                                 </asp:GridView>

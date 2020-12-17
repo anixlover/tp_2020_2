@@ -1938,6 +1938,7 @@
     <Content Include="ConsultarEstadosPago.aspx" />
     <Content Include="Detalles_Solicitud.aspx" />
     <Content Include="EvaluarPago.aspx" />
+    <Content Include="EvaluarPedidosPersonalizados.aspx" />
     <Content Include="RealizarCompra.aspx" />
     <Content Include="Realizar_Pedido_Personalizado.aspx" />
     <Content Include="RegistrarClienteVendedor.aspx" />
@@ -2006,8 +2007,15 @@
     <Compile Include="EvaluarPago.aspx.designer.cs">
       <DependentUpon>EvaluarPago.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ObtenerImagenPersonalizada.ashx.cs">
-      <DependentUpon>ObtenerImagenPersonalizada.ashx</DependentUpon>
+    <Compile Include="EvaluarPedidosPersonalizados.aspx.cs">
+      <DependentUpon>EvaluarPedidosPersonalizados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EvaluarPedidosPersonalizados.aspx.designer.cs">
+      <DependentUpon>EvaluarPedidosPersonalizados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ObtenerImegenPersonalizada_2.ashx.cs">
+      <DependentUpon>ObtenerImegenPersonalizada_2.ashx</DependentUpon>
     </Compile>
     <Compile Include="RealizarCompra.aspx.cs">
       <DependentUpon>RealizarCompra.aspx</DependentUpon>
@@ -2297,7 +2305,7 @@
     <Content Include="MasterAdmin.Master" />
     <Content Include="ghUploadFile.ashx" />
     <Content Include="ObtieneImagen.ashx" />
-    <Content Include="ObtenerImagenPersonalizada.ashx" />
+    <Content Include="ObtenerImegenPersonalizada_2.ashx" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

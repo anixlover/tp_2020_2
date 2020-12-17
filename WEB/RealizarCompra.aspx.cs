@@ -99,7 +99,7 @@ namespace WEB
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Complete espacios en BLANCO!!'})", true);
                 return;
             }
-            else if (chbNuevoRUC.Checked == false & rbFactura.Checked == true & ddlRUC.Text == "")
+            else if (chbNuevoRUC.Checked == false & rbFactura.Checked == true & ddlRUC.Items.Count==0)
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'No hay RUC'S!!'})", true);
                 return;

@@ -70,7 +70,6 @@ namespace DAO
             conexion.Open();
             SqlCommand command = new SqlCommand(select, conexion);
             SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
-            command.CommandType = CommandType.StoredProcedure;
             dtsolicitudes = new DataTable();
             daAdaptador.Fill(dtsolicitudes);
             conexion.Close();
@@ -79,11 +78,10 @@ namespace DAO
         public DataTable SelectSolicitudDiseñoPropio(DtoSolicitud objsol)
         {
             DataTable dtsolicitudes = null;
-            string select = "SELECT PK_IS_Cod,DS_Largo,DS_Ancho,VS_Comentario,IS_Cantidad,DS_PrecioAprox from T_Solicitud where PK_IS_Cod =" + objsol.PK_IS_Cod;
+            string select = "SELECT PK_IS_Cod,DS_Largo,DS_Ancho,VS_Comentario,IS_Cantidad,DS_PrecioAprox,DTS_FechaRecojo,DS_ImporteTotal from T_Solicitud where PK_IS_Cod =" + objsol.PK_IS_Cod;
             conexion.Open();
             SqlCommand command = new SqlCommand(select, conexion);
             SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
-            command.CommandType = CommandType.StoredProcedure;
             dtsolicitudes = new DataTable();
             daAdaptador.Fill(dtsolicitudes);
             conexion.Close();
@@ -98,12 +96,33 @@ namespace DAO
             unComando.ExecuteNonQuery();
             conexion.Close();
         }
+        public void UpdateEstadoSolicitud_Rechazado(DtoSolicitud objsolicitud)
+        {
+            string update = "UPDATE T_SOLICITUD SET FK_ISE_Cod = 4 Where PK_IS_Cod=" + objsolicitud.PK_IS_Cod;
+            //string update = "UPDATE T_Solicitud SET FK_ISE_Cod = 6, DTS_FechaEmicion='"+ DateTime.Today.Date +"' Where PK_IS_Cod=" + objsolicitud.PK_IS_Cod;
+            SqlCommand unComando = new SqlCommand(update, conexion);
+            conexion.Open();
+            unComando.ExecuteNonQuery();
+            conexion.Close();
+        }
 
         public DataTable SelectSolicitudes()
         {
             DataTable dtsolicitudes = null;
             conexion.Open();
             SqlCommand command = new SqlCommand("SP_Administrar_Solicitudes", conexion);
+            SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
+            command.CommandType = CommandType.StoredProcedure;
+            dtsolicitudes = new DataTable();
+            daAdaptador.Fill(dtsolicitudes);
+            conexion.Close();
+            return dtsolicitudes;
+        }
+        public DataTable SelectSolicitudesDiseñoPropio_Clientes()
+        {
+            DataTable dtsolicitudes = null;
+            conexion.Open();
+            SqlCommand command = new SqlCommand("SP_Listar_Solicitudes_DiseñoPropio", conexion);
             SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
             command.CommandType = CommandType.StoredProcedure;
             dtsolicitudes = new DataTable();
@@ -187,6 +206,14 @@ namespace DAO
             daAdaptador.Fill(dtsolicitudes);
             conexion.Close();
             return dtsolicitudes;
+        }
+        public void UpdateSolicitudFecha_RevisionFecha(DtoSolicitud objsol)
+        {
+            string update = "UPDATE T_Solicitud SET DTS_FechaRecojo=CAST(DATEADD(day," + objsol.IS_Ndias + ",GETDATE()) AS DATE),FK_ISE_Cod=3, DS_ImporteTotal="+objsol.DS_ImporteTotal+", IS_Ndias="+objsol.IS_Ndias+" where PK_IS_Cod =" + objsol.PK_IS_Cod;
+            SqlCommand unComando = new SqlCommand(update, conexion);
+            conexion.Open();
+            unComando.ExecuteNonQuery();
+            conexion.Close();
         }
     }
 }

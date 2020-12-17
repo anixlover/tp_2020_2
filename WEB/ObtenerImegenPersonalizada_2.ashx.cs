@@ -9,9 +9,9 @@ using DTO;
 namespace WEB
 {
     /// <summary>
-    /// Descripción breve de ObtenerImagenPersonalizada
+    /// Descripción breve de ObtenerImegenPersonalizada_2
     /// </summary>
-    public class ObtenerImagenPersonalizada : IHttpHandler
+    public class ObtenerImegenPersonalizada_2 : IHttpHandler
     {
         Log _Log = new Log();
         public void ProcessRequest(HttpContext context)

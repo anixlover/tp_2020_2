@@ -26,7 +26,7 @@
                         <ContentTemplate>
                             <asp:DropDownList ID="ddlEstadoSolicitud" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlEstadoSolicitud_SelectedIndexChanged" CssClass="form-control"></asp:DropDownList>
                             <br />
-                            <asp:GridView ID="gvPedidos" runat="server" AutoGenerateColumns="false" OnRowCommand="gvPedidos_RowCommand" EmptyDataText="No existen registros" ShowHeaderWhenEmpty="True" CssClass="table-borderless table table-bordered table-hover">
+                            <asp:GridView ID="gvPedidos" runat="server" AutoGenerateColumns="false" OnRowCommand="gvPedidos_RowCommand" EmptyDataText="No existen registros" ShowHeaderWhenEmpty="True" CssClass="table-borderless table table-bordered table-hover" Width="100%">
                                 <Columns>
                                     <asp:BoundField DataField="PK_IS_Cod" ItemStyle-HorizontalAlign="Center" HeaderText="Codigo de solicitud" />
                                     <asp:BoundField DataField="DTS_FechaEmicion" ItemStyle-HorizontalAlign="Center" HeaderText="Fecha de emision del pago" />
@@ -74,19 +74,20 @@
                             </p>
                         </div>
                         <asp:GridView ID="gvPersonalizado" runat="server" DataKeyNames="PK_IS_Cod" AutoGenerateColumns="False"
-                            EmptyDataText="No existen registros" ShowHeaderWhenEmpty="True" CssClass="table-borderless table table-bordered table-hover">
+                            EmptyDataText="No existen registros" ShowHeaderWhenEmpty="True" CssClass="table-borderless table table-bordered table-hover" Width="100%">
                             <Columns>
                                 <asp:TemplateField HeaderText="Imagen">
                                     <ItemTemplate>
-                                        <img src='ObtenerImagenPersonalizada.ashx?id=<%# Eval("PK_IS_Cod")%>' height="60px" width="60px" />
+                                        <img src='ObtenerImegenPersonalizada_2.ashx?id=<%# Eval("PK_IS_Cod")%>' height="60px" width="60px" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="PK_IS_Cod" ItemStyle-HorizontalAlign="Center" HeaderText="Código de solicitud" />
                                 <asp:BoundField DataField="DS_Largo" ItemStyle-HorizontalAlign="Center" HeaderText="Largo" />
                                 <asp:BoundField DataField="DS_Ancho" ItemStyle-HorizontalAlign="Center" HeaderText="Ancho" />
-                                <asp:BoundField DataField="VS_Comentario" ItemStyle-HorizontalAlign="Center" HeaderText="Cometario" />
+                                <asp:BoundField DataField="VS_Comentario" ItemStyle-HorizontalAlign="Center" HeaderText="Comentario" />
                                 <asp:BoundField DataField="IS_Cantidad" ItemStyle-HorizontalAlign="Center" HeaderText="Cantidad" />
                                 <asp:BoundField DataField="DS_PrecioAprox" ItemStyle-HorizontalAlign="Center" HeaderText="Precio Aprox(S/.)" />
+                                <asp:BoundField DataField="DS_ImporteTotal" ItemStyle-HorizontalAlign="Center" HeaderText="Importe total(S/.)" />
                             </Columns>
                         </asp:GridView>
                         <br />

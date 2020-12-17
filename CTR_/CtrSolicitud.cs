@@ -73,5 +73,17 @@ namespace CTR
         {
             return objDaoSolicitud.ListaMoldurasSolicitudXDiseñoPropio(objsol);
         }
+        public DataTable ListarSolicittudesDiseñoPropioEvaluar()
+        {
+            return objDaoSolicitud.SelectSolicitudesDiseñoPropio_Clientes();
+        }
+        public void AsignarFecha_e_Importe(DtoSolicitud objsol)
+        {
+            objDaoSolicitud.UpdateSolicitudFecha_RevisionFecha(objsol);
+        }
+        public void Rechazar(DtoSolicitud objsol)
+        {
+            objDaoSolicitud.UpdateEstadoSolicitud_Rechazado(objsol);
+        }
     }
 }

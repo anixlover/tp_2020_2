@@ -89,6 +89,12 @@ namespace WEB
                                     <span>Administrar Pedido</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href='EvaluarPedidosPersonalizados.aspx' class='collapse'>
+                                    <i data-feather='book-open'></i>
+                                    <span>Evaluar Pedidos Personalizados</span>
+                                </a>
+                            </li>
 
         ");
             this.Literal1.Text = html;
