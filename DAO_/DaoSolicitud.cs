@@ -196,5 +196,19 @@ namespace DAO
             unComando.ExecuteNonQuery();
             conexion.Close();
         }
+        public void RegistrarSolicitud_LD(DtoSolicitud objsolicitud)
+        {
+            SqlCommand command = new SqlCommand("SP_RegistrarSolicitud_C", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@impt", objsolicitud.DS_ImporteTotal);
+            command.Parameters.Add("@NewId", SqlDbType.Int).Direction = ParameterDirection.Output;
+            conexion.Open();
+
+            using (SqlDataReader dr = command.ExecuteReader())
+            {
+                objsolicitud.PK_IS_Cod = Convert.ToInt32(command.Parameters["@NewId"].Value);
+            }
+            conexion.Close();
+        }
     }
 }

@@ -18,13 +18,13 @@ namespace DAO
                 //return @"data source=DESKTOP-4LVLNRM; initial catalog=BD_SWCPEDR; integrated security=SSPI;";
 
                 //Conexion Alvaro
-                //return "data source=DESKTOP-IAELG6V\\SQLEXPRESS; initial catalog=BD_SWCPEDR; integrated security=SSPI;";
+                return "data source=DESKTOP-IAELG6V\\SQLEXPRESS; initial catalog=BD_SWCPEDR; integrated security=SSPI;";
 
                 //Conexion Mirko
                 //return @"Data Source=(Local);Initial Catalog=BD_SWCPEDR;Integrated Security=True";
 
                 //Conexion André
-                return @"data source=LAPTOP-I2LRHJOD; initial catalog=BD_SWCPEDR; integrated security=SSPI;";
+                //return @"data source=LAPTOP-I2LRHJOD; initial catalog=BD_SWCPEDR; integrated security=SSPI;";
             }
         }
     }

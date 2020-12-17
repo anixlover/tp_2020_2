@@ -124,7 +124,7 @@
                                             <h4 class="mb-4">
                                             <p>
                                                 Cantidad:
-                                                <asp:TextBox ID="txtCantidad" textmode="Number" Text="1" class="form-control autonumber" data-v-max="600" data-v-min="1" runat="server" required></asp:TextBox>
+                                                <asp:TextBox ID="txtCantidad" TextMode="Number" Text="1" class="form-control autonumber" data-v-max="500" data-v-min="1" runat="server" required></asp:TextBox>
 
                                             </p>
 
@@ -144,12 +144,9 @@
                                                     <a href="javascript:history.back()" style="color: white"><span class="btn-label"><i class="mdi dripicons-return"></i></span>Volver Atrás</a>
                                                 </button>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                                                <%--<asp:Button class="btn btn-success waves-effect waves-light fa" Text="&#xf217; Agregar al carrito" runat="server" />--%>
                                                 <asp:LinkButton ID="btnAgregarCarrito" runat="server" type="button" class="btn btn-success waves-effect waves-light" OnClick="btnAgregarCarrito_Click">
                                                     <span class="btn-label"><i class="mdi mdi-cart"></i></span>Agregar al carrito
                                                 </asp:LinkButton>
-                                                
                                                 <%--<button type="button" class="btn btn-success waves-effect waves-light">
                                                     <span class="btn-label"><i class="mdi mdi-cart"></i></span>Agregar al carrito
                                                 </button>--%>
@@ -190,6 +187,21 @@
     <!-- App js -->
     <script src="../assets/js/app.min.js"></script>
     <script src="assets/js/Aplicacion/UploadFile.js"></script>
+
+    <script>
+        function showSuccessMessage1() {
+            swal({
+                title: "Agregado Correctamente!",
+                text: "Pulsa el botón y se te redirigirá",
+                type: "success"
+            }, function (redirect) {
+                if (redirect) {
+                    window.location.href = "Administrar_Pedido.aspx"
+                }
+            });
+        }
+    </script>
+
 
 
 </asp:Content>

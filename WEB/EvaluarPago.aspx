@@ -88,8 +88,10 @@
                                         <%--end monto--%>
 
                                         <%--ddl decision--%>
+                                               
                                         <asp:UpdatePanel runat="server" UpdateMode="Conditional" ID="updPanelddl" ClientIDMode="Static">
-                                            <ContentTemplate>
+                                            <ContentTemplate> 
+
                                                 <asp:DropDownList runat="server" ID="ddl_decision" ClientIDMode="Static" CssClass="form-control" Width="30%" OnSelectedIndexChanged="ddl_TipoComprobante_SelectedIndexChanged">
                                                     <asp:ListItem Value="0" Text="Seleccionar" Selected="True" />
                                                     <asp:ListItem Value="1" Text="Aprobar" />
@@ -97,6 +99,7 @@
                                                 </asp:DropDownList>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
+                                                
                                         <%--end ddl decision--%>
                                         <br>
                                         <br>
@@ -109,7 +112,7 @@
 
                                         <%--boton regresar--%>
                                         <button type="button" onclick="" class="btn btn-danger waves-effect">
-                                            <a href="javascript:history.back()" style="color: white"><span class="btn-label"><i class="mdi dripicons-return"></i></span>Volver Atrás</a>
+                                            <a href="Administrar_Pedido.aspx" style="color: white"><span class="btn-label"><i class="mdi dripicons-return"></i></span>Volver Atrás</a>
                                         </button>
                                         <%--end boton regresar--%>
                                     </div>
@@ -154,7 +157,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_Js" runat="Server"> 
     <script>
-        function showSuccessMessage1() {
+        function updPanelddl() {
             swal({
                 title: "ERROR!",
                 text: "UPS! No se pudo completar la accion, vuelva a recargar la pagina!    ",
