@@ -154,6 +154,7 @@
                                                     <div class="col-md-3">
                                                         <asp:Label Text="Sub Total: " runat="server"></asp:Label>
                                                         <asp:TextBox runat="server" ID="txtSubTotal" class="form-control" ReadOnly></asp:TextBox>
+                                                        <asp:HiddenField runat="server" ID="txtunidadmetrica" />
                                                     </div>
                                                     <div class="col-lg-12">
                                                         <br />
