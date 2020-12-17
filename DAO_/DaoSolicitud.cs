@@ -207,6 +207,28 @@ namespace DAO
             conexion.Close();
             return dtsolicitudes;
         }
+        public void Actualizar_Estado_SolicitudX1(DtoSolicitud objsol)
+        {
+            string update = "UPDATE T_SOLICITUD SET FK_ISE_Cod = 8 where PK_IS_Cod =" + objsol.PK_IS_Cod;
+            conexion.Open();
+            SqlCommand unComando = new SqlCommand(update, conexion);
+            unComando.ExecuteNonQuery();
+            conexion.Close();
+        }
+        public void RegistrarSolicitud_LD(DtoSolicitud objsolicitud)
+        {
+            SqlCommand command = new SqlCommand("SP_RegistrarSolicitud_C", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@impt", objsolicitud.DS_ImporteTotal);
+            command.Parameters.Add("@NewId", SqlDbType.Int).Direction = ParameterDirection.Output;
+            conexion.Open();
+
+            using (SqlDataReader dr = command.ExecuteReader())
+            {
+                objsolicitud.PK_IS_Cod = Convert.ToInt32(command.Parameters["@NewId"].Value);
+            }
+            conexion.Close();
+        }
         public void UpdateSolicitudFecha_RevisionFecha(DtoSolicitud objsol)
         {
             string update = "UPDATE T_Solicitud SET DTS_FechaRecojo=CAST(DATEADD(day," + objsol.IS_Ndias + ",GETDATE()) AS DATE),FK_ISE_Cod=3, DS_ImporteTotal="+objsol.DS_ImporteTotal+", IS_Ndias="+objsol.IS_Ndias+" where PK_IS_Cod =" + objsol.PK_IS_Cod;

@@ -58,9 +58,9 @@ namespace WEB
         {
             string nombre = Session["NombreUsuario"].ToString();
 
-            string html = string.Format (
+            string html = string.Format(
                @"
-            <a class='nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light' data-toggle='dropdown' href='#' role='button' aria-haspopup='false' aria-expanded='false'>"+
+            <a class='nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light' data-toggle='dropdown' href='#' role='button' aria-haspopup='false' aria-expanded='false'>" +
                                 "<span class=pro-user-name ml-1>" +
                                     "Hola " + nombre + "<i class='mdi mdi-chevron-down'></i>" +
                                 "</span>" +
@@ -102,13 +102,13 @@ namespace WEB
         public void perfilVendedor()
         {
             string html = string.Format(@"
-
-                             <li>
-                                <a href='RegistrarClienteVendedor.aspx' class='collapse'>
-                                    <i data-feather='user-plus'></i>
-                                    <span>Registrar Cliente</span>
+                           <li>     
+                                <a href='Administrar_Pedido.aspx' class='collapse'>
+                                    <i data-feather='book-open'></i>
+                                    <span>Administrar Pedido</span>
                                 </a>
                             </li>
+          
         ");
             this.Literal1.Text = html;
         }

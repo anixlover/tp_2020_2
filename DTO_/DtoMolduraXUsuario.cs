@@ -6,6 +6,7 @@ namespace DTO
 {
     public class DtoMolduraXUsuario
     {
+        public int PK_IMU_Cod { get; set; }
         public string FK_VU_Dni { get; set; }
         public int FK_IM_Cod { get; set; }
         public int IMU_Cantidad { get; set; }

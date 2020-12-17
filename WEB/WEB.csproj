@@ -258,6 +258,7 @@
     <Content Include="assets\images\users\user-8.jpg" />
     <Content Include="assets\images\users\user-9.jpg" />
     <Content Include="assets\js\Aplicacion\RealizarCompra.js" />
+    <Content Include="assets\js\Aplicacion\RealizarPedidoPersonalizado.js" />
     <Content Include="assets\js\Aplicacion\UploadFile.js" />
     <Content Include="assets\js\app.js" />
     <Content Include="assets\js\app.min.js" />

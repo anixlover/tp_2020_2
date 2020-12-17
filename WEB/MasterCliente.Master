@@ -59,6 +59,16 @@
                 <nav class="list-unstyled topnav-menu float-right mb-0">
                     <a>
                         <li class="dropdown notification-list topbar-dropdown">
+                        <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" href="Administrar_Solicitud_Pedido.aspx" role="button">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="pro-user-name ml-1">Carrito
+                            </span>
+                        </a>
+
+                    </li>
+                    </a>
+                    <a>
+                        <li class="dropdown notification-list topbar-dropdown">
                         <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" href="#" role="button">
                             <i class="mdi mdi-google-my-business"></i>
                             <span class="pro-user-name ml-1">Nosotros
@@ -247,7 +257,8 @@
     <script src="../assets/js/pages/sweet-alerts.init.js"></script>
 
 
-
+      <!-- Vendor js -->
+    <script src="../assets/js/vendor.min.js"></script>
 
     <!-- App js -->
     <script src="../assets/js/app.min.js"></script>
