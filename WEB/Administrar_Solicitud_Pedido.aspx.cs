@@ -115,7 +115,7 @@ namespace WEB
                         Image1.ImageUrl = "data:Image/png;base64," + strbase64;
                     }
                     #endregion
-                    //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "none", "<script>$('#defaultmodal').modal('show');</script>", false);
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "none", "<script>$('#defaultmodal').modal('show');</script>", false);
 
                 }
                 catch (Exception ex)
