@@ -160,7 +160,7 @@ namespace DAO
         {
             try
             {
-                SqlConnection con = new SqlConnection(@"data source=DESKTOP-IAELG6V\SQLEXPRESS; initial catalog=BD_SWCPEDR; integrated security=SSPI;");
+                SqlConnection con = new SqlConnection(@"data source=(local); initial catalog=BD_SWCPEDR; integrated security=SSPI;");
                 int valor_retornado = 0;
                 SqlCommand cmd = new SqlCommand("SELECT IM_Stock FROM T_MOLDURA WHERE PK_IM_Cod=" + objMoldura.PK_IM_Cod, con);
 

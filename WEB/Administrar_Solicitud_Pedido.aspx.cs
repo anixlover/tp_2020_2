@@ -42,7 +42,7 @@ namespace WEB
                     }
                     else
                     {
-                        Response.Redirect("Login.aspx");
+                        Response.Redirect("~/IniciarSesion.aspx");
                     }
                 }
                 catch (Exception ex)
