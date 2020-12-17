@@ -72,7 +72,8 @@ namespace WEB
 
         protected void btnAsignarFecha_Importe_Click(object sender, EventArgs e)
         {
-            if (txtImporte.Text == "" | txtNdias.Text == "")
+            objDtoSolicitud.PK_IS_Cod = int.Parse(lblid.Text);
+            if (txtImporte.Text == ""| txtNdias.Text == "" )
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Complete espacios en BLANCO!!'})", true);
                 return;
@@ -82,17 +83,42 @@ namespace WEB
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Numero de día INVALIDO!!'})", true);
                 return;
             }
-            objDtoSolicitud.PK_IS_Cod = int.Parse(lblid.Text);
             objDtoSolicitud.IS_Ndias = int.Parse(txtNdias.Text);
             objDtoSolicitud.DS_ImporteTotal = double.Parse(txtImporte.Text);
             objCtrSolicitud.AsignarFecha_e_Importe(objDtoSolicitud);
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Evaluación Realizada!',text: 'Datos ENVIADOS!!'}).then(function(){window.location.href='EvaluarPedidosPersonalizados.aspx'})", true);
         }
 
-        protected void btnRechazar_Click(object sender, EventArgs e)
+        protected void btnRechazar_Click1(object sender, EventArgs e)
         {
-            objDtoSolicitud.PK_IS_Cod = int.Parse(lblid.Text);
+            string id = lblid.Text;
+            objDtoSolicitud.PK_IS_Cod = int.Parse(id);
             objCtrSolicitud.Rechazar(objDtoSolicitud);
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Solicitud Rechazada!',text: '!'}).then(function(){window.location.href='EvaluarPedidosPersonalizados.aspx'})", true);
+        }
+
+        protected void btnMandarObservacion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtObservacion.Text == null | txtObservacion.Text=="")
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Complete espacios en BLANCO!!'})", true);
+                    return;
+                }
+                else
+                {
+                    objDtoSolicitud.PK_IS_Cod = int.Parse(lblid.Text);
+                    objDtoSolicitud.VS_Comentario = txtObservacion.Text;
+                    objCtrSolicitud.MandarObservacion(objDtoSolicitud);
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Observación Realizada!',text: 'Datos ENVIADOS!!'}).then(function(){window.location.href='EvaluarPedidosPersonalizados.aspx'})", true);
+                }
+            }
+            catch (Exception Ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'"+Ex.Message+"'})", true);
+                throw;
+            }
         }
     }
 }
