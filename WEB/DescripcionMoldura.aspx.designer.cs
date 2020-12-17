@@ -132,6 +132,15 @@ namespace WEB
         protected global::System.Web.UI.WebControls.Label txtdescripcion;
 
         /// <summary>
+        /// Btnagregar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel Btnagregar;
+
+        /// <summary>
         /// btnAgregarCarrito control.
         /// </summary>
         /// <remarks>

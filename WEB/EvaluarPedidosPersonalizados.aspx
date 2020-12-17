@@ -85,7 +85,8 @@
                                     <p style="color: #000000; font-style: normal; font-weight: bold"> Importe Total:<asp:TextBox ID="txtImporte" CssClass="form-control" runat="server" TextMode="Number" step=".01"></asp:TextBox> </p>
                                     <p style="color: #000000; font-style: normal; font-weight: bold"> Observación: <asp:TextBox ID="txtObservacion"  CssClass="form-control" runat="server" TextMode="MultiLine"></asp:TextBox>
                                     <asp:Button ID="btnAsignarFecha_Importe" runat="server" Text="Asignar" CssClass="btn btn-warning" OnClick="btnAsignarFecha_Importe_Click" />
-                                    <asp:Button ID="btnRechazar" runat="server" Text="Rechazar" CssClass="btn btn-danger" OnClick="btnRechazar_Click"/>
+                                    <asp:Button ID="btnRechazar" runat="server" Text="Rechazar" CssClass="btn btn-danger" OnClick="btnRechazar_Click1"/>
+                                    <asp:Button ID="btnMandarObservacion" runat="server" Text="Mandar Observación" CssClass="btn btn-primary" OnClick="btnMandarObservacion_Click" />
                                 </div>  
                             </div>
                         </div>

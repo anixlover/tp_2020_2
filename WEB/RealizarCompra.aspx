@@ -125,7 +125,7 @@
                                     <br />
                                     <div class="row">
                                         <label for="heard">Importe: <span class="text-danger">*</span></label>
-                                        <asp:TextBox ID="txtImporte" type="number" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtImporte" type="number" runat="server" CssClass="form-control" step=".01"></asp:TextBox>
                                     </div>
                                     <br />
                                     <div class="row">

@@ -139,14 +139,21 @@
                                             <%--end descripcion--%>
 
                                             <%--boton atras y agregar al carrito--%>
-                                            <div>
                                                 <button type="button" onclick="" class="btn btn-danger waves-effect">
                                                     <a href="javascript:history.back()" style="color: white"><span class="btn-label"><i class="mdi dripicons-return"></i></span>Volver Atrás</a>
                                                 </button>
+                                            <div>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <asp:LinkButton ID="btnAgregarCarrito" runat="server" type="button" class="btn btn-success waves-effect waves-light" OnClick="btnAgregarCarrito_Click">
+
+                                                <asp:UpdatePanel ID="Btnagregar" runat="server" UpdateMode="Conditional">
+                                                    <ContentTemplate>
+                                                        <asp:LinkButton ID="btnAgregarCarrito" runat="server" type="button" class="btn btn-success waves-effect waves-light" OnClick="btnAgregarCarrito_Click">
                                                     <span class="btn-label"><i class="mdi mdi-cart"></i></span>Agregar al carrito
-                                                </asp:LinkButton>
+                                                        </asp:LinkButton>
+                                                    </ContentTemplate>
+                                                </asp:UpdatePanel>
+
+
                                                 <%--<button type="button" class="btn btn-success waves-effect waves-light">
                                                     <span class="btn-label"><i class="mdi mdi-cart"></i></span>Agregar al carrito
                                                 </button>--%>
@@ -188,11 +195,13 @@
     <script src="../assets/js/app.min.js"></script>
     <script src="assets/js/Aplicacion/UploadFile.js"></script>
 
+    
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="cph_Js" runat="Server">
     <script>
         function showSuccessMessage1() {
             swal({
                 title: "Agregado Correctamente!",
-                text: "Pulsa el botón y se te redirigirá",
                 type: "success"
             }, function (redirect) {
                 if (redirect) {
@@ -201,8 +210,4 @@
             });
         }
     </script>
-
-
-
 </asp:Content>
-

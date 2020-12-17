@@ -93,5 +93,9 @@ namespace CTR
         {
             objDaoSolicitud.RegistrarSolicitud_LD(objsolicitud);
         }
+        public void MandarObservacion(DtoSolicitud objsolicitud) 
+        {
+            objDaoSolicitud.UpdateEstadoSolicitud_Observacion(objsolicitud);
+        }
     }
 }
