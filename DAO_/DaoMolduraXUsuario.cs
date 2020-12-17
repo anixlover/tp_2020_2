@@ -60,8 +60,8 @@ namespace DAO
         {
             SqlCommand command = new SqlCommand("SP_Registrar_MXU_C", conexion);
             command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@idU", objMolduraxUsuario.FK_VU_Dni);
-            command.Parameters.AddWithValue("@idM", objMolduraxUsuario.FK_IM_Cod);
+            command.Parameters.AddWithValue("@idDni", objMolduraxUsuario.FK_VU_Dni);
+            command.Parameters.AddWithValue("@idCodM", objMolduraxUsuario.FK_IM_Cod);
             command.Parameters.AddWithValue("@cant", objMolduraxUsuario.IMU_Cantidad);
             command.Parameters.AddWithValue("@pre", objMolduraxUsuario.DMU_Precio);
             conexion.Open();
@@ -86,6 +86,58 @@ namespace DAO
             SqlCommand command = new SqlCommand("SP_Eliminar_MXU_C", conexion);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@id", objmxu.FK_IM_Cod);
+            conexion.Open();
+            command.ExecuteNonQuery();
+            conexion.Close();
+        }
+        public void ObtenerMXU(DtoMoldura objmoldura, DtoMolduraXUsuario objmxu, DtoTipoMoldura tm)
+        {
+            SqlCommand command = new SqlCommand("SP_Detalle_MXU_C", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@Id", objmxu.PK_IMU_Cod);
+            DataSet ds = new DataSet();
+            conexion.Open();
+            SqlDataAdapter moldura = new SqlDataAdapter(command);
+            moldura.Fill(ds);
+            moldura.Dispose();
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                objmxu.PK_IMU_Cod = Convert.ToInt32(reader[0].ToString());
+                objmoldura.PK_IM_Cod = Convert.ToInt32(reader[1].ToString());
+                tm.PK_ITM_Tipo = Convert.ToInt32(reader[2].ToString());
+                objmoldura.VM_Descripcion = reader[3].ToString();
+
+                tm.VTM_Nombre = reader[4].ToString();
+                objmoldura.DM_Largo = Convert.ToDouble(reader[5].ToString());
+                objmoldura.DM_Ancho = Convert.ToDouble(reader[6].ToString());
+                tm.VTM_UnidadMetrica = reader[7].ToString();
+                objmxu.IMU_Cantidad = Convert.ToInt32(reader[8].ToString());
+                objmxu.DMU_Precio = Convert.ToDouble(reader[9].ToString());
+                objmoldura.DM_Precio = Convert.ToDouble(reader[10].ToString());
+            }
+            conexion.Close();
+            conexion.Dispose();
+        }
+        public void actualizarMXU(DtoMolduraXUsuario objmxu)
+        {
+            SqlCommand command = new SqlCommand("SP_ActualizarCant_MXU_C", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@id", objmxu.PK_IMU_Cod);
+            command.Parameters.AddWithValue("@cant", objmxu.IMU_Cantidad);
+            command.Parameters.AddWithValue("@precio", objmxu.DMU_Precio);
+            conexion.Open();
+            command.ExecuteNonQuery();
+            conexion.Close();
+        }
+        public void actualizarMXUSol(DtoMolduraXUsuario objmxu)
+        {
+            SqlCommand command = new SqlCommand("SP_ActualizarSol_MXU_C", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@id", objmxu.PK_IMU_Cod);
+            command.Parameters.AddWithValue("@sol", objmxu.FK_IS_Cod);
             conexion.Open();
             command.ExecuteNonQuery();
             conexion.Close();

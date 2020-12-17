@@ -41,5 +41,17 @@ namespace CTR
         {
             return objDaoMolduraXUsuario.SelectSolicitudesxDNI_y_Estado(objDtoMolduraXUsuario, estado);
         }
+        public void obtenerMoldura(DtoMolduraXUsuario objdtoMolduraxUsuario, DtoMoldura objm, DtoTipoMoldura tm)
+        {
+            objDaoMolduraXUsuario.ObtenerMXU(objm, objdtoMolduraxUsuario, tm);
+        }
+        public void actualizarMXU(DtoMolduraXUsuario objdtoMolduraxUsuario)
+        {
+            objDaoMolduraXUsuario.actualizarMXU(objdtoMolduraxUsuario);
+        }
+        public void actualizarMXUSol(DtoMolduraXUsuario objdtoMolduraxUsuario)
+        {
+            objDaoMolduraXUsuario.actualizarMXUSol(objdtoMolduraxUsuario);
+        }
     }
 }

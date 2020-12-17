@@ -153,7 +153,6 @@ namespace DAO
                 objmoldura.DM_Precio = Convert.ToDouble(reader[9].ToString());
                 objmoldura.VBM_Imagen = (byte[])reader[10];
             }
-
             conexion.Close();
             conexion.Dispose();
         }
@@ -161,7 +160,7 @@ namespace DAO
         {
             try
             {
-                SqlConnection con = new SqlConnection(@"data source=DESKTOP-4LVLNRM; initial catalog=BD_SWCPEDR; integrated security=SSPI;");
+                SqlConnection con = new SqlConnection(@"data source=DESKTOP-IAELG6V\SQLEXPRESS; initial catalog=BD_SWCPEDR; integrated security=SSPI;");
                 int valor_retornado = 0;
                 SqlCommand cmd = new SqlCommand("SELECT IM_Stock FROM T_MOLDURA WHERE PK_IM_Cod=" + objMoldura.PK_IM_Cod, con);
 

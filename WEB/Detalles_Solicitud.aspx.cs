@@ -32,7 +32,7 @@ namespace WEB
         public void CargarMolduras2()
         {
             dtoSolicitud.PK_IS_Cod = Convert.ToInt32(Session["idSolicitudPago"]);
-
+            //pendiente de pago A aprobado
             if (ctrSolicitud.leerSolicitudTipo(dtoSolicitud))
             {
                 if (dtoSolicitud.VS_TipoSolicitud == "Personalizado por catalogo" || dtoSolicitud.VS_TipoSolicitud == "Catalogo")
