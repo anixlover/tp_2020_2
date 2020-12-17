@@ -12,7 +12,11 @@
 
     <link href="../assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" />
     <link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" />
-
+    <script src="../../plugins/momentjs/moment.js"></script>
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
+    <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
+    <link href="../assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
+    <link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
     <!-- icons -->
     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 </asp:Content>
@@ -38,13 +42,13 @@
                     <ContentTemplate>
                         <div>
                             <asp:GridView ID="gvCarrito"
-                                DataKeyNames="PK_IMU_Cod,VM_Descripcion,VTM_Nombre,IMU_Cantidad,DMU_Precio" runat="server" AutoGenerateColumns="False"
+                                DataKeyNames="PK_IMU_Cod,VM_Descripcion,VTM_Nombre,IMU_Cantidad,DMU_Precio,FK_IM_Cod" runat="server" AutoGenerateColumns="False"
                                 EmptyDataText="No existen registros, agreguen molduras a su carrito" ShowHeaderWhenEmpty="True"
                                 OnRowCommand="gvCarrito_RowCommand" CssClass="table-borderless table table-bordered table-hover">
                                 <Columns>
                                     <asp:TemplateField HeaderText="Imagen">
                                         <ItemTemplate>
-                                            <img src='ObtieneImagen.ashx?id=<%# Eval("PK_IMU_Cod")%>' height="80px" width="80px" />
+                                            <img src='ObtieneImagen.ashx?id=<%# Eval("FK_IM_Cod")%>' height="80px" width="80px" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:BoundField DataField="PK_IMU_Cod" HeaderText="Codigo" />
@@ -79,9 +83,14 @@
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-                <button type="button" class="btn btn-primary" style="float: right" data-toggle="modal" id="btncrear" data-target="#exampleModal" runat="server">
-                    Crear solicitud
-                </button>
+
+                <asp:LinkButton ID="btncrear" runat="server" type="button" class="btn btn-success waves-effect waves-light"  onclick="btnPagar_Click1">
+                                                    <span class="btn-label"></span>Crear solicitud
+                </asp:LinkButton>
+
+               
+
+
                 <br />
                 <br />
             </div>
@@ -266,6 +275,17 @@
         </div>
     </div>
 
+
+    <script>
+        function showSuccessMessage2() {
+            $('#defaultmodal').modal('hide');
+            swal(
+                'Excelente',
+                'Todo Actualizado!',
+                'success'
+            );
+        };
+    </script>
 
 
     <!-- Right bar overlay-->

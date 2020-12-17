@@ -36,10 +36,10 @@
     <link href="../assets/css/bootstrap-creative-dark.min.css" rel="stylesheet" type="text/css" />
     <link href="../assets/css/app-creative-dark.min.css" rel="stylesheet" type="text/css" />
 
-    
+
 
     <!-- icons -->
-    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -47,7 +47,7 @@
     </asp:ContentPlaceHolder>
 </head>
 
-    <%--<asp:ContentPlaceHolder ID="cph_Js" runat="server">
+<%--<asp:ContentPlaceHolder ID="cph_Js" runat="server">
     </asp:ContentPlaceHolder>--%>
 <body class="loading" data-layout-mode="horizontal" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
     <!-- Begin page -->
@@ -59,28 +59,28 @@
                 <nav class="list-unstyled topnav-menu float-right mb-0">
                     <a>
                         <li class="dropdown notification-list topbar-dropdown">
-                        <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" href="Administrar_Solicitud_Pedido.aspx" role="button">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span class="pro-user-name ml-1">Carrito
-                            </span>
-                        </a>
+                            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" href="Administrar_Solicitud_Pedido.aspx" role="button">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="pro-user-name ml-1">Carrito
+                                </span>
+                            </a>
 
-                    </li>
+                        </li>
                     </a>
                     <a>
                         <li class="dropdown notification-list topbar-dropdown">
-                        <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" href="#" role="button">
-                            <i class="mdi mdi-google-my-business"></i>
-                            <span class="pro-user-name ml-1">Nosotros
-                            </span>
-                        </a>
+                            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" href="#" role="button">
+                                <i class="mdi mdi-google-my-business"></i>
+                                <span class="pro-user-name ml-1">Nosotros
+                                </span>
+                            </a>
 
-                    </li>
+                        </li>
                     </a>
-                    
+
 
                     <li class="dropdown notification-list topbar-dropdown">
-                        <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light"  href="Inspeccionar_Catalogo.aspx" role="button">
+                        <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" href="Inspeccionar_Catalogo.aspx" role="button">
 
                             <i class="mdi mdi-view-grid"></i>
                             <span class="pro-user-name ml-1">Catálogo
@@ -88,7 +88,7 @@
                         </a>
                     </li>
                     <li class="dropdown notification-list topbar-dropdown">
-                        <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" href="#" role="button" >
+                        <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" href="#" role="button">
 
                             <i class="mdi mdi-lightbulb-on-outline"></i>
                             <span class="pro-user-name ml-1">Ideas
@@ -105,7 +105,7 @@
                         </a>--%>
                         <asp:Literal ID="Literal1" runat="server"></asp:Literal>
                     </li>
-<%--
+                    <%--
                     Ejemplo
                     <li class="dropdown notification-list topbar-dropdown">
                         <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="IniciarSesion.aspx" role="button" aria-haspopup="false" aria-expanded="false">
@@ -189,6 +189,10 @@
                         <div>
                             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                             </asp:ContentPlaceHolder>
+
+
+                            <asp:ContentPlaceHolder ID="cph_Js" runat="server">
+                            </asp:ContentPlaceHolder>
                         </div>
                     </form>
                     <!-- end page title -->
@@ -255,10 +259,6 @@
 
     <!-- Sweet alert init js-->
     <script src="../assets/js/pages/sweet-alerts.init.js"></script>
-
-
-      <!-- Vendor js -->
-    <script src="../assets/js/vendor.min.js"></script>
 
     <!-- App js -->
     <script src="../assets/js/app.min.js"></script>

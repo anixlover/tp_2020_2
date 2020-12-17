@@ -140,10 +140,7 @@ namespace WEB
                             _log.CustomWriteOnLog("AgregarCompraMoldura", " objDtoMolduraxUsuario.DSM_Precio = " + objDtoMolduraxUsuario.DMU_Precio.ToString());
 
                             objCtrMolduraXUsuario.registrarNuevaMoldura(objDtoMolduraxUsuario);
-                            //Utils.AddScriptClientUpdatePanel(updPanelddl, "showSuccessMessage1()");
-
-                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "none", "<script>$('#showSuccessMessage1').modal('show');</script>", false);
-
+                            Utils.AddScriptClientUpdatePanel(Btnagregar, "showSuccessMessage1   ()");
                         }
                         else //tipo baquetones
                         {
