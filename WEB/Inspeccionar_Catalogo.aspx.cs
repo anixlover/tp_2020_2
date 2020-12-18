@@ -43,7 +43,7 @@ namespace WEB
             dt = objCtrMoldura.ListarTodoMoldura(objDtoMoldura);
             string Image1;
             string HtmlRepeater = "";
-            string cs = ConfigurationManager.ConnectionStrings["conexion"].ConnectionString;
+            //string cs = ConfigurationManager.ConnectionStrings["conexion"].ConnectionString;
 
             foreach (DataRow row in dt.Rows)
             {
@@ -61,27 +61,29 @@ namespace WEB
                 _log.CustomWriteOnLog("Descripcion", "VM_Descripcion : " + VM_Descripcion);
 
                 objDtoMoldura.PK_IM_Cod = int.Parse(PK_IM_Cod);
+                objCtrMoldura.ObtenerMoldura(objDtoMoldura, objDtoTipoMoldura);
 
-                using (SqlConnection con = new SqlConnection(cs))
-                {
-                    SqlCommand cmd = new SqlCommand("SP_GetImageById", con);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    SqlParameter paramId = new SqlParameter()
-                    {
-                        ParameterName = "@Id",
-                        Value = int.Parse(PK_IM_Cod)
-                    };
-                    _log.CustomWriteOnLog("Codigo baqueton", "id" + int.Parse(PK_IM_Cod));
+                //using (SqlConnection con = new SqlConnection(cs))
+                //{
+                //    SqlCommand cmd = new SqlCommand("SP_GetImageById", con);
+                //    cmd.CommandType = CommandType.StoredProcedure;
+                //    SqlParameter paramId = new SqlParameter()
+                //    {
+                //        ParameterName = "@Id",
+                //        Value = int.Parse(PK_IM_Cod)
+                //    };
+                //    _log.CustomWriteOnLog("Codigo baqueton", "id" + int.Parse(PK_IM_Cod));
 
-                    cmd.Parameters.Add(paramId);
+                //    cmd.Parameters.Add(paramId);
 
-                    con.Open();
-                    byte[] bytes = (byte[])cmd.ExecuteScalar();
-                    con.Close();
-                    string strbase64 = Convert.ToBase64String(bytes);
+                //    con.Open();
+                //    byte[] bytes = (byte[])cmd.ExecuteScalar();
+                //    con.Close();
+                //    string strbase64 = Convert.ToBase64String(bytes);
 
-                    Image1 = "data:Image/png;base64," + strbase64;
-                }
+                //    Image1 = "data:Image/png;base64," + strbase64;
+                //}
+                Image1 = "data:Image/png;base64," + Convert.ToBase64String(objDtoMoldura.VBM_Imagen);
                 HtmlRepeater +=
                        "<div class='col-sm-6 col-xl-3 filter-item all web illustrator'>" +
                             "<div class=gal-box>" +
