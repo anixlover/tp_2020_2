@@ -16,20 +16,39 @@ namespace WEB
         CtrUsuario objCtrUsuario = new CtrUsuario();
         DtoDatoFactura objDatoFactura = new DtoDatoFactura();
         CtrDatoFactura objCtrDatoFactura = new CtrDatoFactura();
+        Log _log = new Log();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
-                txtNombre.Text = (string)Session["NombreUsuario"];
-                txtApellidos.Text = (string)Session["ApellidosUsuario"];
-                txtCorreo.Text = (string)Session["CorreoUsuario"];
-                DateTime FechaNac = (DateTime)Session["FechaNacUsuario"];
-                txtFechaNac.Text = FechaNac.ToString("yyyy-MM-dd");
-                
-                CargarRUCS();
-                //LRucs.Items.Add(objCtrDatoFactura.ListarRucs(objDatoFactura));                
+
+
+                _log.CustomWriteOnLog("Administral Perfil", "Carga de pagina");
+
+                try
+                {
+                    if (Session["DNIUsuario"] != null)
+                    {
+                        txtNombre.Text = (string)Session["NombreUsuario"];
+                        txtApellidos.Text = (string)Session["ApellidosUsuario"];
+                        txtCorreo.Text = (string)Session["CorreoUsuario"];
+                        DateTime FechaNac = (DateTime)Session["FechaNacUsuario"];
+                        txtFechaNac.Text = FechaNac.ToString("yyyy-MM-dd");
+
+                        CargarRUCS();
+                    }
+                    else
+                    {
+                        Response.Redirect("~/IniciarSesion.aspx");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _log.CustomWriteOnLog("Administral Perfil", ex.Message + "Stac" + ex.StackTrace);
+                }
+
             }
-            
+
         }
 
         protected void btnModificar_Click(object sender, EventArgs e)
@@ -68,7 +87,7 @@ namespace WEB
         }
         public void CargarRUCS()
         {
-            objDatoFactura.FK_VU_Dni= Session["DNIUsuario"].ToString();
+            objDatoFactura.FK_VU_Dni = Session["DNIUsuario"].ToString();
             LRucs.DataSource = objCtrDatoFactura.ListarRucs(objDatoFactura);
             LRucs.DataValueField = "VDF_Ruc";
             LRucs.DataTextField = "VDF_Ruc";
