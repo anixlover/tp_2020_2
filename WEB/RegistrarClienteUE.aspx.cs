@@ -36,7 +36,7 @@ namespace WEB
         }        
         public void RegistrarUE(DtoUsuario objUsuario)//<----Metodo de Registro
         {
-            if (objCtrUsuario.formatoDni(objUsuario) == false | txtDNI.Text.Contains("00")) //Probar si el Dni introducido cumple con el formato
+            if (objCtrUsuario.formatoDni(objUsuario) == false | txtDNI.Text.Contains("000")) //Probar si el Dni introducido cumple con el formato
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Dni INVALIDO!!'});", true);
                 return;

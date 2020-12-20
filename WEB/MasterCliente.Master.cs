@@ -47,7 +47,7 @@ namespace WEB
         public void perfil_Socio()
         {
             string html = string.Format(@"
-                        <a class='nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light' href='IniciarSesion.aspx'>
+                        <a id='login' class='nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light' href='IniciarSesion.aspx'>
 
                             <i class='fe-log-in'></i>
                             <span class='pro-user-name ml-1'>Iniciar Sesión

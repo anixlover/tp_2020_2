@@ -12,7 +12,8 @@
     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
     <link href="assets/css/StyleSheet1.css" rel="stylesheet" type="text/css" />
-
+    <!-- Tour css -->
+    <link href="../assets/libs/hopscotch/css/hopscotch.min.css" rel="stylesheet" type="text/css" />    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <section class="seccion contenedor clearfix">
@@ -79,6 +80,26 @@
             }
         }
     </script>
+    <!-- Tour page js -->
+    <script src="../assets/libs/hopscotch/js/hopscotch.min.js"></script>
+
+    <!-- Tour init js-->
+    <script src="../assets/js/pages/tour.init.js"></script>
+    <script>
+        var tour = {
+            id: "hello-hopscotch",
+            steps: [
+                {
+                    title: "Contenido",
+                    content: "dar click aqui para ver la descripción de la moldura y de tener cuenta podrá agregarla al carrito de compras",
+                    target: "btnSave",
+                    placement: "bottom"
+                }
+            ]
+        };
+        hopscotch.startTour(tour);
+    </script>
+
 </asp:Content>
 <%--<asp:Content ID="Content4" ContentPlaceHolderID="cph_Js" runat="Server">
 

@@ -15,6 +15,8 @@
     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
     <link href="assets/css/StyleSheet1.css" rel="stylesheet" type="text/css" />
+    <!-- Tour css -->
+    <link href="../assets/libs/hopscotch/css/hopscotch.min.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeout="3600"></asp:ScriptManager>
@@ -142,7 +144,7 @@
                                                 <button type="button" onclick="" class="btn btn-danger waves-effect">
                                                     <a href="javascript:history.back()" style="color: white"><span class="btn-label"><i class="mdi dripicons-return"></i></span>Volver Atrás</a>
                                                 </button>
-                                            <div>
+                                            <div id="agregarCarrito">
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                                                 <asp:UpdatePanel ID="Btnagregar" runat="server" UpdateMode="Conditional">
@@ -209,5 +211,23 @@
                 }
             });
         }
+    </script>
+     <!-- Tour page js -->
+    <script src="../assets/libs/hopscotch/js/hopscotch.min.js"></script>
+    <!-- Tour init js-->
+    <script src="../assets/js/pages/tour.init.js"></script>
+    <script>
+        var tour = {
+            id: "hello-hopscotch",
+            steps: [
+                {
+                    title: "Añadir al carrito",
+                    content: "dar click aqui para Añadir al carrito.",
+                    target: "agregarCarrito",
+                    placement: "left"
+                }
+            ]
+        };
+        hopscotch.startTour(tour);
     </script>
 </asp:Content>

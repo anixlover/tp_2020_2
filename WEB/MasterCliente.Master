@@ -41,7 +41,10 @@
     <!-- icons -->
     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
+    <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
+    <!-- Tour css -->
+    <link href="../assets/libs/hopscotch/css/hopscotch.min.css" rel="stylesheet" type="text/css" />
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -59,7 +62,7 @@
                 <nav class="list-unstyled topnav-menu float-right mb-0">
                     <a>
                         <li class="dropdown notification-list topbar-dropdown">
-                            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" href="Administrar_Solicitud_Pedido.aspx" role="button">
+                            <a id="carrito" class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" href="Administrar_Solicitud_Pedido.aspx" role="button">
                                 <i class="fas fa-shopping-cart"></i>
                                 <span class="pro-user-name ml-1">Carrito
                                 </span>
@@ -262,7 +265,7 @@
 
     <!-- App js -->
     <script src="../assets/js/app.min.js"></script>
-
-
+    <!-- Tour page js -->
+    <script src="../assets/libs/hopscotch/js/hopscotch.min.js"></script>
 </body>
 </html>
