@@ -36,7 +36,7 @@ namespace WEB
         }        
         public void RegistrarUE(DtoUsuario objUsuario)//<----Metodo de Registro
         {
-            if (objCtrUsuario.formatoDni(objUsuario) == false) //Probar si el Dni introducido cumple con el formato
+            if (objCtrUsuario.formatoDni(objUsuario) == false | txtDNI.Text.Contains("000")) //Probar si el Dni introducido cumple con el formato
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Dni INVALIDO!!'});", true);
                 return;
@@ -73,7 +73,7 @@ namespace WEB
             }
             if (DateTime.Now.Year-objUsuario.DTU_FechaNac.Year<18)
             {
-                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Debe ser mayor de edad!!'});", true);
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Fecha INVALIDA!!'});", true);
                 return;
             }
             //Registra al usuario tipo cliente y redirije al iniciarsesion.aspx

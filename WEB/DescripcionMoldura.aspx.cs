@@ -58,26 +58,26 @@ namespace WEB
             _log.CustomWriteOnLog("DescripcionMoldura", "VTM_Nombre" + objDtoTipoMoldura.VTM_Nombre);
             _log.CustomWriteOnLog("DescripcionMoldura", "IM_Estado" + objDtoMoldura.IM_Estado);
             _log.CustomWriteOnLog("DescripcionMoldura", "IM_Stock" + objDtoMoldura.IM_Stock);
-
+            Image1.ImageUrl = "data:Image/png;base64," + Convert.ToBase64String(objDtoMoldura.VBM_Imagen);
             #region ObtenerImagen
-            string cs = ConfigurationManager.ConnectionStrings["conexion"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(cs))
-            {
-                SqlCommand cmd = new SqlCommand("SP_GetImageById", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                SqlParameter paramId = new SqlParameter()
-                {
-                    ParameterName = "@Id",
-                    Value = id
-                };
-                cmd.Parameters.Add(paramId);
-                con.Open();
-                byte[] ByteArray = (byte[])cmd.ExecuteScalar();
-                con.Close();
-                string strbase64 = Convert.ToBase64String(ByteArray);
+            //string cs = ConfigurationManager.ConnectionStrings["conexion"].ConnectionString;
+            //using (SqlConnection con = new SqlConnection(cs))
+            //{
+            //    SqlCommand cmd = new SqlCommand("SP_GetImageById", con);
+            //    cmd.CommandType = CommandType.StoredProcedure;
+            //    SqlParameter paramId = new SqlParameter()
+            //    {
+            //        ParameterName = "@Id",
+            //        Value = id
+            //    };
+            //    cmd.Parameters.Add(paramId);
+            //    con.Open();
+            //    byte[] ByteArray = (byte[])cmd.ExecuteScalar();
+            //    con.Close();
+            //    string strbase64 = Convert.ToBase64String(ByteArray);
 
-                Image1.ImageUrl = "data:Image/png;base64," + strbase64;
-            }
+            //    Image1.ImageUrl = "data:Image/png;base64," + strbase64;
+            //}
             #endregion
 
             if (objDtoMoldura.IM_Stock != 0 && objDtoMoldura.IM_Estado!=0)
@@ -120,7 +120,8 @@ namespace WEB
                 {
                     _log.CustomWriteOnLog("AgregarCompraMoldura", "moldura" + Request.Params["Id"].ToString());
                     objDtoMoldura.PK_IM_Cod = int.Parse(Request.Params["Id"]);
-                    int stock = objCtrMoldura.StockMoldura(objDtoMoldura);
+                    objCtrMoldura.ObtenerMoldura(objDtoMoldura, objDtoTipoMoldura);
+                    int stock = objDtoMoldura.IM_Stock;
                     _log.CustomWriteOnLog("AgregarCompraMoldura", "stock: " + stock.ToString());
                     int cant = Convert.ToInt32(txtCantidad.Text);
 

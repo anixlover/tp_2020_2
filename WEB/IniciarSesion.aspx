@@ -26,6 +26,8 @@
     <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
     <link href="../assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" />
     <link href="../assets/libs/selectize/css/selectize.bootstrap3.css" rel="stylesheet" type="text/css" />
+    <!-- Tour css -->
+    <link href="../assets/libs/hopscotch/css/hopscotch.min.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -113,11 +115,29 @@
 <script src="../assets/js/vendor.min.js"></script>
 <!-- App js -->
 <script src="../assets/js/app.min.js"></script>
+<!-- Tour page js -->
+<script src="../assets/libs/hopscotch/js/hopscotch.min.js"></script>
+<!-- Tour init js-->
+<script src="../assets/js/pages/tour.init.js"></script>
+ <script>
+     var tour = {
+         id: "hello-hopscotch",
+         steps: [
+             {
+                 title: "Registrarse",
+                 content: "dar click aqui para Registrarse por si no tiene una cuenta.",
+                 target: "hlRegistrarCliente",
+                 placement: "bottom"
+             },
+             {
+                 title: "Cambiar contraseña",
+                 content: "dar click aqui para cambiar su contraseña.",
+                 target: "hlCambiarContraseña",
+                 placement: "bottom"
+             }
+         ]
+     };
 
-
-
-
-
-
-
+     hopscotch.startTour(tour);
+ </script>
 </html>

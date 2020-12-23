@@ -12,10 +12,10 @@
     <div class="container">
         <div class="card-box" style="background-color: #FFFFFF">
             <div class="row">
-                <div class="col">
-                    <asp:Image ID="Image1" runat="server" ImageUrl="assets/images/icono2.png" Height="100%" Width="100%" ImageAlign="Middle" />
+                <div class="col-lg-6"  style="text-align:center">
+                    <asp:Image ID="Image1" runat="server" ImageUrl="assets/images/icono2.png" Height="300px" Width="280px" ImageAlign="Middle" />
                 </div>
-                <div class="col">
+                <div class="col-lg-6">
                     <asp:Label ID="Label1" runat="server" Text="Nombre:"></asp:Label>
                     <br />
                     <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control"></asp:TextBox>
