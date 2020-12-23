@@ -48,7 +48,7 @@
                         </div>
                         Contraseña:
                     <div class="input-group input-group-merge">
-                        <asp:TextBox ID="txtContraseña" runat="server" CssClass="form-control" placeholder="Contraseña" BackColor="White"></asp:TextBox>
+                        <asp:TextBox ID="txtContraseña" runat="server" CssClass="form-control" placeholder="Contraseña" BackColor="White" TextMode="Password"></asp:TextBox>
                         <div class="input-group-append" data-password="false">
                             <div class="input-group-text">
                                 <span class="password-eye font-12"></span>
@@ -99,10 +99,6 @@
 
         }
     </script>
-
-
-
-
 </body>
 <!-- Plugins js-->
 <script src="../assets/libs/flatpickr/flatpickr.min.js"></script>
@@ -117,27 +113,4 @@
 <script src="../assets/js/app.min.js"></script>
 <!-- Tour page js -->
 <script src="../assets/libs/hopscotch/js/hopscotch.min.js"></script>
-<!-- Tour init js-->
-<script src="../assets/js/pages/tour.init.js"></script>
- <script>
-     var tour = {
-         id: "hello-hopscotch",
-         steps: [
-             {
-                 title: "Registrarse",
-                 content: "dar click aqui para Registrarse por si no tiene una cuenta.",
-                 target: "hlRegistrarCliente",
-                 placement: "bottom"
-             },
-             {
-                 title: "Cambiar contraseña",
-                 content: "dar click aqui para cambiar su contraseña.",
-                 target: "hlCambiarContraseña",
-                 placement: "bottom"
-             }
-         ]
-     };
-
-     hopscotch.startTour(tour);
- </script>
 </html>

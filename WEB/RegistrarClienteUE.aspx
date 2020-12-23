@@ -12,7 +12,7 @@
         <div class="auth-fluid-form-box" style="background-color: #FFFFFF">
             <div class="align-items-center d-flex h-100">
                 <div class="card-body bg-white">
-                    <div style="text-align:center"><img src="assets/images/logo1-sm.png" width="25%" /></div>
+                    <div style="text-align:center"><img id="wpRegistrar" src="assets/images/logo1-sm.png" width="25%" /></div>
                     <p style="text-align: center; color: #000000;"><strong></strong>╣❖ REGISTRARSE ❖╠</p>
                     <div class="row">
                         <div class="col-md-6" runat="server">

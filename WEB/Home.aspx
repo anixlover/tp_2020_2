@@ -68,7 +68,7 @@
 
     <!-- Tour init js-->
     <script src="../assets/js/pages/tour.init.js"></script>
-    <script>
+<%--    <script>
         var tour = {
             id: "hello-hopscotch",
             steps: [
@@ -83,9 +83,15 @@
                     content: "Para acceder al carrito de compras debe haberse registrado o iniciado sesión.",
                     target: "carrito",
                     placement: "left"
+                },
+                {
+                    title: "Catalogo",
+                    content: "Da click para visualizar las distintas variedades molduras.",
+                    target: "catalogo",
+                    placement: "left"
                 }
             ]
         };
         hopscotch.startTour(tour);
-    </script>
+    </script>--%>
 </asp:Content>
