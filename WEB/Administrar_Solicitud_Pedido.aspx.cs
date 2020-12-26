@@ -86,7 +86,8 @@ namespace WEB
                     txtancho.Text = objDtoMoldura.DM_Ancho.ToString();
                     txtUMModal.Text = dtoTipoMoldura.VTM_UnidadMetrica;
                     txtcantidadModal.Text = objDtoMXU.IMU_Cantidad.ToString();
-                    txtPrecioModal.Value = objDtoMXU.DMU_Precio.ToString();
+                    double precioU = (objDtoMXU.DMU_Precio / objDtoMXU.IMU_Cantidad);
+                    txtPrecioModal.Value = precioU.ToString();
                     _log.CustomWriteOnLog("carrito de compra", "moldura" + objDtoMoldura.PK_IM_Cod);
                     _log.CustomWriteOnLog("carrito de compra", "Imagen: " + objDtoMoldura.VBM_Imagen);
                     //#region ObtenerImagen
@@ -166,7 +167,6 @@ namespace WEB
                 _log.CustomWriteOnLog("carrito de compra", "stock es mayor a la cantidad");
                 if (txtUMModal.Text == "Mt" && cant < 150 || txtUMModal.Text == "Cm" && cant < 30 || txtUMModal.Text == "M2" && cant < 40)
                 {
-
                     try
                     {
                         _log.CustomWriteOnLog("carrito de compra", "Entro a funcion actualizar");
@@ -195,8 +195,6 @@ namespace WEB
                     {
                         _log.CustomWriteOnLog("carrito de compra", ex.Message + "Stac" + ex.StackTrace);
                     }
-
-
                 }
                 else//tipo moldura baqueton
                 {

@@ -21,7 +21,15 @@ namespace CTR
         {
             objDaoMolduraXUsuario.InsertarMolduraxUsuario(objDtoMolduraxUsuario);
         }
-        public DataTable listarMoldurasxusuario(DtoMolduraXUsuario objdtoMolduraxUsuario)
+        public void actualizarExistencia(DtoMolduraXUsuario objDtoMolduraxUsuario)
+        {
+            objDaoMolduraXUsuario.actulizarExistenciaMXU(objDtoMolduraxUsuario);
+        }
+        public bool ExistenciaMXU(DtoMolduraXUsuario objDtoMolduraXUsuario)
+        {
+            return objDaoMolduraXUsuario.ExistenciaMXU(objDtoMolduraXUsuario);
+        }
+            public DataTable listarMoldurasxusuario(DtoMolduraXUsuario objdtoMolduraxUsuario)
         {
             return objDaoMolduraXUsuario.ListarMXU(objdtoMolduraxUsuario);
         }
