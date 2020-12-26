@@ -104,7 +104,9 @@ namespace WEB
             txtstock.Text = objDtoMoldura.IM_Stock.ToString();
             txtcodigomoldura.Text = objDtoMoldura.PK_IM_Cod.ToString();
             txtnombre.Text = objDtoTipoMoldura.VTM_Nombre;
-            txtdescripcion.Text = objDtoMoldura.VM_Descripcion;
+            string strVal;
+
+            txtdescripcion.Text= objDtoMoldura.VM_Descripcion;
         }
 
         protected void btnAgregarCarrito_Click(object sender, EventArgs e)
@@ -140,8 +142,24 @@ namespace WEB
                             _log.CustomWriteOnLog("AgregarCompraMoldura", " objDtoMolduraxUsuario.ISM_Cantidad = " + objDtoMolduraxUsuario.IMU_Cantidad.ToString());
                             _log.CustomWriteOnLog("AgregarCompraMoldura", " objDtoMolduraxUsuario.DSM_Precio = " + objDtoMolduraxUsuario.DMU_Precio.ToString());
 
-                            objCtrMolduraXUsuario.registrarNuevaMoldura(objDtoMolduraxUsuario);
-                            Utils.AddScriptClientUpdatePanel(Btnagregar, "showSuccessMessage1   ()");
+                            if (objCtrMolduraXUsuario.ExistenciaMXU(objDtoMolduraxUsuario))
+                            {
+                                //ya exitiendo
+                                objDtoMolduraxUsuario.FK_VU_Dni = Session["DNIUsuario"].ToString();
+                                objDtoMolduraxUsuario.FK_IM_Cod = int.Parse(Request.Params["Id"]);
+                                double precioUnitario = (objDtoMolduraxUsuario.DMU_Precio/objDtoMolduraxUsuario.IMU_Cantidad);
+                                objDtoMolduraxUsuario.IMU_Cantidad = int.Parse(txtCantidad.Text);
+                                objDtoMolduraxUsuario.DMU_Precio = precioUnitario * objDtoMolduraxUsuario.IMU_Cantidad;
+                                objCtrMolduraXUsuario.actualizarExistencia(objDtoMolduraxUsuario);
+                            }
+                            else
+                            {
+                                //primera incidencia
+                                objDtoMolduraxUsuario.DMU_Precio = objDtoMolduraxUsuario.DMU_Precio * objDtoMolduraxUsuario.IMU_Cantidad;
+                                objCtrMolduraXUsuario.registrarNuevaMoldura(objDtoMolduraxUsuario);
+                            }
+
+                            Utils.AddScriptClientUpdatePanel(Btnagregar, "showSuccessMessage1()");
                         }
                         else //tipo baquetones
                         {

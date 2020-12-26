@@ -97,7 +97,7 @@ namespace WEB
                                         "<input type='button' value='Detalles' id='btnSave' class='text-muted ml-1' onClick='cargarInformacion(" + PK_IM_Cod + ")'>" +
                                         "</asp:input>" +
                                     "</a>" +
-                                    "<a href = javascript: void(0); class='gal-like-btn'><i class='mdi mdi-cart'></i></a>" +
+                                    "<a href = javascript:mostrarMensaje(); OnClick='btnAgregarCarrito_Click'  class='gal-like-btn'><i class='mdi mdi-cart'></i></a>" +
                                 "</div>" +
                             "</div>" +
                         "</div>";
