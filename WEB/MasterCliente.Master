@@ -72,7 +72,7 @@
                     </a>
                     <a>
                         <li class="dropdown notification-list topbar-dropdown">
-                            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" href="#" role="button">
+                            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light"role="button">
                                 <i class="mdi mdi-google-my-business"></i>
                                 <span class="pro-user-name ml-1">Nosotros
                                 </span>
@@ -83,7 +83,7 @@
 
 
                     <li class="dropdown notification-list topbar-dropdown">
-                        <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" href="Inspeccionar_Catalogo.aspx" role="button">
+                        <a id="catalogo" class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" href="Inspeccionar_Catalogo.aspx" role="button">
 
                             <i class="mdi mdi-view-grid"></i>
                             <span class="pro-user-name ml-1">Catálogo
@@ -267,5 +267,114 @@
     <script src="../assets/js/app.min.js"></script>
     <!-- Tour page js -->
     <script src="../assets/libs/hopscotch/js/hopscotch.min.js"></script>
+    <script>
+        var tour = {
+            id: "hello-hopscotch",
+            steps: [
+                {
+                    title: "Iniciar sesión",
+                    content: "dar click aqui para acceder a su cuenta, caso de no tener cuenta puede registrarse.",
+                    target: "login",                    
+                    placement: "left",
+                    showCTAButton: true,
+                    ctaLabel: "Fin",
+                    onCTA: function () {
+                        hopscotch.endTour();
+                    }
+                },
+                {
+                    title: "Carrito de compras",
+                    content: "Para acceder al carrito de compras debe haberse registrado o iniciado sesión.",
+                    target: "carrito",
+                    showPrevButton: true,
+                    placement: "left",
+                    showCTAButton: true,
+                    ctaLabel: "Fin",
+                    onCTA: function () {
+                        hopscotch.endTour();
+                    }
+                },
+                {
+                    title: "Catalogo",
+                    content: "Da click para visualizar las distintas variedades molduras.",
+                    target: "catalogo",
+                    placement: "left",
+                    showPrevButton: true,
+                    multipage: true,
+                    onNext: function () {
+                        window.location = "Inspeccionar_Catalogo.aspx"
+                    },
+                    showCTAButton: true,
+                    ctaLabel: "Fin",
+                    onCTA: function () {
+                        hopscotch.endTour();
+                    }
+                },
+                {
+                    title: "Contenido",
+                    content: "dar click aqui para ver la descripción de la moldura y de tener cuenta podrá agregarla al carrito de compras",
+                    target: "btnSave",
+                    placement: "right",
+                    showPrevButton: true,
+                    multipage: true,
+                    onNext: function () {
+                        window.location = "DescripcionMoldura.aspx?id=170"
+                    },
+                    onPrev: function () {
+                        window.location = "Home.aspx"
+                    },
+                    showCTAButton: true,
+                    ctaLabel: "Fin",
+                    onCTA: function () {
+                        hopscotch.endTour();
+                    }
+                },
+                {
+                    title: "Cantidad a Solicitar",
+                    content: "Para acceder al caAqui ingresa la cantidad que desea de la moldura.",
+                    target: "cantidad",
+                    showPrevButton: true,
+                    placement: "left",
+                    onPrev: function () {
+                        window.location = "Inspeccionar_Catalogo.aspx"
+                    },
+                    showCTAButton: true,
+                    ctaLabel: "Fin",
+                    onCTA: function () {
+                        hopscotch.endTour();
+                    }
+                },
+                {
+                    title: "Añadir al carrito",
+                    content: "Para añadir al carrito debe haberse registrado en la pagina, a continuación de click en 'Next' para ir a registrarse.",
+                    target: "agregarCarrito",
+                    placement: "top",
+                    showPrevButton: true,
+                    multipage: true,
+                    onNext: function () {
+                        window.location = "RegistrarClienteUE.aspx"
+                    },
+                    showCTAButton: true,
+                    ctaLabel: "Fin",
+                    onCTA: function () {
+                        hopscotch.endTour();
+                    }
+                },
+                {
+                    title: "Registrarse",
+                    content: "Este es el fromulario a llenar para registrarse y acceder al carrito de compras.",
+                    target: "wpRegistrar",
+                    placement: "bottom",
+                    showPrevButton: true,
+                    onPrev: function () {
+                        window.location = "DescripcionMoldura.aspx?id=170"
+                    }
+                }
+            ]
+        };
+        if (hopscotch.getState() === "hello-hopscotch:2"|hopscotch.getState() === "hello-hopscotch:3" | hopscotch.getState() === "hello-hopscotch:4" | hopscotch.getState() === "hello-hopscotch:5"| hopscotch.getState() === "hello-hopscotch:6") {
+            hopscotch.startTour(tour);
+        }
+    </script>
 </body>
 </html>

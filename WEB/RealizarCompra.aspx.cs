@@ -79,6 +79,7 @@ namespace WEB
             objDtoDatoFactura.FK_VU_Dni = Session["DNIUsuario"].ToString();
             objDtoSolicitud.PK_IS_Cod = int.Parse(Request.Params["sol"]);
             objDtoDatoFactura.VDF_Ruc = txtNuevoRUC.Text;
+            objDtoVoucher.PK_VV_NumVoucher = txtNumOP.Text;
             if (hftxtimg.Value.ToString() == "vacio")
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Suba Imagen del VOUCHER!!'})", true);
@@ -99,22 +100,26 @@ namespace WEB
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Complete espacios en BLANCO!!'})", true);
                 return;
             }
-            else if (chbNuevoRUC.Checked == false & rbFactura.Checked == true & ddlRUC.Items.Count==0)
+            else if (chbNuevoRUC.Checked == false & rbFactura.Checked == true & ddlRUC.Items.Count == 0)
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'No hay RUC'S!!'})", true);
                 return;
             }
-            else if (double.Parse(txtImporte.Text) < costo / 2)
+            else if (double.Parse(txtImporte.Text) < costo / 2 | double.Parse(txtImporte.Text) > costo| txtImporte.Text.Contains("e"))
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Importe INVALIDO!!'})", true);
                 return;
             }
-            else if (objCtrDatoFactura.formatoRUC(objDtoDatoFactura) == false && rbFactura.Checked==true && chbNuevoRUC.Checked==true)
+            else if (objCtrDatoFactura.formatoRUC(objDtoDatoFactura) == false && rbFactura.Checked == true && chbNuevoRUC.Checked == true)
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'RUC INVALIDO!!'})", true);
                 return;
             }
-            objDtoVoucher.PK_VV_NumVoucher = txtNumOP.Text;
+            else if (objCtrVoucher.hayVoucher(objDtoVoucher))
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Número de operación ya Existente!!'})", true);
+                return;
+            }
             objDtoVoucher.VV_Comentario = "";
             string cadena = hftxtimg.Value.ToString();
             List<byte> imagen = Array.ConvertAll(cadena.Split(','), byte.Parse).ToList();

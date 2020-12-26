@@ -85,7 +85,7 @@
 
     <!-- Tour init js-->
     <script src="../assets/js/pages/tour.init.js"></script>
-    <script>
+<%--    <script>
         var tour = {
             id: "hello-hopscotch",
             steps: [
@@ -98,7 +98,7 @@
             ]
         };
         hopscotch.startTour(tour);
-    </script>
+    </script>--%>
 
 </asp:Content>
 <%--<asp:Content ID="Content4" ContentPlaceHolderID="cph_Js" runat="Server">

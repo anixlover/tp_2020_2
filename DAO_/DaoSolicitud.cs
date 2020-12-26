@@ -141,7 +141,7 @@ namespace DAO
         }
         public DataSet desplegableSolicitudEstado()
         {
-            SqlDataAdapter solest = new SqlDataAdapter("SP_Desplegable_Solicitud_Estado", conexion);
+            SqlDataAdapter solest = new SqlDataAdapter("select*from T_Solicitud_Estado", conexion);
             solest.SelectCommand.CommandType = CommandType.StoredProcedure;
             DataSet DS = new DataSet();
             solest.Fill(DS);

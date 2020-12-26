@@ -124,7 +124,7 @@
                                             <%--Cantidad--%>
 
                                             <h4 class="mb-4">
-                                            <p>
+                                            <p id="cantidad">
                                                 Cantidad:
                                                 <asp:TextBox ID="txtCantidad" TextMode="Number" Text="1" class="form-control autonumber" data-v-max="500" data-v-min="1" runat="server" required></asp:TextBox>
 
@@ -216,7 +216,7 @@
     <script src="../assets/libs/hopscotch/js/hopscotch.min.js"></script>
     <!-- Tour init js-->
     <script src="../assets/js/pages/tour.init.js"></script>
-    <script>
+    <%--<script>
         var tour = {
             id: "hello-hopscotch",
             steps: [
@@ -229,5 +229,5 @@
             ]
         };
         hopscotch.startTour(tour);
-    </script>
+    </script>--%>
 </asp:Content>

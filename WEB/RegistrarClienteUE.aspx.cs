@@ -41,17 +41,17 @@ namespace WEB
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Dni INVALIDO!!'});", true);
                 return;
             }
-            if (objCtrUsuario.formatoNombre(objUsuario) == false)//Probar si el Nombre introducido cumple con el formato
+            if (objCtrUsuario.formatoNombre(objUsuario) == false | txtNombres.Text.Contains(" "))//Probar si el Nombre introducido cumple con el formato
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Nombre INVALIDO!!'});", true);
                 return;
             }
-            if (objCtrUsuario.formatoApellido(objUsuario) == false)//Probar si el Apellido introducido cumple con el formato
+            if (objCtrUsuario.formatoApellido(objUsuario) == false | txtApellidos.Text.Contains(" "))//Probar si el Apellido introducido cumple con el formato
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Apellido INVALIDO!!'});", true);
                 return;
             }
-            if (objCtrUsuario.formatoCorreo(objUsuario) == false)//Probar si el correo introducido cumple con el formato
+            if (objCtrUsuario.formatoCorreo(objUsuario) == false | txtCorreo.Text.Contains(" "))//Probar si el correo introducido cumple con el formato
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Correo INVALIDO!!'});", true);
                 return;
