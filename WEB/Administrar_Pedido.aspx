@@ -40,7 +40,7 @@
                                     CssClass="form-control" Width="30%">
                                 </asp:DropDownList><br />
                                 <br />
-                                <asp:GridView ID="gvSolicitudes" DataKeyNames="PK_IS_Cod,VSE_Nombre,PK_VU_Dni,PK_IMU_Cod" 
+                                <asp:GridView ID="gvSolicitudes" DataKeyNames="PK_IS_Cod,VSE_Nombre,PK_VU_Dni" 
                                     runat="server" AutoGenerateColumns="false" OnRowCommand="gvSolicitudes_RowCommand" 
                                     EmptyDataText="No existen registros, agreguen molduras a su catálogo"
                                     ShowHeaderWhenEmpty="True" CssClass="table-borderless table table-bordered table-hover" >
@@ -50,7 +50,7 @@
                                         <asp:BoundField DataField="PK_VU_Dni"  HeaderText="DNI" />
                                         <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
                                         <asp:BoundField DataField="VSE_Nombre"  HeaderText="Estado" />
-                                        <asp:BoundField DataField="PK_IMU_Cod" Visible="false" HeaderText="NoVisible" />
+                                        <%--<asp:BoundField DataField="PK_IMU_Cod" Visible="false" HeaderText="NoVisible" />--%>
                                         <asp:TemplateField HeaderText="Detalles" >
                                             <ItemTemplate>
                                                 <asp:Button runat="server" Text="Evaluar" ItemStyle-HorizontalAlign="Center" Visible='<%# ValidacionEstado(Eval("VSE_Nombre").ToString()) %>' CommandName="Evaluar" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-warning" />
