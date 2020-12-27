@@ -141,10 +141,12 @@ namespace DAO
         }
         public DataSet desplegableSolicitudEstado()
         {
-            SqlDataAdapter solest = new SqlDataAdapter("select*from T_Solicitud_Estado", conexion);
-            solest.SelectCommand.CommandType = CommandType.StoredProcedure;
+            string Select = "SELECT * from T_Solicitud_Estado";
+            SqlCommand command = new SqlCommand(Select, conexion);
+            conexion.Open();
+            SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
             DataSet DS = new DataSet();
-            solest.Fill(DS);
+            daAdaptador.Fill(DS);
             return DS;
         }
         public DataTable SelectSolicitudes(string tipo)
