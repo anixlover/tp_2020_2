@@ -239,12 +239,61 @@ namespace DAO
 
         public void UptadeDatosPerfil(DtoUsuario Usuario)
         {
-            string update = "UPDATE T_Usuario SET VU_Nombre = '" + Usuario.VU_Nombre + "', VU_Apellidos = '" + Usuario.VU_Apellidos + "', VU_Correo = '" + Usuario.VU_Correo + "', DTU_FechaNac = '"+ Usuario.DTU_FechaNac.ToString("yyyy-MM-dd") +"' WHERE PK_VU_Dni = '" + Usuario.PK_VU_Dni + "'";
+            string update = "UPDATE T_Usuario SET VU_Nombre = '" + Usuario.VU_Nombre + "', VU_Apellidos = '" + Usuario.VU_Apellidos + "', VU_Correo = '" + Usuario.VU_Correo + "', DTU_FechaNac = '" + Usuario.DTU_FechaNac.ToString("yyyy-MM-dd") + "' WHERE PK_VU_Dni = '" + Usuario.PK_VU_Dni + "'";
             SqlCommand command = new SqlCommand(update, conexion);
             conexion.Open();
             command.ExecuteNonQuery();
             conexion.Close();
         }
+        public void EnviarCorreoReportado(DtoSolicitud dtomxu)
+        {
+            SqlCommand command = new SqlCommand("SP_ObtenerDatosMxU",conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("codigo", dtomxu.PK_IS_Cod);
+            DataSet ds = new DataSet();
+            conexion.Open();
+            SqlDataAdapter sqlA = new SqlDataAdapter(command);
+            sqlA.Fill(ds);
+            sqlA.Dispose();
+            SqlDataReader reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                string senderr = "DecormoldurasRosetonesSAC@gmail.com";
+                string senderrPass = "decormolduras1";
+                string displayName = "SWCPEDR - DECORMOLDURAS & ROSETONES SAC";
 
+                var date = DateTime.Now.ToShortDateString();
+                var recipient = reader["VU_Correo"].ToString();
+                var nombre = reader["VU_Nombre"].ToString();
+                string body =
+                    "<body>" +
+                        "<h1>SWCPEDR - DECORMOLDURAS & ROSETONES SAC</h1>" +
+                        "<h4>ERROR EN SU VOUCHER ADJUNTADO</h4>" +
+                        "<span>Es probable que la imagen de su voucher este dañada o no distingible, favor de volver a realizar la operacion!" +
+                        "<br></br><span>Gracias.</span>" +
+                        "<br></br><span> Saludos cordiales.<span>" +
+                    "</body>";
+
+                MailMessage mail = new MailMessage();
+                mail.Subject = "SWCPEDR - AVISO - PROBLEMA CON EL ADJUNTO DE VOUCHER";
+                mail.From = new MailAddress(senderr.Trim(), displayName);
+                mail.Body = body;
+                mail.To.Add(recipient.Trim());
+                mail.IsBodyHtml = true;
+                //mail.Priority = MailPriority.Normal;
+
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.UseDefaultCredentials = false;
+                smtp.EnableSsl = true;
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                //smtp.Credentials = new System.Net.NetworkCredential(senderr.Trim(), senderrPass.Trim());
+                NetworkCredential nc = new NetworkCredential(senderr, senderrPass);
+                smtp.Credentials = nc;
+
+                smtp.Send(mail);
+            }
+        }
     }
 }

@@ -14,11 +14,13 @@ namespace WEB
     {
         DtoSolicitud objDtoSolicitud = new DtoSolicitud();
         CtrSolicitud objCtrSolicitud = new CtrSolicitud();
+        DtoMolduraXUsuario dtomxu = new DtoMolduraXUsuario();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 gvSolicitudes.DataSource = objCtrSolicitud.ListaSolicitudes();
+                dtomxu.FK_IS_Cod = Convert.ToInt32(Session["idSolicitudMXU"]);
                 gvSolicitudes.DataBind();
                 OpcionesSolicitudEstado();
             }
@@ -40,6 +42,7 @@ namespace WEB
             int index = Convert.ToInt32(e.CommandArgument);
             var columna = gvSolicitudes.DataKeys[index].Values;
             int sol = Convert.ToInt32(columna[0].ToString());
+            int solMXU = Convert.ToInt32(columna[3].ToString());
             string dni = columna[2].ToString();
             switch (e.CommandName)
             {

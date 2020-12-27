@@ -79,8 +79,6 @@
         }
     </script>
 
-
-
     <script type="text/javascript">
         function solonumeros(n) {
             key = e.keyCode || e.which;
