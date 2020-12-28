@@ -15,6 +15,10 @@
     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
     <link href="assets/css/StyleSheet1.css" rel="stylesheet" type="text/css" />
+    <!-- Tour css -->
+    <link href="../assets/libs/hopscotch/css/hopscotch.min.css" rel="stylesheet" type="text/css" />
+
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeout="3600"></asp:ScriptManager>
@@ -23,30 +27,21 @@
         <div class="descripcion-moldura">
             <asp:UpdatePanel ID="upBotonEnviar" runat="server" UpdateMode="Conditional">
                 <ContentTemplate>
-                    <%--Medida--%>
-                    <%--<p>Medida:<asp:Label ID="txtmedida" runat="server"></asp:Label></p>
-                    <p>
-                        Largo:
-                        <asp:Label ID="txtlargo" runat="server"></asp:Label>
-                        Ancho:
-                        <asp:Label ID="txtancho" runat="server"></asp:Label>
-                    </p>--%>
-                    <%--Precio--%>
-                    <%--Descripcion--%>
-
-                    <%--                    <asp:Button runat="server" ID="Button1" CssClass="button" Text="Regresar" OnClick="Button1_Click" />
-                    <asp:LinkButton runat="server" ID="Button2" CssClass="button" Text="Agregar al carrito" OnClick="Button1_Click"></asp:LinkButton>
-                    <a href="#" class="button" onclick="btn_regresar()"><i class="fas fa-shopping-cart"></i></a>--%>
-
-                    <%--<asp:Button runat="server" ID="btnModal" CssClass="button" Text="Agregar a carrito de compra" data-target="#defaultmodal" data-toggle="modal" />--%>
-
-
                     <div class="row">
                         <div class="col-12">
                             <div class="card-box">
                                 <div class="row">
                                     <div class="col-lg-7">
-
+                                        <style type="text/css">
+                                            #Imgae1 {
+                                                float: right;
+                                                vertical-align: top;
+                                                background: url('') no-repeat center center / 100% auto;
+                                                width: 50px;
+                                                height: 50px;
+                                                margin-bottom: 50px;
+                                            }
+                                        </style>
                                         <%--Imagen del producto--%>
                                         <div class="tab-content pt-0">
                                             <div class="tab-pane active show" id="product-1-item">
@@ -122,32 +117,31 @@
                                             <%--Cantidad--%>
 
                                             <h4 class="mb-4">
-                                            <p>
+                                            <p id="cantidad">
                                                 Cantidad:
-                                                <asp:TextBox ID="txtCantidad" TextMode="Number" Text="1" class="form-control autonumber" data-v-max="500" data-v-min="1" runat="server" required></asp:TextBox>
-
+                                                <asp:TextBox ID="txtCantidad" TextMode="Number" Text="1" class="form-control autonumber" max="500" min="1" runat="server"></asp:TextBox>
                                             </p>
-
 
                                             <%--End cantidad--%>
 
                                             <%--Descripcion mas a detalle del producto--%>
                                             <h4 class="mb-4">
                                             <p class="text-muted mb-4">
-                                                <asp:Label ID="txtdescripcion" runat="server"></asp:Label></>
+                                                <asp:Label ID="txtdescripcion" runat="server"></asp:Label>
+                                                <%--<textarea ID="txtdescripcion" runat="server"></textarea>--%></>
                                             </p>
                                             <%--end descripcion--%>
 
                                             <%--boton atras y agregar al carrito--%>
-                                                <button type="button" onclick="" class="btn btn-danger waves-effect">
-                                                    <a href="javascript:history.back()" style="color: white"><span class="btn-label"><i class="mdi dripicons-return"></i></span>Volver Atrás</a>
-                                                </button>
-                                            <div>
+                                            <button type="button" onclick="" class="btn btn-danger waves-effect">
+                                                <a href="javascript:history.back()" style="color: white"><span class="btn-label"><i class="mdi dripicons-return"></i></span>Volver Atrás</a>
+                                            </button>
+                                            <div id="agregarCarrito">
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                                                 <asp:UpdatePanel ID="Btnagregar" runat="server" UpdateMode="Conditional">
                                                     <ContentTemplate>
-                                                        <asp:LinkButton ID="btnAgregarCarrito" runat="server" type="button" class="btn btn-success waves-effect waves-light" OnClick="btnAgregarCarrito_Click">
+                                                        <asp:LinkButton ID="btnAgregarCarrito" OnClientClick="mostrarMensaje()" runat="server" type="button" class="btn btn-success waves-effect waves-light" OnClick="btnAgregarCarrito_Click">
                                                     <span class="btn-label"><i class="mdi mdi-cart"></i></span>Agregar al carrito
                                                         </asp:LinkButton>
                                                     </ContentTemplate>
@@ -195,7 +189,7 @@
     <script src="../assets/js/app.min.js"></script>
     <script src="assets/js/Aplicacion/UploadFile.js"></script>
 
-    
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_Js" runat="Server">
     <script>
@@ -209,5 +203,51 @@
                 }
             });
         }
+
+        function flyToElement(flyer, flyingTo) {
+            var $func = $(this);
+            var divider = 3;
+            var flyerClone = $(flyer).clone();
+            $(flyerClone).css({ position: 'absolute', top: $(flyer).offset().top + "px", left: $(flyer).offset().left + "px", opacity: 1, 'z-index': 1000 });
+            $('body').append($(flyerClone));
+            var gotoX = $(flyingTo).offset().left + ($(flyingTo).width() / 2) - ($(flyer).width() / divider) / 2;
+            var gotoY = $(flyingTo).offset().top + ($(flyingTo).height() / 2) - ($(flyer).height() / divider) / 2;
+
+            $(flyerClone).animate({
+                opacity: 0.4,
+                left: gotoX,
+                top: gotoY,
+                width: $(flyer).width() / divider,
+                height: $(flyer).height() / divider
+            }, 700,
+                function () {
+                    $(flyingTo).fadeOut('fast', function () {
+                        $(flyingTo).fadeIn('fast', function () {
+                            $(flyerClone).fadeOut('fast', function () {
+                                $(flyerClone).remove();
+                            });
+                        });
+                    });
+                });
+        }
+
+    </script>
+    <!-- Tour page js -->
+    <script src="../assets/libs/hopscotch/js/hopscotch.min.js"></script>
+    <!-- Tour init js-->
+    <script src="../assets/js/pages/tour.init.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btnAgregarCarrito').on('click', function () {
+                //Scroll to top if cart icon is hidden on top
+                $('html, body').animate({
+                    'scrollTop': $("#btnAgregarCarrito").position().top
+                });
+                //Select item image and pass to the function
+                var itemImg = $(this).parent().find('img').eq(0);
+                flyToElement($(itemImg), $('#btnAgregarCarrito'));
+            });
+        });
     </script>
 </asp:Content>

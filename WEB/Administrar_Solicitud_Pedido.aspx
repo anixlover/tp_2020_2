@@ -51,10 +51,10 @@
                                             <img src='ObtieneImagen.ashx?id=<%# Eval("FK_IM_Cod")%>' height="80px" width="80px" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:BoundField DataField="PK_IMU_Cod" HeaderText="Codigo" />
+                                    <asp:BoundField DataField="FK_IM_Cod" HeaderText="Codigo Moldura" />
                                     <asp:BoundField DataField="VTM_Nombre" HeaderText="Tipo Moldura" />
                                     <asp:BoundField DataField="IMU_Cantidad" HeaderText="Cantidad" />
-                                    <asp:BoundField DataField="DMU_Precio" HeaderText="Precio" />
+                                    <asp:BoundField DataField="DMU_Precio" HeaderText="Precio Total" />
                                     <asp:TemplateField HeaderText="Country" ItemStyle-Width="150" Visible="false">
                                         <ItemTemplate>
                                             <asp:Label ID="lblCountry" runat="server" Text='<%# Eval("PK_IMU_Cod") %>'></asp:Label>
@@ -122,7 +122,7 @@
                                     <div class="col-md-12">
                                         <div class="row clearfix">
                                             <div class="form-group form-float">
-                                                <label class="form-label">Codigo :</label>
+                                                <label class="form-label">Codigo Solicitud:</label>
                                                 <div class="form-line focused">
                                                     <div class="form-line">
                                                         <asp:TextBox ID="txtcodigoModal" class="form-control" runat="server" ReadOnly></asp:TextBox>
@@ -199,7 +199,7 @@
                                                 <label class="form-label">Cantidad :</label>
                                                 <div class="form-line focused">
                                                     <div class="form-line">
-                                                        <asp:TextBox ID="txtcantidadModal" class="form-control" runat="server" onkeyup="checkCantidad()" ClientIDMode="Static" type="number"></asp:TextBox>
+                                                        <asp:TextBox ID="txtcantidadModal" class="form-control" max="500" min="1" runat="server" onkeyup="checkCantidad()" ClientIDMode="Static" type="number"></asp:TextBox>
                                                     </div>
                                                 </div>
                                             </div>
@@ -208,7 +208,7 @@
                                     <div class="col-md-12">
                                         <div class="row clearfix">
                                             <div class="form-group form-float">
-                                                <label class="form-label">Precio:</label>
+                                                <label class="form-label">Precio Unitario:</label>
                                                 <div class="form-line focused">
                                                     <div class="form-line">
                                                         <asp:UpdatePanel runat="server">

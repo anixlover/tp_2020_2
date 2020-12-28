@@ -8,7 +8,8 @@
 
     <link href="../assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
     <link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
-
+    <!-- Tour css -->
+    <link href="../assets/libs/hopscotch/css/hopscotch.min.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
@@ -60,7 +61,37 @@
                     <h4 class="header-title"> Somos una empresa...</h4>
                 </div>
             </div>
-        </div>
+        </div>  
+  </div>
+     <!-- Tour page js -->
+    <script src="../assets/libs/hopscotch/js/hopscotch.min.js"></script>
 
-    </div>
+    <!-- Tour init js-->
+    <script src="../assets/js/pages/tour.init.js"></script>
+<%--    <script>
+        var tour = {
+            id: "hello-hopscotch",
+            steps: [
+                {
+                    title: "Iniciar sesión",
+                    content: "dar click aqui para acceder a su cuenta, caso de no tener cuenta puede registrarse.",
+                    target: "login",
+                    placement: "left"
+                },
+                {
+                    title: "Carrito de compras",
+                    content: "Para acceder al carrito de compras debe haberse registrado o iniciado sesión.",
+                    target: "carrito",
+                    placement: "left"
+                },
+                {
+                    title: "Catalogo",
+                    content: "Da click para visualizar las distintas variedades molduras.",
+                    target: "catalogo",
+                    placement: "left"
+                }
+            ]
+        };
+        hopscotch.startTour(tour);
+    </script>--%>
 </asp:Content>

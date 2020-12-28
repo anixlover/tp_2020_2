@@ -154,27 +154,23 @@ namespace DAO
                 objmoldura.VBM_Imagen = (byte[])reader[10];
             }
             conexion.Close();
-            conexion.Dispose();
+            //conexion.Dispose();
         }
         public int StockMoldura(DtoMoldura objMoldura)
         {
             try
             {
-                SqlConnection con = new SqlConnection(@"data source=DESKTOP-4LVLNRM; initial catalog=BD_SWCPEDR; integrated security=SSPI;");
+                string select = "SELECT IM_Stock FROM T_MOLDURA WHERE PK_IM_Cod=" + objMoldura.PK_IM_Cod;
                 int valor_retornado = 0;
-                SqlCommand cmd = new SqlCommand("SELECT IM_Stock FROM T_MOLDURA WHERE PK_IM_Cod=" + objMoldura.PK_IM_Cod, con);
-
-                Console.WriteLine(cmd);
-                con.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
+                SqlCommand command = new SqlCommand(select, conexion);
+                conexion.Open();
+                command.ExecuteNonQuery();
+                SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
                     valor_retornado = int.Parse(reader[0].ToString());
-
                 }
-                con.Close();
-
+                conexion.Close();
                 return valor_retornado;
             }
             catch (Exception)

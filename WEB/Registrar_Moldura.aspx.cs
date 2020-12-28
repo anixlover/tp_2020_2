@@ -70,6 +70,26 @@ namespace WEB
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Inserte una DESCRIPCIÓN!!'})", true);
                         return;
                     }
+                    else if (txtPrecio.Text.Contains("e"))
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'No se admiten letras en el Precio!!'})", true);
+                        return;
+                    }
+                    else if (txtAncho.Text.Contains("e")|txtLargo.Text.Contains("e"))
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'No se admiten letras en las medidas!!'})", true);
+                        return;
+                    }
+                    else if (double.Parse(txtPrecio.Text) <= 0)
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Inserte un PRECIO VALIDO!!'})", true);
+                        return;
+                    }
+                    else if (double.Parse(txtAncho.Text) <= 0 | double.Parse(txtLargo.Text) <= 0)
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Inserte un Medidas VALIDAS!!'})", true);
+                        return;
+                    }
                     else if (txtPrecio.Text == "")
                     {
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Inserte un PRECIO!!'})", true);
@@ -192,6 +212,26 @@ namespace WEB
                     else if (txtDescripcion.Text == "")
                     {
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Inserte una DESCRIPCIÓN!!'})", true);
+                        return;
+                    }
+                    else if (txtPrecio.Text.Contains("e"))
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'No se admiten letras en el Precio!!'})", true);
+                        return;
+                    }
+                    else if (txtAncho.Text.Contains("e") | txtLargo.Text.Contains("e"))
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'No se admiten letras en las medidas!!'})", true);
+                        return;
+                    }
+                    else if (double.Parse(txtPrecio.Text) <=0)
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Inserte un PRECIO VALIDO!!'})", true);
+                        return;
+                    }
+                    else if (double.Parse(txtAncho.Text) <= 0| double.Parse(txtLargo.Text) <= 0)
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Inserte un Medidas VALIDAS!!'})", true);
                         return;
                     }
                     else if (txtPrecio.Text == "")

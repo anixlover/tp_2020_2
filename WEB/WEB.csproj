@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WEB</RootNamespace>
     <AssemblyName>WEB</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress>
     </Use64BitIISExpress>
@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,6 +46,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.SqlClient, Version=4.6.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SqlClient.4.8.2\lib\net461\System.Data.SqlClient.dll</HintPath>
     </Reference>
@@ -54,17 +56,15 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
@@ -1940,6 +1940,7 @@
     <Content Include="Detalles_Solicitud.aspx" />
     <Content Include="EvaluarPago.aspx" />
     <Content Include="EvaluarPedidosPersonalizados.aspx" />
+    <Content Include="GestionarEstadosPedido.aspx" />
     <Content Include="RealizarCompra.aspx" />
     <Content Include="Realizar_Pedido_Personalizado.aspx" />
     <Content Include="RegistrarClienteVendedor.aspx" />
@@ -2014,6 +2015,13 @@
     </Compile>
     <Compile Include="EvaluarPedidosPersonalizados.aspx.designer.cs">
       <DependentUpon>EvaluarPedidosPersonalizados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestionarEstadosPedido.aspx.cs">
+      <DependentUpon>GestionarEstadosPedido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionarEstadosPedido.aspx.designer.cs">
+      <DependentUpon>GestionarEstadosPedido.aspx</DependentUpon>
     </Compile>
     <Compile Include="ObtenerImegenPersonalizada_2.ashx.cs">
       <DependentUpon>ObtenerImegenPersonalizada_2.ashx</DependentUpon>

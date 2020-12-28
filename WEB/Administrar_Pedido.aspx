@@ -50,6 +50,7 @@
                                         <asp:BoundField DataField="PK_VU_Dni"  HeaderText="DNI" />
                                         <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
                                         <asp:BoundField DataField="VSE_Nombre"  HeaderText="Estado" />
+                                        <%--<asp:BoundField DataField="PK_IMU_Cod" Visible="false" HeaderText="NoVisible" />--%>
                                         <asp:TemplateField HeaderText="Detalles" >
                                             <ItemTemplate>
                                                 <asp:Button runat="server" Text="Evaluar" ItemStyle-HorizontalAlign="Center" Visible='<%# ValidacionEstado(Eval("VSE_Nombre").ToString()) %>' CommandName="Evaluar" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-warning" />

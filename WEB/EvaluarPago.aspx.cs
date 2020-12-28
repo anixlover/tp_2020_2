@@ -21,9 +21,11 @@ namespace WEB
         Log _log = new Log();
         DtoPago dtopago = new DtoPago();
         DtoSolicitud dtosol = new DtoSolicitud();
-        Dto_Voucher dtovoucher = new Dto_Voucher();
-        CtrSolicitud ctrsol = new CtrSolicitud();
         DtoMolduraXUsuario dtomxu = new DtoMolduraXUsuario();
+        Dto_Voucher dtovoucher = new Dto_Voucher();
+        DtoUsuario dtousu = new DtoUsuario();
+        CtrSolicitud ctrsol = new CtrSolicitud();
+        CtrUsuario ctrusu = new CtrUsuario();
         Ctr_Voucher ctrvoucher = new Ctr_Voucher();
         CtrPago ctrpago = new CtrPago();
         int solicitud = 0;
@@ -49,7 +51,6 @@ namespace WEB
         public void CargarMolduras2()
         {
             dtosol.PK_IS_Cod = Convert.ToInt32(Session["idSolicitudPago"]);
-            //pendiente de pago A aprobado
             if (ctrsol.leerSolicitudTipo(dtosol))
             {
                 if (dtosol.VS_TipoSolicitud == "Personalizado por catalogo" || dtosol.VS_TipoSolicitud == "Catalogo")
@@ -114,54 +115,8 @@ namespace WEB
                 }
                 if (ddl_decision.SelectedValue == "2")
                 {
-
-                    string Select = "";
-                    //"SELECT VU_Correo, VU_Contrasenia, VU_Nombre from T_Usuario where PK_VU_Dni ='"
-                    //+ dtomxu. + "'";
-
-                    SqlCommand unComando = new SqlCommand(Select, conexion);
-                    conexion.Open();
-                    SqlDataReader reader = unComando.ExecuteReader();
-
-                    if (reader.Read())
-                    {
-                        string senderr = "DecormoldurasRosetonesSAC@gmail.com";
-                        string senderrPass = "decormolduras1";
-                        string displayName = "SWCPEDR - DECORMOLDURAS & ROSETONES SAC";
-
-                        var date = DateTime.Now.ToShortDateString();
-                        var recipient = reader["VU_Correo"].ToString();
-                        var nombre = reader["VU_Nombre"].ToString();
-                        string body =
-                            "<body>" +
-                                "<h1>SWCPEDR - DECORMOLDURAS & ROSETONES SAC</h1>" +
-                                "<h4>ERROR EN SU VOUCHER ADJUNTADO</h4>" +
-                                "<span>Es probable que la imagen de su voucher este dañada o no distingible, favor de volver a realizar la operacion!" +
-                                "<br></br><span>Gracias.</span>" +
-                                "<br></br><span> Saludos cordiales.<span>" +
-                            "</body>";
-
-                        MailMessage mail = new MailMessage();
-                        mail.Subject = "SWCPEDR - AVISO - PROBLEMA CON EL ADJUNTO DE VOUCHER";
-                        mail.From = new MailAddress(senderr.Trim(), displayName);
-                        mail.Body = body;
-                        mail.To.Add(recipient.Trim());
-                        mail.IsBodyHtml = true;
-                        //mail.Priority = MailPriority.Normal;
-
-                        SmtpClient smtp = new SmtpClient();
-                        smtp.Host = "smtp.gmail.com";
-                        smtp.Port = 587;
-                        smtp.UseDefaultCredentials = false;
-                        smtp.EnableSsl = true;
-                        smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                        //smtp.Credentials = new System.Net.NetworkCredential(senderr.Trim(), senderrPass.Trim());
-                        NetworkCredential nc = new NetworkCredential(senderr, senderrPass);
-                        smtp.Credentials = nc;
-
-                        smtp.Send(mail);
-                    }
-
+                    dtosol.PK_IS_Cod = Convert.ToInt32(Session["idSolicitudPago"].ToString());
+                    ctrusu.EnviarCorreoReportado(dtosol);
                     _log.CustomWriteOnLog("EvaluarPago", "DDL = " + ddl_decision.Text);
                     //reporta la solicitud
                     Utils.AddScriptClientUpdatePanel(updPanelddl, "showSuccessMessage3()");
@@ -175,6 +130,6 @@ namespace WEB
                 throw;
             }
 
-        }
+       }
     }
 }

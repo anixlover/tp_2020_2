@@ -63,6 +63,17 @@ namespace DAO
             conexion.Close();
             return hayRegistros;
         }
+        public DataTable SelectSolicitudes2()
+        {
+            DataTable dtsolicitudes = null;
+            conexion.Open();
+            SqlCommand command = new SqlCommand("select*from Vista_Solicitudes", conexion);
+            SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
+            dtsolicitudes = new DataTable();
+            daAdaptador.Fill(dtsolicitudes);
+            conexion.Close();
+            return dtsolicitudes;
+        }
         public DataTable SelectSolicitudDiseñoPropioIMG(DtoSolicitud objsol)
         {
             DataTable dtsolicitudes = null;
@@ -141,10 +152,12 @@ namespace DAO
         }
         public DataSet desplegableSolicitudEstado()
         {
-            SqlDataAdapter solest = new SqlDataAdapter("SP_Desplegable_Solicitud_Estado", conexion);
-            solest.SelectCommand.CommandType = CommandType.StoredProcedure;
+            string Select = "SELECT * from T_Solicitud_Estado";
+            SqlCommand command = new SqlCommand(Select, conexion);
+            conexion.Open();
+            SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
             DataSet DS = new DataSet();
-            solest.Fill(DS);
+            daAdaptador.Fill(DS);
             return DS;
         }
         public DataTable SelectSolicitudes(string tipo)

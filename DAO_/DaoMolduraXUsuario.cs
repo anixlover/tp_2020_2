@@ -56,6 +56,45 @@ namespace DAO
             conexion.Close();
             return dtsolicitudes;
         }
+        public bool ExistenciaMXU(DtoMolduraXUsuario objDtoMolduraXUsuario)
+        {
+            string select = "select * from T_MOLDURAXUSUARIO where FK_VU_Dni ='"+ objDtoMolduraXUsuario.FK_VU_Dni + "' and FK_IM_Cod = "+ objDtoMolduraXUsuario.FK_IM_Cod + " and FK_IMXUE_Cod =2" ;
+            SqlCommand command = new SqlCommand(select,conexion);
+            conexion.Open();
+            command.ExecuteNonQuery();
+            SqlDataReader reader = command.ExecuteReader();
+            bool hayRegistros = reader.Read();
+            if (hayRegistros)
+            {
+                objDtoMolduraXUsuario.PK_IMU_Cod = (int)reader[0];
+                objDtoMolduraXUsuario.IMU_Cantidad = (int)reader[3];
+                objDtoMolduraXUsuario.DMU_Precio= Convert.ToDouble(reader[4].ToString());
+                objDtoMolduraXUsuario.FK_IM_Cod = (int)reader[2];
+            }
+            conexion.Close();
+            return hayRegistros;
+
+        }
+        public bool ExistenciaMXU_x_Cod(DtoMolduraXUsuario objDtoMolduraXUsuario)
+        {
+            string select = "select * from T_MOLDURAXUSUARIO where PK_IMU_Cod="+objDtoMolduraXUsuario.PK_IMU_Cod;
+            SqlCommand command = new SqlCommand(select, conexion);
+            conexion.Open();
+            command.ExecuteNonQuery();
+            SqlDataReader reader = command.ExecuteReader();
+            bool hayRegistros = reader.Read();
+            if (hayRegistros)
+            {
+                objDtoMolduraXUsuario.PK_IMU_Cod = (int)reader[0];
+                objDtoMolduraXUsuario.IMU_Cantidad = (int)reader[3];
+                objDtoMolduraXUsuario.DMU_Precio = Convert.ToDouble(reader[4].ToString());
+                objDtoMolduraXUsuario.FK_IM_Cod = (int)reader[2];
+                objDtoMolduraXUsuario.FK_IMXUE_Cod = (int)reader[6];
+            }
+            conexion.Close();
+            return hayRegistros;
+
+        }
         public void InsertarMolduraxUsuario(DtoMolduraXUsuario objMolduraxUsuario)
         {
             SqlCommand command = new SqlCommand("SP_Registrar_MXU_C", conexion);
@@ -64,6 +103,18 @@ namespace DAO
             command.Parameters.AddWithValue("@idCodM", objMolduraxUsuario.FK_IM_Cod);
             command.Parameters.AddWithValue("@cant", objMolduraxUsuario.IMU_Cantidad);
             command.Parameters.AddWithValue("@pre", objMolduraxUsuario.DMU_Precio);
+            conexion.Open();
+            command.ExecuteNonQuery();
+            conexion.Close();
+        }
+        public void actulizarExistenciaMXU  (DtoMolduraXUsuario objMolduraxUsuario)
+        {
+            SqlCommand command = new SqlCommand("SP_ActualizarExistenciaMXU", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@idDni", objMolduraxUsuario.FK_VU_Dni);
+            command.Parameters.AddWithValue("@idCodM", objMolduraxUsuario.FK_IM_Cod);
+            command.Parameters.AddWithValue("@cantidad", objMolduraxUsuario.IMU_Cantidad);
+            command.Parameters.AddWithValue("@precio", objMolduraxUsuario.DMU_Precio);
             conexion.Open();
             command.ExecuteNonQuery();
             conexion.Close();

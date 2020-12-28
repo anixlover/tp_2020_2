@@ -95,6 +95,12 @@ namespace WEB
                                     <span>Evaluar Pedidos Personalizados</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href='GestionarEstadosPedido.aspx' class='collapse'>
+                                    <i data-feather='book-open'></i>
+                                    <span>GestionarEstadosPedido</span>
+                                </a>
+                            </li>
 
         ");
             this.Literal1.Text = html;

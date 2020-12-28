@@ -36,22 +36,22 @@ namespace WEB
         }        
         public void RegistrarUE(DtoUsuario objUsuario)//<----Metodo de Registro
         {
-            if (objCtrUsuario.formatoDni(objUsuario) == false) //Probar si el Dni introducido cumple con el formato
+            if (objCtrUsuario.formatoDni(objUsuario) == false | txtDNI.Text.Contains("000")) //Probar si el Dni introducido cumple con el formato
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Dni INVALIDO!!'});", true);
                 return;
             }
-            if (objCtrUsuario.formatoNombre(objUsuario) == false)//Probar si el Nombre introducido cumple con el formato
+            if (objCtrUsuario.formatoNombre(objUsuario) == false | txtNombres.Text.Contains(" "))//Probar si el Nombre introducido cumple con el formato
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Nombre INVALIDO!!'});", true);
                 return;
             }
-            if (objCtrUsuario.formatoApellido(objUsuario) == false)//Probar si el Apellido introducido cumple con el formato
+            if (objCtrUsuario.formatoApellido(objUsuario) == false | txtApellidos.Text.Contains(" "))//Probar si el Apellido introducido cumple con el formato
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Apellido INVALIDO!!'});", true);
                 return;
             }
-            if (objCtrUsuario.formatoCorreo(objUsuario) == false)//Probar si el correo introducido cumple con el formato
+            if (objCtrUsuario.formatoCorreo(objUsuario) == false | txtCorreo.Text.Contains(" "))//Probar si el correo introducido cumple con el formato
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Correo INVALIDO!!'});", true);
                 return;
@@ -73,7 +73,7 @@ namespace WEB
             }
             if (DateTime.Now.Year-objUsuario.DTU_FechaNac.Year<18)
             {
-                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Debe ser mayor de edad!!'});", true);
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Fecha INVALIDA!!'});", true);
                 return;
             }
             //Registra al usuario tipo cliente y redirije al iniciarsesion.aspx

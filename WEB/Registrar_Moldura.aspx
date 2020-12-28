@@ -22,6 +22,13 @@
             resize: none;
         }
     </style>
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
 
     <!-- Libreria JQuery -->
     <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
@@ -82,7 +89,7 @@
                 </div>
                 <br />
                 <div runat="server" id="Div">
-                    <input type="file" id="FileUpload1" accept="image/*" onchange="leerImagen(this);" data-plugins="dropify" />
+                    <input type="file" id="FileUpload1" accept=".jpg,.png" onchange="leerImagen(this);" data-plugins="dropify" />
                 </div>
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
@@ -102,7 +109,7 @@
                                             <span class="input-group-text">
                                                 <asp:Label ID="lblLargo" runat="server" Text="Cm"></asp:Label></span>
                                         </div>
-                                        <asp:TextBox ID="txtLargo" runat="server" parsley-trigger="change" class="form-control autonumber " data-v-max="250" data-v-min="1"></asp:TextBox>
+                                        <asp:TextBox ID="txtLargo" runat="server" parsley-trigger="change" class="form-control autonumber " data-v-max="250" data-v-min="1" TextMode="Number" step=".01"></asp:TextBox>
                                         <%--<input type="text" class="form-control" id="validationCustomUsername" placeholder="Centimetros" aria-describedby="inputGroupPrepend"
                                     required>--%>
                                         <%--<div class="invalid-feedback">
@@ -119,7 +126,7 @@
                                             <span class="input-group-text">
                                                 <asp:Label ID="lblAncho" runat="server" Text="Cm"></asp:Label></span>
                                         </div>
-                                        <asp:TextBox ID="txtAncho" runat="server" class="form-control autonumber" data-v-max="250" data-v-min="1"></asp:TextBox>
+                                        <asp:TextBox ID="txtAncho" runat="server" class="form-control autonumber" data-v-max="250" data-v-min="1" TextMode="Number" step=".01"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -144,7 +151,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">u.</span>
                                 </div>
-                                <asp:TextBox ID="txtStock" class="form-control autonumber" data-parsley-type="digits" data-v-max="600" data-v-min="0" runat="server" required></asp:TextBox>
+                                <asp:TextBox ID="txtStock" class="form-control autonumber" data-parsley-type="digits" data-v-max="600" data-v-min="0" runat="server" TextMode="Number" required></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -155,7 +162,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">S/.</span>
                                 </div>
-                                <asp:TextBox ID="txtPrecio" class="form-control" data-v-max="900" data-v-min="1"  runat="server" required></asp:TextBox>
+                                <asp:TextBox ID="txtPrecio" class="form-control" data-v-max="900" data-v-min="1"  runat="server" TextMode="Number" required></asp:TextBox>
                             </div>
                         </div>
                     </div>

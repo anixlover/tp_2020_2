@@ -12,7 +12,9 @@
     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
     <link href="assets/css/StyleSheet1.css" rel="stylesheet" type="text/css" />
-
+    <!-- Tour css -->
+    <link href="../assets/libs/hopscotch/css/hopscotch.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <section class="seccion contenedor clearfix">
@@ -32,6 +34,7 @@
                                 <asp:LinkButton runat="server" class="filter-menu-item" ID="btnCornisaClasica" OnClick="btnCornisaClasica_Click">Cornisa Clasica</asp:LinkButton>
                                 <asp:LinkButton runat="server" class="filter-menu-item" ID="btnCornisaDecorada" OnClick="btnCornisaDecorada_Click">Cornisa Decorada</asp:LinkButton>
                                 <asp:LinkButton runat="server" class="filter-menu-item" ID="btnPlaca3D" OnClick="btnPlaca3D_Click">Placa 3D</asp:LinkButton>
+
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
@@ -40,8 +43,7 @@
         </div>
         <asp:UpdatePanel runat="server" ID="UpdatePanel1" UpdateMode="Always">
             <ContentTemplate>
-                <ul class="row filterable-content" id="ListaMoldura" runat="server">
-                </ul>
+                <ul class="row filterable-content" id="ListaMoldura" runat="server"></ul>
             </ContentTemplate>
         </asp:UpdatePanel>
 
@@ -51,8 +53,6 @@
             }
         </script>
     </section>
-
-
     <script src="js/Aplicacion/UploadFile.js"></script>
     <script>
         function showSuccessMessage2() {
@@ -78,12 +78,15 @@
                 }
             }
         }
-    </script>
+        function mostrarMensaje() {
+            alert('Aham, lo que parecía un link en realidad lo que está haciendo es ejecutar una función javascript!');
+        }
+
+   
+    <!-- Tour page js -->
+    <script src="../assets/libs/hopscotch/js/hopscotch.min.js"></script>
+
+    <!-- Tour init js-->
+
 </asp:Content>
-<%--<asp:Content ID="Content4" ContentPlaceHolderID="cph_Js" runat="Server">
 
-    
-    <!-- /Right-bar -->
-
-    <!-- Right bar overlay-->
-</asp:Content>--%>

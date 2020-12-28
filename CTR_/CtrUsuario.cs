@@ -152,5 +152,9 @@ namespace CTR
         {
             objDaoUsuario.UptadeDatosPerfil(dtoUsuario);
         }
+        public void EnviarCorreoReportado(DtoSolicitud dtomxu)
+        {
+            objDaoUsuario.EnviarCorreoReportado(dtomxu);
+        }
     }
 }

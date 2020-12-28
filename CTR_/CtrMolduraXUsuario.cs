@@ -21,7 +21,15 @@ namespace CTR
         {
             objDaoMolduraXUsuario.InsertarMolduraxUsuario(objDtoMolduraxUsuario);
         }
-        public DataTable listarMoldurasxusuario(DtoMolduraXUsuario objdtoMolduraxUsuario)
+        public void actualizarExistencia(DtoMolduraXUsuario objDtoMolduraxUsuario)
+        {
+            objDaoMolduraXUsuario.actulizarExistenciaMXU(objDtoMolduraxUsuario);
+        }
+        public bool ExistenciaMXU(DtoMolduraXUsuario objDtoMolduraXUsuario)
+        {
+            return objDaoMolduraXUsuario.ExistenciaMXU(objDtoMolduraXUsuario);
+        }
+            public DataTable listarMoldurasxusuario(DtoMolduraXUsuario objdtoMolduraxUsuario)
         {
             return objDaoMolduraXUsuario.ListarMXU(objdtoMolduraxUsuario);
         }
@@ -36,7 +44,7 @@ namespace CTR
         public DataTable ListarSolicitudesxDNI(DtoMolduraXUsuario objDtoMolduraXUsuario)
         {
             return objDaoMolduraXUsuario.SelectSolicitudesxDNI(objDtoMolduraXUsuario);
-        }
+        }        
         public DataTable ListarMoldurasxDNI_y_Estado(DtoMolduraXUsuario objDtoMolduraXUsuario, int estado)
         {
             return objDaoMolduraXUsuario.SelectSolicitudesxDNI_y_Estado(objDtoMolduraXUsuario, estado);
@@ -52,6 +60,10 @@ namespace CTR
         public void actualizarMXUSol(DtoMolduraXUsuario objdtoMolduraxUsuario)
         {
             objDaoMolduraXUsuario.actualizarMXUSol(objdtoMolduraxUsuario);
+        }
+        public bool obtenerMXUxCodigo(DtoMolduraXUsuario objdtoMolduraxUsuario)
+        {
+            return objDaoMolduraXUsuario.ExistenciaMXU_x_Cod(objdtoMolduraxUsuario);
         }
     }
 }

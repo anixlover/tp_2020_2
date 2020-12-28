@@ -26,6 +26,8 @@
     <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
     <link href="../assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" />
     <link href="../assets/libs/selectize/css/selectize.bootstrap3.css" rel="stylesheet" type="text/css" />
+    <!-- Tour css -->
+    <link href="../assets/libs/hopscotch/css/hopscotch.min.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -46,7 +48,7 @@
                         </div>
                         Contraseña:
                     <div class="input-group input-group-merge">
-                        <asp:TextBox ID="txtContraseña" runat="server" CssClass="form-control" placeholder="Contraseña" BackColor="White"></asp:TextBox>
+                        <asp:TextBox ID="txtContraseña" runat="server" CssClass="form-control" placeholder="Contraseña" BackColor="White" TextMode="Password"></asp:TextBox>
                         <div class="input-group-append" data-password="false">
                             <div class="input-group-text">
                                 <span class="password-eye font-12"></span>
@@ -77,8 +79,6 @@
         }
     </script>
 
-
-
     <script type="text/javascript">
         function solonumeros(n) {
             key = e.keyCode || e.which;
@@ -97,10 +97,6 @@
 
         }
     </script>
-
-
-
-
 </body>
 <!-- Plugins js-->
 <script src="../assets/libs/flatpickr/flatpickr.min.js"></script>
@@ -113,11 +109,6 @@
 <script src="../assets/js/vendor.min.js"></script>
 <!-- App js -->
 <script src="../assets/js/app.min.js"></script>
-
-
-
-
-
-
-
+<!-- Tour page js -->
+<script src="../assets/libs/hopscotch/js/hopscotch.min.js"></script>
 </html>
