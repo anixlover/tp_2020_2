@@ -61,5 +61,9 @@ namespace CTR
         {
             objDaoMolduraXUsuario.actualizarMXUSol(objdtoMolduraxUsuario);
         }
+        public bool obtenerMXUxCodigo(DtoMolduraXUsuario objdtoMolduraxUsuario)
+        {
+            return objDaoMolduraXUsuario.ExistenciaMXU_x_Cod(objdtoMolduraxUsuario);
+        }
     }
 }

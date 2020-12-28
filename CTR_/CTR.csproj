@@ -48,6 +48,7 @@
     <Compile Include="CtrDatoFactura.cs" />
     <Compile Include="CtrMoldura.cs" />
     <Compile Include="CtrMolduraXUsuario.cs" />
+    <Compile Include="CtrMXUEstado.cs" />
     <Compile Include="CtrPago.cs" />
     <Compile Include="CtrSolicitudEstado.cs" />
     <Compile Include="CtrTipoMoldura.cs" />
