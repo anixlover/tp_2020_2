@@ -80,6 +80,14 @@ namespace WEB
                 CargarMolduras(id);
                 lblid.Text = id;
             }
+            if (e.CommandName == "Ver proceso")
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = gvPedidos.Rows[index];
+                string id = row.Cells[0].Text;
+                CargarMoldurasProceso(id);
+                lblid.Text = id;
+            }
             if (e.CommandName == "Pago")
             {
                 int index = Convert.ToInt32(e.CommandArgument);
@@ -98,7 +106,9 @@ namespace WEB
                 if (objDtoSolicitud.VS_TipoSolicitud == "Personalizado por catalogo" || objDtoSolicitud.VS_TipoSolicitud == "Catalogo")
                 {
                     gvPersonalizado.Visible = false;
+                    gvPersonalizado2.Visible = false;
                     gvDetalles.Visible = true;
+                    gvProceso.Visible = false;
                     objCtrSolicitud.LeerSolicitudImporte(objDtoSolicitud);
                     gvDetalles.DataSource = objCtrMolduraxUsuario.ListarMoldurasXsolicitud(objDtoMolduraxUsuario);
                     gvDetalles.DataBind();
@@ -107,9 +117,40 @@ namespace WEB
                 {
                     gvPersonalizado.Visible = true;
                     gvDetalles.Visible = false;
+                    gvProceso.Visible = false;
+                    gvPersonalizado2.Visible = false;
                     objCtrSolicitud.leerSolicitudDiseñoPersonal(objDtoSolicitud);
                     gvPersonalizado.DataSource = objCtrSolicitud.MostrarPedidoPersonalizado(objDtoSolicitud);
                     gvPersonalizado.DataBind();
+                }
+            }
+        }
+        public void CargarMoldurasProceso(string id)
+        {
+            objDtoMolduraxUsuario.FK_IS_Cod = int.Parse(id);
+            objDtoSolicitud.PK_IS_Cod = int.Parse(id);
+            if (objCtrSolicitud.LeerSolicitudTipo(objDtoSolicitud))
+            {
+
+                if (objDtoSolicitud.VS_TipoSolicitud == "Personalizado por catalogo" || objDtoSolicitud.VS_TipoSolicitud == "Catalogo")
+                {
+                    gvPersonalizado.Visible = false;
+                    gvPersonalizado2.Visible = false;
+                    gvDetalles.Visible = false;
+                    gvProceso.Visible = true;
+                    objCtrSolicitud.LeerSolicitudImporte(objDtoSolicitud);
+                    gvProceso.DataSource = objCtrMolduraxUsuario.ListarMoldurasXsolicitud(objDtoMolduraxUsuario);
+                    gvProceso.DataBind();
+                }
+                else if (objDtoSolicitud.VS_TipoSolicitud == "Personalizado por diseño propio")
+                {
+                    gvPersonalizado.Visible = false;
+                    gvDetalles.Visible = false;
+                    gvProceso.Visible = false;
+                    gvPersonalizado2.Visible = true;
+                    objCtrSolicitud.leerSolicitudDiseñoPersonal(objDtoSolicitud);
+                    gvPersonalizado2.DataSource = objCtrSolicitud.MostrarPedidoPersonalizado(objDtoSolicitud);
+                    gvPersonalizado2.DataBind();
                 }
             }
         }

@@ -65,5 +65,9 @@ namespace CTR
         {
             return objDaoMolduraXUsuario.ExistenciaMXU_x_Cod(objdtoMolduraxUsuario);
         }
+        public void actualizarMXUxCod(DtoMolduraXUsuario objdtoMolduraxUsuario)
+        {
+            objDaoMolduraXUsuario.UpdateMXU_x_codigo(objdtoMolduraxUsuario);
+        }
     }
 }

@@ -46,7 +46,7 @@
                                                 CommandName="Ver detalle" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-warning" />
                                             <asp:Button runat="server" Text="Ver Detalles" ItemStyle-HorizontalAlign="Center" data-toggle="modal" data-target="#modalDetalle"
                                                 CommandName="Ver detalles" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-warning" />
-                                            <asp:Button runat="server" Text="Ver proceso" ItemStyle-HorizontalAlign="Center"
+                                            <asp:Button runat="server" Text="Ver proceso" ItemStyle-HorizontalAlign="Center" data-toggle="modal" data-target="#modalDetalle"
                                                 Visible='<%# ValidacionEstado5(Eval("VSE_Nombre").ToString()) %>'
                                                 CommandName="Ver proceso" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-warning" />
                                             <asp:Button runat="server" Text="Ver incidencias" ItemStyle-HorizontalAlign="Center"
@@ -104,6 +104,42 @@
                                 <asp:BoundField DataField="VTM_Nombre" ItemStyle-HorizontalAlign="Center" HeaderText="Tipo de Moldura" />
                                 <asp:BoundField DataField="IMU_Cantidad" ItemStyle-HorizontalAlign="Center" HeaderText="Cantidad" />
                                 <asp:BoundField DataField="DMU_Precio" ItemStyle-HorizontalAlign="Center" HeaderText="Precio" />
+                            </Columns>
+                        </asp:GridView>
+                        <br />
+                        <asp:GridView ID="gvProceso" runat="server" DataKeyNames="PK_IM_Cod" AutoGenerateColumns="False"
+                            EmptyDataText="No existen registros" ShowHeaderWhenEmpty="True" Width="100%" CssClass="table-borderless table table-bordered table-hover">
+                            <Columns>
+                                <asp:TemplateField HeaderText="Imagen">
+                                    <ItemTemplate>
+                                        <img src='ObtieneImagen.ashx?id=<%# Eval("PK_IM_Cod")%>' height="80px" width="80px" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="PK_IM_Cod" ItemStyle-HorizontalAlign="Center" HeaderText="Código de Moldura" />                                
+                                <asp:BoundField DataField="VTM_Nombre" ItemStyle-HorizontalAlign="Center" HeaderText="Tipo de Moldura" />
+                                <asp:BoundField DataField="IMU_Cantidad" ItemStyle-HorizontalAlign="Center" HeaderText="Cantidad" />
+                                <asp:BoundField DataField="DMU_Precio" ItemStyle-HorizontalAlign="Center" HeaderText="Precio" />
+                                <asp:BoundField DataField="FK_IMXUE_Cod" ItemStyle-HorizontalAlign="Center" HeaderText="Estado" />
+                            </Columns>
+                        </asp:GridView>
+                        <br />
+                        <asp:GridView ID="gvPersonalizado2" runat="server" DataKeyNames="PK_IS_Cod,PK_IMU_Cod" AutoGenerateColumns="False"
+                            EmptyDataText="No existen registros" ShowHeaderWhenEmpty="True" CssClass="table-borderless table table-bordered table-hover" Width="100%">
+                            <Columns>
+                                <asp:TemplateField HeaderText="Imagen">
+                                    <ItemTemplate>
+                                        <img src='ObtenerImegenPersonalizada_2.ashx?id=<%# Eval("PK_IS_Cod")%>' height="60px" width="60px" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="PK_IMU_Cod" ItemStyle-HorizontalAlign="Center" HeaderText="Código" />
+                                <asp:BoundField DataField="PK_IS_Cod" ItemStyle-HorizontalAlign="Center" HeaderText="Código de solicitud" />
+                                <asp:BoundField DataField="DS_Largo" ItemStyle-HorizontalAlign="Center" HeaderText="Largo" />
+                                <asp:BoundField DataField="DS_Ancho" ItemStyle-HorizontalAlign="Center" HeaderText="Ancho" />
+                                <asp:BoundField DataField="VS_Comentario" ItemStyle-HorizontalAlign="Center" HeaderText="Comentario" />
+                                <asp:BoundField DataField="IS_Cantidad" ItemStyle-HorizontalAlign="Center" HeaderText="Cantidad" />
+                                <asp:BoundField DataField="DS_PrecioAprox" ItemStyle-HorizontalAlign="Center" HeaderText="Precio Aprox(S/.)" />
+                                <asp:BoundField DataField="DS_ImporteTotal" ItemStyle-HorizontalAlign="Center" HeaderText="Importe total(S/.)" />
+                                <asp:BoundField DataField="FK_IMXUE_Cod" ItemStyle-HorizontalAlign="Center" HeaderText="Estado" />
                             </Columns>
                         </asp:GridView>
                     </ContentTemplate>
