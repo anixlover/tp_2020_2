@@ -18,7 +18,7 @@ namespace DAO
         }
         public DataSet SelectMXUEstado()
         {
-            SqlDataAdapter Estado = new SqlDataAdapter("SELECT*FROM T_MXU_ESTADO", conexion);
+            SqlDataAdapter Estado = new SqlDataAdapter("SELECT*FROM T_MXU_ESTADO WHERE PK_IMXUE_Cod>=6 AND PK_IMXUE_Cod<=11", conexion);
             DataSet DS = new DataSet();
             Estado.Fill(DS);
             return DS;
