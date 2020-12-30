@@ -63,11 +63,11 @@ namespace DAO
             conexion.Close();
             return hayRegistros;
         }
-        public DataTable SelectSolicitudes2()
+        public DataTable SelectSolicitudesTrabajador()
         {
             DataTable dtsolicitudes = null;
             conexion.Open();
-            SqlCommand command = new SqlCommand("select*from Vista_Solicitudes", conexion);
+            SqlCommand command = new SqlCommand("select*from Vista_Solicitudes_Trabajador", conexion);
             SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
             dtsolicitudes = new DataTable();
             daAdaptador.Fill(dtsolicitudes);

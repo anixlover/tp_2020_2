@@ -27,7 +27,7 @@ namespace WEB
                 else
                 {
                     UpdatePanel1.Update();
-                    gvPedidos.DataSource= objCtrSolicitud.ListarSolicitudes();
+                    gvPedidos.DataSource= objCtrSolicitud.ListarSolicitudesTrabajdor();
                     gvPedidos.DataBind();
                     
                 }
@@ -69,7 +69,12 @@ namespace WEB
                 }
             }
         }
-
+        public int obtenerEstado(string codigo)
+        {
+            objDtoMolduraxUsuario.PK_IMU_Cod = int.Parse(codigo);
+            objCtrMolduraxUsuario.obtenerMXUxCodigo(objDtoMolduraxUsuario);
+            return objDtoMolduraxUsuario.FK_IMXUE_Cod;
+        }
         protected void gvDetalles_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -79,6 +84,30 @@ namespace WEB
                 ddlMXUEstados.DataTextField = "VMXUE_Nombre";
                 ddlMXUEstados.DataValueField = "PK_IMXUE_Cod";
                 ddlMXUEstados.DataBind();
+                int idE = Convert.ToInt32(e.Row.Cells[1].Text);
+                objDtoMolduraxUsuario.PK_IMU_Cod = idE;
+                objCtrMolduraxUsuario.obtenerMXUxCodigo(objDtoMolduraxUsuario);
+                ddlMXUEstados.SelectedValue = (objDtoMolduraxUsuario.FK_IMXUE_Cod).ToString();
+                e.Row.Cells[1].Visible = false;
+                gvDetalles.HeaderRow.Cells[1].Visible = false;
+            }
+        }
+
+        protected void gvPersonalizado_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                DropDownList ddlMXUEstados = (e.Row.FindControl("ddlEstados") as DropDownList);
+                ddlMXUEstados.DataSource = objCtrMXUEstado.ListarEstados();
+                ddlMXUEstados.DataTextField = "VMXUE_Nombre";
+                ddlMXUEstados.DataValueField = "PK_IMXUE_Cod";
+                ddlMXUEstados.DataBind();
+                int idE = Convert.ToInt32(e.Row.Cells[1].Text);
+                objDtoMolduraxUsuario.PK_IMU_Cod = idE;
+                objCtrMolduraxUsuario.obtenerMXUxCodigo(objDtoMolduraxUsuario);
+                ddlMXUEstados.SelectedValue = (objDtoMolduraxUsuario.FK_IMXUE_Cod).ToString();
+                e.Row.Cells[1].Visible = false;
+                gvPersonalizado.HeaderRow.Cells[1].Visible = false;
             }
         }
     }
