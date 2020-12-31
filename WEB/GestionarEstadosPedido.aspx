@@ -45,8 +45,8 @@
             </asp:UpdatePanel>
         </div>
     </div>
-     <div class="modal fade" id="modalDetalle" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-lg" role="dialog">
+     <div class="modal fade bd-example-modal-xl" id="modalDetalle" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-xl" role="dialog">
             <div class="modal-content">                
                 <asp:UpdatePanel runat="server" ID="upPanelModal" UpdateMode="Always">
                     <ContentTemplate>
