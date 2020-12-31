@@ -119,7 +119,8 @@ namespace WEB
             objDtoMolduraxUsuario.PK_IMU_Cod = int.Parse(rowNumber);
             objDtoMolduraxUsuario.FK_IMXUE_Cod = int.Parse(ddlEstados.SelectedValue);
             objCtrMolduraxUsuario.actualizarMXUxCod(objDtoMolduraxUsuario);
-            //upPanelModal.Update();
+            string sol = lblid.Text;
+            CargarMolduras(sol);
         }
 
         protected void ddlEstados2_SelectedIndexChanged(object sender, EventArgs e)
@@ -130,6 +131,8 @@ namespace WEB
             objDtoMolduraxUsuario.PK_IMU_Cod = int.Parse(rowNumber);
             objDtoMolduraxUsuario.FK_IMXUE_Cod = int.Parse(ddlEstados2.SelectedValue);
             objCtrMolduraxUsuario.actualizarMXUxCod(objDtoMolduraxUsuario);
+            string sol = lblid.Text;
+            CargarMolduras(sol);
         }
     }
 }
