@@ -75,6 +75,14 @@ namespace DAO
             return hayRegistros;
 
         }
+        public void UpdateMXU_x_codigo(DtoMolduraXUsuario objDtoMolduraXUsuario)
+        {
+            string select = "Update T_MOLDURAXUSUARIO set [FK_IMXUE_Cod] ="+objDtoMolduraXUsuario.FK_IMXUE_Cod+ " where PK_IMU_Cod="+objDtoMolduraXUsuario.PK_IMU_Cod;
+            SqlCommand command = new SqlCommand(select, conexion);
+            conexion.Open();
+            command.ExecuteNonQuery();
+            conexion.Close();
+        }
         public bool ExistenciaMXU_x_Cod(DtoMolduraXUsuario objDtoMolduraXUsuario)
         {
             string select = "select * from T_MOLDURAXUSUARIO where PK_IMU_Cod="+objDtoMolduraXUsuario.PK_IMU_Cod;

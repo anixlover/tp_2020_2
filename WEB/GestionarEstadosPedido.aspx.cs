@@ -110,5 +110,29 @@ namespace WEB
                 gvPersonalizado.HeaderRow.Cells[1].Visible = false;
             }
         }
+
+        protected void ddlEstados_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow gvr = (GridViewRow)((DropDownList)sender).Parent.Parent;
+            DropDownList ddlEstados = (DropDownList)sender;
+            string rowNumber = gvDetalles.DataKeys[gvr.RowIndex].Value.ToString();
+            objDtoMolduraxUsuario.PK_IMU_Cod = int.Parse(rowNumber);
+            objDtoMolduraxUsuario.FK_IMXUE_Cod = int.Parse(ddlEstados.SelectedValue);
+            objCtrMolduraxUsuario.actualizarMXUxCod(objDtoMolduraxUsuario);
+            string sol = lblid.Text;
+            CargarMolduras(sol);
+        }
+
+        protected void ddlEstados2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow gvr = (GridViewRow)((DropDownList)sender).Parent.Parent;
+            DropDownList ddlEstados2 = (DropDownList)sender;
+            string rowNumber = gvPersonalizado.DataKeys[gvr.RowIndex].Value.ToString();
+            objDtoMolduraxUsuario.PK_IMU_Cod = int.Parse(rowNumber);
+            objDtoMolduraxUsuario.FK_IMXUE_Cod = int.Parse(ddlEstados2.SelectedValue);
+            objCtrMolduraxUsuario.actualizarMXUxCod(objDtoMolduraxUsuario);
+            string sol = lblid.Text;
+            CargarMolduras(sol);
+        }
     }
 }

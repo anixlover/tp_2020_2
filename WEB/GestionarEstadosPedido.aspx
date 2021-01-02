@@ -45,8 +45,8 @@
             </asp:UpdatePanel>
         </div>
     </div>
-     <div class="modal fade" id="modalDetalle" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-lg" role="dialog">
+     <div class="modal fade bd-example-modal-xl" id="modalDetalle" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-xl" role="dialog">
             <div class="modal-content">                
                 <asp:UpdatePanel runat="server" ID="upPanelModal" UpdateMode="Always">
                     <ContentTemplate>
@@ -56,7 +56,7 @@
                         <asp:Label ID="lblid" runat="server" Text="0"></asp:Label>
                             </p>
                         </div>
-                        <asp:GridView ID="gvPersonalizado" runat="server" DataKeyNames="PK_IS_Cod,PK_IMU_Cod" AutoGenerateColumns="False"
+                        <asp:GridView ID="gvPersonalizado" runat="server" DataKeyNames="PK_IMU_Cod" AutoGenerateColumns="False"
                             EmptyDataText="No existen registros" ShowHeaderWhenEmpty="True" CssClass="table-borderless table table-bordered table-hover" Width="100%" OnRowDataBound="gvPersonalizado_RowDataBound">
                             <Columns>
                                 <asp:TemplateField HeaderText="Imagen">
@@ -75,13 +75,13 @@
                                 <asp:BoundField DataField="FK_IMXUE_Cod" ItemStyle-HorizontalAlign="Center" HeaderText="Estado" />
                                 <asp:TemplateField HeaderText="Cambiar Estado">
                                     <ItemTemplate>
-                                        <asp:DropDownList ID="ddlEstados" runat="server" AutoPostBack="True"></asp:DropDownList>
+                                        <asp:DropDownList ID="ddlEstados2" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlEstados2_SelectedIndexChanged"></asp:DropDownList>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
                         </asp:GridView>
                         <br />
-                        <asp:GridView ID="gvDetalles" runat="server" DataKeyNames="PK_IM_Cod,PK_IMU_Cod" AutoGenerateColumns="False"
+                        <asp:GridView ID="gvDetalles" runat="server" DataKeyNames="PK_IMU_Cod" AutoGenerateColumns="False"
                             EmptyDataText="No existen registros" ShowHeaderWhenEmpty="True" Width="100%" CssClass="table-borderless table table-bordered table-hover" OnRowDataBound="gvDetalles_RowDataBound">
                             <Columns>
                                 <asp:TemplateField HeaderText="Imagen">
@@ -98,7 +98,7 @@
                                 <asp:BoundField DataField="FK_IMXUE_Cod" ItemStyle-HorizontalAlign="Center" HeaderText="Estado" />
                                 <asp:TemplateField HeaderText="Cambiar Estado">
                                     <ItemTemplate>
-                                        <asp:DropDownList ID="ddlEstados" runat="server" AutoPostBack="True"></asp:DropDownList>
+                                        <asp:DropDownList ID="ddlEstados" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlEstados_SelectedIndexChanged"></asp:DropDownList>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
