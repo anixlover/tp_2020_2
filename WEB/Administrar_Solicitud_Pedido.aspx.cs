@@ -273,7 +273,7 @@ namespace WEB
                     gvCarrito.DataSource = objCtrMXU.listarMoldurasxusuario(objDtoMXU);
                     gvCarrito.DataBind();
                     Utils.AddScriptClientUpdatePanel(UpdatePanel, "showCancelMessage()");
-
+                    Response.Redirect("ConsultarEstadosPago.aspx");
                 }
             }
             catch (Exception ex)

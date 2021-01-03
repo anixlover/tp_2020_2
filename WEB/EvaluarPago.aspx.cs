@@ -122,7 +122,6 @@ namespace WEB
                     Utils.AddScriptClientUpdatePanel(updPanelddl, "showSuccessMessage3()");
                 }
             }
-
             catch (Exception ex)
             {
                 Utils.AddScriptClientUpdatePanel(updPanelddl, "showSuccessMessage1()");

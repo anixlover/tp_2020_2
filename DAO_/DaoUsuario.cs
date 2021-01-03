@@ -258,8 +258,8 @@ namespace DAO
             SqlDataReader reader = command.ExecuteReader();
             if (reader.Read())
             {
-                string senderr = "DecormoldurasRosetonesSAC@gmail.com";
-                string senderrPass = "decormolduras1";
+                string senderr = "decormoldurassac2020@gmail.com";
+                string senderrPass = "decormoldurassac";
                 string displayName = "SWCPEDR - DECORMOLDURAS & ROSETONES SAC";
 
                 var date = DateTime.Now.ToShortDateString();
