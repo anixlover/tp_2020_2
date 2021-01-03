@@ -17,6 +17,10 @@ namespace CTR
         {
             objDaoSolicitud = new DaoSolicitud();
         }
+        public DataTable ListarSolicitudesTrabajdor()
+        {
+            return objDaoSolicitud.SelectSolicitudesTrabajador();
+        }
         public bool LeerSolicitudTipo(DtoSolicitud objDtoSolicitud)
         {
             return objDaoSolicitud.SelectSolicitudTipo(objDtoSolicitud);

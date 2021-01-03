@@ -44,7 +44,7 @@ namespace CTR
         public DataTable ListarSolicitudesxDNI(DtoMolduraXUsuario objDtoMolduraXUsuario)
         {
             return objDaoMolduraXUsuario.SelectSolicitudesxDNI(objDtoMolduraXUsuario);
-        }
+        }        
         public DataTable ListarMoldurasxDNI_y_Estado(DtoMolduraXUsuario objDtoMolduraXUsuario, int estado)
         {
             return objDaoMolduraXUsuario.SelectSolicitudesxDNI_y_Estado(objDtoMolduraXUsuario, estado);
@@ -60,6 +60,14 @@ namespace CTR
         public void actualizarMXUSol(DtoMolduraXUsuario objdtoMolduraxUsuario)
         {
             objDaoMolduraXUsuario.actualizarMXUSol(objdtoMolduraxUsuario);
+        }
+        public bool obtenerMXUxCodigo(DtoMolduraXUsuario objdtoMolduraxUsuario)
+        {
+            return objDaoMolduraXUsuario.ExistenciaMXU_x_Cod(objdtoMolduraxUsuario);
+        }
+        public void actualizarMXUxCod(DtoMolduraXUsuario objdtoMolduraxUsuario)
+        {
+            objDaoMolduraXUsuario.UpdateMXU_x_codigo(objdtoMolduraxUsuario);
         }
     }
 }

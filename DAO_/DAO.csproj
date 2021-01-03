@@ -46,6 +46,7 @@
     <Compile Include="DaoDatoFactura.cs" />
     <Compile Include="DaoMoldura.cs" />
     <Compile Include="DaoMolduraXUsuario.cs" />
+    <Compile Include="DaoMXUEstado.cs" />
     <Compile Include="DaoPago.cs" />
     <Compile Include="DaoSolicitudEstado.cs" />
     <Compile Include="DaoTipoMoldura.cs" />

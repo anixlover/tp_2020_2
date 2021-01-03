@@ -1940,6 +1940,7 @@
     <Content Include="Detalles_Solicitud.aspx" />
     <Content Include="EvaluarPago.aspx" />
     <Content Include="EvaluarPedidosPersonalizados.aspx" />
+    <Content Include="GestionarEstadosPedido.aspx" />
     <Content Include="RealizarCompra.aspx" />
     <Content Include="Realizar_Pedido_Personalizado.aspx" />
     <Content Include="RegistrarClienteVendedor.aspx" />
@@ -2014,6 +2015,13 @@
     </Compile>
     <Compile Include="EvaluarPedidosPersonalizados.aspx.designer.cs">
       <DependentUpon>EvaluarPedidosPersonalizados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestionarEstadosPedido.aspx.cs">
+      <DependentUpon>GestionarEstadosPedido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionarEstadosPedido.aspx.designer.cs">
+      <DependentUpon>GestionarEstadosPedido.aspx</DependentUpon>
     </Compile>
     <Compile Include="ObtenerImegenPersonalizada_2.ashx.cs">
       <DependentUpon>ObtenerImegenPersonalizada_2.ashx</DependentUpon>

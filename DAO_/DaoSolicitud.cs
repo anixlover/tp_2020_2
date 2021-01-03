@@ -63,6 +63,17 @@ namespace DAO
             conexion.Close();
             return hayRegistros;
         }
+        public DataTable SelectSolicitudesTrabajador()
+        {
+            DataTable dtsolicitudes = null;
+            conexion.Open();
+            SqlCommand command = new SqlCommand("select*from Vista_Solicitudes_Trabajador", conexion);
+            SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
+            dtsolicitudes = new DataTable();
+            daAdaptador.Fill(dtsolicitudes);
+            conexion.Close();
+            return dtsolicitudes;
+        }
         public DataTable SelectSolicitudDiseñoPropioIMG(DtoSolicitud objsol)
         {
             DataTable dtsolicitudes = null;
