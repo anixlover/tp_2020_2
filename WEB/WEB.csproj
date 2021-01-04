@@ -155,7 +155,10 @@
     <Content Include="assets\css\bootstrap.min.css" />
     <Content Include="assets\css\icons.css" />
     <Content Include="assets\css\icons.min.css" />
+    <Content Include="assets\css\materialize.css" />
+    <Content Include="assets\css\style.css" />
     <Content Include="assets\css\StyleSheet1.css" />
+    <Content Include="assets\css\themes\all-themes.css" />
     <Content Include="assets\fonts\cerebrisans-bold.svg" />
     <Content Include="assets\fonts\cerebrisans-light.svg" />
     <Content Include="assets\fonts\cerebrisans-medium.svg" />

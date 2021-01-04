@@ -9,6 +9,10 @@
     <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
     <link href="../assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
     <link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
+
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css/materialize.css" rel="stylesheet" />
+    <link href="assets/css/themes/all-themes.css" rel="stylesheet" />
     <!-- icons -->
     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 </asp:Content>
@@ -498,27 +502,6 @@
                                         <div class="col-sm-12" id="divSubAddGv" runat="server" hidden clientidmode="Static">
                                             <asp:HiddenField runat="server" ID="HiddenField2" ClientIDMode="Static" />
 
-                                            <%--       <div class="col-md-6">
-                                                <div class="col-sm-8">
-                                                    <div class="form-group form-float">
-                                                        <div class="form-group form-float">
-                                                            <div class="col-sm-10">
-                                                                <asp:Label ID="Label2" runat="server" class="form-label"><b>Subtotal S/</b></asp:Label>
-                                                                <div class="form-line">
-                                                                    <asp:UpdatePanel runat="server" ID="updPanelSubTotal" UpdateMode="Conditional">
-                                                                        <ContentTemplate>
-                                                                            <asp:TextBox ID="txtsubtotal" class="form-control" runat="server" type="text"
-                                                                                pattern="[0-8]+" MinLength="8" MaxLength="8">
-                                                                            </asp:TextBox>
-                                                                        </ContentTemplate>
-                                                                    </asp:UpdatePanel>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>--%>
-
                                             <%--2nd gridv--%>
 
                                             <%--producto agregados--%>
@@ -669,12 +652,11 @@
         </form>
     </section>
 </asp:Content>
-
+<asp:Content ID="Content3" ContentPlaceHolderID="cph_footer" runat="Server">
+</asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cph_Js" runat="Server">
 
-    <%--<script src="js/Aplicacion/RealizarVenta.js"></script>--%>
-    <%--<link href="css/normalize.css" rel="stylesheet" />--%>
-    <script src="assets/js/Aplicacion/RealizarVenta.js"></script>
+   
     <script>
         function CalcularVuelto() {
             var textboxpago = $('#txtmontopagado').val();
@@ -682,7 +664,6 @@
 
             var valuevuelto = parseFloat(textboxpago) - parseFloat(textboximporte);
             $('#txtvuelto').val(valuevuelto);
-
         }
 
         function showSuccessMessage2() {
@@ -832,40 +813,6 @@
 
     <!-- Sweet alert init js-->
     <script src="../assets/js/pages/sweet-alerts.init.js"></script>
-     <!-- Bootstrap Core Js -->
-    <script src="../../plugins/bootstrap/js/bootstrap.js"></script>
-    <%--<script src="../../plugins/bootstrap-select/js/bootstrap-select.js"></script>--%>
-    <script src="../../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-    <script src="../../plugins/node-waves/waves.js"></script>
+    <script src="assets/js/Aplicacion/RealizarVenta.js"></script>
 
-    <script src="../../plugins/autosize/autosize.js"></script>
-
-    <script src="../../plugins/momentjs/moment.js"></script>
-    <script src="../../plugins/bootstrap-notify/bootstrap-notify.js"></script>
-    <script src="../../plugins/jquery-countto/jquery.countTo.js"></script>
-
-    <script src="../../plugins/raphael/raphael.min.js"></script>
-
-    <script src="../../plugins/morrisjs/morris.js"></script>
-    <script src="../../plugins/chartjs/Chart.bundle.js"></script>
-    <script src="../../plugins/flot-charts/jquery.flot.js"></script>
-    <script src="../../plugins/flot-charts/jquery.flot.resize.js"></script>
-    <script src="../../plugins/flot-charts/jquery.flot.pie.js"></script>
-    <script src="../../plugins/flot-charts/jquery.flot.categories.js"></script>
-    <script src="../../plugins/flot-charts/jquery.flot.time.js"></script>
-    <script src="../../plugins/jquery-sparkline/jquery.sparkline.js"></script>
-
-    <script src="../../plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
-    <script src="../../js/admin.js"></script>
-    <script src="../../js/pages/ui/tooltips-popovers.js"></script>
-    <%--<script src="../../js/pages/forms/basic-form-elements.js"></script>--%>
-    <script src="../../js/pages/ui/notifications.js"></script>
-    <script src="../../js/pages/ui/modals.js"></script>
-    <script src="js/pages/index.js"></script>
-    <script src="../../plugins/sweetalert/sweetalert.min.js"></script>
-
-    <script src="../../js/admin.js"></script>
-    <script src="../../js/pages/ui/dialogs.js"></script>
-    <script src="js/demo.js"></script>
-    <script src="../../js/public/utils.js"></script>
 </asp:Content>

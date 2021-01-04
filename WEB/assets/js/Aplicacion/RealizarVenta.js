@@ -13,8 +13,6 @@
             $("#iddecuento").fadeIn();
         }
     });
-
-
     $('input[type=radio][name=TipoPedido]').change(function () {
         if (this.value == '1') {
             $("#valorObtenidoRBTN").val('1');
@@ -23,10 +21,7 @@
             $("#valorObtenidoRBTN").val('2');
         }
         console.log($("#valorObtenidoRBTN").val());
-
     });
-
-
     $('input[type=radio][name=identificadorUsuario]').change(function () {
         if (this.value == '1') {
             $("#txtIdentificadorUsuario").val('');
@@ -47,7 +42,6 @@
             $("#txtIdentificadorUsuario").attr('maxlength', '11');
         }
     });
-
     $("#cbx_Catalogo").change(function () {
         var rdb = $('#cbx_Catalogo').val();
         console.log($('#cbx_Catalogo').val());
@@ -59,14 +53,12 @@
             $("#btnadd").fadeIn();
             $("#txtimportetotal").fadeIn();
 
-
             $("#ddlPedidoMuestra").fadeOut();
             $("#IdCalendar").fadeOut();
             $("#idMostrarbtnEnviar").fadeOut();
             $("#idTipoMoldura").fadeOut();
         }
     });
-
     $("#cbx_Personalizado").change(function () {
         var rdb2 = $('#cbx_Personalizado').val();
         console.log($('#cbx_Personalizado').val());
@@ -78,10 +70,8 @@
             $("#CardPayment").fadeOut();
             $("#btnadd").fadeOut();
             $("#txtimportetotal").fadeOut();
-
         }
     });
-
     $("#ddlPedidoPor").change(function () {
         var ddlPedidopor = $('#ddlPedidoPor').val();
         console.log($('#ddlPedidoPor').val());
@@ -103,10 +93,8 @@
             $("#idMostrarbtnEnviar").fadeOut();
             $("#DivCodigoSubtotal").fadeOut();
             $("#btnadd").fadeOut();
-
         }
     });
-
     $('input[type=radio][name=TipoC]').change(function () {
         if (this.value == '1') {
             $("#valorObtenidoRBTN1").val('1');
@@ -116,8 +104,6 @@
         }
         console.log($("#valorObtenidoRBTN1").val());
     });
-
-
     $("#RDB_DNI").change(function () {
         var rdb1 = $('#RDB_DNI').val();
         console.log($('#RDB_DNI').val());
@@ -136,9 +122,5 @@
             $("#lbldni").fadeOut();
         }
     });
-
-
-
-
 });
 
