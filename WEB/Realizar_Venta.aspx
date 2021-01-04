@@ -29,7 +29,7 @@
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                    <div class="card" id="CardTipoComprobante" runat="server" hidden clientidmode="Static">
+                    <div class="card-box" id="CardTipoComprobante" runat="server" hidden clientidmode="Static">
                         <div class="header">
                             <h2>Tipo comprobante    
                             </h2>
@@ -63,7 +63,7 @@
             <%--datos cliente--%>
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card ">
+                    <div class="card-box">
                         <div class="header">
                             <h2>Datos cliente</h2>
                         </div>
