@@ -57,6 +57,25 @@ namespace CTR
         {
             return objDaoMoldura.StockMoldura(objDtoMoldura);
         }
-       
+        public DataSet OpcionesTipoMoldura()
+        {
+            return objDaoMoldura.desplegableTipoMoldura();
+        }
+        public double PrecioAprox(DtoMoldura objMoldura)
+        {
+            return objDaoMoldura.PrecioAprox(objMoldura);
+        }
+        public DataTable ObtenerMoldura2(DtoMoldura objmoldura, DtoTipoMoldura objtipo)
+        {
+            return objDaoMoldura.ObtenerMoldura2(objmoldura, objtipo);
+        }
+        public DataTable CalcularSubtotal(DtoMoldura objmoldura, DtoTipoMoldura objtipo, double cant)
+        {
+            return objDaoMoldura.CalcularSubtotal(objmoldura, objtipo, cant);
+        }
+        public void ActualizarStockxMoldura(DtoMoldura objmoldura)
+        {
+            objDaoMoldura.ActualizarStockxMoldura(objmoldura);
+        }
     }
 }

@@ -15,5 +15,6 @@ namespace DTO
         public double DM_Precio { get; set; }
         public int IM_Estado { get; set; }
         public int FK_ITM_Tipo { get; set; }
+        public double DM_Subtotal { get; set; }
     }
 }

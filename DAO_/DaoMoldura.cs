@@ -154,7 +154,6 @@ namespace DAO
                 objmoldura.VBM_Imagen = (byte[])reader[10];
             }
             conexion.Close();
-            //conexion.Dispose();
         }
         public int StockMoldura(DtoMoldura objMoldura)
         {
@@ -178,8 +177,92 @@ namespace DAO
 
                 throw;
             }
-
         }
+        public DataSet desplegableTipoMoldura()
+        {
+            string select = "SELECT * FROM T_TIPO_MOLDURA";
+            SqlCommand command = new SqlCommand(select, conexion);
+            conexion.Open();
+            SqlDataAdapter daAdapter = new SqlDataAdapter(command);
+            DataSet DS = new DataSet();
+            daAdapter.Fill(DS);
+            return DS;
+        }
+        public double PrecioAprox(DtoMoldura objMoldura)
+        {           
+            SqlCommand cmd = new SqlCommand("select sum(DM_Precio)/ COUNT(*) as promedio from T_Moldura where FK_ITM_Moldura = " + objMoldura.FK_ITM_Tipo, conexion);
+            Console.WriteLine(cmd);
+            conexion.Open();
+            string aprox = cmd.ExecuteScalar().ToString();
+            conexion.Close();
+            if (aprox == "")
+            {
+                return 0;
+            }
+            return Convert.ToDouble(aprox);
+        }
+        public DataTable ObtenerMoldura2(DtoMoldura objmoldura, DtoTipoMoldura objtipo)
+        {
+            DataTable dt = null;
+            conexion.Open();
+            SqlCommand command = new SqlCommand("SP_Obtener_Moldura2", conexion);
+            command.Parameters.AddWithValue("@codMol", objmoldura.PK_IM_Cod);
+            SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
+            command.CommandType = CommandType.StoredProcedure;
+            dt = new DataTable();
+            daAdaptador.Fill(dt);
 
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                objmoldura.PK_IM_Cod = int.Parse(reader["PK_IM_Cod"].ToString());
+                objmoldura.VBM_Imagen = Encoding.ASCII.GetBytes(reader["VBM_Imagen"].ToString());
+                objtipo.VTM_Nombre = reader["VTM_Nombre"].ToString();
+                objmoldura.DM_Largo = Double.Parse(reader["MedidaLargo"].ToString());
+                objmoldura.DM_Ancho = Double.Parse(reader["MedidaAncho"].ToString());
+                objmoldura.IM_Stock = int.Parse(reader["IM_Stock"].ToString());
+                objmoldura.DM_Precio = Convert.ToDouble(reader["DM_Precio"].ToString());
+            }
+            conexion.Close();
+            return dt;
+        }
+        public DataTable CalcularSubtotal(DtoMoldura objmoldura, DtoTipoMoldura objtipo, double cant)
+        {
+            DataTable dt = null;
+            conexion.Open();
+            SqlCommand command = new SqlCommand("SP_CalcularSubtotal", conexion);
+            command.Parameters.AddWithValue("@codMol", objmoldura.PK_IM_Cod);
+            command.Parameters.AddWithValue("@cantidad", cant);
+            SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
+            command.CommandType = CommandType.StoredProcedure;
+            dt = new DataTable();
+            daAdaptador.Fill(dt);
+
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                objmoldura.PK_IM_Cod = int.Parse(reader["PK_IM_Cod"].ToString());
+                objmoldura.VBM_Imagen = Encoding.ASCII.GetBytes(reader["VBM_Imagen"].ToString());
+                objtipo.VTM_Nombre = reader["VTM_Nombre"].ToString();
+                objmoldura.DM_Largo = Double.Parse(reader["MedidaLargo"].ToString());
+                objmoldura.DM_Ancho = Double.Parse(reader["MedidaAncho"].ToString());
+                objmoldura.IM_Stock = int.Parse(reader["IM_Stock"].ToString());
+                objmoldura.DM_Precio = Convert.ToDouble(reader["DM_Precio"].ToString());
+                objmoldura.DM_Subtotal = Double.Parse(reader["Subtotal"].ToString());
+            }
+            conexion.Close();
+            return dt;
+        }
+        public void ActualizarStockxMoldura(DtoMoldura objmoldura)
+        {
+            SqlCommand command = new SqlCommand("SP_Actualizar_Stock_Moldura", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@idMol", objmoldura.PK_IM_Cod);
+            command.Parameters.AddWithValue("@stock", objmoldura.IM_Stock);
+            conexion.Open();
+            command.ExecuteNonQuery();
+            conexion.Close();
+        }
+    
     }
 }

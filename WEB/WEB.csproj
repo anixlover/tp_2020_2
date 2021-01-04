@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.SqlClient, Version=4.6.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -259,6 +265,7 @@
     <Content Include="assets\images\users\user-9.jpg" />
     <Content Include="assets\js\Aplicacion\RealizarCompra.js" />
     <Content Include="assets\js\Aplicacion\RealizarPedidoPersonalizado.js" />
+    <Content Include="assets\js\Aplicacion\RealizarVenta.js" />
     <Content Include="assets\js\Aplicacion\UploadFile.js" />
     <Content Include="assets\js\app.js" />
     <Content Include="assets\js\app.min.js" />
@@ -1943,6 +1950,7 @@
     <Content Include="GestionarEstadosPedido.aspx" />
     <Content Include="RealizarCompra.aspx" />
     <Content Include="Realizar_Pedido_Personalizado.aspx" />
+    <Content Include="Realizar_Venta.aspx" />
     <Content Include="RegistrarClienteVendedor.aspx" />
     <Content Include="IniciarSesion.aspx" />
     <Content Include="RegistrarClienteUE.aspx" />
@@ -2042,6 +2050,13 @@
     </Compile>
     <Compile Include="Realizar_Pedido_Personalizado.aspx.designer.cs">
       <DependentUpon>Realizar_Pedido_Personalizado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Realizar_Venta.aspx.cs">
+      <DependentUpon>Realizar_Venta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Realizar_Venta.aspx.designer.cs">
+      <DependentUpon>Realizar_Venta.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarClienteVendedor.aspx.cs">
       <DependentUpon>RegistrarClienteVendedor.aspx</DependentUpon>

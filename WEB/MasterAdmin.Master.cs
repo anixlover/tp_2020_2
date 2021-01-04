@@ -114,7 +114,12 @@ namespace WEB
                                     <span>Administrar Pedido</span>
                                 </a>
                             </li>
-          
+                            <li>     
+                                <a href='Realizar_Venta.aspx' class='collapse'>
+                                    <i data-feather='book-open'></i>
+                                    <span>Realizar Venta</span>
+                                </a>
+                            </li>
         ");
             this.Literal1.Text = html;
         }

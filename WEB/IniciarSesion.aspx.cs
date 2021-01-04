@@ -105,7 +105,7 @@ namespace WEB
                         }
 
                     }
-                    //GERENTE
+                    //VENDEDOR
                     else if (Session["id_perfil"].ToString() == "2")
                     {
 
@@ -115,7 +115,7 @@ namespace WEB
                         ScriptManager.RegisterStartupScript(this, typeof(Page), "alert", script, false);
 
                     }
-                    //VENDEDOR
+                    //TRABAJADOR
                     else if (Session["id_perfil"].ToString() == "3")
                     {
 
@@ -125,7 +125,7 @@ namespace WEB
                         ScriptManager.RegisterStartupScript(this, typeof(Page), "alert", script, false);
 
                     }
-                    //TRABAJADOR
+                    //GERENTE
                     else if (Session["id_perfil"].ToString() == "4")
                     {
 
