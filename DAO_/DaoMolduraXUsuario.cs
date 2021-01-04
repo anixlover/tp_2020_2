@@ -201,5 +201,21 @@ namespace DAO
             command.ExecuteNonQuery();
             conexion.Close();
         }
+        public void InsertarMolduraxUsuariox2(DtoMolduraXUsuario objMolduraxUsuario)
+        {
+            SqlCommand command = new SqlCommand("SP_Registrar_MXU_C_3", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@idU", objMolduraxUsuario.FK_VU_Dni);
+            command.Parameters.AddWithValue("@idM", objMolduraxUsuario.FK_IM_Cod);
+            command.Parameters.AddWithValue("@cant", objMolduraxUsuario.IMU_Cantidad);
+            command.Parameters.AddWithValue("@pre", objMolduraxUsuario.DMU_Precio);
+            command.Parameters.Add("@newId", SqlDbType.Int).Direction = ParameterDirection.Output;
+            conexion.Open();
+            using (SqlDataReader dr = command.ExecuteReader())
+            {
+                objMolduraxUsuario.PK_IMU_Cod = Convert.ToInt32(command.Parameters["@newId"].Value);
+            }
+            conexion.Close();
+        }
     }
 }

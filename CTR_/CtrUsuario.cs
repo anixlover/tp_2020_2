@@ -156,5 +156,10 @@ namespace CTR
         {
             objDaoUsuario.EnviarCorreoReportado(dtomxu);
         }
+        public void TraeData(DtoUsuario dtoUsuario)
+        {
+            objDaoUsuario.TraeData(dtoUsuario);
+        }
+
     }
 }

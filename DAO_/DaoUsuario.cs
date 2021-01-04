@@ -295,5 +295,22 @@ namespace DAO
                 smtp.Send(mail);
             }
         }
+        public void TraeData(DtoUsuario ojbusr)
+        {
+            string Select = "SELECT * from T_Usuario where PK_VU_Dni = @Dni";
+            SqlCommand unComando = new SqlCommand(Select, conexion);
+            unComando.Parameters.AddWithValue("@Dni", ojbusr.PK_VU_Dni);
+            conexion.Open();
+            SqlDataReader reader = unComando.ExecuteReader();
+            bool hayRegistros = reader.Read();
+            if (hayRegistros)
+            {
+                ojbusr.VU_Nombre = reader["VU_Nombre"].ToString();
+                ojbusr.VU_Apellidos = reader["VU_Apellidos"].ToString();
+                ojbusr.VU_Correo = reader["VU_Correo"].ToString();
+                ojbusr.IU_Celular = Convert.ToInt32(reader["IU_Celular"].ToString());
+            }
+            conexion.Close();
+        }
     }
 }
