@@ -37,38 +37,49 @@ namespace WEB
             {
 
                 OpcionesTipoMoldura();
+                ddlTipoMoldura.SelectedValue = "1";
                 _log.CustomWriteOnLog("registrar pedido personalizado", "carga datos por catalogo");
 
 
-                try
-                {
-                    if (Session["DNIUsuario"] != null)
-                    {
-                        objDtoMXU.FK_VU_Dni = Session["DNIUsuario"].ToString();
+                //try
+                //{
+                //    if (Session["DNIUsuario"] != null)
+                //    {
+                //        objDtoMXU.FK_VU_Dni = Session["DNIUsuario"].ToString();
                         
-                    }
-                    else
-                    {
-                        Response.Redirect("~/IniciarSesion.aspx");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    _log.CustomWriteOnLog("registrar pedido personalizado", ex.Message + "Stac" + ex.StackTrace);
-                }
+                //    }
+                //    else
+                //    {
+                //        Response.Redirect("~/IniciarSesion.aspx");
+                //    }
+                //}
+                //catch (Exception ex)
+                //{
+                //    _log.CustomWriteOnLog("registrar pedido personalizado", ex.Message + "Stac" + ex.StackTrace);
+                //}
             }
         }
 
         public void OpcionesTipoMoldura()
         {
+            //DataSet ds = new DataSet();
+            //ds = objCtrTipoMoldura.SelectTipoMoldura();
+            //ddlTipoMoldura.DataSource = ds;
+            //ddlTipoMoldura.DataTextField = "VTM_Nombre";
+            //ddlTipoMoldura.DataValueField = "PK_ITM_Tipo";
+            ////ddlTipoMoldura.DataBind();
+            //ddlTipoMoldura.Items.Insert(0, new ListItem("Seleccione", "0"));
+            //_log.CustomWriteOnLog("registrar pedido personalizado", "Termino de llenar el ddl");
+
+
             DataSet ds = new DataSet();
-            //ds = objCtrMoldura.OpcionesTipoMoldura();
+            ds = objctrtipomoldura.SelectTipoMoldura();
             ddlTipoMoldura.DataSource = ds;
             ddlTipoMoldura.DataTextField = "VTM_Nombre";
             ddlTipoMoldura.DataValueField = "PK_ITM_Tipo";
             ddlTipoMoldura.DataBind();
             ddlTipoMoldura.Items.Insert(0, new ListItem("Seleccione", "0"));
-            _log.CustomWriteOnLog("registrar pedido personalizado", "Termino de llenar el ddl");
+            _log.CustomWriteOnLog("RegistrarMoldura", "Termino de llenar el ddl");
         }
 
 
