@@ -141,7 +141,71 @@ namespace WEB
 
         protected void btnCalcular_Click(object sender, EventArgs e)
         {
+            try
+            {
+                double y = double.Parse(txtPrecio.Text);
+                int cant = int.Parse(txtCantidad.Text);
 
+                double importe = cant * y;
+                if (txtunidadmetrica.Value == "Mt" && cant < 150)
+                {
+
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: 'ERROR!',text: 'Ingrese mas de 150 unidades!!', type: 'error'});", true);
+                    return;
+                }
+                if (txtunidadmetrica.Value == "Cm" && cant < 30)
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: 'ERROR!',text: 'Ingrese mas de 30 unidades!!', type: 'error'});", true);
+                    return;
+                }
+                if (txtunidadmetrica.Value == "M2" && cant < 40)
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: 'ERROR!',text: 'Ingrese mas de 40 unidades!!', type: 'error'});", true);
+                    return;
+                }
+
+
+
+
+                _log.CustomWriteOnLog("registrar pedido personalizado", "valor del txtunidadmetrica" + txtunidadmetrica.Value);
+
+                if (txtCantidad.Text == "0")
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: 'ERROR!',text: 'Ingresar cantidad del producto!!', type: 'error'});", true);
+
+                    return;
+                    //Utils.AddScriptClientUpdatePanel(calcular1, "showSuccessMessage4()");
+                }
+                if (txtcodigo.Text == "")
+                {
+                    Utils.AddScriptClientUpdatePanel(calcular1, "showSuccessMessage5()");
+                }
+
+
+                if (txtunidadmetrica.Value == "Mt" && cant > 149 || txtunidadmetrica.Value == "Cm" && cant > 29 || txtunidadmetrica.Value == "M2" && cant > 39)
+                {
+
+                    txtImporte.Text = Convert.ToString(importe);
+                    double descuento = (importe * 5) / 100;
+                    txt_descuento.Text = Convert.ToString(descuento);
+                    double total = importe - descuento;
+                    txt_subtotal.Text = Convert.ToString(total);
+
+                }
+                else
+                {
+                    //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: 'ERROR!',text: 'Llene los datos correctamente!!', type: 'error'});", true);
+                    //return;
+                    txt_importe.Text = Convert.ToString(importe);
+                }
+                calcular1.Update();
+
+
+            }
+            catch (Exception ex)
+            {
+                _log.CustomWriteOnLog("registrar pedido personalizado", "Error  = " + ex.Message + "posicion" + ex.StackTrace);
+            }
         }
 
         protected void btnCalcularP_Click(object sender, EventArgs e)

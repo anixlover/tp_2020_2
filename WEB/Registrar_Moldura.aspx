@@ -64,6 +64,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <form id="form1" runat="server" method="POST">
     <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeout="3600"></asp:ScriptManager>
     <div class="row">
         <div class="col-12">
@@ -254,5 +255,5 @@
         <script src="../assets/js/pages/form-validation.init.js"></script>
 
 
-
+        </form>
 </asp:Content>
