@@ -60,7 +60,7 @@ namespace WEB
                     Session["idSolicitudPago"] = sol;
                     Session["clienteDNI"] = dni;
                     Session["estado"] = "2";
-                    Response.Redirect("Detalles_Solicitud.aspx");
+                    Response.Redirect("Detalles_Solicitud2.aspx");
                     break;
             }
         }
