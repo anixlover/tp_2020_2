@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterCliente.Master" AutoEventWireup="true" CodeBehind="RealizarCompra.aspx.cs" Inherits="WEB.RealizarCompra" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <!-- Plugins css -->
     <link href="../assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
@@ -67,6 +68,13 @@
                         <div class="col-lg-4">
                             <div class="row-cols-lg-4">
                                 <br />
+                                <div align="center">
+                                    <div class="row" style="color: #ff585b; font-weight: bold; font-style: inherit;">
+                                        <h4>No Cuenta:191-96831044-0-33  </h4>
+                                        <asp:Label ID="Label1" runat="server" Text="0.00"></asp:Label>
+                                    </div>
+
+                                </div>
                                 <asp:GridView ID="gvDetalles" runat="server" CssClass="table-borderless table table-bordered table-hover" DataKeyNames="PK_IM_Cod" AutoGenerateColumns="False"
                                     EmptyDataText="No existen registros" ShowHeaderWhenEmpty="True" Width="90%">
                                     <Columns>
@@ -103,12 +111,13 @@
                             </div>
                             <br />
                             <div class="row" style="color: #008000; font-weight: bold; font-style: inherit;">
-                                Total: S/. <asp:Label ID="lblcosto" runat="server" Text="0.00"></asp:Label>
+                                <h3>Total: S/. </h3>
+                                <asp:Label ID="lblcosto" runat="server" Text="0.00"></asp:Label>
                             </div>
                         </div>
                         <div class="col-lg-8">
                             <div class="row">
-                                <asp:FileUpload ID="FileUpload1" runat="server" accept="image/*" onchange="leerImagen(this);"  data-plugins="dropify" data-height="300" />
+                                <asp:FileUpload ID="FileUpload1" runat="server" accept="image/*" onchange="leerImagen(this);" data-plugins="dropify" data-height="300" />
                             </div>
                             <br />
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
@@ -149,7 +158,7 @@
                                         <div class="col" style="text-align: center">
                                             <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-danger" Width="50%" OnClick="btnCancelar_Click" />
                                         </div>
-                                        <input type="hidden" runat="server" id="hftxtimg" clientidmode="Static" value="vacio" />     
+                                        <input type="hidden" runat="server" id="hftxtimg" clientidmode="Static" value="vacio" />
                                     </div>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
