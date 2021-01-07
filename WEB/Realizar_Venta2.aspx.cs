@@ -18,7 +18,7 @@ using System.Net;
 
 namespace WEB
 {
-    public partial class Realizar_Venta : System.Web.UI.Page
+    public partial class Realizar_Venta2 : System.Web.UI.Page
     {
         CtrSolicitud objCtrSolicitud = new CtrSolicitud();
         CtrMolduraXUsuario objCtrMolduraxUsuario = new CtrMolduraXUsuario();
@@ -58,8 +58,7 @@ namespace WEB
                 }
                 else
                 {
-                    CardTipoComprobante.Visible = false;
-                    lblcdex.Visible = false;    
+            
                 }
             }
             catch (Exception ex)
@@ -235,8 +234,8 @@ namespace WEB
             try
             {
                 var colsNoVisible = gvdetalle.DataKeys[0].Values;
-                int IM_Stock = int.Parse(colsNoVisible[4].ToString());
-                double DM_Precio = double.Parse(colsNoVisible[5].ToString());
+                int IM_Stock = int.Parse(colsNoVisible[5].ToString());
+                double DM_Precio = double.Parse(colsNoVisible[6].ToString());
                 int cantidad = int.Parse(txtcantidad.Text);
                 double precioAprox = 0;
 
@@ -294,8 +293,8 @@ namespace WEB
             {
                 double sum = 0;
                 var colsNoVisible = gvdetalle2.DataKeys[0].Values;
-                double DM_Precio2 = double.Parse(colsNoVisible[5].ToString());
-                double Subtotal = double.Parse(colsNoVisible[6].ToString());
+                double DM_Precio2 = double.Parse(colsNoVisible[6].ToString());
+                double Subtotal = double.Parse(colsNoVisible[5].ToString());
 
                 dt = (DataTable)ViewState["Records"];
                 dt.Rows.Add(txtcodigop.Text, txtcantidad.Text, DM_Precio2, Subtotal);
@@ -754,39 +753,6 @@ namespace WEB
             {
                 _log.CustomWriteOnLog("RealizarVenta", "Error btnagregar_Click  : " + ex.Message);
             }
-        }
-
-        protected void rdb_dni_CheckedChanged(object sender, EventArgs e)
-        {
-            lbldniu.Visible = true;
-            lblcdex.Visible = false;
-        }
-
-        protected void rdb_cndex_CheckedChanged(object sender, EventArgs e)
-        {
-            lblcdex.Visible = true;
-            lbldniu.Visible = false;
-
-        }
-
-        protected void rdb_catalgo_CheckedChanged(object sender, EventArgs e)
-        {
-            divSubAddGv.Visible = true;
-            CardTipoComprobante.Visible = true;
-            CardPayment.Visible = true;
-            DivCodigoSubtotal.Visible = true; /*f*/
-            btnadd.Visible = true;
-            txtimportetotal.Visible = true;
-
-            ddlPedidoMuestra.Visible = false;
-            IdCalendar.Visible = false;
-            idMostrarbtnEnviar.Visible = false;
-            idTipoMoldura.Visible = false;
-        }
-
-        protected void rdb_personalizado_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

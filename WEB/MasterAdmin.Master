@@ -41,7 +41,7 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css" />
+    <%--<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css" />--%>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css" />
     <%--<link href="css/googleapis_latyn_cyrillic.css" rel="stylesheet" />--%>
     <%--    <link href="css/googleapis_material_Icons.css" rel="stylesheet" />--%>
@@ -52,15 +52,15 @@
     <link href="../../plugins/sweetalert/sweetalert.css" rel="stylesheet" />
 
     <!-- Custom Css -->
-   
-    <link href="css/themes/all-themes.css" rel="stylesheet" />
-    
-    <script src="plugins/jquery/jquery.min.js"></script>
 
+    <%--<link href="css/themes/all-themes.css" rel="stylesheet" />--%>
+    <link href="assets/css/themes/all-themes.css" rel="stylesheet" />
+    <%--<script src="plugins/jquery/jquery.min.js"></script>--%>
+    <script src="assets/Plugins/jquery.min.js"></script>
     <!-- icons -->
     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
-
+    <link href="assets/css/style.css" rel="stylesheet" />
 
 
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -505,55 +505,38 @@
 
         <div class="content-page">
             <div class="content">
-
-                <!-- Start Content-->
-               <%-- <div class="container-fluid">
-                    <form id="form1" runat="server">
-                        <div>
-                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                            </asp:ContentPlaceHolder>
-
-                        </div>
-                    </form>
-                </div>--%>
-
-                <section class="content">
-                    <div class="container-fluid">
+               
+                    
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                         </asp:ContentPlaceHolder>
-
-                    </div>
-                </section>
-
-                <!-- container -->
-
+                
+             
+        </div>
             </div>
-            <!-- content -->
 
 
+        <!-- Footer Start -->
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
 
-            <!-- Footer Start -->
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-6">
-
-                            <script>document.write(new Date().getFullYear())</script>
-                            &copy; SWCPEDR
-                        </div>
-                        <div class="col-md-6">
-                            <div class="text-md-right footer-links d-none d-sm-block">
-                                <a href="#">About Us</a>
-                                <a href="#">Help</a>
-                                <a href="#">Contact Us</a>
-                            </div>
+                        <script>document.write(new Date().getFullYear())</script>
+                        &copy; SWCPEDR
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-md-right footer-links d-none d-sm-block">
+                            <a href="#">About Us</a>
+                            <a href="#">Help</a>
+                            <a href="#">Contact Us</a>
                         </div>
                     </div>
                 </div>
-            </footer>
-            <!-- end Footer -->
-        </div>
-         <asp:ContentPlaceHolder ID="cph_footer" runat="server">
+            </div>
+        </footer>
+        <!-- end Footer -->
+
+        <asp:ContentPlaceHolder ID="cph_footer" runat="server">
         </asp:ContentPlaceHolder>
         <asp:ContentPlaceHolder ID="cph_Js" runat="server">
         </asp:ContentPlaceHolder>
