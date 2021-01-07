@@ -263,6 +263,27 @@ namespace DAO
             command.ExecuteNonQuery();
             conexion.Close();
         }
-    
+        public bool SelectMolduraID(DtoMoldura objmoldura)
+        {
+            string Select = "SELECT * from T_Moldura where PK_IM_Cod =" + objmoldura.PK_IM_Cod;
+
+            SqlCommand unComando = new SqlCommand(Select, conexion);
+            conexion.Open();
+            SqlDataReader reader = unComando.ExecuteReader();
+            bool hayRegistros = reader.Read();
+            if (hayRegistros)
+            {
+                objmoldura.PK_IM_Cod = int.Parse(reader[0].ToString());
+                objmoldura.VM_Descripcion = reader[1].ToString();
+                objmoldura.VBM_Imagen = Encoding.ASCII.GetBytes(reader[2].ToString());
+                objmoldura.IM_Stock = int.Parse(reader[3].ToString());
+                objmoldura.DM_Largo = Convert.ToDouble(reader[4].ToString());
+                objmoldura.DM_Ancho = Convert.ToDouble(reader[5].ToString());
+                objmoldura.DM_Precio = Convert.ToDouble(reader[6].ToString());
+            }
+            conexion.Close();
+            return hayRegistros;
+        }
+
     }
 }
