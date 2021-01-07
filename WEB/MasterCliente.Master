@@ -83,9 +83,9 @@
                     </a>
                     <a>
                         <li class="dropdown notification-list topbar-dropdown">
-                            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light"role="button">
+                            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" role="button" onclick="hopscotch.startTour(tour);">
                                 <i class="mdi mdi-google-my-business"></i>
-                                <span class="pro-user-name ml-1">Nosotros
+                                <span class="pro-user-name ml-1">Tutorial
                                 </span>
                             </a>
 
