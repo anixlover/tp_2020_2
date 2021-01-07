@@ -15,6 +15,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+     <form id="form1" runat="server" method="POST">
     <div class="row">
         <div class="col-lg-12">
             <div class="page-title-box">
@@ -153,7 +154,7 @@
     <!-- Sweet alert init js-->
     <script src="../assets/js/pages/sweet-alerts.init.js"></script>
 
-
+         </form>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_Js" runat="Server"> 
     <script>
