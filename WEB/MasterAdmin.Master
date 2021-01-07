@@ -60,7 +60,7 @@
     <!-- icons -->
     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
-    <link href="assets/css/style.css" rel="stylesheet" />
+    <%--<link href="assets/css/style.css" rel="stylesheet" />--%>
 
 
     <asp:ContentPlaceHolder ID="head" runat="server">
