@@ -81,6 +81,39 @@
     <Content Include="Administrar_Pedido.aspx" />
     <Content Include="Administrar_Perfil.aspx" />
     <Content Include="Administrar_Solicitud_Pedido.aspx" />
+    <Content Include="assets\add\admin.js" />
+    <Content Include="assets\add\all-themes.css" />
+    <Content Include="assets\add\animate.css" />
+    <Content Include="assets\add\autosize.js" />
+    <Content Include="assets\add\boostrap-material-datetimepicker.js" />
+    <Content Include="assets\add\boostrap-notify.js" />
+    <Content Include="assets\add\boostrap.css" />
+    <Content Include="assets\add\boostrap.js" />
+    <Content Include="assets\add\chart.bundle.js" />
+    <Content Include="assets\add\demo.js" />
+    <Content Include="assets\add\dialog.js" />
+    <Content Include="assets\add\index.js" />
+    <Content Include="assets\add\jquery.counTo.js" />
+    <Content Include="assets\add\jquery.flot.categories.js" />
+    <Content Include="assets\add\jquery.flot.js" />
+    <Content Include="assets\add\jquery.flot.pie.js" />
+    <Content Include="assets\add\jquery.flot.resize.js" />
+    <Content Include="assets\add\jquery.flot.time.js" />
+    <Content Include="assets\add\jquery.slimscroll.js" />
+    <Content Include="assets\add\jquery.sparkline.js" />
+    <Content Include="assets\add\modal.js" />
+    <Content Include="assets\add\moment.js" />
+    <Content Include="assets\add\morris.css" />
+    <Content Include="assets\add\morris.js" />
+    <Content Include="assets\add\notifications.js" />
+    <Content Include="assets\add\rapahel.min.js" />
+    <Content Include="assets\add\style.css" />
+    <Content Include="assets\add\sweetalert.css" />
+    <Content Include="assets\add\sweetmin.js" />
+    <Content Include="assets\add\tooltips-provers.js" />
+    <Content Include="assets\add\utils.js" />
+    <Content Include="assets\add\waves.css" />
+    <Content Include="assets\add\waves.js" />
     <Content Include="assets\css\app-creative-dark-rtl.css" />
     <Content Include="assets\css\app-creative-dark-rtl.min.css" />
     <Content Include="assets\css\app-creative-dark.css" />
@@ -157,8 +190,6 @@
     <Content Include="assets\css\icons.min.css" />
     <Content Include="assets\css\materialize.css" />
     <Content Include="assets\css\style.css" />
-    <Content Include="assets\css\StyleSheet1.css" />
-    <Content Include="assets\css\themes\all-themes.css" />
     <Content Include="assets\fonts\cerebrisans-bold.svg" />
     <Content Include="assets\fonts\cerebrisans-light.svg" />
     <Content Include="assets\fonts\cerebrisans-medium.svg" />
@@ -1944,6 +1975,7 @@
     <Content Include="assets\libs\x-editable\jqueryui-editable\img\clear.png" />
     <Content Include="assets\libs\x-editable\jqueryui-editable\img\loading.gif" />
     <Content Include="assets\libs\x-editable\jqueryui-editable\js\jqueryui-editable.min.js" />
+    <Content Include="assets\Plugins\jquery.min.js" />
     <Content Include="CambiarContraseña.aspx" />
     <Content Include="GestionarMolde.aspx" />
     <Content Include="DescripcionMoldura.aspx" />
@@ -1955,6 +1987,7 @@
     <Content Include="RealizarCompra.aspx" />
     <Content Include="Realizar_Pedido_Personalizado.aspx" />
     <Content Include="Realizar_Venta.aspx" />
+    <Content Include="Realizar_Venta2.aspx" />
     <Content Include="RegistrarClienteVendedor.aspx" />
     <Content Include="IniciarSesion.aspx" />
     <Content Include="RegistrarClienteUE.aspx" />
@@ -2044,6 +2077,13 @@
     <Compile Include="GestionarEstadosPedido.aspx.designer.cs">
       <DependentUpon>GestionarEstadosPedido.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Master_RV.Master.cs">
+      <DependentUpon>Master_RV.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master_RV.Master.designer.cs">
+      <DependentUpon>Master_RV.Master</DependentUpon>
+    </Compile>
     <Compile Include="ObtenerImegenPersonalizada_2.ashx.cs">
       <DependentUpon>ObtenerImegenPersonalizada_2.ashx</DependentUpon>
     </Compile>
@@ -2070,6 +2110,13 @@
     </Compile>
     <Compile Include="Realizar_Venta.aspx.designer.cs">
       <DependentUpon>Realizar_Venta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Realizar_Venta2.aspx.cs">
+      <DependentUpon>Realizar_Venta2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Realizar_Venta2.aspx.designer.cs">
+      <DependentUpon>Realizar_Venta2.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarClienteVendedor.aspx.cs">
       <DependentUpon>RegistrarClienteVendedor.aspx</DependentUpon>
@@ -2357,6 +2404,8 @@
     <Content Include="ghUploadFile.ashx" />
     <Content Include="ObtieneImagen.ashx" />
     <Content Include="ObtenerImegenPersonalizada_2.ashx" />
+    <Content Include="Master_RV.Master" />
+    <Content Include="assets\add\jquery.min.js" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -190,7 +190,7 @@ namespace DAO
         }
         public double PrecioAprox(DtoMoldura objMoldura)
         {           
-            SqlCommand cmd = new SqlCommand("select sum(DM_Precio)/ COUNT(*) as promedio from T_Moldura where FK_ITM_Moldura = " + objMoldura.FK_ITM_Tipo, conexion);
+            SqlCommand cmd = new SqlCommand("select sum(DM_Precio)/ COUNT(*) as promedio from T_Moldura where FK_ITM_Tipo= " + objMoldura.FK_ITM_Tipo, conexion);
             Console.WriteLine(cmd);
             conexion.Open();
             string aprox = cmd.ExecuteScalar().ToString();
@@ -218,8 +218,8 @@ namespace DAO
                 objmoldura.PK_IM_Cod = int.Parse(reader["PK_IM_Cod"].ToString());
                 objmoldura.VBM_Imagen = Encoding.ASCII.GetBytes(reader["VBM_Imagen"].ToString());
                 objtipo.VTM_Nombre = reader["VTM_Nombre"].ToString();
-                objmoldura.DM_Largo = Double.Parse(reader["MedidaLargo"].ToString());
-                objmoldura.DM_Ancho = Double.Parse(reader["MedidaAncho"].ToString());
+                objmoldura.DM_Largo = Double.Parse(reader["DM_Largo"].ToString());
+                objmoldura.DM_Ancho = Double.Parse(reader["DM_Ancho"].ToString());
                 objmoldura.IM_Stock = int.Parse(reader["IM_Stock"].ToString());
                 objmoldura.DM_Precio = Convert.ToDouble(reader["DM_Precio"].ToString());
             }
@@ -244,8 +244,8 @@ namespace DAO
                 objmoldura.PK_IM_Cod = int.Parse(reader["PK_IM_Cod"].ToString());
                 objmoldura.VBM_Imagen = Encoding.ASCII.GetBytes(reader["VBM_Imagen"].ToString());
                 objtipo.VTM_Nombre = reader["VTM_Nombre"].ToString();
-                objmoldura.DM_Largo = Double.Parse(reader["MedidaLargo"].ToString());
-                objmoldura.DM_Ancho = Double.Parse(reader["MedidaAncho"].ToString());
+                objmoldura.DM_Largo = Double.Parse(reader["DM_Largo"].ToString());
+                objmoldura.DM_Ancho = Double.Parse(reader["DM_Ancho"].ToString());
                 objmoldura.IM_Stock = int.Parse(reader["IM_Stock"].ToString());
                 objmoldura.DM_Precio = Convert.ToDouble(reader["DM_Precio"].ToString());
                 //objmoldura.DM_subtotal = Double.Parse(reader["Subtotal"].ToString());
@@ -263,6 +263,28 @@ namespace DAO
             command.ExecuteNonQuery();
             conexion.Close();
         }
+        public bool SelectMolduraID(DtoMoldura objmoldura)
+        {
+            string Select = "SELECT * from T_Moldura where PK_IM_Cod =" + objmoldura.PK_IM_Cod;
+
+            SqlCommand unComando = new SqlCommand(Select, conexion);
+            conexion.Open();
+            SqlDataReader reader = unComando.ExecuteReader();
+            bool hayRegistros = reader.Read();
+            if (hayRegistros)
+            {
+                objmoldura.PK_IM_Cod = int.Parse(reader[0].ToString());
+                objmoldura.VM_Descripcion = reader[1].ToString();
+                objmoldura.VBM_Imagen = Encoding.ASCII.GetBytes(reader[2].ToString());
+                objmoldura.IM_Stock = int.Parse(reader[3].ToString());
+                objmoldura.DM_Largo = Convert.ToDouble(reader[4].ToString());
+                objmoldura.DM_Ancho = Convert.ToDouble(reader[5].ToString());
+                objmoldura.DM_Precio = Convert.ToDouble(reader[6].ToString());
+            }
+            conexion.Close();
+            return hayRegistros;
+        }
+
         public DataTable SelectMoldurasTipoCodMoldura(DtoMoldura objMoldura)
         {
             DataTable dtmolduras = null;
@@ -284,6 +306,34 @@ namespace DAO
             daAdaptador.Fill(dtmolduras);
             conexion.Close();
             return dtmolduras;
+        }
+        public double Aprox(DtoMoldura objMoldura)
+        {
+            //SqlConnection con = new SqlConnection(@"data source=DESKTOP-4LVLNRM; initial catalog=BD_SCPEDR; integrated security=SSPI;");
+            //double aprox = 0;
+            SqlCommand cmd = new SqlCommand("select sum(DM_Precio)/ COUNT(*) as promedio from T_MOLDURA where FK_ITM_Tipo = " + objMoldura.FK_ITM_Tipo, conexion);
+            Console.WriteLine(cmd);
+            conexion.Open();
+            string aprox = cmd.ExecuteScalar().ToString();
+            //SqlDataReader reader = cmd.ExecuteReader();
+            //if (reader.Read())
+            //{
+            //    aprox = double.Parse(reader[0].ToString());
+
+            //}
+            conexion.Close();
+            if (aprox == "")
+            {
+                return 0;
+            }
+            //return aprox;
+            return Convert.ToDouble(aprox);
+            /** 
+             * SqlCommand unComando = new SqlCommand("select DS_ImporteTotal from T_Solicitud where PK_IS_Cod =" + objsolicitud.FK_IS_Cod, conexion);
+            conexion.Open();
+            var ultimo = unComando.ExecuteScalar().ToString();
+            conexion.Close();
+            return Convert.ToDouble(ultimo);**/
         }
     }
 }

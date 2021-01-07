@@ -85,5 +85,13 @@ namespace CTR
         {
             objDaoMoldura.ActualizarStockxMoldura(objmoldura);
         }
+        public bool MolduraExiste(DtoMoldura objmoldura)
+        {
+            return objDaoMoldura.SelectMolduraID(objmoldura);
+        }
+        public double Aprox(DtoMoldura objMoldura)
+        {
+            return objDaoMoldura.Aprox(objMoldura);
+        }
     }
 }

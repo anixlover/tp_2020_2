@@ -121,6 +121,21 @@ namespace CTR
         {
             return objDaoSolicitud.SelectSolicitudMoldes(objsolicitud);
         }
+
+        public void RegistrarSolcitud_PC(DtoSolicitud objsolicitud)
+        {
+            objDaoSolicitud.RegistrarSolcitud_PC(objsolicitud);
+        }
+
+        public void registrarImgMoldura(byte[] arreglo, int id)
+        {
+            objDaoSolicitud.RegistrarImgSolicitud(arreglo, id);
+        }
+
+        public void RegistrarSolcitud_PP(DtoSolicitud objsolicitud)
+        {
+            objDaoSolicitud.RegistrarSolicitud_PP(objsolicitud);
+        }
         public DataTable SolicitudesTerminadasEntreFechas(string fechaInicio, string fechaFin)
         {
             return objDaoSolicitud.SelectSolicitudesTerminadasBetween(fechaInicio, fechaFin);

@@ -56,6 +56,11 @@ namespace WEB
                 {
                     Response.Redirect("IniciarSesion.aspx");
                 }
+                else
+                {
+                    CardTipoComprobante.Visible = false;
+                    lblcdex.Visible = false;    
+                }
             }
             catch (Exception ex)
             {
@@ -749,6 +754,39 @@ namespace WEB
             {
                 _log.CustomWriteOnLog("RealizarVenta", "Error btnagregar_Click  : " + ex.Message);
             }
+        }
+
+        protected void rdb_dni_CheckedChanged(object sender, EventArgs e)
+        {
+            lbldniu.Visible = true;
+            lblcdex.Visible = false;
+        }
+
+        protected void rdb_cndex_CheckedChanged(object sender, EventArgs e)
+        {
+            lblcdex.Visible = true;
+            lbldniu.Visible = false;
+
+        }
+
+        protected void rdb_catalgo_CheckedChanged(object sender, EventArgs e)
+        {
+            divSubAddGv.Visible = true;
+            CardTipoComprobante.Visible = true;
+            CardPayment.Visible = true;
+            DivCodigoSubtotal.Visible = true; /*f*/
+            btnadd.Visible = true;
+            txtimportetotal.Visible = true;
+
+            ddlPedidoMuestra.Visible = false;
+            IdCalendar.Visible = false;
+            idMostrarbtnEnviar.Visible = false;
+            idTipoMoldura.Visible = false;
+        }
+
+        protected void rdb_personalizado_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
