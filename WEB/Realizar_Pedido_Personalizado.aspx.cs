@@ -41,7 +41,8 @@ namespace WEB
                 ddlTipoMoldura.SelectedValue = "1";
                 _log.CustomWriteOnLog("registrar pedido personalizado", "carga datos por catalogo");
 
-
+                personalizado.Visible = false;
+                catalogo.Visible = false;
                 //try
                 //{
                 //    if (Session["DNIUsuario"] != null)

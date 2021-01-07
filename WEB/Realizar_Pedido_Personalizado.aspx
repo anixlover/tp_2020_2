@@ -69,7 +69,7 @@
                         </div>
                         <div style="text-align: center">
                             <asp:RadioButton ID="rbCatalogo" runat="server" AutoPostBack="True" Text="Catalogo" GroupName="Personalizado" value="1" OnCheckedChanged="rbCatalogo_CheckedChanged" />
-
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <asp:RadioButton ID="rbDiseñoPropio" runat="server" AutoPostBack="True" Text="Diseño Propio" GroupName="Personalizado" value="2" OnCheckedChanged="rbDiseñoPropio_CheckedChanged" />
                         </div>
                     </div>
@@ -110,12 +110,11 @@
                                                     </div>
                                                 </div>
                                                 <br />
-                                                <br />
 
                                                 <div class="row ">
-                                                    <div class="col-lg-8">
-                                                        <div class="tab-content pt-0">
-                                                            <div class="tab-pane active show">
+                                                    <div class="col-lg">
+                                                        <div class="tab-content pt-0" style="text-align: center">
+                                                            <div class="tab-pane active show " >
                                                                 <asp:Image runat="server" ID="Imagen1" class="rounded" Width="480px" Height="500px" />
                                                             </div>
                                                         </div>
@@ -197,7 +196,6 @@
                                                                 </ContentTemplate>
                                                             </asp:UpdatePanel>
                                                         </div>
-
 
                                                     </div>
                                                 </div>

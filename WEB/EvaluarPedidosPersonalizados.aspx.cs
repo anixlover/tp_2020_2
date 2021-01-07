@@ -30,7 +30,7 @@ namespace WEB
         }
         protected Boolean ValidacionEstado(string estado)
         {
-            return estado == "Por asignar fecha";
+            return estado == "En aprobación";
         }
         public void cargarSolicitudes()
         {

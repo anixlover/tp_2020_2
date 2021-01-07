@@ -42,7 +42,7 @@ namespace WEB
             int index = Convert.ToInt32(e.CommandArgument);
             var columna = gvSolicitudes.DataKeys[index].Values;
             int sol = Convert.ToInt32(columna[0].ToString());
-            int solMXU = Convert.ToInt32(columna[3].ToString());
+            //int solMXU = Convert.ToInt32(columna[3].ToString());
             string dni = columna[2].ToString();
             switch (e.CommandName)
             {
