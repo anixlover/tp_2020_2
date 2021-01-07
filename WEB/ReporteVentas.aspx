@@ -33,7 +33,7 @@
                         <br />
                         <div class="row">
                             <br />
-                            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-warning" OnClick="btnBuscar_Click"/>
+                            <asp:Button ID="btnBuscar" runat="server" Text="🔎" CssClass="btn btn-primary" OnClick="btnBuscar_Click"/>
                             <br />
                         </div>
                         <br />
@@ -49,6 +49,10 @@
                                     <asp:BoundField DataField="IP_TipoCerficado" HeaderText="Certificado" />
                                 </Columns>
                             </asp:GridView>
+                            <br />                           
+                        </div>
+                        <div class="row"  style="color: #008000; font-weight: bold; font-style: inherit;">
+                             Total: S/. <asp:Label ID="lbltotal" runat="server" Text="0.00"></asp:Label>
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>

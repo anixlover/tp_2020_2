@@ -19,6 +19,7 @@ namespace WEB
             {
                 gvVentas.DataSource = objCtrSolicitud.SolicitudesTerminadas();
                 gvVentas.DataBind();
+                lbltotal.Text = objCtrSolicitud.ImporteTotal().ToString();
             }
         }
 
@@ -29,8 +30,14 @@ namespace WEB
             DateTime inicio = Convert.ToDateTime(fechaInicio), fin= Convert.ToDateTime(fechaFin);
             if (fechaInicio!=""&&fechaFin!=""&&inicio<=fin)
             {
-                gvVentas.DataSource =objCtrSolicitud.SolicitudesTerminadasEntreFechas(fechaInicio,fechaFin);
+                gvVentas.DataSource =objCtrSolicitud.SolicitudesTerminadasEntreFechas(fechaInicio,fechaFin);                
                 gvVentas.DataBind();
+                lbltotal.Text = (objCtrSolicitud.ImporteTotalEntreFechas(fechaInicio, fechaFin)).ToString();
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Espacios VACIOS o intervalo incorrecto!!'})", true);
+                return;
             }
         }
     }
