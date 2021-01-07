@@ -11,6 +11,7 @@
     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <form id="form1" runat="server">
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
@@ -46,7 +47,7 @@
                                     <asp:BoundField DataField="U. Metrica" HeaderText="U. Metrica" />
                                     <asp:TemplateField HeaderText="Accion" ItemStyle-HorizontalAlign="Center">
                                         <ItemTemplate>
-                                            <asp:Button runat="server" Text="Agregar Molde" ItemStyle-HorizontalAlign="Center" data-toggle="modal" data-target="#modalDetalle"
+                                            <asp:Button runat="server" Text="Agregar Molde" ItemStyle-HorizontalAlign="Center" data-toggle="modal" data-target="#modalAsingar"
                                                 Visible='<%# ValidacionExistencia(int.Parse(Eval("Codigo").ToString())) %>' CommandName="Agregar" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-warning" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
@@ -61,12 +62,17 @@
                         </div>
                         <div class="row">
                             <asp:GridView ID="gvMoldes" runat="server" CssClass="table-borderless table table-bordered table-hover" AutoGenerateColumns="False"
-                                DataKeyNames="PK_IML_Cod" EmptyDataText="No existen registros, agreguen moldes a su catálogo" ShowHeaderWhenEmpty="True" Width="100%">
+                                DataKeyNames="FK_IM_Cod" EmptyDataText="No existen registros, agreguen moldes a su catálogo" ShowHeaderWhenEmpty="True" Width="100%" OnRowCommand="gvMoldes_RowCommand">
                                 <Columns>
                                     <asp:BoundField DataField="PK_IML_Cod" HeaderText="Codigo" />
                                     <asp:BoundField DataField="VML_Disponibilidad" HeaderText="Disponibilidad" />
                                     <asp:BoundField DataField="IML_Cantidad" HeaderText="Cantidad" />
                                     <asp:BoundField DataField="FK_IM_Cod" HeaderText="Codigo de Moldura" />
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:Button ID="btnAumentar" runat="server" Text="➕" CssClass="btn btn-primary" data-toggle="modal" data-target="#modalCantidad" CommandName="Aumentar" CommandArgument='<%# Container.DataItemIndex %>'/>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
                         </div>
@@ -75,7 +81,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="modalDetalle" tabindex="-1" role="dialog">
+    <div class="modal fade" id="modalAsingar" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="dialog">
             <div class="modal-content">
                 <asp:UpdatePanel runat="server" ID="upPanelModal" UpdateMode="Always">
@@ -89,7 +95,7 @@
                             <div class="col-sm">
                                 <asp:TextBox ID="txtCantidad" runat="server" placeholder="Cantidad" CssClass="form-control" pattern="[0-9]+" TextMode="Number" step="1" min="0" Width="50%"></asp:TextBox>
                                 <br />
-                                <asp:Button ID="btnAgregar" runat="server" Text="Agregar" CssClass="btn btn-success" OnClick="btnAgregar_Click" />
+                                <asp:Button ID="btnAgregar" runat="server" Text="Agregar" CssClass="btn btn-success" OnClick="btnAgregar_Click" OnClientClick="cerrarModal2()"/>
                                 <br />
                             </div>
                             <br />
@@ -100,4 +106,35 @@
             </div>
         </div>
     </div>
+        <div class="modal fade" id="modalCantidad" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="dialog">
+                <div class="modal-content">
+                    <asp:UpdatePanel runat="server" ID="UpdatePanel2" UpdateMode="Always">
+                        <ContentTemplate>
+                            <div class="modal-header">
+                                <p class="modal-title" id="P1" runat="server" style="color: #000000; font-weight: bold">
+                                    Moldura N°
+                                    <asp:Label ID="lblId2" runat="server" Text="..."></asp:Label>
+                                </p>
+                            </div>
+                            <div class="row-sm">
+                                <div class="col-sm">
+                                    <asp:TextBox ID="txtCantAumentar" runat="server" placeholder="Cantidad a aumentar" CssClass="form-control" pattern="[0-9]+" TextMode="Number" step="1" min="0" Width="50%"></asp:TextBox>
+                                    <br />
+                                    <asp:Button ID="btnAumentar" runat="server" Text="Agregar" CssClass="btn btn-success" OnClick="btnAumentar_Click" OnClientClick="cerrarModal1()" />
+                                    <br />
+                                </div>
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            function cerrarModal1() { $('#modalCantidad').modal('hide'); $('.modal-backdrop').hide();}
+        </script>
+        <script type="text/javascript">
+            function cerrarModal2() { $('#modalAsingar').modal('hide'); $('.modal-backdrop').hide(); }
+        </script>
+    </form>
 </asp:Content>

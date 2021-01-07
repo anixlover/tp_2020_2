@@ -121,5 +121,21 @@ namespace CTR
         {
             return objDaoSolicitud.SelectSolicitudMoldes(objsolicitud);
         }
+        public DataTable SolicitudesTerminadasEntreFechas(string fechaInicio, string fechaFin)
+        {
+            return objDaoSolicitud.SelectSolicitudesTerminadasBetween(fechaInicio, fechaFin);
+        }
+        public DataTable SolicitudesTerminadas()
+        {
+            return objDaoSolicitud.SelectSolicitudesTerminadas();
+        }
+        public double ImporteTotal()
+        {
+            return objDaoSolicitud.SelectImporteTotalSolicitudes();
+        }
+        public double ImporteTotalEntreFechas(string fechaInicio, string fechaFin)
+        {
+            return objDaoSolicitud.SelectImporteTotalSolicitudesEntreFechas(fechaInicio, fechaFin);
+        }
     }
 }

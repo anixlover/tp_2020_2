@@ -51,7 +51,7 @@ namespace WEB
             string tipo = ddlTipoMoldura.SelectedItem.Text;
             if (txtcodigo.Text.Length == 0)
             {
-                if (tipo == "Todos")
+                if (tipo == "Todos" & txtcodigo.Text == "")
                 {
                     gvMolduras.DataSource = objCtrMoldura.ListarMolduras();
                     gvMolduras.DataBind();
@@ -115,13 +115,18 @@ namespace WEB
         {
             objDtoMolde.IML_Cantidad = int.Parse(txtCantidad.Text);
             objDtoMolde.FK_IM_Cod = int.Parse(lblId.Text);
-            if (int.Parse(txtCantidad.Text) <= 0 | txtCantidad.Text.Contains("e") | txtCantidad.Text == "")
+            if (int.Parse(txtCantidad.Text) <= 0 | txtCantidad.Text.Contains("e") | txtCantidad.Text == "" |int.Parse(txtCantidad.Text) >70)
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Inserte un cantidad VALIDA!!'})", true);
                 return;
             }            
             objCtrMolde.RegistrarMolde(objDtoMolde);
-            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Molde registrado!',text: 'Datos ENVIADOS!!'}).then(function(){window.location.href='GestionarMolde.aspx'})", true);
+            gvMoldes.DataSource = objCtrMolde.ListarMoldes();
+            gvMoldes.DataBind();
+            gvMolduras.DataSource = objCtrMoldura.ListarMolduras();
+            gvMolduras.DataBind();
+            UpdatePanel1.Update();
+            //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Molde registrado!',text: 'Datos ENVIADOS!!'}).then(function(){window.location.href='GestionarMolde.aspx'})", true);
         }
 
         protected void txtCodigoMoldura_TextChanged(object sender, EventArgs e)
@@ -136,6 +141,36 @@ namespace WEB
                 objDtoMolde.FK_IM_Cod = int.Parse(txtCodigoMoldura.Text);
                 gvMoldes.DataSource = objCtrMolde.ListarMoldesxCodigoMoldura(objDtoMolde);
                 gvMoldes.DataBind();
+            }
+        }
+        
+        protected void btnAumentar_Click(object sender, EventArgs e)
+        {
+            objDtoMolde.FK_IM_Cod = int.Parse(lblId2.Text);
+            if ((int.Parse(txtCantAumentar.Text)+ objCtrMolde.CantidadMoldesxMoldura(objDtoMolde))< 70 && int.Parse(txtCantAumentar.Text) > 0)
+            {
+                objDtoMolde.IML_Cantidad = int.Parse(txtCantAumentar.Text);
+                objCtrMolde.AumentarMoldes(objDtoMolde);
+                gvMoldes.DataSource = objCtrMolde.ListarMoldes();
+                gvMoldes.DataBind();
+                UpdatePanel1.Update();
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Inserte un cantidad VALIDA!!'})", true);
+                return;
+            }
+        }
+
+        protected void gvMoldes_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Aumentar")
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+                var colsNoVisible = gvMoldes.DataKeys[index].Values;
+                GridViewRow row = gvMoldes.Rows[index];
+                string id = colsNoVisible[0].ToString();
+                lblId2.Text = id;
             }
         }
     }

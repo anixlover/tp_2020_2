@@ -75,6 +75,28 @@ namespace DAO
             conexion.Close();
             return dtsolicitudes;
         }
+        public DataTable SelectSolicitudesTerminadasBetween(string fechaInicio,string fechaFin)
+        {
+            DataTable dtsolicitudes = null;
+            conexion.Open();
+            SqlCommand command = new SqlCommand("SELECT* FROM Vista_Solicitudes_Entregados where DTS_FechaRecojo BETWEEN '"+ fechaInicio+"' and '"+fechaFin+"'", conexion);
+            SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
+            dtsolicitudes = new DataTable();
+            daAdaptador.Fill(dtsolicitudes);
+            conexion.Close();
+            return dtsolicitudes;
+        }
+        public DataTable SelectSolicitudesTerminadas()
+        {
+            DataTable dtsolicitudes = null;
+            conexion.Open();
+            SqlCommand command = new SqlCommand("SELECT* FROM Vista_Solicitudes_Entregados", conexion);
+            SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
+            dtsolicitudes = new DataTable();
+            daAdaptador.Fill(dtsolicitudes);
+            conexion.Close();
+            return dtsolicitudes;
+        }
         public DataTable SelectSolicitudDiseñoPropioIMG(DtoSolicitud objsol)
         {
             DataTable dtsolicitudes = null;
@@ -332,6 +354,36 @@ namespace DAO
                 objsolicitud.PK_IS_Cod = Convert.ToInt32(command.Parameters["@NewId"].Value);
             }
             conexion.Close();
+        }
+        public double SelectImporteTotalSolicitudes()
+        {
+            double total=0;
+            string Select = "SELECT SUM(DS_ImporteTotal)As ImporteTotal FROM Vista_Solicitudes_Entregados";
+            SqlCommand unComando = new SqlCommand(Select, conexion);
+            conexion.Open();
+            SqlDataReader reader = unComando.ExecuteReader();
+            bool hayRegistros = reader.Read();
+            if (hayRegistros)
+            {
+                total = double.Parse(reader[0].ToString());
+            }
+            conexion.Close();
+            return total;
+        }
+        public double SelectImporteTotalSolicitudesEntreFechas(string fechaInicio, string fechaFin)
+        {
+            double total = 0;
+            string Select = "SELECT SUM(DS_ImporteTotal)As ImporteTotal FROM Vista_Solicitudes_Entregados where DTS_FechaRecojo BETWEEN '" + fechaInicio + "' and '" + fechaFin + "'";
+            SqlCommand unComando = new SqlCommand(Select, conexion);
+            conexion.Open();
+            SqlDataReader reader = unComando.ExecuteReader();
+            bool hayRegistros = reader.Read();
+            if (hayRegistros)
+            {
+                total = double.Parse(reader[0].ToString());
+            }
+            conexion.Close();
+            return total;
         }
     }
 }

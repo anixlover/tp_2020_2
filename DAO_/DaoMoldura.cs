@@ -248,7 +248,7 @@ namespace DAO
                 objmoldura.DM_Ancho = Double.Parse(reader["MedidaAncho"].ToString());
                 objmoldura.IM_Stock = int.Parse(reader["IM_Stock"].ToString());
                 objmoldura.DM_Precio = Convert.ToDouble(reader["DM_Precio"].ToString());
-                objmoldura.DM_Subtotal = Double.Parse(reader["Subtotal"].ToString());
+                //objmoldura.DM_subtotal = Double.Parse(reader["Subtotal"].ToString());
             }
             conexion.Close();
             return dt;
