@@ -2358,13 +2358,13 @@
             }
 
 .bg-red {
-    background-color: #F44336 !important;
-    color: #fff;
+    background-color: #38414A;
+    color: #38414A;
 }
 
     .bg-red .content .text,
     .bg-red .content .number {
-        color: #fff !important;
+        color: #38414A !important;
     }
 
 .bg-pink {

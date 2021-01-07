@@ -190,7 +190,7 @@ namespace DAO
         }
         public double PrecioAprox(DtoMoldura objMoldura)
         {           
-            SqlCommand cmd = new SqlCommand("select sum(DM_Precio)/ COUNT(*) as promedio from T_Moldura where FK_ITM_Moldura = " + objMoldura.FK_ITM_Tipo, conexion);
+            SqlCommand cmd = new SqlCommand("select sum(DM_Precio)/ COUNT(*) as promedio from T_Moldura where FK_ITM_Tipo= " + objMoldura.FK_ITM_Tipo, conexion);
             Console.WriteLine(cmd);
             conexion.Open();
             string aprox = cmd.ExecuteScalar().ToString();
