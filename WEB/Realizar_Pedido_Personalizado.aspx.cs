@@ -111,13 +111,13 @@ namespace WEB
                 _log.CustomWriteOnLog("registrar pedido personalizado", "entro a busqueda");
                 objDtoMoldura.PK_IM_Cod = int.Parse(txtcodigo.Text);
                 _log.CustomWriteOnLog("registrar pedido personalizado", "objDtoMoldura.PK_IM_Cod : " + objDtoMoldura.PK_IM_Cod);
-                //if (!objCtrMoldura.MolduraExiste(objDtoMoldura))
-                //{
-                //    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: 'ERROR!',text: 'La moldura " + objDtoMoldura.PK_IM_Cod + " NO EXISTE!!', type: 'error'});", true);
-                    
-                //    //ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "<script>swal({icon: 'error',title: 'ERROR!',text: 'La moldura " + objDtoMoldura.PK_IM_Cod + " NO EXISTE!!'})</script>");
-                //    return;
-                //}
+                if (!objCtrMoldura.MolduraExiste(objDtoMoldura))
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: 'ERROR!',text: 'La moldura " + objDtoMoldura.PK_IM_Cod + " NO EXISTE!!', type: 'error'});", true);
+
+                    //ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "<script>swal({icon: 'error',title: 'ERROR!',text: 'La moldura " + objDtoMoldura.PK_IM_Cod + " NO EXISTE!!'})</script>");
+                    return;
+                }
 
                 //Obtener moldura y unidad metrica
 
@@ -125,7 +125,11 @@ namespace WEB
                 txtDescripcion.Text = objDtoMoldura.VM_Descripcion.ToString();
                 txtLargo.Text = objDtoMoldura.DM_Largo.ToString() + objDtoTipoMoldura.VTM_UnidadMetrica.ToString();
                 txtAncho.Text = objDtoMoldura.DM_Ancho.ToString() + objDtoTipoMoldura.VTM_UnidadMetrica.ToString();
-
+                
+                byte[] ByteArray = objDtoMoldura.VBM_Imagen;
+                string strbase64 = Convert.ToBase64String(ByteArray);
+                Imagen1.ImageUrl = "data:image/png;base64," + strbase64;
+                
                 txtunidadmetrica.Value = objDtoTipoMoldura.VTM_UnidadMetrica.ToString();
                 //_log.CustomWriteOnLog("registrar pedido personalizado", " devolvio objDtoMoldura.DM_Medida y objDtoTipoMoldura.VTM_UnidadMetrica : " + objDtoMoldura.DM_Medida + " " + objDtoTipoMoldura.VTM_UnidadMetrica);
                 txtPrecio.Text = objDtoMoldura.DM_Precio.ToString();
@@ -174,11 +178,11 @@ namespace WEB
                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: 'ERROR!',text: 'Ingresar cantidad del producto!!', type: 'error'});", true);
 
                     return;
-                    //Utils.AddScriptClientUpdatePanel(calcular1, "showSuccessMessage4()");
+                    //Utils.AddScriptClientUpdatePanel(Calcular1, "showSuccessMessage4()");
                 }
                 if (txtcodigo.Text == "")
                 {
-                    //Utils.AddScriptClientUpdatePanel(calcular1, "showSuccessMessage5()");
+                    Utils.AddScriptClientUpdatePanel(Calcular1, "showSuccessMessage5()");
                 }
 
 
@@ -187,18 +191,19 @@ namespace WEB
 
                     txtImporte.Text = Convert.ToString(importe);
                     double descuento = (importe * 5) / 100;
-                    //txt_descuento.Text = Convert.ToString(descuento);
+                    txtDescuento.Text = Convert.ToString(descuento);
                     double total = importe - descuento;
-                    //txt_subtotal.Text = Convert.ToString(total);
+                    txtSubTotal.Text = Convert.ToString(total);
 
                 }
                 else
                 {
                     //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: 'ERROR!',text: 'Llene los datos correctamente!!', type: 'error'});", true);
                     //return;
-                    //txt_importe.Text = Convert.ToString(importe);
+                    txtImporte.Text = Convert.ToString(importe);
                 }
                 //calcular1.Update();
+
 
 
             }
