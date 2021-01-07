@@ -57,6 +57,14 @@ namespace CTR
         {
             return objDaoMoldura.StockMoldura(objDtoMoldura);
         }
+       public DataTable DataMolduraxCodMoldura_y_Tipo(DtoMoldura objDtoMoldura)
+        {
+            return objDaoMoldura.SelectMoldurasTipoCodMoldura(objDtoMoldura);
+        }
+        public DataTable DataMolduraxCodMoldura(DtoMoldura objDtoMoldura)
+        {
+            return objDaoMoldura.SelectMoldurasVista(objDtoMoldura);
+        }
         public DataSet OpcionesTipoMoldura()
         {
             return objDaoMoldura.desplegableTipoMoldura();

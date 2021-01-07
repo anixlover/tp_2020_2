@@ -16,6 +16,8 @@ namespace WEB
         DtoMolduraXUsuario objDtoMolduraxUsuario = new DtoMolduraXUsuario();
         CtrMolduraXUsuario objCtrMolduraxUsuario = new CtrMolduraXUsuario();
         CtrMXUEstado objCtrMXUEstado = new CtrMXUEstado();
+        DtoMolde objDtoMolde = new DtoMolde();
+        CtrMolde objCtrMolde = new CtrMolde();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -33,6 +35,24 @@ namespace WEB
                 }
             }
         }
+        protected int CantidadMolde(string id)
+        {
+            objDtoMolde.FK_IM_Cod = int.Parse(id);
+            return objCtrMolde.CantidadMoldesxMoldura(objDtoMolde);
+        }
+        protected Boolean ExistenMoldes(int id,int codMXU)
+        {
+            objDtoMolde.FK_IM_Cod = id;
+            objDtoMolduraxUsuario.PK_IMU_Cod = codMXU;
+            objCtrMolduraxUsuario.obtenerMXUxCodigo(objDtoMolduraxUsuario);
+            return objCtrMolde.ExistenciaMolde(objDtoMolde)&& objCtrMolde.CantidadMoldesxMoldura(objDtoMolde)>0&&objDtoSolicitud.VS_TipoSolicitud!= "Personalizado por diseño propio"&&objDtoSolicitud.FK_ISE_Cod>=9&& objDtoSolicitud.FK_ISE_Cod <11&&objDtoMolduraxUsuario.IMU_MoldesUsados==0;
+        }
+        protected Boolean HayMoldesEnUso(int codMXU)
+        {
+            objDtoMolduraxUsuario.PK_IMU_Cod = codMXU;
+            objCtrMolduraxUsuario.obtenerMXUxCodigo(objDtoMolduraxUsuario);
+            return objDtoMolduraxUsuario.IMU_MoldesUsados > 0;
+        }
         protected void gvPedidos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Ver detalles")
@@ -42,17 +62,35 @@ namespace WEB
                 string id = row.Cells[0].Text;
                 CargarMolduras(id);
                 lblid.Text = id;
+                objDtoSolicitud.PK_IS_Cod = int.Parse(id);
+                objCtrSolicitud.LeerSolicitudTipo(objDtoSolicitud);
+                if (objDtoSolicitud.FK_ISE_Cod >= 9)
+                {
+                    btnComenzar.Visible = false;
+                }
+                else
+                {
+                    btnComenzar.Visible = true;
+                }
             }
         }
         public void CargarMolduras(string id)
         {
             objDtoMolduraxUsuario.FK_IS_Cod = int.Parse(id);
-            objDtoSolicitud.PK_IS_Cod = int.Parse(id);
+            objDtoSolicitud.PK_IS_Cod = int.Parse(id);            
             if (objCtrSolicitud.LeerSolicitudTipo(objDtoSolicitud))
             {
 
                 if (objDtoSolicitud.VS_TipoSolicitud == "Personalizado por catalogo" || objDtoSolicitud.VS_TipoSolicitud == "Catalogo")
                 {
+                    if (objCtrSolicitud.MoldurasConMoldeSolicitud(objDtoSolicitud) == 0 | objDtoSolicitud.FK_ISE_Cod>=9)
+                    {
+                        btnComenzar.Visible = false;
+                    }
+                    else
+                    { 
+                        btnComenzar.Visible = true; 
+                    }
                     gvPersonalizado.Visible = false;
                     gvDetalles.Visible = true;
                     objCtrSolicitud.LeerSolicitudImporte(objDtoSolicitud);
@@ -61,6 +99,14 @@ namespace WEB
                 }
                 else if (objDtoSolicitud.VS_TipoSolicitud == "Personalizado por diseño propio")
                 {
+                    if (objCtrSolicitud.MoldurasConMoldeSolicitud(objDtoSolicitud) == 0 | objDtoSolicitud.FK_ISE_Cod >= 9)
+                    {
+                        btnComenzar.Visible = false;
+                    }
+                    else
+                    { 
+                        btnComenzar.Visible = true; 
+                    }
                     gvPersonalizado.Visible = true;
                     gvDetalles.Visible = false;
                     objCtrSolicitud.leerSolicitudDiseñoPersonal(objDtoSolicitud);
@@ -82,14 +128,24 @@ namespace WEB
                 DropDownList ddlMXUEstados = (e.Row.FindControl("ddlEstados") as DropDownList);
                 ddlMXUEstados.DataSource = objCtrMXUEstado.ListarEstados();
                 ddlMXUEstados.DataTextField = "VMXUE_Nombre";
-                ddlMXUEstados.DataValueField = "PK_IMXUE_Cod";
+                ddlMXUEstados.DataValueField = "PK_IMXUE_Cod";              
                 ddlMXUEstados.DataBind();
+                int idMoldura = Convert.ToInt32(e.Row.Cells[2].Text);
+                objDtoMolde.FK_IM_Cod = idMoldura;                
                 int idE = Convert.ToInt32(e.Row.Cells[1].Text);
                 objDtoMolduraxUsuario.PK_IMU_Cod = idE;
-                objCtrMolduraxUsuario.obtenerMXUxCodigo(objDtoMolduraxUsuario);
-                ddlMXUEstados.SelectedValue = (objDtoMolduraxUsuario.FK_IMXUE_Cod).ToString();
+                objCtrMolduraxUsuario.obtenerMXUxCodigo(objDtoMolduraxUsuario);                
                 e.Row.Cells[1].Visible = false;
                 gvDetalles.HeaderRow.Cells[1].Visible = false;
+                if (!objCtrMolde.ExistenciaMolde(objDtoMolde) | objCtrMolde.CantidadMoldesxMoldura(objDtoMolde) == 0 | objDtoMolduraxUsuario.FK_IMXUE_Cod < 6|objDtoMolduraxUsuario.FK_IMXUE_Cod==11|objDtoMolduraxUsuario.IMU_MoldesUsados==0)
+                {
+                    ddlMXUEstados.Visible = false;
+                }
+                else
+                {
+                    ddlMXUEstados.Visible = true;
+                    ddlMXUEstados.SelectedValue = (objDtoMolduraxUsuario.FK_IMXUE_Cod).ToString();
+                }
             }
         }
 
@@ -121,6 +177,8 @@ namespace WEB
             objCtrMolduraxUsuario.actualizarMXUxCod(objDtoMolduraxUsuario);
             string sol = lblid.Text;
             CargarMolduras(sol);
+            gvPedidos.DataSource = objCtrSolicitud.ListarSolicitudesTrabajdor();
+            gvPedidos.DataBind();
         }
 
         protected void ddlEstados2_SelectedIndexChanged(object sender, EventArgs e)
@@ -133,6 +191,74 @@ namespace WEB
             objCtrMolduraxUsuario.actualizarMXUxCod(objDtoMolduraxUsuario);
             string sol = lblid.Text;
             CargarMolduras(sol);
+            gvPedidos.DataSource = objCtrSolicitud.ListarSolicitudesTrabajdor();
+            gvPedidos.DataBind();
+        }
+
+        protected void gvDetalles_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName== "Asignar")
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = gvDetalles.Rows[index];
+                string id = row.Cells[2].Text;
+                objDtoMolduraxUsuario.PK_IMU_Cod = int.Parse(row.Cells[1].Text);
+                lblIdMoldura.Text = id;
+            }
+            if (e.CommandName == "Devolver")
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = gvDetalles.Rows[index];
+                string moldura = row.Cells[2].Text;
+                string sol = lblid.Text;
+                objDtoMolduraxUsuario.FK_IM_Cod = int.Parse(moldura);
+                objDtoMolde.FK_IM_Cod = int.Parse(moldura);
+                objDtoMolduraxUsuario.FK_IS_Cod = int.Parse(sol);
+                objDtoMolde.IML_Cantidad = int.Parse(row.Cells[8].Text);
+                objCtrMolduraxUsuario.DevolverMoldes(objDtoMolduraxUsuario);
+                objCtrMolde.AumentarMoldes(objDtoMolde);
+                CargarMolduras(sol);
+            }
+        }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            objDtoMolduraxUsuario.FK_IM_Cod = int.Parse(lblIdMoldura.Text);
+            objDtoMolde.FK_IM_Cod= int.Parse(lblIdMoldura.Text);
+            objDtoMolde.IML_Cantidad = int.Parse(txtCantidad.Text);
+            objDtoMolduraxUsuario.FK_IS_Cod = int.Parse(lblid.Text);
+            objDtoMolduraxUsuario.IMU_MoldesUsados = int.Parse(txtCantidad.Text);
+            if (int.Parse(txtCantidad.Text) <= 0 | txtCantidad.Text.Contains("e")|txtCantidad.Text=="")
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Inserte un cantidad VALIDA!!'})", true);
+                return;
+            }
+            int MoldesDisponibles= objCtrMolde.CantidadMoldesxMoldura(objDtoMolde);
+            if(int.Parse(txtCantidad.Text)>= MoldesDisponibles)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Cantidad solicitada EXCEDIDA!!'})", true);
+                return;
+            }
+            objCtrMolduraxUsuario.AgregarMoldes_a_usar(objDtoMolduraxUsuario);
+            objCtrMolde.Restarmoldes(objDtoMolde);
+            UpdatePanel1.Update();
+            CargarMolduras(lblid.Text);
+            gvPedidos.DataSource = objCtrSolicitud.ListarSolicitudesTrabajdor();
+            gvPedidos.DataBind();
+            txtCantidad.Text = "0";
+            //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Moldes ASIGNADOS!',text: 'Cantidad ACTUALIZADA!!'})", true);
+        }
+
+        protected void btnComenzar_Click(object sender, EventArgs e)
+        {
+            objDtoSolicitud.PK_IS_Cod = int.Parse(lblid.Text);
+            objDtoMolduraxUsuario.FK_IS_Cod = int.Parse(lblid.Text);
+            objCtrMolduraxUsuario.actualizarMXU_Estado_enProceso(objDtoMolduraxUsuario);
+            objCtrSolicitud.ComenzarProceso(objDtoSolicitud);
+            gvPedidos.DataSource = objCtrSolicitud.ListarSolicitudesTrabajdor();
+            gvPedidos.DataBind();
+            CargarMolduras(lblid.Text);
+            UpdatePanel1.Update();
         }
     }
 }

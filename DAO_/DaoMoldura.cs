@@ -285,5 +285,27 @@ namespace DAO
             return hayRegistros;
         }
 
+        public DataTable SelectMoldurasTipoCodMoldura(DtoMoldura objMoldura)
+        {
+            DataTable dtmolduras = null;
+            conexion.Open();
+            SqlCommand command = new SqlCommand("Select * from Vista_Molduras_consulta where Codigo="+objMoldura.PK_IM_Cod+ " and PK_ITM_Tipo="+objMoldura.FK_ITM_Tipo, conexion);
+            SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
+            dtmolduras = new DataTable();
+            daAdaptador.Fill(dtmolduras);
+            conexion.Close();
+            return dtmolduras;
+        }
+        public DataTable SelectMoldurasVista(DtoMoldura objMoldura)
+        {
+            DataTable dtmolduras = null;
+            conexion.Open();
+            SqlCommand command = new SqlCommand("Select * from Vista_Molduras_consulta where Codigo=" + objMoldura.PK_IM_Cod, conexion);
+            SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
+            dtmolduras = new DataTable();
+            daAdaptador.Fill(dtmolduras);
+            conexion.Close();
+            return dtmolduras;
+        }
     }
 }
