@@ -13,5 +13,6 @@ namespace DTO
         public double DMU_Precio { get; set; }
         public int FK_IS_Cod { get; set; }
         public int FK_IMXUE_Cod { get; set; }
+        public int IMU_MoldesUsados { get; set; }
     }
 }

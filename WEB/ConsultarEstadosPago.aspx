@@ -43,7 +43,7 @@
                                                 CommandName="Actualizar" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-warning" />
                                             <asp:Button runat="server" Text="Ver" ItemStyle-HorizontalAlign="Center"
                                                 Visible='<%# ValidacionEstado3(Eval("VSE_Nombre").ToString()) %>'
-                                                CommandName="Ver detalle" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-warning" />
+                                                CommandName="Ver voucher" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-warning" />
                                             <asp:Button runat="server" Text="Ver Detalles" ItemStyle-HorizontalAlign="Center" data-toggle="modal" data-target="#modalDetalle"
                                                 CommandName="Ver detalles" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-warning" />
                                             <asp:Button runat="server" Text="Ver proceso" ItemStyle-HorizontalAlign="Center" data-toggle="modal" data-target="#modalDetalle"
