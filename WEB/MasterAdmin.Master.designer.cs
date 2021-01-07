@@ -42,15 +42,6 @@ namespace WEB
         protected global::System.Web.UI.WebControls.Literal Literal1;
 
         /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
         /// ContentPlaceHolder1 control.
         /// </summary>
         /// <remarks>
@@ -58,6 +49,15 @@ namespace WEB
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+
+        /// <summary>
+        /// cph_footer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder cph_footer;
 
         /// <summary>
         /// cph_Js control.

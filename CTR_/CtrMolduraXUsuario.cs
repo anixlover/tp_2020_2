@@ -81,5 +81,9 @@ namespace CTR
         {
             objDaoMolduraXUsuario.UpdateCantMoldesCeroMXU_x_codigo(objdtoMolduraxUsuario);
         }
+        public void registrarNuevaMoldura2(DtoMolduraXUsuario objDtoMolduraxUsuario)
+        {
+            objDaoMolduraXUsuario.InsertarMolduraxUsuariox2(objDtoMolduraxUsuario);
+        }
     }
 }

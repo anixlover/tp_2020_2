@@ -68,7 +68,7 @@ namespace DAO
         {
             DataTable dtsolicitudes = null;
             conexion.Open();
-            SqlCommand command = new SqlCommand("select*from Vista_Solicitudes_Trabajador", conexion);
+            SqlCommand command = new SqlCommand("select * from Vista_Solicitudes_Trabajador", conexion);
             SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
             dtsolicitudes = new DataTable();
             daAdaptador.Fill(dtsolicitudes);
@@ -278,6 +278,60 @@ namespace DAO
             cantMoldurasconMolde = (int)unComando.ExecuteScalar();
             conexion.Close();
             return cantMoldurasconMolde;
+        }
+        public void RegistrarSolicitud_PxPD(DtoSolicitud objsolicitud)
+        {
+            SqlCommand command = new SqlCommand("SP_RegistrarSolicitud_PxDP", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@TipoSol", objsolicitud.VS_TipoSolicitud);
+            var binary1 = command.Parameters.Add("@img", SqlDbType.VarBinary, -1);
+            binary1.Value = DBNull.Value;
+
+            //var binary1 = command.Parameters.Add("@img", SqlDbType.VarBinary, -1);
+            //binary1.Value = DBNull.Value;
+            command.Parameters.AddWithValue("@largo", objsolicitud.DS_Largo);
+            command.Parameters.AddWithValue("@ancho", objsolicitud.DS_Ancho);
+            command.Parameters.AddWithValue("@cant", objsolicitud.IS_Cantidad);
+            command.Parameters.AddWithValue("@precioaprox", objsolicitud.DS_PrecioAprox);
+            command.Parameters.Add("@NewId", SqlDbType.Int).Direction = ParameterDirection.Output;
+            conexion.Open();
+            using (SqlDataReader dr = command.ExecuteReader())
+            {
+                objsolicitud.PK_IS_Cod = Convert.ToInt32(command.Parameters["@NewId"].Value);
+            }
+            conexion.Close();
+        }
+        public void RegistrarSolicitud_PxC(DtoSolicitud objsolicitud)
+        {
+            SqlCommand command = new SqlCommand("SP_RegistrarSolicitud_PxC", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@TipoSol", objsolicitud.VS_TipoSolicitud);
+            command.Parameters.AddWithValue("@cant", objsolicitud.IS_Cantidad);
+            command.Parameters.AddWithValue("@impt", objsolicitud.DS_ImporteTotal);
+            command.Parameters.AddWithValue("@fechareco", objsolicitud.DTS_FechaRecojo);
+            command.Parameters.Add("@newID", SqlDbType.Int).Direction = ParameterDirection.Output;
+            conexion.Open();
+            using (SqlDataReader dr = command.ExecuteReader())
+            {
+                objsolicitud.PK_IS_Cod = Convert.ToInt32(command.Parameters["@newID"].Value);
+            }
+            conexion.Close();
+        }
+        public void RegistrarSolicitud_LD2(DtoSolicitud objsolicitud)
+        {
+            SqlCommand command = new SqlCommand("SP_RegistrarSolicitud_C_2", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@impt", objsolicitud.DS_ImporteTotal);
+            command.Parameters.AddWithValue("@cantidad", objsolicitud.IS_Cantidad);
+            command.Parameters.Add("@NewId", SqlDbType.Int).Direction = ParameterDirection.Output;
+            conexion.Open();
+
+            using (SqlDataReader dr = command.ExecuteReader())
+            {
+                objsolicitud.PK_IS_Cod = Convert.ToInt32(command.Parameters["@NewId"].Value);
+            }
+            conexion.Close();
         }
     }
 }

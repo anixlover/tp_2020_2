@@ -101,6 +101,18 @@ namespace CTR
         {
             objDaoSolicitud.UpdateEstadoSolicitud_Observacion(objsolicitud);
         }
+        public void RegistrarSolicitud_PxDP(DtoSolicitud objsolicitud)
+        {
+            objDaoSolicitud.RegistrarSolicitud_PxPD(objsolicitud);
+        }
+        public void RegistrarSolicitud_PxC(DtoSolicitud objsolicitud)
+        {
+            objDaoSolicitud.RegistrarSolicitud_PxC(objsolicitud);
+        }
+        public void RegistrarSolicitud_LD2(DtoSolicitud objsolicitud)
+        {
+            objDaoSolicitud.RegistrarSolicitud_LD2(objsolicitud);
+        }
         public void ComenzarProceso(DtoSolicitud objsolicitud)
         {
             objDaoSolicitud.Update_Estado_SolicitudEnProceso(objsolicitud);

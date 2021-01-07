@@ -37,38 +37,49 @@ namespace WEB
             {
 
                 OpcionesTipoMoldura();
+                ddlTipoMoldura.SelectedValue = "1";
                 _log.CustomWriteOnLog("registrar pedido personalizado", "carga datos por catalogo");
 
 
-                try
-                {
-                    if (Session["DNIUsuario"] != null)
-                    {
-                        objDtoMXU.FK_VU_Dni = Session["DNIUsuario"].ToString();
+                //try
+                //{
+                //    if (Session["DNIUsuario"] != null)
+                //    {
+                //        objDtoMXU.FK_VU_Dni = Session["DNIUsuario"].ToString();
                         
-                    }
-                    else
-                    {
-                        Response.Redirect("~/IniciarSesion.aspx");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    _log.CustomWriteOnLog("registrar pedido personalizado", ex.Message + "Stac" + ex.StackTrace);
-                }
+                //    }
+                //    else
+                //    {
+                //        Response.Redirect("~/IniciarSesion.aspx");
+                //    }
+                //}
+                //catch (Exception ex)
+                //{
+                //    _log.CustomWriteOnLog("registrar pedido personalizado", ex.Message + "Stac" + ex.StackTrace);
+                //}
             }
         }
 
         public void OpcionesTipoMoldura()
         {
+            //DataSet ds = new DataSet();
+            //ds = objCtrTipoMoldura.SelectTipoMoldura();
+            //ddlTipoMoldura.DataSource = ds;
+            //ddlTipoMoldura.DataTextField = "VTM_Nombre";
+            //ddlTipoMoldura.DataValueField = "PK_ITM_Tipo";
+            ////ddlTipoMoldura.DataBind();
+            //ddlTipoMoldura.Items.Insert(0, new ListItem("Seleccione", "0"));
+            //_log.CustomWriteOnLog("registrar pedido personalizado", "Termino de llenar el ddl");
+
+
             DataSet ds = new DataSet();
-            //ds = objCtrMoldura.OpcionesTipoMoldura();
+            ds = objctrtipomoldura.SelectTipoMoldura();
             ddlTipoMoldura.DataSource = ds;
             ddlTipoMoldura.DataTextField = "VTM_Nombre";
             ddlTipoMoldura.DataValueField = "PK_ITM_Tipo";
             ddlTipoMoldura.DataBind();
             ddlTipoMoldura.Items.Insert(0, new ListItem("Seleccione", "0"));
-            _log.CustomWriteOnLog("registrar pedido personalizado", "Termino de llenar el ddl");
+            _log.CustomWriteOnLog("RegistrarMoldura", "Termino de llenar el ddl");
         }
 
 
@@ -130,7 +141,71 @@ namespace WEB
 
         protected void btnCalcular_Click(object sender, EventArgs e)
         {
+            try
+            {
+                double y = double.Parse(txtPrecio.Text);
+                int cant = int.Parse(txtCantidad.Text);
 
+                double importe = cant * y;
+                if (txtunidadmetrica.Value == "Mt" && cant < 150)
+                {
+
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: 'ERROR!',text: 'Ingrese mas de 150 unidades!!', type: 'error'});", true);
+                    return;
+                }
+                if (txtunidadmetrica.Value == "Cm" && cant < 30)
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: 'ERROR!',text: 'Ingrese mas de 30 unidades!!', type: 'error'});", true);
+                    return;
+                }
+                if (txtunidadmetrica.Value == "M2" && cant < 40)
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: 'ERROR!',text: 'Ingrese mas de 40 unidades!!', type: 'error'});", true);
+                    return;
+                }
+
+
+
+
+                _log.CustomWriteOnLog("registrar pedido personalizado", "valor del txtunidadmetrica" + txtunidadmetrica.Value);
+
+                if (txtCantidad.Text == "0")
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: 'ERROR!',text: 'Ingresar cantidad del producto!!', type: 'error'});", true);
+
+                    return;
+                    //Utils.AddScriptClientUpdatePanel(calcular1, "showSuccessMessage4()");
+                }
+                if (txtcodigo.Text == "")
+                {
+                    Utils.AddScriptClientUpdatePanel(calcular1, "showSuccessMessage5()");
+                }
+
+
+                if (txtunidadmetrica.Value == "Mt" && cant > 149 || txtunidadmetrica.Value == "Cm" && cant > 29 || txtunidadmetrica.Value == "M2" && cant > 39)
+                {
+
+                    txtImporte.Text = Convert.ToString(importe);
+                    double descuento = (importe * 5) / 100;
+                    txt_descuento.Text = Convert.ToString(descuento);
+                    double total = importe - descuento;
+                    txt_subtotal.Text = Convert.ToString(total);
+
+                }
+                else
+                {
+                    //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: 'ERROR!',text: 'Llene los datos correctamente!!', type: 'error'});", true);
+                    //return;
+                    txt_importe.Text = Convert.ToString(importe);
+                }
+                calcular1.Update();
+
+
+            }
+            catch (Exception ex)
+            {
+                _log.CustomWriteOnLog("registrar pedido personalizado", "Error  = " + ex.Message + "posicion" + ex.StackTrace);
+            }
         }
 
         protected void btnCalcularP_Click(object sender, EventArgs e)

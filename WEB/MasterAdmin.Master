@@ -34,7 +34,28 @@
     <link href="../assets/css/bootstrap-creative-dark.min.css" rel="stylesheet" type="text/css" />
     <link href="../assets/css/app-creative-dark.min.css" rel="stylesheet" type="text/css" />
 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
 
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css" />
+    <%--<link href="css/googleapis_latyn_cyrillic.css" rel="stylesheet" />--%>
+    <%--    <link href="css/googleapis_material_Icons.css" rel="stylesheet" />--%>
+    <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="plugins/node-waves/waves.css" rel="stylesheet" />
+    <link href="plugins/animate-css/animate.css" rel="stylesheet" />
+    <link href="plugins/morrisjs/morris.css" rel="stylesheet" />
+    <link href="../../plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+
+    <!-- Custom Css -->
+   
+    <link href="css/themes/all-themes.css" rel="stylesheet" />
+    
+    <script src="plugins/jquery/jquery.min.js"></script>
 
     <!-- icons -->
     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
@@ -486,28 +507,31 @@
             <div class="content">
 
                 <!-- Start Content-->
-                <div class="container-fluid">
-                    <%--<div class="row">
-                        <div class="col-12">
-                            <div class="page-title-box">--%>
+               <%-- <div class="container-fluid">
                     <form id="form1" runat="server">
                         <div>
                             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                             </asp:ContentPlaceHolder>
-                            <asp:ContentPlaceHolder ID="cph_Js" runat="server">
-                            </asp:ContentPlaceHolder>
+
                         </div>
                     </form>
-                    <%--                                <h4 class="page-title">Starter</h4>
+                </div>--%>
 
-                            </div>
-                        </div>
-                    </div>--%>
-                </div>
+                <section class="content">
+                    <div class="container-fluid">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+
+                    </div>
+                </section>
+
                 <!-- container -->
 
             </div>
             <!-- content -->
+
+
+
             <!-- Footer Start -->
             <footer class="footer">
                 <div class="container-fluid">
@@ -528,9 +552,15 @@
                 </div>
             </footer>
             <!-- end Footer -->
-
         </div>
-
+         <asp:ContentPlaceHolder ID="cph_footer" runat="server">
+        </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="cph_Js" runat="server">
+        </asp:ContentPlaceHolder>
+        <section class="content">
+            <div class="container-fluid">
+            </div>
+        </section>
         <!-- ============================================================== -->
         <!-- End Page content -->
         <!-- ============================================================== -->
@@ -567,7 +597,7 @@
 
 
     <script src="../assets/libs/jquery-sparkline/jquery.sparkline.min.js"></script>
-    
+
 
     <!-- Sweet Alerts js -->
     <script src="../assets/libs/sweetalert2/sweetalert2.min.js"></script>
@@ -575,7 +605,7 @@
 
     <!-- Sweet alert init js-->
     <script src="../assets/js/pages/sweet-alerts.init.js"></script>
-    
+
     <script src="../../plugins/sweetalert/sweetalert.min.js"></script>
 
 
