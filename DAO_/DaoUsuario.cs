@@ -295,6 +295,8 @@ namespace DAO
                 smtp.Send(mail);
             }
         }
+        
+
         public void TraeData(DtoUsuario ojbusr)
         {
             string Select = "SELECT * from T_Usuario where PK_VU_Dni = @Dni";

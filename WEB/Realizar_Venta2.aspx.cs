@@ -106,7 +106,7 @@ namespace WEB
         }
         protected void btnCalcularPersonalizado_Click(object sender, EventArgs e)
         {
-            if (txtmedidaDP.Text == "")
+            if (txtmedidaDPLargo.Text == "")
             {
                 Utils.AddScriptClientUpdatePanel(panelCalcPersonalizado, "showSuccessMessage8()");
                 return;
@@ -140,7 +140,7 @@ namespace WEB
         }
         protected void btnEnviar1_Click(object sender, EventArgs e)
         {
-            if (txtIdentificadorUsuario.Text == "" | txtmedidaDP.Text == "" | txtcantidadDP.Text == "")
+            if (txtIdentificadorUsuario.Text == "" | txtmedidaDPLargo.Text == "" | txtcantidadDP.Text == "")
             {
                 Utils.AddScriptClientUpdatePanel(updBotonEnviar, "showSuccessMessage7()");
                 return;
@@ -153,15 +153,14 @@ namespace WEB
             try
             {
                 if (valorObtenidoRBTN.Value == "2" && ddlPedidoPor.SelectedValue == "2")
-
                 {
                     _log.CustomWriteOnLog("valorObtenidoRBTNValue", "valorObtenidoRBTN.Value   : " + valorObtenidoRBTN.Value);
                     _log.CustomWriteOnLog("valorObtenidoRBTNValue", "valorObtenidoRBTN.Value   : " + ddlPedidoPor.SelectedValue);
 
                     objDtoSolicitud.VS_TipoSolicitud = "Personalizado por Diseño Propio";
-                    objDtoSolicitud.DS_Largo = int.Parse(txtmedidaDP.Text);
+                    objDtoSolicitud.DS_Largo = int.Parse(txtmedidaDPLargo.Text);
                     _log.CustomWriteOnLog("RealizarVenta", "objDtoSolicitud.DS_Medida " + objDtoSolicitud.DS_Largo);
-                    objDtoSolicitud.DS_Ancho = int.Parse(txtmedidaDP.Text);
+                    objDtoSolicitud.DS_Ancho = int.Parse(txtmedidaDPAncho.Text);
                     _log.CustomWriteOnLog("RealizarVenta", "objDtoSolicitud.DS_Medida " + objDtoSolicitud.DS_Ancho);
                     objDtoSolicitud.IS_Cantidad = int.Parse(txtcantidadDP.Text);
                     _log.CustomWriteOnLog("RealizarVenta", "objDtoSolicitud.IS_Cantidad " + objDtoSolicitud.IS_Cantidad);
@@ -294,7 +293,7 @@ namespace WEB
                 double sum = 0;
                 var colsNoVisible = gvdetalle2.DataKeys[0].Values;
                 double DM_Precio2 = double.Parse(colsNoVisible[6].ToString());
-                double Subtotal = double.Parse(colsNoVisible[5].ToString());
+                double Subtotal = double.Parse(colsNoVisible[7].ToString());
 
                 dt = (DataTable)ViewState["Records"];
                 dt.Rows.Add(txtcodigop.Text, txtcantidad.Text, DM_Precio2, Subtotal);
@@ -447,6 +446,8 @@ namespace WEB
                     //objuser.PK_VU_Dni = txtIdentificadorUsuario.Text;
                     //objDtoMoldura.PK_IM_Cod = Convert.ToInt32(txtcodigop.Text);
                     //objctrusr.EnviarBoletaxCorreo(objDtoMoldura,dtoTipoMoldura);
+                   
+
 
                     string Select = "SELECT VU_Correo, VU_Contrasenia, VU_Nombre from T_Usuario where PK_VU_Dni ='"
                     + objDtoMolduraxUsuario.FK_VU_Dni + "'";
@@ -457,9 +458,9 @@ namespace WEB
 
                     if (reader.Read())
                     {
-                        string senderr = "DecormoldurasRosetonesSAC@gmail.com";
-                        string senderrPass = "decormolduras1";
-                        string displayName = "DECORMOLDURAS & ROSETONES SAC";
+                        string senderr = "decormoldurassac2020@gmail.com";
+                        string senderrPass = "decormoldurassac";
+                        string displayName = "SWCPEDR - DECORMOLDURAS & ROSETONES SAC";
 
                         var date = DateTime.Now.ToShortDateString();
                         var recipient = reader["VU_Correo"].ToString();

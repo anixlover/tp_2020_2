@@ -31,7 +31,7 @@
                                                             CssClass=" bootstrap-select form-control" OnSelectedIndexChanged="ddl_TipoComprobante_SelectedIndexChanged">
                                                             <asp:ListItem Text="Seleccionar" Selected="True" />
                                                             <asp:ListItem Value="1" Text="Boleta" />
-                                                            <asp:ListItem Value="2" Text="Factura" />
+                                                            <%--<asp:ListItem Value="2" Text="Factura" />--%>
                                                         </asp:DropDownList>
                                                     </ContentTemplate>
                                                 </asp:UpdatePanel>
@@ -66,19 +66,19 @@
                                                     <div class="col-lg-6">
                                                         <div class="demo-checkbox">
                                                             <div class="demo-radio-button">
-                                                                <input type="radio" id="RDB_DNI" name="TipoC" class="radio-col-red" value="1" checked />
+                                                                <input type="radio" id="RDB_DNI" name="TipoC" class="radio-col-red" value="1"  />
                                                                 <label for="RDB_DNI">Dni</label>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-6">
+                                                    <%--<div class="col-lg-6">
                                                         <div class="demo-checkbox">
                                                             <div class="demo-radio-button">
                                                                 <input type="radio" id="RDB_CEXTRANJERIA" name="TipoC" class="radio-col-red" value="2" />
                                                                 <label for="RDB_CEXTRANJERIA">Carnet de Extrajeria</label>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div>--%>
                                                 </div>
                                             </div>
                                         </div>
@@ -273,9 +273,15 @@
                                                         <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
                                                             <ContentTemplate>
                                                                 <div class="form-group form-float">
-                                                                    <asp:Label ID="Label7" runat="server" class="form-label"><b>Medida(mt)</b></asp:Label>
+                                                                    <asp:Label ID="Label7" runat="server" class="form-label"><b>Largo(mt)</b></asp:Label>
                                                                     <div class="form-line">
-                                                                        <asp:TextBox ID="txtmedidaDP" PlaceHolder="Ej: 20" class="form-control" runat="server"></asp:TextBox>
+                                                                        <asp:TextBox ID="txtmedidaDPLargo" PlaceHolder="Ej: 20" class="form-control" runat="server"></asp:TextBox>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group form-float">
+                                                                    <asp:Label ID="Label12" runat="server" class="form-label"><b>Ancho(mt)</b></asp:Label>
+                                                                    <div class="form-line">
+                                                                        <asp:TextBox ID="txtmedidaDPAncho" PlaceHolder="Ej: 20" class="form-control" runat="server"></asp:TextBox>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group form-float">
@@ -662,7 +668,7 @@
                 type: "success"
             }, function (redirect) {
                 if (redirect) {
-                    window.location.href = "RealizarVenta_Marcial.aspx"
+                    window.location.href = "Realizar_Venta2.aspx"
                 }
             });
         }
@@ -673,7 +679,7 @@
                 type: "success"
             }, function (redirect) {
                 if (redirect) {
-                    window.location.href = "RealizarVenta_Marcial.aspx"
+                    window.location.href = "Realizar_Venta2.aspx"
                 }
             });
         }

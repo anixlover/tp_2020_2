@@ -115,7 +115,7 @@ namespace WEB
                                 </a>
                             </li>
                             <li>     
-                                <a href='Realizar_Venta.aspx' class='collapse'>
+                                <a href='Realizar_Venta2.aspx' class='collapse'>
                                     <i data-feather='book-open'></i>
                                     <span>Realizar Venta</span>
                                 </a>

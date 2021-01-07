@@ -23,14 +23,17 @@ namespace WEB
 
                 switch (perfil)
                 {
-                    case 2://gerente
-                        perfilGerente();
-                        break;
-                    case 3://vendedor
+                    case 2://vendedor
                         perfilVendedor();
+                        userVendedor();
                         break;
-                    case 4://trabajador
+
+                    case 3://trabajador
                         perfilTrabajador();
+                        break;
+                    case 4://gerente
+                        perfilGerente();
+                        userGerente();
                         break;
 
                     default:
@@ -38,7 +41,7 @@ namespace WEB
                         Session.Abandon();
                         HttpContext.Current.Session.Abandon();
                         Session.RemoveAll();
-                        Response.Redirect("~/Login.aspx");
+                        Response.Redirect("~/IniciarSesion.aspx");
                         break;
 
                 }
@@ -54,44 +57,82 @@ namespace WEB
         public void perfilGerente()
         {
             string html = string.Format(@"
-            <li class='active'>
-                        <a href='GestionCatalogo.aspx' >
+            <li class=''>
+                        <a href='Administrar_Pedido.aspx' >
                             <i class='material-icons'>check</i>
-                            <span>Gestionar Catalago</span>
+                            <span>Administrar Pedido</span>
                         </a>
                     </li>
             <li>
-                        <a href='Evaluar_Pedido_Personalizado.aspx' >
+                        <a href='Realizar_Venta2.aspx' >
                             <i class='material-icons'>check</i>
-                            <span>Evaluar Pedido Personalizado</span>
+                            <span>Realizar Venta</span>
                         </a>
                     </li>
         ");
             this.Literal1.Text = html;
         }
+        public void userGerente()
+        {
+            string nombre = Session["NombreUsuario"].ToString();
+
+            string html = string.Format(
+               @"
+            <a class='nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light' data-toggle='dropdown' href='#' role='button' aria-haspopup='false' aria-expanded='false'>" +
+                                "<span class=pro-user-name ml-1>" +
+                                    "Hola " + nombre + "<i class='mdi mdi-chevron-down'></i>" +
+                                "</span>" +
+                            "</a>" +
+                            "<div class='dropdown-menu dropdown-menu-right profile-dropdown'>" +
+                                "<a id='btnCerrarSesion' href='IniciarSesion.aspx' runat='server' onserverclick='btnCerrarSesion_ServerClick' class='dropdown-item notify-item'>" +
+                                    "<i class='fe-log-out'></i>" +
+                                    "<span>Cerrar Sesión</span>" +
+                                "</a>" +
+                            "</div>");
+            this.Literal2.Text = html;
+        }
         public void perfilVendedor()
         {
             string html = string.Format(@"
-            <li class='active'>
+            <li class=''>
                         <a href='RegistrarClienteVendedor.aspx' >
                             <i class='material-icons'>check</i>
-                            <span>Registrar Usuario</span>
+                            <span>Registrar Cliente</span>
                         </a>
                     </li>
             <li>
-                        <a href='RealizarVenta_Marcial.aspx' >
+                        <a href='Realizar_Venta2.aspx' >
                             <i class='material-icons'>check</i>
                             <span>Realizar Venta</span>
                         </a>
                     </li>
             <li>
-                        <a href='AdministrarPedidos.aspx' >
+                        <a href='Administrar_Pedido.aspx' >
                             <i class='material-icons'>check</i>
                             <span>Administrar Pedidos</span>
                         </a>
                     </li>
         ");
             this.Literal1.Text = html;
+        }
+        public void userVendedor()
+        {
+            string nombreusr = Session["NombreUsuario"].ToString();
+
+            string html = string.Format(
+                @"
+            <a class='nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light' data-toggle='dropdown' href='#' role='button' aria-haspopup='false' aria-expanded='false'>" +
+                                "<span class=pro-user-name ml-1>" +
+                                    "Hola " + nombreusr + "<i class='mdi mdi-chevron-down'></i>" +
+                                "</span>" +
+                            "</a>" +
+                            "<div class='dropdown-menu dropdown-menu-right profile-dropdown'>" +
+                                "<a id='btnCerrarSesion' href='IniciarSesion.aspx' runat='server' onserverclick='btnCerrarSesion_ServerClick' class='dropdown-item notify-item'>" +
+                                    "<i class='fe-log-out'></i>" +
+                                    "<span>Cerrar Sesión</span>" +
+                                "</a>" +
+                            "</div>");
+            this.Literal2.Text = html;
         }
         public void perfilTrabajador()
         {
