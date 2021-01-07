@@ -69,5 +69,17 @@ namespace CTR
         {
             objDaoMolduraXUsuario.UpdateMXU_x_codigo(objdtoMolduraxUsuario);
         }
+        public void actualizarMXU_Estado_enProceso(DtoMolduraXUsuario objdtoMolduraxUsuario)
+        {
+            objDaoMolduraXUsuario.UpdateMXU_x_codigoSOL(objdtoMolduraxUsuario);
+        }
+        public void AgregarMoldes_a_usar(DtoMolduraXUsuario objdtoMolduraxUsuario)
+        {
+            objDaoMolduraXUsuario.UpdateCantMoldesMXU_x_codigo(objdtoMolduraxUsuario);
+        }
+        public void DevolverMoldes(DtoMolduraXUsuario objdtoMolduraxUsuario)
+        {
+            objDaoMolduraXUsuario.UpdateCantMoldesCeroMXU_x_codigo(objdtoMolduraxUsuario);
+        }
     }
 }

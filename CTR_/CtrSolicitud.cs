@@ -101,5 +101,13 @@ namespace CTR
         {
             objDaoSolicitud.UpdateEstadoSolicitud_Observacion(objsolicitud);
         }
+        public void ComenzarProceso(DtoSolicitud objsolicitud)
+        {
+            objDaoSolicitud.Update_Estado_SolicitudEnProceso(objsolicitud);
+        }
+        public int MoldurasConMoldeSolicitud(DtoSolicitud objsolicitud)
+        {
+            return objDaoSolicitud.SelectSolicitudMoldes(objsolicitud);
+        }
     }
 }

@@ -1935,6 +1935,7 @@
     <Content Include="assets\libs\x-editable\jqueryui-editable\img\loading.gif" />
     <Content Include="assets\libs\x-editable\jqueryui-editable\js\jqueryui-editable.min.js" />
     <Content Include="CambiarContraseña.aspx" />
+    <Content Include="GestionarMolde.aspx" />
     <Content Include="DescripcionMoldura.aspx" />
     <Content Include="ConsultarEstadosPago.aspx" />
     <Content Include="Detalles_Solicitud.aspx" />
@@ -1980,6 +1981,13 @@
     </Compile>
     <Compile Include="CambiarContraseña.aspx.designer.cs">
       <DependentUpon>CambiarContraseña.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestionarMolde.aspx.cs">
+      <DependentUpon>GestionarMolde.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionarMolde.aspx.designer.cs">
+      <DependentUpon>GestionarMolde.aspx</DependentUpon>
     </Compile>
     <Compile Include="DescripcionMoldura.aspx.cs">
       <DependentUpon>DescripcionMoldura.aspx</DependentUpon>

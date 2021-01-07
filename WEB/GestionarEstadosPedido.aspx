@@ -82,7 +82,7 @@
                         </asp:GridView>
                         <br />
                         <asp:GridView ID="gvDetalles" runat="server" DataKeyNames="PK_IMU_Cod" AutoGenerateColumns="False"
-                            EmptyDataText="No existen registros" ShowHeaderWhenEmpty="True" Width="100%" CssClass="table-borderless table table-bordered table-hover" OnRowDataBound="gvDetalles_RowDataBound">
+                            EmptyDataText="No existen registros" ShowHeaderWhenEmpty="True" Width="100%" CssClass="table-borderless table table-bordered table-hover" OnRowDataBound="gvDetalles_RowDataBound" OnRowCommand="gvDetalles_RowCommand">
                             <Columns>
                                 <asp:TemplateField HeaderText="Imagen">
                                     <ItemTemplate>
@@ -91,23 +91,63 @@
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="PK_IMU_Cod" ItemStyle-HorizontalAlign="Center" HeaderText="Código" />
                                 <asp:BoundField DataField="PK_IM_Cod" ItemStyle-HorizontalAlign="Center" HeaderText="Código de Moldura" />
-                                <asp:BoundField DataField="VM_Descripcion" ItemStyle-HorizontalAlign="Center" HeaderText="Descripción de Moldura" />
                                 <asp:BoundField DataField="VTM_Nombre" ItemStyle-HorizontalAlign="Center" HeaderText="Tipo de Moldura" />
                                 <asp:BoundField DataField="IMU_Cantidad" ItemStyle-HorizontalAlign="Center" HeaderText="Cantidad" />
-                                <asp:BoundField DataField="DMU_Precio" ItemStyle-HorizontalAlign="Center" HeaderText="Precio" />
                                 <asp:BoundField DataField="FK_IMXUE_Cod" ItemStyle-HorizontalAlign="Center" HeaderText="Estado" />
                                 <asp:TemplateField HeaderText="Cambiar Estado">
                                     <ItemTemplate>
                                         <asp:DropDownList ID="ddlEstados" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlEstados_SelectedIndexChanged"></asp:DropDownList>
+                                    </ItemTemplate> 
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Moldes disponibles">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblCantMoldes" runat="server" Text='<%#CantidadMolde(Eval("PK_IM_Cod").ToString())%>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="IMU_MoldesUsados" ItemStyle-HorizontalAlign="Center" HeaderText="Moldes usados"/>
+                                <asp:TemplateField HeaderText="Asignar">
+                                    <ItemTemplate>
+                                        <asp:Button runat="server" Text="Asignar Moldes" ItemStyle-HorizontalAlign="Center" data-toggle="modal" data-target="#modalCantidadMoldes"
+                                                Visible='<%# ExistenMoldes(int.Parse(Eval("PK_IM_Cod").ToString()),int.Parse(Eval("PK_IMU_Cod").ToString())) %>' CommandName="Asignar" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-warning"/>
+                                        <asp:Button ID="btnDevolver" runat="server" Text="volver a asignar" ItemStyle-HorizontalAlign="Center" Visible='<%#HayMoldesEnUso(int.Parse(Eval("PK_IMU_Cod").ToString())) %>' CommandArgument='<%# Container.DataItemIndex %>' CommandName="Devolver" CssClass="btn btn-primary"/>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
                         </asp:GridView>
+                        <div class="row-lg">
+                            <asp:Button ID="btnComenzar" runat="server" Text="Comenzar" CssClass="btn-lg btn-success" OnClick="btnComenzar_Click"/>
+                        </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>
         </div>
     </div>
+      <div class="modal fade bd-example-modal-lg" id="modalCantidadMoldes" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="dialog">
+            <div class="modal-content">
+                <asp:UpdatePanel runat="server" ID="upPanelModal3" UpdateMode="Always">
+                    <ContentTemplate>
+                        <div class="modal-header">
+                            <p class="modal-title" id="P1" runat="server" style="color: #000000; font-weight: bold">
+                                Moldura N° <asp:Label ID="lblIdMoldura" runat="server" Text="0"></asp:Label>
+                            </p>
+                        </div>
+                        <div class="row-sm">
+                            <div class="col-sm">
+                                <p>Cuantos Moldes Requiere?</p>
+                                <asp:TextBox ID="txtCantidad" runat="server" placeholder="Cantidad" CssClass="form-control" pattern="[0-9]+" TextMode="Number" step="1" min="0" Width="50%"></asp:TextBox>
+                                <br />
+                                <asp:Button ID="btnAgregar" runat="server" Text="Asignar" CssClass="btn btn-success"  OnClick="btnAgregar_Click" OnClientClick="cerrarModal()"/>
+                                <br />
+                            </div>
+                            <br />
+                            <br />
+                        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+                </div>
+            </div>
+          </div>
         <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
 
@@ -119,6 +159,9 @@
 
     <!-- Init js -->
     <script src="../assets/js/pages/bootstrap-tables.init.js"></script>
+    <script type="text/javascript">
+        function cerrarModal() { $('#modalCantidadMoldes').modal('hide'); $('.modal-backdrop').hide(); }
+    </script>
 </asp:Content>
 <%--<asp:Content ID="Content3" ContentPlaceHolderID="cph_Js" runat="server">
 </asp:Content>--%>

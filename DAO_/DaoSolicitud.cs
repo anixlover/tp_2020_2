@@ -27,6 +27,7 @@ namespace DAO
             {
                 objsol.PK_IS_Cod = (int)reader[0];
                 objsol.VS_TipoSolicitud = (string)reader[1];
+                objsol.FK_ISE_Cod = (int)reader[15];
             }
             conexion.Close();
             return hayRegistros;
@@ -237,6 +238,15 @@ namespace DAO
             unComando.ExecuteNonQuery();
             conexion.Close();
         }
+
+        public void Update_Estado_SolicitudEnProceso(DtoSolicitud objsol)
+        {
+            string update = "UPDATE T_SOLICITUD SET FK_ISE_Cod = 9 where PK_IS_Cod =" + objsol.PK_IS_Cod;
+            conexion.Open();
+            SqlCommand unComando = new SqlCommand(update, conexion);
+            unComando.ExecuteNonQuery();
+            conexion.Close();
+        }
         public void RegistrarSolicitud_LD(DtoSolicitud objsolicitud)
         {
             SqlCommand command = new SqlCommand("SP_RegistrarSolicitud_C", conexion);
@@ -258,6 +268,16 @@ namespace DAO
             conexion.Open();
             unComando.ExecuteNonQuery();
             conexion.Close();
+        }
+        public int SelectSolicitudMoldes(DtoSolicitud objsol)
+        {
+            int cantMoldurasconMolde;
+            string Select = "select count(*) as cantidadMolduras from Vista_Moldes_Solicitud where FK_IS_Cod="+objsol.PK_IS_Cod+" and IML_Cantidad>0";
+            SqlCommand unComando = new SqlCommand(Select, conexion);
+            conexion.Open();
+            cantMoldurasconMolde = (int)unComando.ExecuteScalar();
+            conexion.Close();
+            return cantMoldurasconMolde;
         }
     }
 }

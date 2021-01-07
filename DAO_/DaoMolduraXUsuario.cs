@@ -83,9 +83,33 @@ namespace DAO
             command.ExecuteNonQuery();
             conexion.Close();
         }
+        public void UpdateCantMoldesMXU_x_codigo(DtoMolduraXUsuario objDtoMolduraXUsuario)
+        {
+            string select = "Update T_MOLDURAXUSUARIO set [IMU_MoldesUsados] =" + objDtoMolduraXUsuario.IMU_MoldesUsados + " where FK_IS_Cod=" + objDtoMolduraXUsuario.FK_IS_Cod+ " and FK_IM_Cod=" + objDtoMolduraXUsuario.FK_IM_Cod;
+            SqlCommand command = new SqlCommand(select, conexion);
+            conexion.Open();
+            command.ExecuteNonQuery();
+            conexion.Close();
+        }
+        public void UpdateCantMoldesCeroMXU_x_codigo(DtoMolduraXUsuario objDtoMolduraXUsuario)
+        {
+            string select = "Update T_MOLDURAXUSUARIO set [IMU_MoldesUsados] =0 where FK_IS_Cod=" + objDtoMolduraXUsuario.FK_IS_Cod + " and FK_IM_Cod=" + objDtoMolduraXUsuario.FK_IM_Cod;
+            SqlCommand command = new SqlCommand(select, conexion);
+            conexion.Open();
+            command.ExecuteNonQuery();
+            conexion.Close();
+        }
+        public void UpdateMXU_x_codigoSOL(DtoMolduraXUsuario objDtoMolduraXUsuario)
+        {
+            string select = "Update T_MOLDURAXUSUARIO set [FK_IMXUE_Cod] =6 where FK_IS_Cod=" + objDtoMolduraXUsuario.FK_IS_Cod;
+            SqlCommand command = new SqlCommand(select, conexion);
+            conexion.Open();
+            command.ExecuteNonQuery();
+            conexion.Close();
+        }
         public bool ExistenciaMXU_x_Cod(DtoMolduraXUsuario objDtoMolduraXUsuario)
         {
-            string select = "select * from T_MOLDURAXUSUARIO where PK_IMU_Cod="+objDtoMolduraXUsuario.PK_IMU_Cod;
+            string select = "select PK_IMU_Cod,FK_VU_Dni,FK_IM_Cod,IMU_Cantidad,DMU_Precio,FK_IS_Cod,FK_IMXUE_Cod,isnull(IMU_MoldesUsados, 0) as IMU_MoldesUsados from T_MOLDURAXUSUARIO where PK_IMU_Cod="+objDtoMolduraXUsuario.PK_IMU_Cod;
             SqlCommand command = new SqlCommand(select, conexion);
             conexion.Open();
             command.ExecuteNonQuery();
@@ -98,6 +122,7 @@ namespace DAO
                 objDtoMolduraXUsuario.DMU_Precio = Convert.ToDouble(reader[4].ToString());
                 objDtoMolduraXUsuario.FK_IM_Cod = (int)reader[2];
                 objDtoMolduraXUsuario.FK_IMXUE_Cod = (int)reader[6];
+                objDtoMolduraXUsuario.IMU_MoldesUsados = (int)reader[7];
             }
             conexion.Close();
             return hayRegistros;
