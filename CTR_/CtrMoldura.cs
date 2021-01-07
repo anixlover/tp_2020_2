@@ -89,5 +89,9 @@ namespace CTR
         {
             return objDaoMoldura.SelectMolduraID(objmoldura);
         }
+        public double Aprox(DtoMoldura objMoldura)
+        {
+            return objDaoMoldura.Aprox(objMoldura);
+        }
     }
 }

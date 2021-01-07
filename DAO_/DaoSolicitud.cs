@@ -333,5 +333,54 @@ namespace DAO
             }
             conexion.Close();
         }
+
+        public void RegistrarSolcitud_PC(DtoSolicitud objsolicitud)
+        {
+            SqlCommand command = new SqlCommand("SP_RegistrarSolcitud_PC", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@tipos", objsolicitud.VS_TipoSolicitud);
+            command.Parameters.AddWithValue("@cantidad", objsolicitud.IS_Cantidad);
+            command.Parameters.AddWithValue("@desc", objsolicitud.IS_Cantidad);
+            command.Parameters.AddWithValue("@impt", objsolicitud.DS_ImporteTotal);
+            command.Parameters.AddWithValue("@comen", objsolicitud.VS_Comentario);
+            command.Parameters.AddWithValue("@epago", objsolicitud.IS_EstadoPago);
+            command.Parameters.Add("@NewId", SqlDbType.Int).Direction = ParameterDirection.Output;
+            conexion.Open();
+            using (SqlDataReader dr = command.ExecuteReader())
+            {
+                objsolicitud.PK_IS_Cod = Convert.ToInt32(command.Parameters["@NewId"].Value);
+            }
+            conexion.Close();
+        }
+
+        public void RegistrarImgSolicitud(byte[] bytes, int id)
+        {
+            SqlCommand command = new SqlCommand("SP_Registrar_Imagen_Solicitud_Personalizado_Diseño_Propio", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@idSol", id);
+            command.Parameters.AddWithValue("@imagen", bytes);
+            conexion.Open();
+            command.ExecuteNonQuery();
+            conexion.Close();
+        }
+        public void RegistrarSolicitud_PP(DtoSolicitud objsolicitud)
+        {
+            SqlCommand command = new SqlCommand("SP_RegistrarSolcitud_PP", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@tipos", objsolicitud.VS_TipoSolicitud);
+            command.Parameters.AddWithValue("@largo", objsolicitud.DS_Largo);
+            command.Parameters.AddWithValue("@ancho", objsolicitud.DS_Ancho);
+            command.Parameters.AddWithValue("@cantidad", objsolicitud.IS_Cantidad);
+            command.Parameters.AddWithValue("@aprox", objsolicitud.DS_PrecioAprox);
+            command.Parameters.AddWithValue("@comen", objsolicitud.VS_Comentario);
+            command.Parameters.AddWithValue("@epago", objsolicitud.IS_EstadoPago);
+            command.Parameters.Add("@NewId", SqlDbType.Int).Direction = ParameterDirection.Output;
+            conexion.Open();
+            using (SqlDataReader dr = command.ExecuteReader())
+            {
+                objsolicitud.PK_IS_Cod = Convert.ToInt32(command.Parameters["@NewId"].Value);
+            }
+            conexion.Close();
+        }
     }
 }

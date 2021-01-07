@@ -85,5 +85,18 @@ namespace CTR
         {
             objDaoMolduraXUsuario.InsertarMolduraxUsuariox2(objDtoMolduraxUsuario);
         }
+        public void registrarMXU(DtoMolduraXUsuario objDtoMolduraxUsuario)
+        {
+            objDaoMolduraXUsuario.registrarMXU(objDtoMolduraxUsuario);
+        }
+        public void registrarMXUP(DtoMolduraXUsuario objDtoMolduraxUsuario)
+        {
+            objDaoMolduraXUsuario.registrarMXUP(objDtoMolduraxUsuario);
+        }
+
+        public void actualizarMXUSolP(DtoMolduraXUsuario objdtoMolduraxUsuario)
+        {
+            objDaoMolduraXUsuario.actualizarMXUSolP(objdtoMolduraxUsuario);
+        }
     }
 }

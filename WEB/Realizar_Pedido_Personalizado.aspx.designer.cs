@@ -204,6 +204,15 @@ namespace WEB
         protected global::System.Web.UI.WebControls.TextBox txtComentario;
 
         /// <summary>
+        /// Control upBotonRegistrar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upBotonRegistrar;
+
+        /// <summary>
         /// Control btnRegistrar.
         /// </summary>
         /// <remarks>
@@ -312,6 +321,15 @@ namespace WEB
         protected global::System.Web.UI.WebControls.TextBox txtComentarioP;
 
         /// <summary>
+        /// Control upBotonRegistrarP.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upBotonRegistrarP;
+
+        /// <summary>
         /// Control btnRegistrarP.
         /// </summary>
         /// <remarks>
@@ -328,5 +346,14 @@ namespace WEB
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnRegresarP;
+
+        /// <summary>
+        /// Control hftxtimg.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hftxtimg;
     }
 }
