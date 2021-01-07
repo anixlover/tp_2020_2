@@ -84,12 +84,6 @@ namespace WEB
                                 </a>
                             </li>
                             <li>
-                                <a href='Administrar_Pedido.aspx' class='collapse'>
-                                    <i data-feather='book-open'></i>
-                                    <span>Administrar Pedido</span>
-                                </a>
-                            </li>
-                            <li>
                                 <a href='EvaluarPedidosPersonalizados.aspx' class='collapse'>
                                     <i data-feather='book-open'></i>
                                     <span>Evaluar Pedidos Personalizados</span>
@@ -120,6 +114,18 @@ namespace WEB
                                     <span>Realizar Venta</span>
                                 </a>
                             </li>
+                            <li>     
+                                <a href='ReporteStockMoldura.aspx' class='collapse'>
+                                    <i data-feather='book-open'></i>
+                                    <span>Generar Reporte Stock</span>
+                                </a>
+                            </li>
+                            <li>     
+                                <a href='RegistrarClienteVendedor.aspx' class='collapse'>
+                                    <i data-feather='book-open'></i>
+                                    <span>Registrar Cliente Stock</span>
+                                </a>
+                            </li>
         ");
             this.Literal1.Text = html;
         }
@@ -142,7 +148,7 @@ namespace WEB
                             "</div>");
             this.Literal2.Text = html;
         }
-        public void perfilTrabajador()
+        public void userTrabajador()
         {
             string nombreusr = Session["NombreUsuario"].ToString();
 
@@ -160,6 +166,24 @@ namespace WEB
                                 "</a>" +
                             "</div>");
             this.Literal2.Text = html;
+        }
+        public void perfilTrabajador()
+        {
+            string html = string.Format(@"
+                           <li>     
+                                <a href='GestionarEstadosPedido.aspx' class='collapse'>
+                                    <i data-feather='book-open'></i>
+                                    <span>Gestionar Estado Pedido</span>
+                                </a>
+                            </li>
+                            <li>     
+                                <a href='GestionarEstadosPedido.aspx' class='collapse'>
+                                    <i data-feather='book-open'></i>
+                                    <span>Gestionar Molde</span>
+                                </a>
+                            </li>
+        ");
+            this.Literal1.Text = html;
         }
         protected void UsuarioOption_ServerClick(object sender, EventArgs e)
         {

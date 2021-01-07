@@ -32,6 +32,11 @@ namespace WEB
                     Image1.Visible = true;
                     obtenerInformacionMoldura(Request.Params["Id"]);
                 }
+
+                else
+                {
+                    Response.Redirect("IniciarSesion.aspx");
+                }
             }
             catch (Exception ex)
             {
@@ -80,7 +85,7 @@ namespace WEB
             //}
             #endregion
 
-            if (objDtoMoldura.IM_Stock != 0 && objDtoMoldura.IM_Estado!=0)
+            if (objDtoMoldura.IM_Stock != 0 && objDtoMoldura.IM_Estado != 0)
             {
                 lblestadostock.Text = "En stock";
                 lblestadostock.Visible = true;
@@ -100,13 +105,13 @@ namespace WEB
             //txtMedida.Text = objDtoMoldura.DM_Medida.ToString();
             //ddlEstadoMoldura.SelectedValue = objDtoMoldura.IM_Estado.ToString();
             txtlargo.Text = objDtoMoldura.DM_Largo.ToString() + " " + objDtoTipoMoldura.VTM_UnidadMetrica;
-            txtancho.Text = objDtoMoldura.DM_Ancho.ToString() + " " +objDtoTipoMoldura.VTM_UnidadMetrica;
+            txtancho.Text = objDtoMoldura.DM_Ancho.ToString() + " " + objDtoTipoMoldura.VTM_UnidadMetrica;
             txtstock.Text = objDtoMoldura.IM_Stock.ToString();
             txtcodigomoldura.Text = objDtoMoldura.PK_IM_Cod.ToString();
             txtnombre.Text = objDtoTipoMoldura.VTM_Nombre;
             string strVal;
 
-            txtdescripcion.Text= objDtoMoldura.VM_Descripcion;
+            txtdescripcion.Text = objDtoMoldura.VM_Descripcion;
         }
 
         protected void btnAgregarCarrito_Click(object sender, EventArgs e)
@@ -116,7 +121,9 @@ namespace WEB
                 if (Session["DNIUsuario"] == null)
                 {
                     Response.Cookies.Add(new HttpCookie("returnUrl", Request.Url.PathAndQuery));
-                    Response.Redirect("IniciarSesion.aspx");
+                    //Response.Redirect("IniciarSesion.aspx");
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'No puede acceder al servicio!',text: 'Debe INICIAR SESION!!'}).then(function(){window.location.href='IniciarSesion.aspx'})", true);
+
                 }
                 else
                 {
@@ -147,7 +154,7 @@ namespace WEB
                                 //ya exitiendo
                                 objDtoMolduraxUsuario.FK_VU_Dni = Session["DNIUsuario"].ToString();
                                 objDtoMolduraxUsuario.FK_IM_Cod = int.Parse(Request.Params["Id"]);
-                                double precioUnitario = (objDtoMolduraxUsuario.DMU_Precio/objDtoMolduraxUsuario.IMU_Cantidad);
+                                double precioUnitario = (objDtoMolduraxUsuario.DMU_Precio / objDtoMolduraxUsuario.IMU_Cantidad);
                                 objDtoMolduraxUsuario.IMU_Cantidad = int.Parse(txtCantidad.Text);
                                 objDtoMolduraxUsuario.DMU_Precio = precioUnitario * objDtoMolduraxUsuario.IMU_Cantidad;
                                 objCtrMolduraXUsuario.actualizarExistencia(objDtoMolduraxUsuario);

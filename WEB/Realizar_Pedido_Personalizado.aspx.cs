@@ -43,22 +43,22 @@ namespace WEB
 
                 personalizado.Visible = false;
                 catalogo.Visible = false;
-                //try
-                //{
-                //    if (Session["DNIUsuario"] != null)
-                //    {
-                //        objDtoMXU.FK_VU_Dni = Session["DNIUsuario"].ToString();
+                try
+                {
+                    if (Session["DNIUsuario"] != null)
+                    {
+                        objDtoMXU.FK_VU_Dni = Session["DNIUsuario"].ToString();
 
-                //    }
-                //    else
-                //    {
-                //        Response.Redirect("~/IniciarSesion.aspx");
-                //    }
-                //}
-                //catch (Exception ex)
-                //{
-                //    _log.CustomWriteOnLog("registrar pedido personalizado", ex.Message + "Stac" + ex.StackTrace);
-                //}
+                    }
+                    else
+                    {
+                        Response.Redirect("~/IniciarSesion.aspx");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _log.CustomWriteOnLog("registrar pedido personalizado", ex.Message + "Stac" + ex.StackTrace);
+                }
             }
         }
 
