@@ -9,10 +9,12 @@
     <link href="../assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
     <!-- icons -->
     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+     <!-- Sweet Alert-->
+    <link href="../assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form id="form1" runat="server">
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeout="3600"></asp:ScriptManager>
         <div class="card">
             <div class="card-header">
                 Reporte de Ventas
@@ -58,5 +60,36 @@
                 </asp:UpdatePanel>
             </div>
         </div>
+         <!-- Vendor js -->
+    <script src="../assets/js/vendor.min.js"></script>
+
+    <!-- Plugin js-->
+    <script src="../assets/libs/dropzone/min/dropzone.min.js"></script>
+    <script src="../assets/libs/dropify/js/dropify.min.js"></script>
+    <script src="../assets/libs/parsleyjs/parsley.min.js"></script>
+    <script src="../assets/libs/jquery-mask-plugin/jquery.mask.min.js"></script>
+    <script src="../assets/libs/autonumeric/autoNumeric-min.js"></script>
+
+    <!-- Validation init js-->
+    <script src="../assets/js/pages/form-validation.init.js"></script>
+    <script src="../assets/js/pages/form-fileuploads.init.js"></script>
+
+    <!-- Init js-->
+    <script src="../assets/js/pages/form-masks.init.js"></script>
+
+    <!-- App js -->
+    <script src="../assets/js/app.min.js"></script>
+    <script src="assets/js/Aplicacion/UploadFile.js"></script>
+    <!-- Validation init js-->
+    <script src="../assets/js/pages/form-validation.init.js"></script>
+        <!-- Sweet Alerts js -->
+    <script src="../assets/libs/sweetalert2/sweetalert2.min.js"></script>
+    <script src="assets/libs/sweetalert2/sweetalert2.all.min.js"></script>
+
+    <!-- Sweet alert init js-->
+    <script src="../assets/js/pages/sweet-alerts.init.js"></script>
+
+    <script src="../../plugins/sweetalert/sweetalert.min.js"></script>
+
     </form>
 </asp:Content>

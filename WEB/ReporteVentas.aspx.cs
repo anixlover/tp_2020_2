@@ -27,12 +27,16 @@ namespace WEB
         {
             string fechaInicio=txtFechaInicio.Text;
             string fechaFin=txtFechaFin.Text;
-            DateTime inicio = Convert.ToDateTime(fechaInicio), fin= Convert.ToDateTime(fechaFin);
-            if (fechaInicio!=""&&fechaFin!=""&&inicio<=fin)
+            if (fechaInicio != "" && fechaFin != "")
             {
-                gvVentas.DataSource =objCtrSolicitud.SolicitudesTerminadasEntreFechas(fechaInicio,fechaFin);                
-                gvVentas.DataBind();
-                lbltotal.Text = (objCtrSolicitud.ImporteTotalEntreFechas(fechaInicio, fechaFin)).ToString();
+                DateTime inicio = Convert.ToDateTime(fechaInicio), fin = Convert.ToDateTime(fechaFin);
+
+                if ( inicio <= fin)
+                {
+                    gvVentas.DataSource = objCtrSolicitud.SolicitudesTerminadasEntreFechas(fechaInicio, fechaFin);
+                    gvVentas.DataBind();
+                    lbltotal.Text = (objCtrSolicitud.ImporteTotalEntreFechas(fechaInicio, fechaFin)).ToString();
+                }
             }
             else
             {

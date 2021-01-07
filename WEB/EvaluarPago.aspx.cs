@@ -103,7 +103,8 @@ namespace WEB
                 {
                     _log.CustomWriteOnLog("EvaluarPago", "DDL = " + ddl_decision.Text);
                     //muestra aviso que no se selecciono ninguna opcion
-                    Utils.AddScriptClientUpdatePanel(updPanelddl, "showSuccessMessage4()");
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'UPS! No selecciono ninguna opcion!',text: 'SELECCIONAR OPCION!!'}).then(function(){window.location.href='Administrar_Pedido.aspx'})", true);
+                    //Utils.AddScriptClientUpdatePanel(updPanelddl, "showSuccessMessage4()");
                 }
                 if (ddl_decision.SelectedValue == "1")
                 {
@@ -111,7 +112,8 @@ namespace WEB
                     ctrsol.Actualizar_Estado_Solicitud(dtosol);
                     _log.CustomWriteOnLog("EvaluarPago", "DDL = " + ddl_decision.Text);
                     //actualiza correctamente a aprobado
-                    Utils.AddScriptClientUpdatePanel(updPanelddl, "showSuccessMessage2()");
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Actualizado Correctamente!',text: 'Datos ENVIADOS!!'}).then(function(){window.location.href='Administrar_Pedido.aspx'})", true);
+                    //Utils.AddScriptClientUpdatePanel(updPanelddl, "showSuccessMessage2()");
                 }
                 if (ddl_decision.SelectedValue == "2")
                 {
@@ -119,7 +121,8 @@ namespace WEB
                     ctrusu.EnviarCorreoReportado(dtosol);
                     _log.CustomWriteOnLog("EvaluarPago", "DDL = " + ddl_decision.Text);
                     //reporta la solicitud
-                    Utils.AddScriptClientUpdatePanel(updPanelddl, "showSuccessMessage3()");
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Se le reporto al usuario correctamente!',text: 'Pulsa el botón y se te redirigirá!'}).then(function(){window.location.href='Administrar_Pedido.aspx'})", true);
+                    //Utils.AddScriptClientUpdatePanel(updPanelddl, "showSuccessMessage3()");
                 }
             }
             catch (Exception ex)
