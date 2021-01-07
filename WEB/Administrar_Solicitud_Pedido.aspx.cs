@@ -272,7 +272,8 @@ namespace WEB
                     UpdatePanel.Update();
                     gvCarrito.DataSource = objCtrMXU.listarMoldurasxusuario(objDtoMXU);
                     gvCarrito.DataBind();
-                    Utils.AddScriptClientUpdatePanel(UpdatePanel, "showCancelMessage()");
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Solicitud creada correctamente!',text: 'Pulsa el botón y se te redirigirá!'}).then(function(){window.location.href='Administrar_Pedido.aspx'})", true);
+                    //Utils.AddScriptClientUpdatePanel(UpdatePanel, "showCancelMessage()");
                     Response.Redirect("ConsultarEstadosPago.aspx");
                 }
             }
