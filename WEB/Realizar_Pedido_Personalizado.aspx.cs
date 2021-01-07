@@ -178,7 +178,7 @@ namespace WEB
                 }
                 if (txtcodigo.Text == "")
                 {
-                    Utils.AddScriptClientUpdatePanel(calcular1, "showSuccessMessage5()");
+                    //Utils.AddScriptClientUpdatePanel(calcular1, "showSuccessMessage5()");
                 }
 
 
@@ -187,18 +187,18 @@ namespace WEB
 
                     txtImporte.Text = Convert.ToString(importe);
                     double descuento = (importe * 5) / 100;
-                    txt_descuento.Text = Convert.ToString(descuento);
+                    //txt_descuento.Text = Convert.ToString(descuento);
                     double total = importe - descuento;
-                    txt_subtotal.Text = Convert.ToString(total);
+                    //txt_subtotal.Text = Convert.ToString(total);
 
                 }
                 else
                 {
                     //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: 'ERROR!',text: 'Llene los datos correctamente!!', type: 'error'});", true);
                     //return;
-                    txt_importe.Text = Convert.ToString(importe);
+                    //txt_importe.Text = Convert.ToString(importe);
                 }
-                calcular1.Update();
+                //calcular1.Update();
 
 
             }

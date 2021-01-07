@@ -11,7 +11,7 @@ namespace WEB
 {
 
 
-    public partial class Realizar_Venta
+    public partial class Realizar_Venta2
     {
 
         /// <summary>

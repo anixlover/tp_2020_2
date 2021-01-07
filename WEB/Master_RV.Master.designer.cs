@@ -11,88 +11,79 @@ namespace WEB
 {
 
 
-    public partial class IniciarSesion
+    public partial class Master_RV
     {
 
         /// <summary>
-        /// form1 control.
+        /// cph_header control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder cph_header;
 
         /// <summary>
-        /// ScriptManager1 control.
+        /// UsuarioOption control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor UsuarioOption;
 
         /// <summary>
-        /// txtDNI control.
+        /// AdministradorOption control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDNI;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor AdministradorOption;
 
         /// <summary>
-        /// txtContraseña control.
+        /// btnCerrarSesion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtContraseña;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnCerrarSesion;
 
         /// <summary>
-        /// hlCambiarContraseña control.
+        /// Literal1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlCambiarContraseña;
+        protected global::System.Web.UI.WebControls.Literal Literal1;
 
         /// <summary>
-        /// hlRegistrarCliente control.
+        /// cph_body control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlRegistrarCliente;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder cph_body;
 
         /// <summary>
-        /// UpdatePanel1 control.
+        /// cph_footer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder cph_footer;
 
         /// <summary>
-        /// btnIniciarSesion control.
+        /// cph_Js control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnIniciarSesion;
-
-        /// <summary>
-        /// btnCancelar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelar;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder cph_Js;
     }
 }

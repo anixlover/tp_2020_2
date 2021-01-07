@@ -218,8 +218,8 @@ namespace DAO
                 objmoldura.PK_IM_Cod = int.Parse(reader["PK_IM_Cod"].ToString());
                 objmoldura.VBM_Imagen = Encoding.ASCII.GetBytes(reader["VBM_Imagen"].ToString());
                 objtipo.VTM_Nombre = reader["VTM_Nombre"].ToString();
-                objmoldura.DM_Largo = Double.Parse(reader["MedidaLargo"].ToString());
-                objmoldura.DM_Ancho = Double.Parse(reader["MedidaAncho"].ToString());
+                objmoldura.DM_Largo = Double.Parse(reader["DM_Largo"].ToString());
+                objmoldura.DM_Ancho = Double.Parse(reader["DM_Ancho"].ToString());
                 objmoldura.IM_Stock = int.Parse(reader["IM_Stock"].ToString());
                 objmoldura.DM_Precio = Convert.ToDouble(reader["DM_Precio"].ToString());
             }
@@ -244,8 +244,8 @@ namespace DAO
                 objmoldura.PK_IM_Cod = int.Parse(reader["PK_IM_Cod"].ToString());
                 objmoldura.VBM_Imagen = Encoding.ASCII.GetBytes(reader["VBM_Imagen"].ToString());
                 objtipo.VTM_Nombre = reader["VTM_Nombre"].ToString();
-                objmoldura.DM_Largo = Double.Parse(reader["MedidaLargo"].ToString());
-                objmoldura.DM_Ancho = Double.Parse(reader["MedidaAncho"].ToString());
+                objmoldura.DM_Largo = Double.Parse(reader["DM_Largo"].ToString());
+                objmoldura.DM_Ancho = Double.Parse(reader["DM_Ancho"].ToString());
                 objmoldura.IM_Stock = int.Parse(reader["IM_Stock"].ToString());
                 objmoldura.DM_Precio = Convert.ToDouble(reader["DM_Precio"].ToString());
                 objmoldura.DM_Subtotal = Double.Parse(reader["Subtotal"].ToString());
