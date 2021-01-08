@@ -11,7 +11,7 @@ namespace WEB
 {
 
 
-    public partial class Detalles_Solicitud
+    public partial class Detalles_Solicitud2
     {
 
         /// <summary>

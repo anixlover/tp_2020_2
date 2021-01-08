@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterAdmin.Master" AutoEventWireup="true" CodeBehind="Detalles_Solicitud.aspx.cs" Inherits="WEB.Detalles_Solicitud" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterAdmin.Master" AutoEventWireup="true" CodeBehind="Detalles_Solicitud2.aspx.cs" Inherits="WEB.Detalles_Solicitud2" %>
 
 <%--dev alvaro--%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
@@ -61,7 +61,7 @@
                             </asp:UpdatePanel>
                             <br />
                             <br />
-                           <%-- <asp:UpdatePanel runat="server" UpdateMode="Conditional">
+                            <asp:UpdatePanel runat="server" UpdateMode="Conditional">
                                 <ContentTemplate>
                                     <div class="col-md-12">
                                         <div class="col-sm-12" id="IdCalendar" align="center" runat="server" clientidmode="Static">
@@ -73,22 +73,22 @@
                                         </div>
                                     </div>
                                 </ContentTemplate>
-                            </asp:UpdatePanel>--%>
+                            </asp:UpdatePanel>
                                 
                             <br />
-                           
-                            <%--    <asp:LinkButton ID="btnConfirmar" runat="server" type="button" class="btn btn-success waves-effect waves-light" OnClick="btnConfirmar_Click">
+                            <div align="center">
+                                <asp:LinkButton ID="btnConfirmar" runat="server" type="button" class="btn btn-success waves-effect waves-light" OnClick="btnConfirmar_Click">
                                                     <span class="btn-label"></span>Confirmar
-                                </asp:LinkButton>--%>
+                                </asp:LinkButton>
                                 <%--end boto confirmar--%>
 
 
                                 <%--boton regresar--%>
                                 <button type="button" onclick="" class="btn btn-danger waves-effect">
-                                    <a href="javascript:history.back()" style="color: white"><span class="btn-label"><i class="mdi dripicons-return"></i></span>Volver Atrás</a>
+                                    <a href="Administrar_Pedido.aspx" style="color: white"><span class="btn-label"><i class="mdi dripicons-return"></i></span>Volver Atrás</a>
                                 </button>
                                 <%--end boton regresar--%>
-                        
+                            </div>
                         </div>
                         <%--boton regresar--%>
                     </div>

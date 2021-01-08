@@ -1980,6 +1980,7 @@
     <Content Include="assets\libs\x-editable\jqueryui-editable\js\jqueryui-editable.min.js" />
     <Content Include="assets\Plugins\jquery.min.js" />
     <Content Include="CambiarContraseña.aspx" />
+    <Content Include="Detalles_Solicitud2.aspx" />
     <Content Include="GestionarMolde.aspx" />
     <Content Include="DescripcionMoldura.aspx" />
     <Content Include="ConsultarEstadosPago.aspx" />
@@ -2030,6 +2031,13 @@
     </Compile>
     <Compile Include="CambiarContraseña.aspx.designer.cs">
       <DependentUpon>CambiarContraseña.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Detalles_Solicitud2.aspx.cs">
+      <DependentUpon>Detalles_Solicitud2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Detalles_Solicitud2.aspx.designer.cs">
+      <DependentUpon>Detalles_Solicitud2.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestionarMolde.aspx.cs">
       <DependentUpon>GestionarMolde.aspx</DependentUpon>
