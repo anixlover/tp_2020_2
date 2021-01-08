@@ -378,7 +378,7 @@ namespace DAO
         public double SelectImporteTotalSolicitudes()
         {
             double total=0;
-            string Select = "SELECT SUM(DS_ImporteTotal)As ImporteTotal FROM Vista_Solicitudes_Entregados";
+            string Select = "SELECT Isnull((Select SUM(DS_ImporteTotal) As ImporteTotal FROM Vista_Solicitudes_Entregados),0)s";
             SqlCommand unComando = new SqlCommand(Select, conexion);
             conexion.Open();
             SqlDataReader reader = unComando.ExecuteReader();

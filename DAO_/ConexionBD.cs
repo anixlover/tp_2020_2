@@ -24,7 +24,7 @@ namespace DAO
                 return @"Data Source=(Local);Initial Catalog=BD_SWCPEDR;Integrated Security=True";
 
                 //Conexion André
-                return @"data source=LAPTOP-I2LRHJOD; initial catalog=BD_SWCPEDR; integrated security=SSPI;";
+                //return @"data source=LAPTOP-I2LRHJOD; initial catalog=BD_SWCPEDR; integrated security=SSPI;";
             }
         }
     }

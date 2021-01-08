@@ -29,6 +29,7 @@ namespace WEB
 
                     case 3://trabajador
                         perfilTrabajador();
+                        userTrabajador();
                         break;
                     case 4://gerente
                         perfilGerente();
@@ -42,7 +43,6 @@ namespace WEB
                         Session.RemoveAll();
                         Response.Redirect("~/IniciarSesion.aspx");
                         break;
-
                 }
 
             }
@@ -93,6 +93,12 @@ namespace WEB
                                 <a href='GestionarEstadosPedido.aspx' class='collapse'>
                                     <i data-feather='book-open'></i>
                                     <span>GestionarEstadosPedido</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href='ReporteVentas.aspx' class='collapse'>
+                                    <i data-feather='book-open'></i>
+                                    <span>Generar Reporte Ventas</span>
                                 </a>
                             </li>
 
@@ -177,7 +183,7 @@ namespace WEB
                                 </a>
                             </li>
                             <li>     
-                                <a href='GestionarEstadosPedido.aspx' class='collapse'>
+                                <a href='GestionarMolde.aspx' class='collapse'>
                                     <i data-feather='book-open'></i>
                                     <span>Gestionar Molde</span>
                                 </a>
