@@ -403,7 +403,7 @@ namespace DAO
         public double SelectImporteTotalSolicitudes()
         {
             double total=0;
-            string Select = "SELECT SUM(DS_ImporteTotal)As ImporteTotal FROM Vista_Solicitudes_Entregados";
+            string Select = "SELECT Isnull((Select SUM(DS_ImporteTotal) As ImporteTotal FROM Vista_Solicitudes_Entregados),0)";
             SqlCommand unComando = new SqlCommand(Select, conexion);
             conexion.Open();
             SqlDataReader reader = unComando.ExecuteReader();
@@ -433,7 +433,7 @@ namespace DAO
         public double SelectImporteTotalSolicitudesEntreFechas(string fechaInicio, string fechaFin)
         {
             double total = 0;
-            string Select = "select Isnull((SELECT SUM(DS_ImporteTotal)As ImporteTotal FROM Vista_Solicitudes_Entregados where DTS_FechaRecojo BETWEEN '" + fechaInicio + "' and '" + fechaFin + "'),0)";
+            string Select = "select Isnull((SELECT SUM(DS_ImporteTotal) As ImporteTotal FROM Vista_Solicitudes_Entregados where DTS_FechaRecojo BETWEEN '" + fechaInicio + "' and '" + fechaFin + "'),0)";
             SqlCommand unComando = new SqlCommand(Select, conexion);
             conexion.Open();
             SqlDataReader reader = unComando.ExecuteReader();

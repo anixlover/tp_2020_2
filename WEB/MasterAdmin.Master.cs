@@ -29,6 +29,7 @@ namespace WEB
 
                     case 3://trabajador
                         perfilTrabajador();
+                        userTrabajador();
                         break;
                     case 4://gerente
                         perfilGerente();

@@ -66,7 +66,7 @@ namespace WEB
         }
         protected bool ValidacionEstado(string estado)
         {
-            return estado == "Pendiente de pago";
+            return estado == "En revisión de Pago";
         }
         protected bool ValidacionEstado2(string estado)
         {
