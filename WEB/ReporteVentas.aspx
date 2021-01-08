@@ -51,6 +51,7 @@
                                     <asp:BoundField DataField="IP_TipoCerficado" HeaderText="Certificado" />
                                 </Columns>
                             </asp:GridView>
+                            <asp:Button ID="btnExport" runat="server" Text="Export To PDF" OnClick = "ExportToPDF" /> />
                             <br />                           
                         </div>
                         <div class="row"  style="color: #008000; font-weight: bold; font-style: inherit;">

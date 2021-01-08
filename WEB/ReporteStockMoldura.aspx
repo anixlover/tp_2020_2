@@ -22,6 +22,7 @@
                     <asp:GridView ID="gvMolduras" runat="server" CssClass="table-borderless table table-bordered table-hover"
                         DataKeyNames="Codigo,T. de Moldura" AutoGenerateColumns="False"
                         EmptyDataText="No existen registros, agreguen molduras a su catálogo" ShowHeaderWhenEmpty="True">
+
                         <Columns>
                             <asp:BoundField DataField="Codigo" HeaderText="Codigo" />
                             <asp:BoundField DataField="T. de Moldura" HeaderText="T. de Moldura" />
@@ -32,6 +33,7 @@
                             <asp:BoundField DataField="Estado" HeaderText="Estado" />
                         </Columns>
                     </asp:GridView>
+                    <asp:Button ID="btnExport" runat="server" Text="Export To PDF" OnClick = "ExportToPDF" /> />
                 </div>
             </div>
         </div>
