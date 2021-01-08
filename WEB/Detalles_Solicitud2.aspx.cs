@@ -6,10 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DTO;
 using CTR;
-
 namespace WEB
 {
-    public partial class Detalles_Solicitud : System.Web.UI.Page
+    public partial class Detalles_Solicitud2 : System.Web.UI.Page
     {
         DtoSolicitud dtoSolicitud = new DtoSolicitud();
         DtoUsuario dtoUsuario = new DtoUsuario();
@@ -45,7 +44,7 @@ namespace WEB
                     gvDetalleSolicitud.DataSource = ctrSolicitud.ListaMolduras(dtoSolicitud);
                     gvDetalleSolicitud.DataBind();
 
-                   
+
                 }
                 if (dtoSolicitud.VS_TipoSolicitud == "Personalizado por diseño propio")
                 {
@@ -69,14 +68,16 @@ namespace WEB
             //ctrSolicitud.Actualizar_Estado_Solicitud(dtoSolicitud);
             dtoSolicitud.VS_TipoSolicitud = "Personalizado por Catalogo";
             //dtoSolicitud.IS_Cantidad = int.Parse(txtcantidad.Text); no hay
-            for (int i = 0; i < gvDetalleSolicitud2.Rows.Count; i++)
+            for (int i = 0; i < gvDetalleSolicitud.Rows.Count; i++)
             {
-                string importetotal = gvDetalleSolicitud2.Rows[i].Cells[3].Text;
+                string importetotal = gvDetalleSolicitud.Rows[i].Cells[3].Text;
                 dtoSolicitud.DS_ImporteTotal = Convert.ToDouble(importetotal);
             }
-
             dtoSolicitud.DTS_FechaRecojo = Calendar1.SelectedDate;
             ctrSolicitud.RegistrarSolicitud_PExC(dtoSolicitud);
+            ctrSolicitud.Actualizar_Estado_Solicitud2(dtoSolicitud);
+
+            
 
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Actualizado Correctamente!',text: 'Datos ENVIADOS!!'}).then(function(){window.location.href='Administrar_Pedido.aspx'})", true);
 

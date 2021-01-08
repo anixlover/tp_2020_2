@@ -93,6 +93,10 @@ namespace CTR
         {
             objDaoSolicitud.Actualizar_Estado_SolicitudX1(objDtoSolicitud);
         }
+        public void Actualizar_Estado_Solicitud2(DtoSolicitud objDtoSolicitud)
+        {
+            objDaoSolicitud.Actualizar_Estado_SolicitudX2(objDtoSolicitud);
+        }
         public void RegistrarSolicitud_LD(DtoSolicitud objsolicitud)
         {
             objDaoSolicitud.RegistrarSolicitud_LD(objsolicitud);
@@ -108,6 +112,10 @@ namespace CTR
         public void RegistrarSolicitud_PxC(DtoSolicitud objsolicitud)
         {
             objDaoSolicitud.RegistrarSolicitud_PxC(objsolicitud);
+        }
+        public void RegistrarSolicitud_PExC(DtoSolicitud objsolicitud)
+        {
+            objDaoSolicitud.RegistrarSolicitud_PExC(objsolicitud);
         }
         public void RegistrarSolicitud_LD2(DtoSolicitud objsolicitud)
         {

@@ -60,7 +60,6 @@
         <div class="navbar-custom">
             <div class="container-fluid">
                 <nav class="list-unstyled topnav-menu float-right mb-0">
-                    
                     <a>
                         <li class="dropdown notification-list topbar-dropdown">
                             <a id="Pedido_Personalizado" class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" href="Realizar_Pedido_Personalizado.aspx" role="button">
@@ -84,9 +83,9 @@
                     </a>
                     <a>
                         <li class="dropdown notification-list topbar-dropdown">
-                            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light"role="button">
+                            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" role="button" onclick="hopscotch.startTour(tour);">
                                 <i class="mdi mdi-google-my-business"></i>
-                                <span class="pro-user-name ml-1">Nosotros
+                                <span class="pro-user-name ml-1">Tutorial
                                 </span>
                             </a>
 
@@ -279,6 +278,11 @@
     <script src="../assets/js/app.min.js"></script>
     <!-- Tour page js -->
     <script src="../assets/libs/hopscotch/js/hopscotch.min.js"></script>
+    <script>
+        function showErrorMessage1() {
+            swal({ type: 'error', title: 'No puede acceder al servicio!', text: 'Debe INICIAR SESION!!' }).then(function () { window.location.href = 'IniciarSesion.aspx' });
+        }
+    </script>
     <script>
         var tour = {
             id: "hello-hopscotch",

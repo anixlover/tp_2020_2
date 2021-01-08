@@ -277,7 +277,14 @@ namespace DAO
             unComando.ExecuteNonQuery();
             conexion.Close();
         }
-
+        public void Actualizar_Estado_SolicitudX2(DtoSolicitud objsol)
+        {
+            string update = "UPDATE T_SOLICITUD SET FK_ISE_Cod = 5 where PK_IS_Cod =" + objsol.PK_IS_Cod;
+            conexion.Open();
+            SqlCommand unComando = new SqlCommand(update, conexion);
+            unComando.ExecuteNonQuery();
+            conexion.Close();
+        }
         public void Update_Estado_SolicitudEnProceso(DtoSolicitud objsol)
         {
             string update = "UPDATE T_SOLICITUD SET FK_ISE_Cod = 9 where PK_IS_Cod =" + objsol.PK_IS_Cod;
@@ -362,6 +369,19 @@ namespace DAO
             {
                 objsolicitud.PK_IS_Cod = Convert.ToInt32(command.Parameters["@newID"].Value);
             }
+            conexion.Close();
+        }
+        public void RegistrarSolicitud_PExC(DtoSolicitud objsolicitud)
+        {
+            SqlCommand command = new SqlCommand("SP_RegistrarSolicitud_PExC", conexion);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@TipoSol", objsolicitud.VS_TipoSolicitud);
+            //command.Parameters.AddWithValue("@cant", objsolicitud.IS_Cantidad);
+            command.Parameters.AddWithValue("@impt", objsolicitud.DS_ImporteTotal);
+            command.Parameters.AddWithValue("@fechareco", objsolicitud.DTS_FechaRecojo);
+            //command.Parameters.Add("@newID", SqlDbType.Int).Direction = ParameterDirection.Output;
+            conexion.Open();
+            command.ExecuteNonQuery();
             conexion.Close();
         }
         public void RegistrarSolicitud_LD2(DtoSolicitud objsolicitud)

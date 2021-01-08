@@ -110,5 +110,16 @@ namespace WEB
             //Response.Redirect("~/IniciarSesion.aspx");
 
         }
+
+        //protected void btnPedido_Personalizado_ServerClick(object sender, EventArgs e)
+        //{
+        //    if (Session["DNIUsuario"] == null)
+        //    {
+        //        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'No puede acceder al servicio!',text: 'Debe INICIAR SESION!!'}).then(function(){window.location.href='IniciarSesion.aspx'})", true);
+
+        //    }
+
+        //}
+
     }
 }

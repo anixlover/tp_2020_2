@@ -42,23 +42,22 @@ namespace WEB
                 _log.CustomWriteOnLog("registrar pedido personalizado", "carga datos por catalogo");
 
                 personalizado.Visible = false;
-                catalogo.Visible = false;
-                //try
-                //{
-                //    if (Session["DNIUsuario"] != null)
-                //    {
-                //        objDtoMXU.FK_VU_Dni = Session["DNIUsuario"].ToString();
-
-                //    }
-                //    else
-                //    {
-                //        Response.Redirect("~/IniciarSesion.aspx");
-                //    }
-                //}
-                //catch (Exception ex)
-                //{
-                //    _log.CustomWriteOnLog("registrar pedido personalizado", ex.Message + "Stac" + ex.StackTrace);
-                //}
+                catalogo.Visible = Visible;
+                try
+                {
+                    if (Session["DNIUsuario"] != null)
+                    {
+                        objDtoMXU.FK_VU_Dni = Session["DNIUsuario"].ToString();
+                    }
+                    else
+                    {
+                        Response.Redirect("~/IniciarSesion.aspx");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _log.CustomWriteOnLog("registrar pedido personalizado", ex.Message + "Stac" + ex.StackTrace);
+                }
             }
         }
 
@@ -164,7 +163,7 @@ namespace WEB
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("~/ConsultarEstadosPago.aspx");
         }
 
         protected void btn_BuscarProducto_Click(object sender, EventArgs e)
@@ -437,7 +436,7 @@ namespace WEB
 
         protected void btnRegresarP_Click(object sender, EventArgs e)
         {
-            
+            Response.Redirect("~/ConsultarEstadosPago.aspx");
         }
 
 
