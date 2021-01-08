@@ -75,6 +75,25 @@ namespace DAO
             return hayRegistros;
 
         }
+        public bool ExistenciaMXU2(DtoMolduraXUsuario objDtoMolduraXUsuario)
+        {
+            string select = "select * from T_MOLDURAXUSUARIO where FK_IM_Cod = " + objDtoMolduraXUsuario.FK_IM_Cod + " and FK_IS_Cod =" + objDtoMolduraXUsuario.FK_IS_Cod;
+            SqlCommand command = new SqlCommand(select, conexion);
+            conexion.Open();
+            command.ExecuteNonQuery();
+            SqlDataReader reader = command.ExecuteReader();
+            bool hayRegistros = reader.Read();
+            if (hayRegistros)
+            {
+                objDtoMolduraXUsuario.PK_IMU_Cod = (int)reader[0];
+                objDtoMolduraXUsuario.FK_VU_Dni = (string)reader[1];
+                objDtoMolduraXUsuario.IMU_Cantidad = (int)reader[3];
+                objDtoMolduraXUsuario.DMU_Precio = Convert.ToDouble(reader[4].ToString());
+                objDtoMolduraXUsuario.FK_IM_Cod = (int)reader[2];
+            }
+            conexion.Close();
+            return hayRegistros;
+        }
         public void UpdateMXU_x_codigo(DtoMolduraXUsuario objDtoMolduraXUsuario)
         {
             string select = "Update T_MOLDURAXUSUARIO set [FK_IMXUE_Cod] ="+objDtoMolduraXUsuario.FK_IMXUE_Cod+ " where PK_IMU_Cod="+objDtoMolduraXUsuario.PK_IMU_Cod;
@@ -264,6 +283,7 @@ namespace DAO
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@idU", objMolduraxUsuario.FK_VU_Dni);
             command.Parameters.AddWithValue("@cant", objMolduraxUsuario.IMU_Cantidad);
+            command.Parameters.AddWithValue("@codMoldura", objMolduraxUsuario.FK_IM_Cod);
             command.Parameters.Add("@NewId", SqlDbType.Int).Direction = ParameterDirection.Output;
             conexion.Open();
             using (SqlDataReader dr = command.ExecuteReader())

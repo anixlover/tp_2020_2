@@ -48,6 +48,7 @@
     <Compile Include="DaoMoldura.cs" />
     <Compile Include="DaoMolduraXUsuario.cs" />
     <Compile Include="DaoMXUEstado.cs" />
+    <Compile Include="DaoMXU_Incidente.cs" />
     <Compile Include="DaoPago.cs" />
     <Compile Include="DaoSolicitudEstado.cs" />
     <Compile Include="DaoTipoMoldura.cs" />
