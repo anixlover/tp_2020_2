@@ -111,6 +111,7 @@
                                             <asp:Button runat="server" Text="Asignar Moldes" ItemStyle-HorizontalAlign="Center" data-toggle="modal" data-target="#modalCantidadMoldes"
                                                 Visible='<%# ExistenMoldes(int.Parse(Eval("PK_IM_Cod").ToString()),int.Parse(Eval("PK_IMU_Cod").ToString())) %>' CommandName="Asignar" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-warning" />
                                             <asp:Button ID="btnDevolver" runat="server" Text="volver a asignar" ItemStyle-HorizontalAlign="Center" Visible='<%#HayMoldesEnUso(int.Parse(Eval("PK_IMU_Cod").ToString())) %>' CommandArgument='<%# Container.DataItemIndex %>' CommandName="Devolver" CssClass="btn btn-primary" />
+                                            <asp:Button ID="btnIncidentes" runat="server" Text="Qué ocurrió?" Visible='<%# Incidente(Eval("FK_IMXUE_Cod").ToString()) %>' data-toggle="modal" data-target="#modalIncidendia" CommandArgument='<%# Container.DataItemIndex %>' CommandName="Incidencia" CssClass="btn btn-primary"/>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -150,6 +151,37 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade bd-example-modal-lg" id="modalIncidendia" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-sm" role="dialog">
+                <div class="modal-content">
+                    <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <div class="modal-header">
+                                <p class="modal-title" id="P2" runat="server" style="color: #000000; font-weight: bold">
+                                    Moldura N°
+                                    <asp:Label ID="lblmoldura2" runat="server" Text="0"></asp:Label>
+                                </p>
+                            </div>
+                            <div class="row-sm">
+                                <div class="col-sm">
+                                    <p>Descripción</p>
+                                    <br />
+                                    <asp:TextBox ID="txtIncidente" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <br />
+                                    <p>Cuantos días más Requiere?</p>
+                                    <asp:TextBox ID="txtDias" runat="server" placeholder="Cantidad de dias" CssClass="form-control" pattern="[0-9]+" TextMode="Number" step="1" min="0" Width="50%"></asp:TextBox>
+                                    <br />
+                                    <asp:Button ID="btnAumentarDias" runat="server" Text="Asignar" CssClass="btn btn-success" OnClick="btnAumentarDias_Click" OnClientClick="cerrarModal2()" />
+                                    <br />
+                                </div>
+                                <br />
+                                <br />
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+            </div>
+            </div>
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
 
@@ -163,6 +195,9 @@
         <script src="../assets/js/pages/bootstrap-tables.init.js"></script>
         <script type="text/javascript">
             function cerrarModal() { $('#modalCantidadMoldes').modal('hide'); $('.modal-backdrop').hide(); }
+        </script>
+        <script type="text/javascript">
+            function cerrarModal2() { $('#modalIncidendia').modal('hide'); $('.modal-backdrop').hide(); }
         </script>
     </form>
 </asp:Content>

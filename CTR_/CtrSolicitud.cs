@@ -73,7 +73,7 @@ namespace CTR
         {
             return objDaoSolicitud.ListaMoldurasSolicitud(objsol);
         }
-        public DataTable ListaMoldurasxDiseñoPropio (DtoSolicitud objsol)
+        public DataTable ListaMoldurasxDiseñoPropio(DtoSolicitud objsol)
         {
             return objDaoSolicitud.ListaMoldurasSolicitudXDiseñoPropio(objsol);
         }
@@ -97,7 +97,7 @@ namespace CTR
         {
             objDaoSolicitud.RegistrarSolicitud_LD(objsolicitud);
         }
-        public void MandarObservacion(DtoSolicitud objsolicitud) 
+        public void MandarObservacion(DtoSolicitud objsolicitud)
         {
             objDaoSolicitud.UpdateEstadoSolicitud_Observacion(objsolicitud);
         }
@@ -151,6 +151,18 @@ namespace CTR
         public double ImporteTotalEntreFechas(string fechaInicio, string fechaFin)
         {
             return objDaoSolicitud.SelectImporteTotalSolicitudesEntreFechas(fechaInicio, fechaFin);
+        }
+        public int DiasRecojo(DtoSolicitud objDtoSolicitud)
+        {
+            return objDaoSolicitud.SelectDiasSolicitudes(objDtoSolicitud);
+        }
+        public bool SolicitudFechaRegistro(DtoSolicitud objDtoSolicitud)
+        {
+            return objDaoSolicitud.SelectSolicitudFechaRegistro(objDtoSolicitud);
+        }
+        public void ActualizarFecha_Ndias(DtoSolicitud objDtoSolicitud)
+        {
+            objDaoSolicitud.UpdateSolicitudFecha(objDtoSolicitud);
         }
     }
 }

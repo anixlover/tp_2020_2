@@ -50,6 +50,7 @@
     <Compile Include="CtrMoldura.cs" />
     <Compile Include="CtrMolduraXUsuario.cs" />
     <Compile Include="CtrMXUEstado.cs" />
+    <Compile Include="CtrMXU_Incidente.cs" />
     <Compile Include="CtrPago.cs" />
     <Compile Include="CtrSolicitudEstado.cs" />
     <Compile Include="CtrTipoMoldura.cs" />

@@ -334,6 +334,11 @@ namespace WEB
                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Suba Imagen de la moldura!!'})", true);
                     return;
                 }
+                else if (int.Parse(ddlTipoMoldura.SelectedValue) == 0)
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'Seleccione Tipo de moldura!!'})", true);
+                    return;
+                }
 
                 _log.CustomWriteOnLog("registrar pedido personalizado", "La función es de creación");
 
@@ -398,8 +403,8 @@ namespace WEB
                 _log.CustomWriteOnLog("registrar pedido personalizado", "objDtoMXU.FK_IM_Cod : " + objDtoMXU.IMU_Cantidad);
 
                 objDtoMXU.FK_VU_Dni = Session["DNIUsuario"].ToString();
-                _log.CustomWriteOnLog("registrar pedido personalizado", "objDtoMXU.FK_IM_Cod : " + objDtoMXU.FK_VU_Dni);
-
+                _log.CustomWriteOnLog("registrar pedido personalizado", "objDtoMXU.FK_IM_Cod : " + objDtoMXU.FK_VU_Dni);                
+                objDtoMXU.FK_IM_Cod = int.Parse(ddlTipoMoldura.SelectedValue) * -1;
                 objCtrMXU.registrarMXUP(objDtoMXU);
                 _log.CustomWriteOnLog("registrar pedido personalizado", "se registro la Moldura x Usuario satisfactoriamente");
 

@@ -40,10 +40,6 @@ namespace WEB
         {
             return estado == "Observada";
         }
-        protected Boolean ValidacionEstado3(string estado)
-        {
-            return estado == "Aprobada";
-        }
         protected Boolean ValidacionEstado4(string estado)
         {
             return estado == "Personalizado por diseño propio";
