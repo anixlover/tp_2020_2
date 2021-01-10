@@ -58,7 +58,7 @@
                                 </p>
                             </div>
                             <asp:GridView ID="gvPersonalizado" runat="server" DataKeyNames="PK_IMU_Cod" AutoGenerateColumns="False"
-                                EmptyDataText="No existen registros" ShowHeaderWhenEmpty="True" CssClass="table-borderless table table-bordered table-hover" Width="100%" OnRowDataBound="gvPersonalizado_RowDataBound">
+                                EmptyDataText="No existen registros" ShowHeaderWhenEmpty="True" CssClass="table-borderless table table-bordered table-hover" Width="100%" OnRowCommand="gvPersonalizado_RowCommand" OnRowDataBound="gvPersonalizado_RowDataBound">
                                 <Columns>
                                     <asp:TemplateField HeaderText="Imagen">
                                         <ItemTemplate>
@@ -70,13 +70,16 @@
                                     <asp:BoundField DataField="DS_Largo" ItemStyle-HorizontalAlign="Center" HeaderText="Largo" />
                                     <asp:BoundField DataField="DS_Ancho" ItemStyle-HorizontalAlign="Center" HeaderText="Ancho" />
                                     <asp:BoundField DataField="VS_Comentario" ItemStyle-HorizontalAlign="Center" HeaderText="Comentario" />
-                                    <asp:BoundField DataField="IS_Cantidad" ItemStyle-HorizontalAlign="Center" HeaderText="Cantidad" />
-                                    <asp:BoundField DataField="DS_PrecioAprox" ItemStyle-HorizontalAlign="Center" HeaderText="Precio Aprox(S/.)" />
-                                    <asp:BoundField DataField="DS_ImporteTotal" ItemStyle-HorizontalAlign="Center" HeaderText="Importe total(S/.)" />
+                                    <asp:BoundField DataField="IS_Cantidad" ItemStyle-HorizontalAlign="Center" HeaderText="Cantidad" />                             
                                     <asp:BoundField DataField="FK_IMXUE_Cod" ItemStyle-HorizontalAlign="Center" HeaderText="Estado" />
                                     <asp:TemplateField HeaderText="Cambiar Estado">
                                         <ItemTemplate>
                                             <asp:DropDownList ID="ddlEstados2" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlEstados2_SelectedIndexChanged"></asp:DropDownList>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:Button ID="btnIncidentes2" runat="server" Text="Qué ocurrió?" Visible='<%# Incidente(Eval("FK_IMXUE_Cod").ToString()) %>' data-toggle="modal" data-target="#modalIncidendia" CommandArgument='<%# Container.DataItemIndex %>' CommandName="Incidencia" CssClass="btn btn-primary" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -106,11 +109,12 @@
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:BoundField DataField="IMU_MoldesUsados" ItemStyle-HorizontalAlign="Center" HeaderText="Moldes usados" />
-                                    <asp:TemplateField HeaderText="Asignar">
+                                    <asp:TemplateField HeaderText="Acción">
                                         <ItemTemplate>
                                             <asp:Button runat="server" Text="Asignar Moldes" ItemStyle-HorizontalAlign="Center" data-toggle="modal" data-target="#modalCantidadMoldes"
                                                 Visible='<%# ExistenMoldes(int.Parse(Eval("PK_IM_Cod").ToString()),int.Parse(Eval("PK_IMU_Cod").ToString())) %>' CommandName="Asignar" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-warning" />
                                             <asp:Button ID="btnDevolver" runat="server" Text="volver a asignar" ItemStyle-HorizontalAlign="Center" Visible='<%#HayMoldesEnUso(int.Parse(Eval("PK_IMU_Cod").ToString())) %>' CommandArgument='<%# Container.DataItemIndex %>' CommandName="Devolver" CssClass="btn btn-primary" />
+                                            <asp:Button ID="btnIncidentes" runat="server" Text="Qué ocurrió?" Visible='<%# Incidente(Eval("FK_IMXUE_Cod").ToString()) %>' data-toggle="modal" data-target="#modalIncidendia" CommandArgument='<%# Container.DataItemIndex %>' CommandName="Incidencia" CssClass="btn btn-primary"/>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -150,6 +154,37 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade bd-example-modal-lg" id="modalIncidendia" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-sm" role="dialog">
+                <div class="modal-content">
+                    <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <div class="modal-header">
+                                <p class="modal-title" id="P2" runat="server" style="color: #000000; font-weight: bold">
+                                    Moldura N°
+                                    <asp:Label ID="lblmoldura2" runat="server" Text="0"></asp:Label>
+                                </p>
+                            </div>
+                            <div class="row-sm">
+                                <div class="col-sm">
+                                    <p>Descripción</p>
+                                    <br />
+                                    <asp:TextBox ID="txtIncidente" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <br />
+                                    <p>Cuantos días más Requiere?</p>
+                                    <asp:TextBox ID="txtDias" runat="server" placeholder="Cantidad de dias" CssClass="form-control" pattern="[0-9]+" TextMode="Number" step="1" min="0" Width="50%"></asp:TextBox>
+                                    <br />
+                                    <asp:Button ID="btnAumentarDias" runat="server" Text="Asignar" CssClass="btn btn-success" OnClick="btnAumentarDias_Click" OnClientClick="cerrarModal2()" />
+                                    <br />
+                                </div>
+                                <br />
+                                <br />
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+            </div>
+            </div>
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
 
@@ -163,6 +198,9 @@
         <script src="../assets/js/pages/bootstrap-tables.init.js"></script>
         <script type="text/javascript">
             function cerrarModal() { $('#modalCantidadMoldes').modal('hide'); $('.modal-backdrop').hide(); }
+        </script>
+        <script type="text/javascript">
+            function cerrarModal2() { $('#modalIncidendia').modal('hide'); $('.modal-backdrop').hide(); }
         </script>
     </form>
 </asp:Content>

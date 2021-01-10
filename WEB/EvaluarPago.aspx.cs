@@ -38,6 +38,7 @@ namespace WEB
                 {
                     solicitud = Convert.ToInt32(Session["idSolicitudPago"].ToString());
                     obtenerVoucher();
+                    cargarDatosVpoucher();
                     CargarMolduras2();
                 }
             }
@@ -74,7 +75,15 @@ namespace WEB
                 }
             }
         }
-
+        public void cargarDatosVpoucher()
+        {
+            dtopago.FK_IS_Cod = Convert.ToInt32(Session["idSolicitudPago"]);
+            ctrpago.ExistenciaPago(dtopago);
+            dtovoucher.FK_VP_Cod = dtopago.PK_VP_Cod;
+            ctrvoucher.ExistenciaVoucherxCodPago(dtovoucher);
+            string strbase64 = Convert.ToBase64String(dtovoucher.VBV_Foto);
+            Image1.ImageUrl = "data:image/png;base64," + strbase64;
+        }
         protected void ddl_TipoComprobante_SelectedIndexChanged(object sender, EventArgs e)
         {
 

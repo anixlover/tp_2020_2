@@ -23,5 +23,9 @@ namespace CTR
         {
             return objDaoVoucher.SelectPagoVoucher(voucher);
         }
+        public bool ExistenciaVoucherxCodPago(Dto_Voucher voucher)
+        {
+            return objDaoVoucher.SelectImgVoucherxCodPago(voucher);
+        }
     }
 }

@@ -98,5 +98,9 @@ namespace CTR
         {
             objDaoMolduraXUsuario.actualizarMXUSolP(objdtoMolduraxUsuario);
         }
+        public bool ExistenciaMXU2(DtoMolduraXUsuario objDtoMolduraXUsuario)
+        {
+            return objDaoMolduraXUsuario.ExistenciaMXU2(objDtoMolduraXUsuario);
+        }
     }
 }

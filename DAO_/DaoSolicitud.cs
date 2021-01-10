@@ -32,6 +32,23 @@ namespace DAO
             conexion.Close();
             return hayRegistros;
         }
+        public bool SelectSolicitudFechaRegistro(DtoSolicitud objsol)
+        {
+            string Select = "SELECT * from T_SOLICITUD where PK_IS_Cod =" + objsol.PK_IS_Cod;
+            SqlCommand unComando = new SqlCommand(Select, conexion);
+            conexion.Open();
+            SqlDataReader reader = unComando.ExecuteReader();
+            bool hayRegistros = reader.Read();
+            if (hayRegistros)
+            {
+                objsol.PK_IS_Cod = (int)reader[0];
+                objsol.VS_TipoSolicitud = (string)reader[1];
+                objsol.FK_ISE_Cod = (int)reader[15];
+                objsol.DTS_FechaRegistro = Convert.ToDateTime(reader[11].ToString());
+            }
+            conexion.Close();
+            return hayRegistros;
+        }
         public bool SelectSolicitudImporte(DtoSolicitud objsol)
         {
             string Select = "SELECT * from T_SOLICITUD where PK_IS_Cod =" + objsol.PK_IS_Cod;
@@ -112,7 +129,7 @@ namespace DAO
         public DataTable SelectSolicitudDiseñoPropio(DtoSolicitud objsol)
         {
             DataTable dtsolicitudes = null;
-            string select = "SELECT PK_IS_Cod,DS_Largo,DS_Ancho,VS_Comentario,IS_Cantidad,DS_PrecioAprox,DTS_FechaRecojo,DS_ImporteTotal from T_Solicitud where PK_IS_Cod =" + objsol.PK_IS_Cod;
+            string select = "SELECT PK_IMU_Cod,PK_IS_Cod,DS_Largo,DS_Ancho,VS_Comentario,IS_Cantidad,DS_PrecioAprox,DTS_FechaRecojo,DS_ImporteTotal,FK_IMXUE_Cod from Vista_Solicitud_Personalizado where PK_IS_Cod =" + objsol.PK_IS_Cod;
             conexion.Open();
             SqlCommand command = new SqlCommand(select, conexion);
             SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
@@ -298,6 +315,14 @@ namespace DAO
             unComando.ExecuteNonQuery();
             conexion.Close();
         }
+        public void UpdateSolicitudFecha(DtoSolicitud objsol)
+        {
+            string update = "UPDATE T_Solicitud SET DTS_FechaRecojo=CAST(DATEADD(day," + objsol.IS_Ndias + ",(select DTS_FechaRegistro from T_SOLICITUD where PK_IS_Cod ="+objsol.PK_IS_Cod+")) AS DATE),IS_Ndias=" + objsol.IS_Ndias + " where PK_IS_Cod =" + objsol.PK_IS_Cod;
+            SqlCommand unComando = new SqlCommand(update, conexion);
+            conexion.Open();
+            unComando.ExecuteNonQuery();
+            conexion.Close();
+        }
         public int SelectSolicitudMoldes(DtoSolicitud objsol)
         {
             int cantMoldurasconMolde;
@@ -378,7 +403,7 @@ namespace DAO
         public double SelectImporteTotalSolicitudes()
         {
             double total=0;
-            string Select = "SELECT SUM(DS_ImporteTotal)As ImporteTotal FROM Vista_Solicitudes_Entregados";
+            string Select = "SELECT Isnull((Select SUM(DS_ImporteTotal) As ImporteTotal FROM Vista_Solicitudes_Entregados),0)";
             SqlCommand unComando = new SqlCommand(Select, conexion);
             conexion.Open();
             SqlDataReader reader = unComando.ExecuteReader();
@@ -390,10 +415,25 @@ namespace DAO
             conexion.Close();
             return total;
         }
+        public int SelectDiasSolicitudes(DtoSolicitud objDtoSolicitud)
+        {
+            int dias = 0;
+            string Select = "SELECT ISNULL((select IS_Ndias from T_SOLICITUD where PK_IS_Cod="+ objDtoSolicitud.PK_IS_Cod+ "),0)";
+            SqlCommand unComando = new SqlCommand(Select, conexion);
+            conexion.Open();
+            SqlDataReader reader = unComando.ExecuteReader();
+            bool hayRegistros = reader.Read();
+            if (hayRegistros)
+            {
+                dias = int.Parse(reader[0].ToString());
+            }
+            conexion.Close();
+            return dias;
+        }
         public double SelectImporteTotalSolicitudesEntreFechas(string fechaInicio, string fechaFin)
         {
             double total = 0;
-            string Select = "select Isnull((SELECT SUM(DS_ImporteTotal)As ImporteTotal FROM Vista_Solicitudes_Entregados where DTS_FechaRecojo BETWEEN '" + fechaInicio + "' and '" + fechaFin + "'),0)";
+            string Select = "select Isnull((SELECT SUM(DS_ImporteTotal) As ImporteTotal FROM Vista_Solicitudes_Entregados where DTS_FechaRecojo BETWEEN '" + fechaInicio + "' and '" + fechaFin + "'),0)";
             SqlCommand unComando = new SqlCommand(Select, conexion);
             conexion.Open();
             SqlDataReader reader = unComando.ExecuteReader();
@@ -453,6 +493,17 @@ namespace DAO
                 objsolicitud.PK_IS_Cod = Convert.ToInt32(command.Parameters["@NewId"].Value);
             }
             conexion.Close();
+        }
+        public DataTable SelectIncidentesxSolicitud(DtoSolicitud objsolicitud)
+        {
+            DataTable dtsolicitudes = null;
+            conexion.Open();
+            SqlCommand command = new SqlCommand("Select * from Vista_Incidentes where FK_IS_Cod="+objsolicitud.PK_IS_Cod, conexion);
+            SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
+            dtsolicitudes = new DataTable();
+            daAdaptador.Fill(dtsolicitudes);
+            conexion.Close();
+            return dtsolicitudes;
         }
     }
 }

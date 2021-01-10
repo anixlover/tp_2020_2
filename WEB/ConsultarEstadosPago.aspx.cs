@@ -40,10 +40,6 @@ namespace WEB
         {
             return estado == "Observada";
         }
-        protected Boolean ValidacionEstado3(string estado)
-        {
-            return estado == "Aprobada";
-        }
         protected Boolean ValidacionEstado4(string estado)
         {
             return estado == "Personalizado por diseño propio";
@@ -55,6 +51,12 @@ namespace WEB
         protected Boolean ValidacionEstado6(string estado)
         {
             return estado == "Con retraso";
+        }
+        protected Boolean ValidacionPersonalizado(string id)
+        {
+            objDtoSolicitud.PK_IS_Cod = int.Parse(id);
+            objCtrSolicitud.leerSolicitudTipo(objDtoSolicitud);
+            return objDtoSolicitud.VS_TipoSolicitud == "Personalizado por diseño propio";
         }
         public void CargarSolicitudes() 
         {
@@ -94,6 +96,30 @@ namespace WEB
                 GridViewRow row = gvPedidos.Rows[index];
                 string id = row.Cells[0].Text;
                 Response.Redirect("~/RealizarCompra.aspx?sol="+id);
+            }
+            if (e.CommandName == "Ver incidencias")
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = gvPedidos.Rows[index];
+                string id = row.Cells[0].Text;
+                objDtoSolicitud.PK_IS_Cod = int.Parse(id);
+                objCtrSolicitud.leerSolicitudTipo(objDtoSolicitud);
+                if (objDtoSolicitud.VS_TipoSolicitud == "Personalizado por diseño propio")
+                {
+                    gvIncidencias.Columns[0].Visible = true;
+                    gvIncidencias.Columns[1].Visible = false;
+                    gvIncidencias.Columns[3].Visible = false;
+                    gvIncidencias.DataSource = objCtrSolicitud.MostrarIncidentes(objDtoSolicitud);
+                    gvIncidencias.DataBind();
+                }
+                else
+                {
+                    gvIncidencias.Columns[1].Visible = true;
+                    gvIncidencias.Columns[0].Visible = false;
+                    gvIncidencias.Columns[3].Visible = true;
+                    gvIncidencias.DataSource = objCtrSolicitud.MostrarIncidentes(objDtoSolicitud);
+                    gvIncidencias.DataBind();
+                }
             }
         }
         public void CargarMolduras(string id)
