@@ -59,6 +59,10 @@ namespace WEB
         {
             return estadoMXU == "Retrazo Fabricacion" | estadoMXU == "Retraso secado";
         }
+        protected Boolean Despachado(string estadoMXU)
+        {
+            return estadoMXU == "Despachado";
+        }
         protected void gvPedidos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Ver detalles")
@@ -140,10 +144,13 @@ namespace WEB
                 objDtoMolde.FK_IM_Cod = idMoldura;                
                 int idE = Convert.ToInt32(e.Row.Cells[1].Text);
                 objDtoMolduraxUsuario.PK_IMU_Cod = idE;
+                objDtoMolduraxUsuario.FK_IS_Cod = int.Parse(lblid.Text);
+                objDtoSolicitud.PK_IS_Cod= int.Parse(lblid.Text);
+                objCtrSolicitud.leerSolicitudTipo(objDtoSolicitud);
                 objCtrMolduraxUsuario.obtenerMXUxCodigo(objDtoMolduraxUsuario);                
                 e.Row.Cells[1].Visible = false;
                 gvDetalles.HeaderRow.Cells[1].Visible = false;
-                if (!objCtrMolde.ExistenciaMolde(objDtoMolde) | objCtrMolde.CantidadMoldesxMoldura(objDtoMolde) == 0 | objDtoMolduraxUsuario.FK_IMXUE_Cod < 6|objDtoMolduraxUsuario.FK_IMXUE_Cod==11|objDtoMolduraxUsuario.IMU_MoldesUsados==0)
+                if (!objCtrMolde.ExistenciaMolde(objDtoMolde) | objCtrMolde.CantidadMoldesxMoldura(objDtoMolde) == 0 | objDtoMolduraxUsuario.FK_IMXUE_Cod < 6|objDtoMolduraxUsuario.FK_IMXUE_Cod==11 && objCtrMolduraxUsuario.CantidadMoldurasxSolicitud(objDtoMolduraxUsuario)>1|objDtoMolduraxUsuario.IMU_MoldesUsados==0|objDtoSolicitud.FK_ISE_Cod==11)
                 {
                     ddlMXUEstados.Visible = false;
                 }
@@ -170,6 +177,21 @@ namespace WEB
                 ddlMXUEstados.SelectedValue = (objDtoMolduraxUsuario.FK_IMXUE_Cod).ToString();
                 e.Row.Cells[1].Visible = false;
                 gvPersonalizado.HeaderRow.Cells[1].Visible = false;
+                objDtoMolduraxUsuario.PK_IMU_Cod = idE;
+                objDtoMolduraxUsuario.FK_IS_Cod = int.Parse(lblid.Text);
+                objDtoSolicitud.PK_IS_Cod = int.Parse(lblid.Text);
+                objCtrSolicitud.leerSolicitudTipo(objDtoSolicitud);
+                objCtrMolduraxUsuario.obtenerMXUxCodigo(objDtoMolduraxUsuario);
+                e.Row.Cells[1].Visible = false;
+                if (objDtoMolduraxUsuario.FK_IMXUE_Cod < 6 | objDtoMolduraxUsuario.FK_IMXUE_Cod == 11 && objCtrMolduraxUsuario.CantidadMoldurasxSolicitud(objDtoMolduraxUsuario) > 1 | objDtoSolicitud.FK_ISE_Cod == 11)
+                {
+                    ddlMXUEstados.Visible = false;
+                }
+                else
+                {
+                    ddlMXUEstados.Visible = true;
+                    ddlMXUEstados.SelectedValue = (objDtoMolduraxUsuario.FK_IMXUE_Cod).ToString();
+                }
             }
         }
 
@@ -303,6 +325,7 @@ namespace WEB
 
                 gvPedidos.DataSource = objCtrSolicitud.ListarSolicitudesTrabajdor();
                 gvPedidos.DataBind();
+                UpdatePanel1.Update();
             }
         }
 
@@ -318,6 +341,17 @@ namespace WEB
                 Session["Moldura"] = objDtoMolduraxUsuario.FK_IM_Cod;
                 UpdatePanel2.Update();
             }
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            objDtoSolicitud.PK_IS_Cod= int.Parse(lblid.Text);
+            objCtrSolicitud.Terminar(objDtoSolicitud);
+            gvPedidos.DataSource = objCtrSolicitud.ListarSolicitudesTrabajdor();
+            gvPedidos.DataBind();
+            UpdatePanel1.Update();
+            CargarMolduras(lblid.Text);
+            UpdatePanel2.Update();
         }
     }
 }
