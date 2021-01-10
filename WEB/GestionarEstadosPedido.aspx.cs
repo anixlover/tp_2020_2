@@ -159,7 +159,7 @@ namespace WEB
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                DropDownList ddlMXUEstados = (e.Row.FindControl("ddlEstados") as DropDownList);
+                DropDownList ddlMXUEstados = (e.Row.FindControl("ddlEstados2") as DropDownList);
                 ddlMXUEstados.DataSource = objCtrMXUEstado.ListarEstados();
                 ddlMXUEstados.DataTextField = "VMXUE_Nombre";
                 ddlMXUEstados.DataValueField = "PK_IMXUE_Cod";
@@ -185,6 +185,7 @@ namespace WEB
             CargarMolduras(sol);
             gvPedidos.DataSource = objCtrSolicitud.ListarSolicitudesTrabajdor();
             gvPedidos.DataBind();
+            UpdatePanel1.Update();
         }
 
         protected void ddlEstados2_SelectedIndexChanged(object sender, EventArgs e)
@@ -199,6 +200,7 @@ namespace WEB
             CargarMolduras(sol);
             gvPedidos.DataSource = objCtrSolicitud.ListarSolicitudesTrabajdor();
             gvPedidos.DataBind();
+            UpdatePanel1.Update();
         }
 
         protected void gvDetalles_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -231,6 +233,7 @@ namespace WEB
                 GridViewRow row = gvDetalles.Rows[index];
                 string moldura = row.Cells[2].Text;
                 lblmoldura2.Text = moldura;
+                Session["Moldura"] = int.Parse(moldura);
                 UpdatePanel2.Update();
             }
         }
@@ -284,7 +287,7 @@ namespace WEB
             }
             else
             {
-                objDtoMolduraxUsuario.FK_IM_Cod = int.Parse(lblmoldura2.Text);
+                objDtoMolduraxUsuario.FK_IM_Cod =int.Parse(Session["Moldura"].ToString());
                 objDtoMolduraxUsuario.FK_IS_Cod = int.Parse(lblid.Text);
                 objDtoSolicitud.PK_IS_Cod = int.Parse(lblid.Text);
                 int dias = objCtrSolicitud.DiasRecojo(objDtoSolicitud);
@@ -297,6 +300,23 @@ namespace WEB
                 objDtoSolicitud.IS_Ndias = dias + int.Parse(txtDias.Text);
                 objCtrSolicitud.ActualizarFecha_Ndias(objDtoSolicitud);
                 objCtrMXUIncidente.RegistrarIncidente(objDtoMXUIncidente);
+
+                gvPedidos.DataSource = objCtrSolicitud.ListarSolicitudesTrabajdor();
+                gvPedidos.DataBind();
+            }
+        }
+
+        protected void gvPersonalizado_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Incidencia")
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = gvPersonalizado.Rows[index];
+                string mxu = row.Cells[1].Text;
+                objDtoMolduraxUsuario.PK_IMU_Cod = int.Parse(mxu);
+                objCtrMolduraxUsuario.obtenerMXUxCodigo(objDtoMolduraxUsuario);
+                Session["Moldura"] = objDtoMolduraxUsuario.FK_IM_Cod;
+                UpdatePanel2.Update();
             }
         }
     }

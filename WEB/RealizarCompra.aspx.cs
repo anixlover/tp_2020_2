@@ -47,6 +47,7 @@ namespace WEB
             chbNuevoRUC.Visible = false;
             chbNuevoRUC.Checked = false;
             lblTitulo1.Visible = false;
+            txtNuevoRUC.Visible = false;
         }
 
         protected void rbFactura_CheckedChanged(object sender, EventArgs e)
@@ -54,6 +55,7 @@ namespace WEB
             ddlRUC.Visible = true;
             lblTitulo1.Visible = true;
             chbNuevoRUC.Visible = true;
+            txtNuevoRUC.Visible = true;
         }
         public void cargarEvento()
         {

@@ -51,7 +51,7 @@
                                                 CommandName="Ver proceso" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-warning" />
                                             <asp:Button runat="server" Text="Ver incidencias" ItemStyle-HorizontalAlign="Center"
                                                 Visible='<%# ValidacionEstado6(Eval("VSE_Nombre").ToString()) %>'
-                                                CommandName="Ver incidencias" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-warning" />
+                                                CommandName="Ver incidencias" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-warning" data-toggle="modal" data-target="#modalIncidencias" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -62,6 +62,37 @@
             </div>
         </div>
     </div>
+     <div class="modal fade" id="modalIncidencias" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="dialog">
+            <div class="modal-content">  
+                <asp:UpdatePanel ID="UpIncidencias" runat="server">
+                    <ContentTemplate>
+                        <asp:GridView ID="gvIncidencias" runat="server" AutoGenerateColumns="False"
+                            EmptyDataText="No existen registros"  ShowHeaderWhenEmpty="True" CssClass="table-borderless table table-bordered table-hover" Width="100%">
+                            <Columns>
+                                <asp:TemplateField HeaderText="Imagen Propia">
+                                    <ItemTemplate>
+                                        <img src='ObtenerImegenPersonalizada_2.ashx?id=<%# Eval("FK_IS_Cod")%>' height="60px" width="60px" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Imagen">
+                                    <ItemTemplate>
+                                        <img src='ObtieneImagen.ashx?id=<%# Eval("PK_IM_Cod")%>' height="80px" width="80px" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="FK_IS_Cod" ItemStyle-HorizontalAlign="Center" HeaderText="Código de solicitud" />
+                                <asp:BoundField DataField="PK_IM_Cod" ItemStyle-HorizontalAlign="Center" HeaderText="Código de Moldura" />
+                                <asp:BoundField DataField="VMXU_Incidente" ItemStyle-HorizontalAlign="Center" HeaderText="Incidente" />
+                                <asp:BoundField DataField="DTMXUI_Fecha" ItemStyle-HorizontalAlign="Center" HeaderText="Fecha" />
+                                <asp:BoundField DataField="FK_IMXUE_Cod" ItemStyle-HorizontalAlign="Center" HeaderText="Estado de la moldura" />
+                            </Columns>
+                        </asp:GridView>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+                </div>
+            </div>
+         </div>
+
     <div class="modal fade" id="modalDetalle" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="dialog">
             <div class="modal-content">                

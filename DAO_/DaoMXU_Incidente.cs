@@ -23,6 +23,6 @@ namespace DAO
             conexion.Open();
             command.ExecuteNonQuery();
             conexion.Close();
-        }
+        }        
     }
 }

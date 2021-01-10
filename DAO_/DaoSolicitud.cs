@@ -129,7 +129,7 @@ namespace DAO
         public DataTable SelectSolicitudDiseñoPropio(DtoSolicitud objsol)
         {
             DataTable dtsolicitudes = null;
-            string select = "SELECT PK_IS_Cod,DS_Largo,DS_Ancho,VS_Comentario,IS_Cantidad,DS_PrecioAprox,DTS_FechaRecojo,DS_ImporteTotal from T_Solicitud where PK_IS_Cod =" + objsol.PK_IS_Cod;
+            string select = "SELECT PK_IMU_Cod,PK_IS_Cod,DS_Largo,DS_Ancho,VS_Comentario,IS_Cantidad,DS_PrecioAprox,DTS_FechaRecojo,DS_ImporteTotal,FK_IMXUE_Cod from Vista_Solicitud_Personalizado where PK_IS_Cod =" + objsol.PK_IS_Cod;
             conexion.Open();
             SqlCommand command = new SqlCommand(select, conexion);
             SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
@@ -493,6 +493,17 @@ namespace DAO
                 objsolicitud.PK_IS_Cod = Convert.ToInt32(command.Parameters["@NewId"].Value);
             }
             conexion.Close();
+        }
+        public DataTable SelectIncidentesxSolicitud(DtoSolicitud objsolicitud)
+        {
+            DataTable dtsolicitudes = null;
+            conexion.Open();
+            SqlCommand command = new SqlCommand("Select * from Vista_Incidentes where FK_IS_Cod="+objsolicitud.PK_IS_Cod, conexion);
+            SqlDataAdapter daAdaptador = new SqlDataAdapter(command);
+            dtsolicitudes = new DataTable();
+            daAdaptador.Fill(dtsolicitudes);
+            conexion.Close();
+            return dtsolicitudes;
         }
     }
 }

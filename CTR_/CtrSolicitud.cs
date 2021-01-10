@@ -172,5 +172,9 @@ namespace CTR
         {
             objDaoSolicitud.UpdateSolicitudFecha(objDtoSolicitud);
         }
+        public DataTable MostrarIncidentes(DtoSolicitud objDtoSolicitud)
+        {
+           return objDaoSolicitud.SelectIncidentesxSolicitud(objDtoSolicitud);
+        }
     }
 }

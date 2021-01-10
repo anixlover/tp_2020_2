@@ -58,7 +58,7 @@
                                 </p>
                             </div>
                             <asp:GridView ID="gvPersonalizado" runat="server" DataKeyNames="PK_IMU_Cod" AutoGenerateColumns="False"
-                                EmptyDataText="No existen registros" ShowHeaderWhenEmpty="True" CssClass="table-borderless table table-bordered table-hover" Width="100%" OnRowDataBound="gvPersonalizado_RowDataBound">
+                                EmptyDataText="No existen registros" ShowHeaderWhenEmpty="True" CssClass="table-borderless table table-bordered table-hover" Width="100%" OnRowCommand="gvPersonalizado_RowCommand" OnRowDataBound="gvPersonalizado_RowDataBound">
                                 <Columns>
                                     <asp:TemplateField HeaderText="Imagen">
                                         <ItemTemplate>
@@ -70,13 +70,16 @@
                                     <asp:BoundField DataField="DS_Largo" ItemStyle-HorizontalAlign="Center" HeaderText="Largo" />
                                     <asp:BoundField DataField="DS_Ancho" ItemStyle-HorizontalAlign="Center" HeaderText="Ancho" />
                                     <asp:BoundField DataField="VS_Comentario" ItemStyle-HorizontalAlign="Center" HeaderText="Comentario" />
-                                    <asp:BoundField DataField="IS_Cantidad" ItemStyle-HorizontalAlign="Center" HeaderText="Cantidad" />
-                                    <asp:BoundField DataField="DS_PrecioAprox" ItemStyle-HorizontalAlign="Center" HeaderText="Precio Aprox(S/.)" />
-                                    <asp:BoundField DataField="DS_ImporteTotal" ItemStyle-HorizontalAlign="Center" HeaderText="Importe total(S/.)" />
+                                    <asp:BoundField DataField="IS_Cantidad" ItemStyle-HorizontalAlign="Center" HeaderText="Cantidad" />                             
                                     <asp:BoundField DataField="FK_IMXUE_Cod" ItemStyle-HorizontalAlign="Center" HeaderText="Estado" />
                                     <asp:TemplateField HeaderText="Cambiar Estado">
                                         <ItemTemplate>
                                             <asp:DropDownList ID="ddlEstados2" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlEstados2_SelectedIndexChanged"></asp:DropDownList>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:Button ID="btnIncidentes2" runat="server" Text="Qué ocurrió?" Visible='<%# Incidente(Eval("FK_IMXUE_Cod").ToString()) %>' data-toggle="modal" data-target="#modalIncidendia" CommandArgument='<%# Container.DataItemIndex %>' CommandName="Incidencia" CssClass="btn btn-primary" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -106,7 +109,7 @@
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:BoundField DataField="IMU_MoldesUsados" ItemStyle-HorizontalAlign="Center" HeaderText="Moldes usados" />
-                                    <asp:TemplateField HeaderText="Asignar">
+                                    <asp:TemplateField HeaderText="Acción">
                                         <ItemTemplate>
                                             <asp:Button runat="server" Text="Asignar Moldes" ItemStyle-HorizontalAlign="Center" data-toggle="modal" data-target="#modalCantidadMoldes"
                                                 Visible='<%# ExistenMoldes(int.Parse(Eval("PK_IM_Cod").ToString()),int.Parse(Eval("PK_IMU_Cod").ToString())) %>' CommandName="Asignar" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-warning" />

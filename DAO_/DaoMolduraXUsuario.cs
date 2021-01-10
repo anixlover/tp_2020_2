@@ -77,7 +77,7 @@ namespace DAO
         }
         public bool ExistenciaMXU2(DtoMolduraXUsuario objDtoMolduraXUsuario)
         {
-            string select = "select * from T_MOLDURAXUSUARIO where FK_IM_Cod = " + objDtoMolduraXUsuario.FK_IM_Cod + " and FK_IS_Cod =" + objDtoMolduraXUsuario.FK_IS_Cod;
+            string select = "SELECT [PK_IMU_Cod],[FK_VU_Dni],[FK_IM_Cod],[IMU_Cantidad],Isnull([DMU_Precio],0),[FK_IS_Cod],[FK_IMXUE_Cod],[IMU_MoldesUsados] from T_MOLDURAXUSUARIO where FK_IM_Cod = " + objDtoMolduraXUsuario.FK_IM_Cod + " and FK_IS_Cod =" + objDtoMolduraXUsuario.FK_IS_Cod;
             SqlCommand command = new SqlCommand(select, conexion);
             conexion.Open();
             command.ExecuteNonQuery();
@@ -128,7 +128,7 @@ namespace DAO
         }
         public bool ExistenciaMXU_x_Cod(DtoMolduraXUsuario objDtoMolduraXUsuario)
         {
-            string select = "select PK_IMU_Cod,FK_VU_Dni,FK_IM_Cod,IMU_Cantidad,DMU_Precio,FK_IS_Cod,FK_IMXUE_Cod,isnull(IMU_MoldesUsados, 0) as IMU_MoldesUsados from T_MOLDURAXUSUARIO where PK_IMU_Cod="+objDtoMolduraXUsuario.PK_IMU_Cod;
+            string select = "select PK_IMU_Cod,FK_VU_Dni,FK_IM_Cod,IMU_Cantidad,Isnull(DMU_Precio,0),FK_IS_Cod,FK_IMXUE_Cod,isnull(IMU_MoldesUsados, 0) as IMU_MoldesUsados from T_MOLDURAXUSUARIO where PK_IMU_Cod="+objDtoMolduraXUsuario.PK_IMU_Cod;
             SqlCommand command = new SqlCommand(select, conexion);
             conexion.Open();
             command.ExecuteNonQuery();
