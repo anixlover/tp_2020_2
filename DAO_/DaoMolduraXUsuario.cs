@@ -93,6 +93,23 @@ namespace DAO
             return cant;
 
         }
+        public int CantMoldurasDespachadas(DtoMolduraXUsuario objDtoMolduraXUsuario)
+        {
+            string select = "select count(FK_IM_Cod) from T_MOLDURAXUSUARIO where FK_IS_Cod="+ objDtoMolduraXUsuario.FK_IS_Cod+" and FK_IMXUE_Cod =11";
+            SqlCommand command = new SqlCommand(select, conexion);
+            conexion.Open();
+            command.ExecuteNonQuery();
+            SqlDataReader reader = command.ExecuteReader();
+            bool hayRegistros = reader.Read();
+            int cant = 0;
+            if (hayRegistros)
+            {
+                cant = (int)reader[0];
+            }
+            conexion.Close();
+            return cant;
+
+        }
         public bool ExistenciaMXU2(DtoMolduraXUsuario objDtoMolduraXUsuario)
         {
             string select = "SELECT [PK_IMU_Cod],[FK_VU_Dni],[FK_IM_Cod],[IMU_Cantidad],Isnull([DMU_Precio],0),[FK_IS_Cod],[FK_IMXUE_Cod],[IMU_MoldesUsados] from T_MOLDURAXUSUARIO where FK_IM_Cod = " + objDtoMolduraXUsuario.FK_IM_Cod + " and FK_IS_Cod =" + objDtoMolduraXUsuario.FK_IS_Cod;

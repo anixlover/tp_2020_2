@@ -106,5 +106,9 @@ namespace CTR
         {
             return objDaoMolduraXUsuario.CantMolduras(objDtoMolduraXUsuario);
         }
+        public int CantidadMoldurasDespachadasxSolicitud(DtoMolduraXUsuario objDtoMolduraXUsuario)
+        {
+            return objDaoMolduraXUsuario.CantMoldurasDespachadas(objDtoMolduraXUsuario);
+        }
     }
 }

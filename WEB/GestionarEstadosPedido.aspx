@@ -124,7 +124,7 @@
                                 <asp:Button ID="btnComenzar" runat="server" Text="Comenzar" CssClass="btn-lg btn-success" OnClick="btnComenzar_Click" />
                                     </div>
                                 <div class="col">
-                                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click"/>
+                                    <asp:Button ID="btnGuardar" runat="server" CssClass="btn-lg btn-success" Text="Guardar" OnClick="btnGuardar_Click"/>
                                 </div>
                             </div>
                         </ContentTemplate>

@@ -59,9 +59,10 @@ namespace WEB
         {
             return estadoMXU == "Retrazo Fabricacion" | estadoMXU == "Retraso secado";
         }
-        protected Boolean Despachado(string estadoMXU)
+        protected Boolean Despachado(string sol)
         {
-            return estadoMXU == "Despachado";
+            objDtoMolduraxUsuario.FK_IS_Cod=int.Parse(sol);
+            return objCtrMolduraxUsuario.CantidadMoldurasDespachadasxSolicitud(objDtoMolduraxUsuario)==1;
         }
         protected void gvPedidos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -109,6 +110,15 @@ namespace WEB
                 }
                 else if (objDtoSolicitud.VS_TipoSolicitud == "Personalizado por diseño propio")
                 {
+                    objDtoMolduraxUsuario.FK_IS_Cod = int.Parse(lblid.Text);
+                    if (objCtrMolduraxUsuario.CantidadMoldurasDespachadasxSolicitud(objDtoMolduraxUsuario) == 1)
+                    {
+                        btnGuardar.Visible = true;
+                    }
+                    else
+                    {
+                        btnGuardar.Visible = false;
+                    }
                     if (objCtrSolicitud.MoldurasConMoldeSolicitud(objDtoSolicitud) == 0 | objDtoSolicitud.FK_ISE_Cod >= 9)
                     {
                         btnComenzar.Visible = false;
@@ -116,7 +126,7 @@ namespace WEB
                     else
                     { 
                         btnComenzar.Visible = true; 
-                    }
+                    }                    
                     gvPersonalizado.Visible = true;
                     gvDetalles.Visible = false;
                     objCtrSolicitud.leerSolicitudDiseñoPersonal(objDtoSolicitud);
