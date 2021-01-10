@@ -315,6 +315,14 @@ namespace DAO
             unComando.ExecuteNonQuery();
             conexion.Close();
         }
+        public void UpdateSolicitudFecha_Terminado(DtoSolicitud objsol)
+        {
+            string update = "UPDATE T_Solicitud SET FK_ISE_Cod=11 where PK_IS_Cod =" + objsol.PK_IS_Cod;
+            SqlCommand unComando = new SqlCommand(update, conexion);
+            conexion.Open();
+            unComando.ExecuteNonQuery();
+            conexion.Close();
+        }
         public void UpdateSolicitudFecha(DtoSolicitud objsol)
         {
             string update = "UPDATE T_Solicitud SET DTS_FechaRecojo=CAST(DATEADD(day," + objsol.IS_Ndias + ",(select DTS_FechaRegistro from T_SOLICITUD where PK_IS_Cod ="+objsol.PK_IS_Cod+")) AS DATE),IS_Ndias=" + objsol.IS_Ndias + " where PK_IS_Cod =" + objsol.PK_IS_Cod;

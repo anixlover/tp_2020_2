@@ -102,5 +102,13 @@ namespace CTR
         {
             return objDaoMolduraXUsuario.ExistenciaMXU2(objDtoMolduraXUsuario);
         }
+        public int CantidadMoldurasxSolicitud(DtoMolduraXUsuario objDtoMolduraXUsuario)
+        {
+            return objDaoMolduraXUsuario.CantMolduras(objDtoMolduraXUsuario);
+        }
+        public int CantidadMoldurasDespachadasxSolicitud(DtoMolduraXUsuario objDtoMolduraXUsuario)
+        {
+            return objDaoMolduraXUsuario.CantMoldurasDespachadas(objDtoMolduraXUsuario);
+        }
     }
 }

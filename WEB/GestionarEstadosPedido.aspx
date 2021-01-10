@@ -113,14 +113,19 @@
                                         <ItemTemplate>
                                             <asp:Button runat="server" Text="Asignar Moldes" ItemStyle-HorizontalAlign="Center" data-toggle="modal" data-target="#modalCantidadMoldes"
                                                 Visible='<%# ExistenMoldes(int.Parse(Eval("PK_IM_Cod").ToString()),int.Parse(Eval("PK_IMU_Cod").ToString())) %>' CommandName="Asignar" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-warning" />
-                                            <asp:Button ID="btnDevolver" runat="server" Text="volver a asignar" ItemStyle-HorizontalAlign="Center" Visible='<%#HayMoldesEnUso(int.Parse(Eval("PK_IMU_Cod").ToString())) %>' CommandArgument='<%# Container.DataItemIndex %>' CommandName="Devolver" CssClass="btn btn-primary" />
+                                            <asp:Button ID="btnDevolver" runat="server" Text="Devolver Moldes" ItemStyle-HorizontalAlign="Center" Visible='<%#HayMoldesEnUso(int.Parse(Eval("PK_IMU_Cod").ToString())) %>' CommandArgument='<%# Container.DataItemIndex %>' CommandName="Devolver" CssClass="btn btn-primary" />
                                             <asp:Button ID="btnIncidentes" runat="server" Text="Qué ocurrió?" Visible='<%# Incidente(Eval("FK_IMXUE_Cod").ToString()) %>' data-toggle="modal" data-target="#modalIncidendia" CommandArgument='<%# Container.DataItemIndex %>' CommandName="Incidencia" CssClass="btn btn-primary"/>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
                             <div class="row-lg">
+                                <div class="col">
                                 <asp:Button ID="btnComenzar" runat="server" Text="Comenzar" CssClass="btn-lg btn-success" OnClick="btnComenzar_Click" />
+                                    </div>
+                                <div class="col">
+                                    <asp:Button ID="btnGuardar" runat="server" CssClass="btn-lg btn-success" Text="Guardar" OnClick="btnGuardar_Click"/>
+                                </div>
                             </div>
                         </ContentTemplate>
                     </asp:UpdatePanel>
@@ -200,7 +205,7 @@
             function cerrarModal() { $('#modalCantidadMoldes').modal('hide'); $('.modal-backdrop').hide(); }
         </script>
         <script type="text/javascript">
-            function cerrarModal2() { $('#modalIncidendia').modal('hide'); $('.modal-backdrop').hide(); }
+            function cerrarModal2() { $('#modalIncidendia').modal('hide'); $('#modalDetalle').modal('hide'); $('.modal-backdrop').hide(); }
         </script>
     </form>
 </asp:Content>

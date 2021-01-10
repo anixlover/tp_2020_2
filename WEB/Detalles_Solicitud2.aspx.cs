@@ -76,6 +76,9 @@ namespace WEB
             dtoSolicitud.DTS_FechaRecojo = Calendar1.SelectedDate;
             ctrSolicitud.RegistrarSolicitud_PExC(dtoSolicitud);
             ctrSolicitud.Actualizar_Estado_Solicitud2(dtoSolicitud);
+            Response.Redirect("Administrar_Pedido.aspx");
+            
+
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Actualizado Correctamente!',text: 'Datos ENVIADOS!!'}).then(function(){window.location.href='Administrar_Pedido.aspx'})", true);
         }
     }
