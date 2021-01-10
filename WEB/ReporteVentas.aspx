@@ -51,9 +51,11 @@
                                     <asp:BoundField DataField="IP_TipoCerficado" HeaderText="Certificado" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:Button ID="btnExport" runat="server" Text="Export To PDF" OnClick = "ExportToPDF" /> />
-                            <br />                           
-                        </div>
+                            
+                            <br />      
+                            <br />
+                                  
+                        </div><asp:Button ID="btnExport" runat="server" Text="Export To PDF" OnClick = "ExportToPDF" />    
                         <div class="row"  style="color: #008000; font-weight: bold; font-style: inherit;">
                              Total: S/. <asp:Label ID="lbltotal" runat="server" Text="0.00"></asp:Label>
                         </div>
