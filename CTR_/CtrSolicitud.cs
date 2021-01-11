@@ -176,5 +176,9 @@ namespace CTR
         {
            return objDaoSolicitud.SelectIncidentesxSolicitud(objDtoSolicitud);
         }
+        public void Terminar(DtoSolicitud objDtoSolicitud)
+        {
+            objDaoSolicitud.UpdateSolicitudFecha_Terminado(objDtoSolicitud);
+        }
     }
 }
