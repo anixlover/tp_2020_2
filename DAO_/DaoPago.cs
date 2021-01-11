@@ -31,6 +31,13 @@ namespace DAO
             cmd.ExecuteNonQuery();
             conexion.Close();
         }
+        public void UpdatePago_restante(DtoPago objpago)
+        {
+            SqlCommand cmd = new SqlCommand("Update T_PAGO set DP_ImportePagado="+(objpago.DP_ImportePagado+objpago.DP_ImporteRestante)+", DP_ImporteRestante=0.00, IP_TipoPago=2 where FK_IS_Cod="+objpago.FK_IS_Cod, conexion);
+            conexion.Open();
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+        }
         public bool SelectPagoxCod_Solicitud(DtoPago objDtoPago)
         {
             string select = "SELECT * FROM T_PAGO WHERE FK_IS_Cod ="+ objDtoPago.FK_IS_Cod;

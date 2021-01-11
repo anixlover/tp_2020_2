@@ -57,6 +57,7 @@
                                                     <asp:Button runat="server" Text="Evaluar" ItemStyle-HorizontalAlign="Center" Visible='<%# ValidacionEstado(Eval("VSE_Nombre").ToString()) %>' CommandName="Evaluar" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-warning" />
                                                     <asp:Button runat="server" Text="Ver" ItemStyle-HorizontalAlign="Center" CommandName="Ver detalles" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-success" />
                                                     <asp:Button runat="server" Text="Asignar Fecha" ItemStyle-HorizontalAlign="Center" CommandName="asignar fecha" Visible='<%# ValidacionEstado2(Eval("VSE_Nombre").ToString()) %>' CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-primary" />
+                                                    <asp:Button runat="server" Text="Recibir Restante" ItemStyle-HorizontalAlign="Center" CommandName="Recibir Restante" Visible='<%# validacionEstado4(Eval("PK_IS_Cod").ToString()) %>' CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-primary" data-toggle="modal" data-target="#modalRestante"/>
                                                     <asp:Button runat="server" Text="Despachar" ItemStyle-HorizontalAlign="Center" CommandName="despachar" Visible='<%# validacionEstado3(Eval("PK_IS_Cod").ToString()) %>' CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-primary"/>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
@@ -70,6 +71,37 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade bd-example-modal-lg" id="modalRestante" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-sm" role="dialog">
+                <div class="modal-content">
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
+                            <div class="modal-header">
+                                <p class="modal-title" id="P1" runat="server" style="color: #000000; font-weight: bold">
+                                    Solicitud N°
+                                    <asp:Label ID="lblidsol" runat="server" Text="0"></asp:Label>
+                                </p>
+                            </div>
+                            <div class="row-sm">
+                                <div class="col-sm">
+                                    <p>Inserte Restante: <asp:Label ID="lblRestante" runat="server" Text="Label"></asp:Label> </p>
+                                    <asp:TextBox ID="txtRestante" runat="server" placeholder="0.00" CssClass="form-control" TextMode="Number" step="0.01" min="0" Width="50%"></asp:TextBox>
+                                    <br />
+                                    <asp:Button ID="btnAgregar" runat="server" Text="Asignar" CssClass="btn btn-success" OnClick="btnAgregar_Click" />
+                                    <br />
+                                    <asp:Label ID="lblVuelto" runat="server" Text="0.00"></asp:Label>
+                                </div>
+                                <br />
+                                <br />
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+            </div>
+        </div>
+         <script type="text/javascript">
+             function cerrarModal() { $('#modalRestante').modal('hide'); $('.modal-backdrop').hide(); }
+         </script>
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
 

@@ -27,5 +27,9 @@ namespace CTR
         {
             return objDaoPago.SelectPagoRUC(p);
         }
+        public void AgregarRestante(DtoPago objpago)
+        {
+            objDaoPago.UpdatePago_restante(objpago);
+        }
     }
 }
