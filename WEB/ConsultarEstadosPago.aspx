@@ -33,6 +33,7 @@
                                 <Columns>
                                     <asp:BoundField DataField="PK_IS_Cod" ItemStyle-HorizontalAlign="Center" HeaderText="Codigo de solicitud" />
                                     <asp:BoundField DataField="DTS_FechaEmicion" ItemStyle-HorizontalAlign="Center" HeaderText="Fecha de emision del pago" />
+                                    <asp:BoundField DataField="DTS_FechaRecojo" ItemStyle-HorizontalAlign="Center" HeaderText="Fecha de Recojo" />
                                     <asp:BoundField DataField="VS_TipoSolicitud" ItemStyle-HorizontalAlign="Center" HeaderText="Tipo" />
                                     <asp:BoundField DataField="DS_ImporteTotal" ItemStyle-HorizontalAlign="Center" HeaderText="Importe" />
                                     <asp:BoundField DataField="VSE_Nombre" ItemStyle-HorizontalAlign="Center" HeaderText="Estado" />
@@ -52,6 +53,12 @@
                                             <asp:Button runat="server" Text="Ver incidencias" ItemStyle-HorizontalAlign="Center"
                                                 Visible='<%# ValidacionEstado6(Eval("VSE_Nombre").ToString()) %>'
                                                 CommandName="Ver incidencias" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-warning" data-toggle="modal" data-target="#modalIncidencias" />
+                                             <asp:Button runat="server" Text="Aceptar" ItemStyle-HorizontalAlign="Center"
+                                                Visible='<%# ValidacionEstado3(Eval("VSE_Nombre").ToString(),Eval("VS_TipoSolicitud").ToString()) %>'
+                                                CommandName="Aceptar" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-success"/>
+                                            <asp:Button runat="server" Text="Rechazar" ItemStyle-HorizontalAlign="Center"
+                                                Visible='<%# ValidacionEstado3(Eval("VSE_Nombre").ToString(),Eval("VS_TipoSolicitud").ToString()) %>'
+                                                CommandName="Rechazar" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-danger"/>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>

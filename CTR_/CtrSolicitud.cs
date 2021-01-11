@@ -180,5 +180,13 @@ namespace CTR
         {
             objDaoSolicitud.UpdateSolicitudFecha_Terminado(objDtoSolicitud);
         }
+        public void Despachar(DtoSolicitud objDtoSolicitud)
+        {
+            objDaoSolicitud.UpdateEstadoSolicitud_Despachado(objDtoSolicitud);
+        }
+        public void AceptarImportePPDP(DtoSolicitud objDtoSolicitud)
+        {
+            objDaoSolicitud.UpdateEstadoSolicitud_Pendiente_pago(objDtoSolicitud);
+        }
     }
 }

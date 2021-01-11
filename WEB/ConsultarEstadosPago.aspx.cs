@@ -40,6 +40,10 @@ namespace WEB
         {
             return estado == "Observada";
         }
+        protected Boolean ValidacionEstado3(string estado, string tipo)
+        {
+            return estado == "Pendiente de revisión de fecha" & tipo== "Personalizado por diseño propio";
+        }
         protected Boolean ValidacionEstado4(string estado)
         {
             return estado == "Personalizado por diseño propio";
@@ -120,6 +124,26 @@ namespace WEB
                     gvIncidencias.DataSource = objCtrSolicitud.MostrarIncidentes(objDtoSolicitud);
                     gvIncidencias.DataBind();
                 }
+            }
+            if(e.CommandName=="Aceptar")
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = gvPedidos.Rows[index];
+                string id = row.Cells[0].Text;
+                objDtoSolicitud.PK_IS_Cod = int.Parse(id);
+                objCtrSolicitud.AceptarImportePPDP(objDtoSolicitud);
+                CargarSolicitudes();
+                UpdatePanel.Update();
+            }
+            if (e.CommandName == "Rechazar")
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = gvPedidos.Rows[index];
+                string id = row.Cells[0].Text;
+                objDtoSolicitud.PK_IS_Cod = int.Parse(id);
+                objCtrSolicitud.Rechazar(objDtoSolicitud);
+                CargarSolicitudes();
+                UpdatePanel.Update();
             }
         }
         public void CargarMolduras(string id)
