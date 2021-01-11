@@ -19,6 +19,10 @@ namespace CTR
         {
             objDaoPago.InsertarPago(objDtoPago);
         }
+        public void RegistrarPagoB(DtoPago objDtoPago)
+        {
+            objDaoPago.InsertarPagoB(objDtoPago);
+        }
         public bool ExistenciaPago(DtoPago objDtoPago)
         {
             return objDaoPago.SelectPagoxCod_Solicitud(objDtoPago);

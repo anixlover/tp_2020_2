@@ -1,16 +1,19 @@
 ﻿$(document).ready(function () {
-
     $("#ddl_TipoComprobante").change(function () {
         var ddlSelectedTipoComprobante = $('#ddl_TipoComprobante').val();
         console.log($('#ddl_TipoComprobante').val());
         if (ddlSelectedTipoComprobante == "1") {
             $("#divRUCHide").fadeOut();
             $("#iddecuento").fadeOut();
+            $("#divbotonagnadir").fadeOut();
+            $("#ddlListRUC1").fadeOut();
 
         } else if (ddlSelectedTipoComprobante == "2") {
 
             $("#divRUCHide").fadeIn();
             $("#iddecuento").fadeIn();
+            $("#divbotonagnadir").fadeIn();
+            $("#ddlListRUC1").fadeIn();
         }
     });
     $('input[type=radio][name=TipoPedido]').change(function () {
@@ -52,11 +55,13 @@
             $("#DivCodigoSubtotal").fadeIn();
             $("#btnadd").fadeIn();
             $("#txtimportetotal").fadeIn();
+           
 
             $("#ddlPedidoMuestra").fadeOut();
             $("#IdCalendar").fadeOut();
             $("#idMostrarbtnEnviar").fadeOut();
             $("#idTipoMoldura").fadeOut();
+
         }
     });
     $("#cbx_Personalizado").change(function () {
@@ -65,9 +70,11 @@
         if (rdb2 == "2") {
             $("#ddlPedidoMuestra").fadeIn();
             $("#divSubAddGv").fadeIn();
+           
+
 
             $("#CardTipoComprobante").fadeOut();
-            $("#CardPayment").fadeOut();
+           
             $("#btnadd").fadeOut();
             $("#txtimportetotal").fadeOut();
         }
@@ -97,6 +104,7 @@
             $("#IdCalendar").fadeIn();
             $("#idMostrarbtnEnviar").fadeIn();
             $("#DivCodigoSubtotal").fadeIn();
+            $("#CardPayment").fadeIn();
 
             $("#divSubAddGv").fadeOut();
             $("#idTipoMoldura").fadeOut();
@@ -111,6 +119,7 @@
             $("#idMostrarbtnEnviar").fadeOut();
             $("#DivCodigoSubtotal").fadeOut();
             $("#btnadd").fadeOut();
+             $("#CardPayment").fadeOut();
         }
     });
     $('input[type=radio][name=TipoC]').change(function () {

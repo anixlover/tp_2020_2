@@ -11,39 +11,7 @@
                 <h1 id="txtPagina" runat="server">Realizar Venta</h1>
             </div>
 
-            <%--tipo comprobante card--%>
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card" id="CardTipoComprobante" runat="server" hidden clientidmode="Static">
-                        <div class="header">
-                            <h2>Tipo comprobante    
-                            </h2>
-                        </div>
-                        <div class="body">
-                            <asp:Panel runat="server" ID="PanelO">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="col-sm-12">
-                                            <div class="form-group form-float">
-                                                <asp:UpdatePanel runat="server" UpdateMode="Conditional" ID="updPanelddl" ClientIDMode="Static">
-                                                    <ContentTemplate>
-                                                        <asp:DropDownList runat="server" ID="ddl_TipoComprobante" ClientIDMode="Static"
-                                                            CssClass=" bootstrap-select form-control" OnSelectedIndexChanged="ddl_TipoComprobante_SelectedIndexChanged">
-                                                            <asp:ListItem Text="Seleccionar" Selected="True" />
-                                                            <asp:ListItem Value="1" Text="Boleta" />
-                                                            <%--<asp:ListItem Value="2" Text="Factura" />--%>
-                                                        </asp:DropDownList>
-                                                    </ContentTemplate>
-                                                </asp:UpdatePanel>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </asp:Panel>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
 
             <%--datos cliente--%>
             <div class="row clearfix">
@@ -55,11 +23,11 @@
                         <%--rdb dni, carnet extranjeria--%>
                         <div class="body">
 
-                            <asp:Label ID="Label10" runat="server" class="form-label"><b>Tipo de documento :</b></asp:Label>
+                            <asp:Label ID="Label10" runat="server" class="form-label"><b></b></asp:Label>
                             <input type="hidden" runat="server" id="valorObtenidoRBTN1" clientidmode="Static" />
                             <asp:Panel runat="server" ID="Panel1">
                                 <div class="row">
-                                    <div class="row">
+                                    <%--<div class="row">
                                         <div class="col-md-6">
                                             <div class="col-sm-8">
                                                 <div class="form-group form-float">
@@ -70,8 +38,8 @@
                                                                 <label for="RDB_DNI">Dni</label>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <%--<div class="col-lg-6">
+                                                    </div>--%>
+                                    <%--<div class="col-lg-6">
                                                         <div class="demo-checkbox">
                                                             <div class="demo-radio-button">
                                                                 <input type="radio" id="RDB_CEXTRANJERIA" name="TipoC" class="radio-col-red" value="2" />
@@ -79,10 +47,10 @@
                                                             </div>
                                                         </div>
                                                     </div>--%>
-                                                </div>
+                                    <%--         </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>--%>
 
 
                                     <%--dni, ruc--%>
@@ -90,26 +58,16 @@
                                         <div class="col-sm-12">
                                             <div class="col-sm-10">
                                                 <div class="form-group form-float">
-
-                                                    <div class="col-12" id="lbldni" runat="server" hidden clientidmode="Static">
+                                                    <div class="col-12" id="lbldni" runat="server" clientidmode="Static">
                                                         <asp:HiddenField runat="server" ID="HiddenField5" ClientIDMode="Static" />
-
                                                         <asp:Label ID="lbldniu" runat="server" class="form-label"><b>Ingrese el DNI del cliente</b></asp:Label>
                                                     </div>
-
-                                                    <div class="col-12" id="lblcde" runat="server" hidden clientidmode="Static">
-                                                        <asp:HiddenField runat="server" ID="HiddenField4" ClientIDMode="Static" />
-
-                                                        <asp:Label ID="lblcdex" runat="server" class="form-label"><b>Ingrese el Carnet de Extranjeria</b></asp:Label>
-                                                    </div>
-
                                                     <div class="form-line">
                                                         <asp:TextBox placeholder="Ej: 74588841" ID="txtIdentificadorUsuario" class="form-control" runat="server" type="text" ClientIDMode="Static"></asp:TextBox>
                                                     </div>
                                                 </div>
                                             </div>
                                             <br />
-
                                             <%--button search use r--%>
                                             <div class="col-sm-2 right">
                                                 <asp:UpdatePanel runat="server" UpdateMode="Conditional">
@@ -121,12 +79,27 @@
                                                         </asp:LinkButton>
                                                     </ContentTemplate>
                                                 </asp:UpdatePanel>
-
                                             </div>
                                         </div>
 
+                                        <%--ddl RUC existente--%>
+                                        <div class="col-sm-10" id="iddecuento" runat="server" hidden clientidmode="Static">
+                                            <asp:HiddenField runat="server" ID="HiddenField4" ClientIDMode="Static" />
+                                            <div class="col-sm-12">
+                                                <asp:UpdatePanel ID="UpdatePanel" runat="server"  UpdateMode="Conditional">
+                                                    <ContentTemplate>
+                                                        <asp:DropDownList ID="ddlListRUC" runat="server" AutoPostBack="True"
+                                                            OnSelectedIndexChanged="ddlListRUC_SelectedIndexChanged" CssClass="form-control" Width="100%">
+                                                        </asp:DropDownList>
+                                                    </ContentTemplate>
+                                                </asp:UpdatePanel>
+                                            </div>
+                                        </div>
+
+
+
                                         <%--ruc input--%>
-                                        <div class="col-sm-12" id="divRUCHide" runat="server" hidden clientidmode="Static">
+                                        <div class="col-sm-10" id="divRUCHide" runat="server" hidden clientidmode="Static">
                                             <asp:HiddenField runat="server" ID="HiddenField1" ClientIDMode="Static" />
                                             <div class="col-sm-12">
                                                 <div class="form-group form-float">
@@ -136,9 +109,22 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <br />
+                                        </div>
+
+                                        <%--btn agnadir ruc cliente--%>
+                                        <div class="col-sm-2 right">
+                                            <asp:UpdatePanel runat="server" UpdateMode="Conditional">
+                                                <ContentTemplate>
+                                                    <asp:LinkButton runat="server" ID="btnagnadir"
+                                                        CssClass="btn btn-danger btn-circle-lg waves-effect waves-circle waves-float m-l-15"
+                                                        OnClick="btnagnadir_Click">
+                                                    <i class="material-icons">add</i>
+                                                    </asp:LinkButton>
+                                                </ContentTemplate>
+                                            </asp:UpdatePanel>
                                         </div>
                                     </div>
+
 
                                     <%--nombre,direccion--%>
                                     <div class="col-md-7">
@@ -188,6 +174,50 @@
                 </div>
             </div>
 
+
+
+
+
+
+            <%--tipo comprobante card--%>
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card" id="CardTipoComprobante" runat="server"  clientidmode="Static">
+                        <div class="header">
+                            <h2>Tipo comprobante    
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <asp:Panel runat="server" ID="PanelO">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-float">
+                                                <asp:UpdatePanel runat="server" UpdateMode="Conditional" ID="updPanelddl" ClientIDMode="Static">
+                                                    <ContentTemplate>
+                                                        <asp:DropDownList runat="server" ID="ddl_TipoComprobante" ClientIDMode="Static"
+                                                            CssClass=" bootstrap-select form-control" OnSelectedIndexChanged="ddl_TipoComprobante_SelectedIndexChanged">
+                                                            <asp:ListItem Text="Seleccionar" Selected="True" />
+                                                            <asp:ListItem Value="1" Text="Boleta" />
+                                                            <asp:ListItem Value="2" Text="Factura" />
+                                                        </asp:DropDownList>
+                                                    </ContentTemplate>
+                                                </asp:UpdatePanel>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </asp:Panel>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
             <%--detalles card--%>
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -231,7 +261,7 @@
                                                                 <asp:UpdatePanel runat="server" UpdateMode="Conditional" ID="ddlPedidoMuestra" ClientIDMode="Static">
                                                                     <ContentTemplate>
                                                                         <asp:Label ID="Label6" runat="server" class="form-label"><b>Por :</b></asp:Label>
-                                                                        <asp:DropDownList runat="server" ID="ddlPedidoPor"   ClientIDMode="Static"
+                                                                        <asp:DropDownList runat="server" ID="ddlPedidoPor" ClientIDMode="Static"
                                                                             CssClass=" bootstrap-select form-control" OnSelectedIndexChanged="ddl_TipoComprobante_SelectedIndexChanged">
                                                                             <asp:ListItem Text="Seleccionar" Selected="True" />
                                                                             <asp:ListItem Value="1" Text="Catalogo" />
@@ -255,7 +285,7 @@
                                         <div class="col-md-6">
 
                                             <div class="col-sm-12">
-                                            <asp:Label ID="Label11" runat="server" class="form-label"><b>Tipo moldura :</b></asp:Label>
+                                                <asp:Label ID="Label11" runat="server" class="form-label"><b>Tipo moldura :</b></asp:Label>
                                                 <div class="form-group form-float">
                                                     <asp:DropDownList runat="server" ID="ddlTipoMoldura" CssClass=" bootstrap-select form-control"></asp:DropDownList>
                                                 </div>
@@ -482,7 +512,7 @@
                                                         <asp:Label ID="Label4" runat="server" class="form-label"><b>Fecha de entrega:</b></asp:Label>
                                                         <asp:HiddenField runat="server" ID="HiddenField3" ClientIDMode="Static" />
                                                         <div class="body table-responsive ">
-                                                            <asp:Calendar ID="Calendar1" runat="server" TodayDayStyle-BackColor ="Wheat"></asp:Calendar>
+                                                            <asp:Calendar ID="Calendar1" runat="server" TodayDayStyle-BackColor="Wheat"></asp:Calendar>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -521,7 +551,7 @@
                                             <div class="col-sm-12 ">
                                                 <div class="form-group form-float">
                                                     <div class="form-group form-float">
-                                                        <div class="col-sm-12" >
+                                                        <div class="col-sm-12">
                                                             <asp:Label ID="Label1" runat="server" class="form-label"><b>Importe total S/</b></asp:Label>
                                                             <div class="form-line">
                                                                 <asp:UpdatePanel ID="panelImpoTot" runat="server" UpdateMode="Always">
@@ -566,7 +596,7 @@
             </div>
 
             <%--pay card--%>
-            <div class="card" id="CardPayment" runat="server" hidden clientidmode="Static">
+            <div class="card" id="CardPayment" runat="server"  clientidmode="Static">
 
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -588,13 +618,13 @@
                                         </div>
 
                                         <%--input descuento--%>
-                                        <div id="iddecuento" runat="server" class="form-group form-float" clientidmode="Static">
+                                        <%-- <div id="iddecuento" runat="server" class="form-group form-float" clientidmode="Static">
                                             <asp:Label ID="lbldescuento" runat="server" class="form-label"><b>Dsct</b></asp:Label>
 
                                             <div class="form-line ">
                                                 <asp:TextBox ID="txtdescuento" class="form-control" runat="server"></asp:TextBox>
                                             </div>
-                                        </div>
+                                        </div>--%>
 
                                         <asp:UpdatePanel runat="server" UpdateMode="Always">
                                             <ContentTemplate>
@@ -760,7 +790,34 @@
                 type: "error"
             });
         }
-
+        function showSuccessMessage15() {
+            swal({
+                title: "CORRECTO!",
+                text: "RUC AGREGADO CORRECTAMENTE!!",
+                type: "success"
+            });
+        }
+        function showSuccessMessage16() {
+            swal({
+                title: "ERROR!",
+                text: "Asigne un RUC!!",
+                type: "error"
+            });
+        }
+        function showSuccessMessage17() {
+            swal({
+                title: "ERROR!",
+                text: "La cantidad debe ser mayor a 30 unidades!!",
+                type: "error"
+            });
+        }
+        function showSuccessMessage18() {
+            swal({
+                title: "ERROR!",
+                text: "Ingresar monto a pagar!!",
+                type: "error"
+            });
+        }
     </script>
 
     <script src="js/Aplicacion/UploadFile.js"></script>

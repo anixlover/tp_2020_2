@@ -31,6 +31,22 @@ namespace DAO
             cmd.ExecuteNonQuery();
             conexion.Close();
         }
+        public void InsertarPagoB(DtoPago objpago)
+        {
+            SqlCommand cmd = new SqlCommand("SP_InsertarPago", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@tipo", objpago.IP_TipoPago);
+            cmd.Parameters.AddWithValue("@pagado", objpago.DP_ImportePagado);
+            cmd.Parameters.AddWithValue("@restante", objpago.DP_ImporteRestante);
+            cmd.Parameters.AddWithValue("@tipocertificado", objpago.IP_TipoCertificado);
+            cmd.Parameters.AddWithValue("@ruc", objpago.VP_RUC);
+            cmd.Parameters.AddWithValue("@solicitud", objpago.FK_IS_Cod);
+
+            conexion.Open();
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+        }
+
         public bool SelectPagoxCod_Solicitud(DtoPago objDtoPago)
         {
             string select = "SELECT * FROM T_PAGO WHERE FK_IS_Cod ="+ objDtoPago.FK_IS_Cod;
