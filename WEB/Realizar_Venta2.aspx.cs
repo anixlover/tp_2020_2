@@ -20,6 +20,8 @@ namespace WEB
 {
     public partial class Realizar_Venta2 : System.Web.UI.Page
     {
+        CtrPago objctrpago = new CtrPago();
+        CtrDatoFactura objCtrDatoFac = new CtrDatoFactura();
         CtrSolicitud objCtrSolicitud = new CtrSolicitud();
         CtrMolduraXUsuario objCtrMolduraxUsuario = new CtrMolduraXUsuario();
         CtrMoldura objCtrMoldura = new CtrMoldura();
@@ -36,6 +38,9 @@ namespace WEB
         DtoSolicitud objDtoSolicitud = new DtoSolicitud();
         DtoMoldura objDtoMoldura = new DtoMoldura();
         DtoUsuario objuser = new DtoUsuario();
+        DtoDatoFactura objdtofac = new DtoDatoFactura();
+        DtoPago objdtopago = new DtoPago();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -58,7 +63,7 @@ namespace WEB
                 }
                 else
                 {
-            
+
                 }
             }
             catch (Exception ex)
@@ -91,17 +96,32 @@ namespace WEB
             try
             {
                 objuser.PK_VU_Dni = txtIdentificadorUsuario.Text;
+                objdtofac.FK_VU_Dni = txtIdentificadorUsuario.Text;
                 objctrusr.TraeData(objuser);
                 txtNombres.Text = objuser.VU_Nombre;
                 txtapellido.Text = objuser.VU_Apellidos;
                 txtcorreo.Text = objuser.VU_Correo;
                 txttelefono.Text = Convert.ToString(objuser.IU_Celular);
+                //trae rucs
+                CargarRucs();
                 updPanel1.Update();
+                UpdatePanel.Update();
             }
             catch (Exception ex)
             {
                 _log.CustomWriteOnLog("RealizarVenta", "Error  search------: " + ex.Message);
             }
+        }
+        public void CargarRucs()
+        {
+            DataSet ds = new DataSet();
+            ds = objCtrDatoFac.ListarRucs(objdtofac);
+            ddlTipoMoldura.DataSource = ds;
+            //ddlTipoMoldura.DataSource = objCtrDatoFac.ListarRucs(objdtofac);
+            ddlListRUC.DataValueField = "VDF_Ruc";
+            ddlListRUC.DataTextField = "VDF_Ruc";
+            ddlListRUC.DataBind();
+            ddlListRUC.Items.Insert(0, new ListItem("Todos", "0"));
 
         }
         protected void btnCalcularPersonalizado_Click(object sender, EventArgs e)
@@ -237,7 +257,10 @@ namespace WEB
                 double DM_Precio = double.Parse(colsNoVisible[6].ToString());
                 int cantidad = int.Parse(txtcantidad.Text);
                 double precioAprox = 0;
+                double Precio2 = double.Parse(colsNoVisible[6].ToString());
 
+              
+                //colsNoVisible2 = txtimporttot.Text;
                 if (cantidad <= IM_Stock)
                 {
                     precioAprox = cantidad * DM_Precio;
@@ -257,7 +280,7 @@ namespace WEB
                     gvdetalle2.DataBind();
 
                     txtimporttot.Text = precioAprox.ToString();
-
+                    Precio2 = Convert.ToDouble(txtimporttot.Text);
                     ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "showNotification", "showNotification('bg-green', 'Subtotal calculado', 'bottom', 'center', null, null);", true);
                 }
 
@@ -338,6 +361,11 @@ namespace WEB
                     _log.CustomWriteOnLog("valorObtenidoRBTNValue", "valorObtenidoRBTN.Value   : " + valorObtenidoRBTN.Value);
                     _log.CustomWriteOnLog("valorObtenidoRBTNValue", "valorObtenidoRBTN.Value   : " + ddlPedidoPor.SelectedValue);
 
+                    if (Convert.ToInt32(txtcantidad.Text) <= 30)
+                    {
+                        Utils.AddScriptClientUpdatePanel(updBotonEnviar, "showSuccessMessage17()");
+                        return;
+                    }
 
                     objDtoSolicitud.VS_TipoSolicitud = "Personalizado por Catalogo";
                     objDtoSolicitud.IS_Cantidad = int.Parse(txtcantidad.Text);
@@ -393,7 +421,11 @@ namespace WEB
                 Utils.AddScriptClientUpdatePanel(updBotonEnviar, "showSuccessMessage14()");
                 return;
             }
-
+            if (txtmontopagado.Text == "")
+            {
+                Utils.AddScriptClientUpdatePanel(updBotonEnviar, "showSuccessMessage18()");
+                return;
+            }
             try
             {
                 for (int y = 0; y < gv2.Rows.Count; y++)
@@ -439,6 +471,21 @@ namespace WEB
                     pedido = objDtoMolduraxUsuario.PK_IMU_Cod;
                     objCtrMolduraxUsuario.actualizarMXUSol(objDtoMolduraxUsuario);
 
+
+                    //pagado
+                    double imporpagado = double.Parse(txtmontopagado.Text);
+                    double importotal = Convert.ToDouble(txtimporteigv.Text);
+                    objdtopago.IP_TipoPago = 2;
+                    objdtopago.DP_ImportePagado = Convert.ToDouble(txtmontopagado.Text);
+                    objdtopago.DP_ImporteRestante = importotal - imporpagado;
+                    objdtopago.IP_TipoCertificado = 1;
+                    objdtopago.VP_RUC = ddlListRUC.Text;
+                    objdtopago.FK_IS_Cod = ValorDevuelto; /*solicitud*/
+                    objctrpago.RegistrarPagoB(objdtopago);
+
+
+
+
                     //Enviar correo con boleta
 
                     //CTRusuario objctrusr
@@ -446,7 +493,7 @@ namespace WEB
                     //objuser.PK_VU_Dni = txtIdentificadorUsuario.Text;
                     //objDtoMoldura.PK_IM_Cod = Convert.ToInt32(txtcodigop.Text);
                     //objctrusr.EnviarBoletaxCorreo(objDtoMoldura,dtoTipoMoldura);
-                   
+
 
 
                     string Select = "SELECT VU_Correo, VU_Contrasenia, VU_Nombre from T_Usuario where PK_VU_Dni ='"
@@ -754,6 +801,25 @@ namespace WEB
             {
                 _log.CustomWriteOnLog("RealizarVenta", "Error btnagregar_Click  : " + ex.Message);
             }
+        }
+
+        protected void btnagnadir_Click(object sender, EventArgs e)
+        {
+            if (TextBox1.Text == "")
+            {
+                Utils.AddScriptClientUpdatePanel(updBotonEnviar, "showSuccessMessage16()");
+                return;
+            }
+            objdtofac.FK_VU_Dni = txtIdentificadorUsuario.Text;
+            objdtofac.VDF_Ruc = TextBox1.Text;
+            objCtrDatoFac.RegistrarDatoFatcura(objdtofac);
+            Utils.AddScriptClientUpdatePanel(updBotonEnviar, "showSuccessMessage15()");
+
+        }
+
+        protected void ddlListRUC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

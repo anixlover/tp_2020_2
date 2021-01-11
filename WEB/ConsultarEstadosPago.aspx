@@ -16,7 +16,7 @@
 </asp:Content>
 <%--<asp:Content ID="Content2" ContentPlaceHolderID="cph_Js" runat="server">
 </asp:Content>--%>
-<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">UpdatePanel
 <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeout="3600"></asp:ScriptManager>
     <div class="row">
         <div class="col-lg-12">

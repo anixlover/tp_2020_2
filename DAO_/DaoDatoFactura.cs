@@ -48,9 +48,12 @@ namespace DAO
         }
         public DataSet SelectRUCxDNI(DtoDatoFactura objDtoDatoFactura)
         {
-            SqlDataAdapter dsRUCS = new SqlDataAdapter("SELECT VDF_Ruc from T_DATO_FACTURA where FK_VU_Dni ='" + objDtoDatoFactura.FK_VU_Dni + "'", conexion);
+            string select = "SELECT VDF_Ruc from T_DATO_FACTURA where FK_VU_Dni ='" + objDtoDatoFactura.FK_VU_Dni + "'";
+            SqlCommand command = new SqlCommand(select, conexion);
+            conexion.Open();
+            SqlDataAdapter daAdapter = new SqlDataAdapter(command);
             DataSet DS = new DataSet();
-            dsRUCS.Fill(DS);
+            daAdapter.Fill(DS);
             return DS;
         }
     }
