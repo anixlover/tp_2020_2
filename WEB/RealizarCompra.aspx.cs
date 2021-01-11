@@ -146,7 +146,7 @@ namespace WEB
             objDtoPago.DP_ImportePagado = double.Parse(txtImporte.Text);
             objDtoVoucher.DV_ImporteDepositado= double.Parse(txtImporte.Text);
             objDtoPago.DP_ImporteRestante = costo - Convert.ToDouble(txtImporte.Text);
-            if (Convert.ToDouble(txtImporte.Text) >= (costo / 2))
+            if (Convert.ToDouble(txtImporte.Text) >= (costo / 2) & Convert.ToDouble(txtImporte.Text)<costo)
             {
                 objDtoPago.IP_TipoPago = 1;
             }
@@ -184,7 +184,7 @@ namespace WEB
                     gvPersonalizado.Visible = true;
                     gvDetalles.Visible = false;
                     objCtrSolicitud.leerSolicitudDiseñoPersonal(objDtoSolicitud);
-                    lblcosto.Text = objDtoSolicitud.DS_PrecioAprox.ToString();
+                    lblcosto.Text = objDtoSolicitud.DS_ImporteTotal.ToString();
                     gvPersonalizado.DataSource = objCtrSolicitud.MostrarPedidoPersonalizado(objDtoSolicitud);
                     gvPersonalizado.DataBind();
                 }

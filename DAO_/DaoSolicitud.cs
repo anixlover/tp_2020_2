@@ -75,6 +75,7 @@ namespace DAO
             {
                 objsol.VS_TipoSolicitud = (string)reader[1];
                 objsol.DS_PrecioAprox = Convert.ToDouble(reader[6].ToString());
+                objsol.DS_ImporteTotal = Convert.ToDouble(reader[8].ToString());
                 //objsol.VBS_Imagen = (byte[])reader[2];
                 //objsol.VS_Comentario = (string)reader[9];
             }
@@ -159,6 +160,24 @@ namespace DAO
         public void UpdateEstadoSolicitud_Observacion(DtoSolicitud objsolicitud)
         {
             string update = "UPDATE T_SOLICITUD SET FK_ISE_Cod = 7, VS_Comentario='"+objsolicitud.VS_Comentario+"' Where PK_IS_Cod=" + objsolicitud.PK_IS_Cod;
+            //string update = "UPDATE T_Solicitud SET FK_ISE_Cod = 6, DTS_FechaEmicion='"+ DateTime.Today.Date +"' Where PK_IS_Cod=" + objsolicitud.PK_IS_Cod;
+            SqlCommand unComando = new SqlCommand(update, conexion);
+            conexion.Open();
+            unComando.ExecuteNonQuery();
+            conexion.Close();
+        }
+        public void UpdateEstadoSolicitud_Despachado(DtoSolicitud objsolicitud)
+        {
+            string update = "UPDATE T_SOLICITUD SET FK_ISE_Cod = 12 Where PK_IS_Cod=" + objsolicitud.PK_IS_Cod;
+            //string update = "UPDATE T_Solicitud SET FK_ISE_Cod = 6, DTS_FechaEmicion='"+ DateTime.Today.Date +"' Where PK_IS_Cod=" + objsolicitud.PK_IS_Cod;
+            SqlCommand unComando = new SqlCommand(update, conexion);
+            conexion.Open();
+            unComando.ExecuteNonQuery();
+            conexion.Close();
+        }
+        public void UpdateEstadoSolicitud_Pendiente_pago(DtoSolicitud objsolicitud)
+        {
+            string update = "UPDATE T_SOLICITUD SET FK_ISE_Cod = 5 Where PK_IS_Cod=" + objsolicitud.PK_IS_Cod;
             //string update = "UPDATE T_Solicitud SET FK_ISE_Cod = 6, DTS_FechaEmicion='"+ DateTime.Today.Date +"' Where PK_IS_Cod=" + objsolicitud.PK_IS_Cod;
             SqlCommand unComando = new SqlCommand(update, conexion);
             conexion.Open();

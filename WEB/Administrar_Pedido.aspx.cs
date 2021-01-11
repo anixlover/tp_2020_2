@@ -15,6 +15,8 @@ namespace WEB
         DtoSolicitud objDtoSolicitud = new DtoSolicitud();
         CtrSolicitud objCtrSolicitud = new CtrSolicitud();
         DtoMolduraXUsuario dtomxu = new DtoMolduraXUsuario();
+        DtoPago objDtoPago = new DtoPago();
+        CtrPago objCtrPago = new CtrPago();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -62,6 +64,14 @@ namespace WEB
                     Session["estado"] = "2";
                     Response.Redirect("Detalles_Solicitud2.aspx");
                     break;
+                case "despachar":
+                    objDtoSolicitud.PK_IS_Cod = sol;
+                    objCtrSolicitud.Despachar(objDtoSolicitud);
+                    gvSolicitudes.DataSource= objCtrSolicitud.ListaSolicitudes();
+                    gvSolicitudes.DataBind();
+                    UpdateSolicitudes.Update();
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Pedido Despachado!',text: 'Datos ENVIADOS!!'})", true);
+                    break;
             }
         }
         protected bool ValidacionEstado(string estado)
@@ -72,7 +82,13 @@ namespace WEB
         {
             return estado == "Por asignar fecha";
         }
-
+        protected bool validacionEstado3(string id)
+        {
+            objDtoPago.FK_IS_Cod = int.Parse(id);
+            objDtoSolicitud.PK_IS_Cod = int.Parse(id);
+            objCtrSolicitud.leerSolicitudTipo(objDtoSolicitud);
+            return objDtoPago.DP_ImporteRestante == 0.00 && objDtoSolicitud.FK_ISE_Cod==11;//esta todo pagado y esta en espado de terminado
+        }
         protected void ddltipo_SelectedIndexChanged(object sender, EventArgs e)
         {
             string tipo = ddltipo.Text;

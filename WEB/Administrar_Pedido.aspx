@@ -35,7 +35,7 @@
                     <input type="hidden" runat="server" id="valorObtenido" clientidmode="Static" />
                     <div class="card">
                         <div class="body">
-                            <asp:UpdatePanel ID="UpdateSolicitudes" runat="server">
+                            <asp:UpdatePanel ID="UpdateSolicitudes" runat="server" UpdateMode="Conditional">
                                 <ContentTemplate>
                                     <asp:DropDownList ID="ddltipo" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddltipo_SelectedIndexChanged"
                                         CssClass="form-control" Width="30%">
@@ -57,6 +57,7 @@
                                                     <asp:Button runat="server" Text="Evaluar" ItemStyle-HorizontalAlign="Center" Visible='<%# ValidacionEstado(Eval("VSE_Nombre").ToString()) %>' CommandName="Evaluar" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-warning" />
                                                     <asp:Button runat="server" Text="Ver" ItemStyle-HorizontalAlign="Center" CommandName="Ver detalles" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-success" />
                                                     <asp:Button runat="server" Text="Asignar Fecha" ItemStyle-HorizontalAlign="Center" CommandName="asignar fecha" Visible='<%# ValidacionEstado2(Eval("VSE_Nombre").ToString()) %>' CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-primary" />
+                                                    <asp:Button runat="server" Text="Despachar" ItemStyle-HorizontalAlign="Center" CommandName="despachar" Visible='<%# validacionEstado3(Eval("PK_IS_Cod").ToString()) %>' CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-primary"/>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                         </Columns>
