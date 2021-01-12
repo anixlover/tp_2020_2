@@ -127,7 +127,7 @@ namespace WEB
                 _log.CustomWriteOnLog("registrar pedido personalizado", "objDtoMXU.FK_IM_Cod : " + objDtoMXU.FK_IM_Cod);
                 objDtoMXU.IMU_Cantidad = int.Parse(txtCantidad.Text);
                 _log.CustomWriteOnLog("registrar pedido personalizado", "objDtoMXU.FK_IM_Cod : " + objDtoMXU.IMU_Cantidad);
-                objDtoMXU.DMU_Precio = double.Parse(txtPrecio.Text);
+                objDtoMXU.DMU_Precio = double.Parse(txtSubTotal.Text);
                 _log.CustomWriteOnLog("registrar pedido personalizado", "objDtoMXU.FK_IM_Cod : " + objDtoMXU.DMU_Precio);
                 objDtoMXU.FK_VU_Dni = Session["DNIUsuario"].ToString();
                 _log.CustomWriteOnLog("registrar pedido personalizado", "objDtoMXU.FK_IM_Cod : " + objDtoMXU.FK_VU_Dni);
