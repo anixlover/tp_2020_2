@@ -111,7 +111,7 @@ namespace WEB
                 _log.CustomWriteOnLog("registrar pedido personalizado", "objDtoSolicitud.VS_TipoSolicitud : " + objDtoSolicitud.VS_TipoSolicitud);
                 objDtoSolicitud.DS_Descuento = double.Parse(txtDescuento.Text);
                 _log.CustomWriteOnLog("registrar pedido personalizado", "objDtoSolicitud.VS_TipoSolicitud : " + objDtoSolicitud.DS_Descuento);
-                objDtoSolicitud.DS_ImporteTotal = Convert.ToDouble(txtImporte.Text);
+                objDtoSolicitud.DS_ImporteTotal = Convert.ToDouble(txtSubTotal.Text);
                 _log.CustomWriteOnLog("registrar pedido personalizado", "objDtoSolicitud.VS_TipoSolicitud : " + objDtoSolicitud.DS_ImporteTotal);
                 objDtoSolicitud.VS_Comentario = txtComentario.Text;
                 _log.CustomWriteOnLog("registrar pedido personalizado", "objDtoSolicitud.VS_TipoSolicitud : " + objDtoSolicitud.VS_Comentario);
