@@ -126,7 +126,7 @@ namespace WEB
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title:'ERROR!',text:'no se aceptan ESPACIOS VACIOS o VALORES INVALIDOS!!'})", true);
                 return;
             }
-            double vuelto = (double.Parse(txtRestante.Text) - objDtoPago.DP_ImporteRestante);
+            double vuelto = double.Parse(txtRestante.Text) - objDtoPago.DP_ImporteRestante;
             objCtrPago.AgregarRestante(objDtoPago);
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Pedido PAGADO!',text: 'VUELTO A ENTREGAR: S/."+ vuelto + "!!'}).then(cerrarModal())", true);
         }

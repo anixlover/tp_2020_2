@@ -86,7 +86,7 @@
                                         <div class="col-sm-10" id="iddecuento" runat="server" hidden clientidmode="Static">
                                             <asp:HiddenField runat="server" ID="HiddenField4" ClientIDMode="Static" />
                                             <div class="col-sm-12">
-                                                <asp:UpdatePanel ID="UpdatePanel" runat="server"  UpdateMode="Conditional">
+                                                <asp:UpdatePanel ID="UpdatePanel" runat="server" UpdateMode="Conditional">
                                                     <ContentTemplate>
                                                         <asp:DropDownList ID="ddlListRUC" runat="server" AutoPostBack="True"
                                                             OnSelectedIndexChanged="ddlListRUC_SelectedIndexChanged" CssClass="form-control" Width="100%">
@@ -182,7 +182,7 @@
             <%--tipo comprobante card--%>
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card" id="CardTipoComprobante" runat="server"  clientidmode="Static">
+                    <div class="card" id="CardTipoComprobante" runat="server" clientidmode="Static">
                         <div class="header">
                             <h2>Tipo comprobante    
                             </h2>
@@ -453,6 +453,11 @@
                                                                     DataKeyNames="PK_IM_Cod,VBM_Imagen,VTM_Nombre,DM_Largo,DM_Ancho,IM_Stock,DM_Precio"
                                                                     OnRowDataBound="gvdetalle_RowDataBound" OnRowCommand="gvdetalle_RowCommand" ShowHeaderWhenEmpty="True" AutoGenerateColumns="False">
                                                                     <Columns>
+                                                                        <asp:TemplateField HeaderText="Imagen">
+                                                                            <ItemTemplate>
+                                                                                <img src='ObtieneImagen.ashx?id=<%# Eval("PK_IM_Cod")%>' height="80px" width="80px" />
+                                                                            </ItemTemplate>
+                                                                        </asp:TemplateField>
                                                                         <asp:BoundField DataField="PK_IM_Cod" HeaderText="Codigo" Visible="false" />
                                                                         <asp:BoundField DataField="VBM_Imagen" HeaderText="Imagen" Visible="false" />
                                                                         <asp:BoundField DataField="VTM_Nombre" HeaderText="Tipo Moldura" />
@@ -471,6 +476,11 @@
                                                                     DataKeyNames="PK_IM_Cod,VBM_Imagen,VTM_Nombre,DM_Largo,DM_Ancho,IM_Stock,DM_Precio,Subtotal"
                                                                     OnRowDataBound="gvdetalle_RowDataBound" OnRowCommand="gvdetalle_RowCommand" ShowHeaderWhenEmpty="True" AutoGenerateColumns="False">
                                                                     <Columns>
+                                                                        <asp:TemplateField HeaderText="Imagen">
+                                                                            <ItemTemplate>
+                                                                                <img src='ObtieneImagen.ashx?id=<%# Eval("PK_IM_Cod")%>' height="80px" width="80px" />
+                                                                            </ItemTemplate>
+                                                                        </asp:TemplateField>
                                                                         <asp:BoundField DataField="PK_IM_Cod" HeaderText="Codigo" Visible="false" />
                                                                         <asp:BoundField DataField="VBM_Imagen" HeaderText="Imagen" Visible="false" />
                                                                         <asp:BoundField DataField="VTM_Nombre" HeaderText="Tipo Moldura" />
@@ -483,8 +493,6 @@
                                                                 </asp:GridView>
                                                             </ContentTemplate>
                                                         </asp:UpdatePanel>
-
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -559,8 +567,6 @@
                                                                         <asp:TextBox ID="txtimporttot" class="form-control" runat="server" type="text" Value="0"
                                                                             pattern="[0-8]+" ReadOnly>
                                                                         </asp:TextBox>
-
-
                                                                     </ContentTemplate>
                                                                 </asp:UpdatePanel>
 
@@ -596,7 +602,7 @@
             </div>
 
             <%--pay card--%>
-            <div class="card" id="CardPayment" runat="server"  clientidmode="Static">
+            <div class="card" id="CardPayment" runat="server" clientidmode="Static">
 
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
