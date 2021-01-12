@@ -290,7 +290,7 @@ namespace DAO
         }
         public void Actualizar_Estado_SolicitudX1(DtoSolicitud objsol)
         {
-            string update = "UPDATE T_SOLICITUD SET FK_ISE_Cod = 8 where PK_IS_Cod =" + objsol.PK_IS_Cod;
+            string update = "UPDATE T_SOLICITUD SET FK_ISE_Cod = 8, DTS_FechaRegistro=GETDATE() where PK_IS_Cod =" + objsol.PK_IS_Cod;
             conexion.Open();
             SqlCommand unComando = new SqlCommand(update, conexion);
             unComando.ExecuteNonQuery();
@@ -479,8 +479,7 @@ namespace DAO
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@tipos", objsolicitud.VS_TipoSolicitud);
             command.Parameters.AddWithValue("@cantidad", objsolicitud.IS_Cantidad);
-            //command.Parameters.AddWithValue("@desc", objsolicitud.IS_Cantidad);
-            command.Parameters.AddWithValue("@impt", objsolicitud.DS_ImporteTotal);
+            command.Parameters.AddWithValue("@desc", objsolicitud.DS_Descuento); command.Parameters.AddWithValue("@impt", objsolicitud.DS_ImporteTotal);
             command.Parameters.AddWithValue("@comen", objsolicitud.VS_Comentario);
             command.Parameters.AddWithValue("@epago", objsolicitud.IS_EstadoPago);
             command.Parameters.Add("@NewId", SqlDbType.Int).Direction = ParameterDirection.Output;
