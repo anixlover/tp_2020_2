@@ -148,6 +148,7 @@ namespace WEB
 
                 //modal message
                 Utils.AddScriptClientUpdatePanel(upBotonRegistrar, "showSuccessMessage3()");
+                Response.Redirect("~/ConsultarEstadosPago.aspx");
                 _log.CustomWriteOnLog("registrar pedido personalizado", "se actualizado la Moldura x Usuario satisfactoriamente");
                 
 
