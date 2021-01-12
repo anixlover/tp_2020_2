@@ -55,10 +55,10 @@ namespace WEB
                     string id = row.Cells[1].Text;
                     lblid.Text = id;
                     objDtoSolicitud.PK_IS_Cod = int.Parse(id);
-                    lblLargo.Text= objCtrSolicitud.MostrarPedidoPersonalizado(objDtoSolicitud).Rows[0][1].ToString();
-                    lblAncho.Text= objCtrSolicitud.MostrarPedidoPersonalizado(objDtoSolicitud).Rows[0][2].ToString();
-                    lblcantidad.Text=objCtrSolicitud.MostrarPedidoPersonalizado(objDtoSolicitud).Rows[0][4].ToString();
-                    lblprecio.Text= objCtrSolicitud.MostrarPedidoPersonalizado(objDtoSolicitud).Rows[0][5].ToString();
+                    lblLargo.Text= objCtrSolicitud.MostrarPedidoPersonalizado(objDtoSolicitud).Rows[0][2].ToString();
+                    lblAncho.Text= objCtrSolicitud.MostrarPedidoPersonalizado(objDtoSolicitud).Rows[0][3].ToString();
+                    lblcantidad.Text=objCtrSolicitud.MostrarPedidoPersonalizado(objDtoSolicitud).Rows[0][5].ToString();
+                    lblprecio.Text= objCtrSolicitud.MostrarPedidoPersonalizado(objDtoSolicitud).Rows[0][6].ToString();
                     objDtoSolicitud.VBS_Imagen =(byte[])objCtrSolicitud.RetornarImagenDiseñoPersonalizado(objDtoSolicitud).Rows[0][0];
                     lblid.Text = id;
                     Img1.ImageUrl = "data:image/png;base64," + Convert.ToBase64String(objDtoSolicitud.VBS_Imagen);

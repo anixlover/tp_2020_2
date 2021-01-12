@@ -329,7 +329,7 @@
                     text: "Pulsa el botón 'ok' y se te redirigirá a la lista de pedidos",
                     type: "success"
                 }, function () {
-                        window.location = "~/ConsultarEstadosPago.aspx";
+                    window.location.href = "ConsultarEstadoPago.aspx";
                 });
             }, 1000);
         }

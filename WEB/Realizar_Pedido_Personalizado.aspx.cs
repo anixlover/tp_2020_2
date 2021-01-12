@@ -127,7 +127,7 @@ namespace WEB
                 _log.CustomWriteOnLog("registrar pedido personalizado", "objDtoMXU.FK_IM_Cod : " + objDtoMXU.FK_IM_Cod);
                 objDtoMXU.IMU_Cantidad = int.Parse(txtCantidad.Text);
                 _log.CustomWriteOnLog("registrar pedido personalizado", "objDtoMXU.FK_IM_Cod : " + objDtoMXU.IMU_Cantidad);
-                objDtoMXU.DMU_Precio = double.Parse(txtSubTotal.Text);
+                objDtoMXU.DMU_Precio = Convert.ToDouble(txtSubTotal.Text);
                 _log.CustomWriteOnLog("registrar pedido personalizado", "objDtoMXU.FK_IM_Cod : " + objDtoMXU.DMU_Precio);
                 objDtoMXU.FK_VU_Dni = Session["DNIUsuario"].ToString();
                 _log.CustomWriteOnLog("registrar pedido personalizado", "objDtoMXU.FK_IM_Cod : " + objDtoMXU.FK_VU_Dni);
@@ -147,8 +147,7 @@ namespace WEB
                 objCtrMXU.actualizarMXUSol(objDtoMXU);
 
                 //modal message
-                Utils.AddScriptClientUpdatePanel(upBotonRegistrar, "showSuccessMessage3()");
-                Response.Redirect("~/ConsultarEstadosPago.aspx");
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Registro Exitoso!',text: 'Datos ENVIADOS!!'}).then(function(){window.location.href='ConsultarEstadosPago.aspx'})", true);
                 _log.CustomWriteOnLog("registrar pedido personalizado", "se actualizado la Moldura x Usuario satisfactoriamente");
                 
 
@@ -224,17 +223,17 @@ namespace WEB
                 if (txtunidadmetrica.Value == "Mt" && cant < 150)
                 {
 
-                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: 'ERROR!',text: 'Ingrese mas de 150 unidades!!', type: 'error'});", true);
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Ingrese mas de 150 unidades!!'});", true);
                     return;
                 }
                 if (txtunidadmetrica.Value == "Cm" && cant < 30)
                 {
-                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: 'ERROR!',text: 'Ingrese mas de 30 unidades!!', type: 'error'});", true);
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Ingrese mas de 30 unidades!!'});", true);
                     return;
                 }
                 if (txtunidadmetrica.Value == "M2" && cant < 40)
                 {
-                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: 'ERROR!',text: 'Ingrese mas de 40 unidades!!', type: 'error'});", true);
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'Ingrese mas de 40 unidades!!'});", true);
                     return;
                 }
 
@@ -245,14 +244,15 @@ namespace WEB
 
                 if (txtCantidad.Text == "0")
                 {
-                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: 'ERROR!',text: 'Ingresar cantidad del producto!!', type: 'error'});", true);
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title: 'ERROR!',text: 'Ingresar cantidad del producto!!'});", true);
 
                     return;
                     //Utils.AddScriptClientUpdatePanel(Calcular1, "showSuccessMessage4()");
                 }
                 if (txtcodigo.Text == "")
                 {
-                    Utils.AddScriptClientUpdatePanel(Calcular1, "showSuccessMessage5()");
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title: 'ERROR!',text: 'Ingresar cantidad del producto!!'});", true);
+                    return;
                 }
 
 
@@ -291,7 +291,8 @@ namespace WEB
                 double aprox;
                 if (txtCantidadP.Text == "")
                 {
-                    Utils.AddScriptClientUpdatePanel(upBotonRegistrarP, "showSuccessMessage4()");
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type:'error',title: 'ERROR!',text: 'Ingresar cantidad del producto!!'});", true);
+                    return;
                 }
                 if (ddlTipoMoldura.SelectedValue != "0")
                 {
@@ -310,7 +311,7 @@ namespace WEB
                     if (aprox == 0)
                     {
                         txtImporteAproxP.Text = "";
-                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({icon: 'error',title: 'ERROR!',text: 'No hay tipo de moldura seleccionado!!'});", true);
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'error',title: 'ERROR!',text: 'No hay tipo de moldura seleccionado!!'});", true);
                         //ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "<script>swal({icon: 'error',title: 'ERROR!',text: 'No hay tipo de moldura seleccionado!!'})</script>");
                         return;
                     }
@@ -427,7 +428,7 @@ namespace WEB
                 _log.CustomWriteOnLog("registrar pedido personalizado", "Agregado");
                 _log.CustomWriteOnLog("registrar pedido personalizado", "Completado");
                 //Utils.AddScriptClientUpdatePanel(upBotonRegistrarP, "showSuccessMessage2()");
-                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Solicitud registrada!',text: 'Datos ENVIADOS!!'}).then(function(){window.location.href='ConsultarEstadosPago.aspx'})", true);
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mensaje", "swal({type: 'success',title: 'Registro Exitoso!',text: 'Datos ENVIADOS!!'}).then(function(){window.location.href='ConsultarEstadosPago.aspx'})", true);
             }
             catch (Exception ex)
             {
