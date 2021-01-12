@@ -258,7 +258,7 @@ namespace WEB
                 int cantidad = int.Parse(txtcantidad.Text);
                 double precioAprox = 0;
                 double Precio2 = double.Parse(colsNoVisible[6].ToString());
-
+                double resultTotal = Precio2 * Convert.ToDouble(cantidad); 
               
                 //colsNoVisible2 = txtimporttot.Text;
                 if (cantidad <= IM_Stock)
@@ -279,8 +279,11 @@ namespace WEB
                     updPanelGVDetalle.Update();
                     gvdetalle2.DataBind();
 
-                    txtimporttot.Text = precioAprox.ToString();
-                    Precio2 = Convert.ToDouble(txtimporttot.Text);
+                    txtimporteigv.Text = resultTotal.ToString();
+                    upcodigo.Update();
+                    uptxtcantidad.Update();
+                    //panelImpoTot.Update();
+                    //Precio2 = Convert.ToDouble(txtimporttot.Text);
                     ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "showNotification", "showNotification('bg-green', 'Subtotal calculado', 'bottom', 'center', null, null);", true);
                 }
 
@@ -403,9 +406,11 @@ namespace WEB
         }
         protected void btnboleta_Click(object sender, EventArgs e)
         {
-            int pedido;
-            int montopagado = int.Parse(txtmontopagado.Text);
-            int montototal = int.Parse(txtimporttot.Text);
+            if (txtmontopagado.Text == "")
+            {
+                Utils.AddScriptClientUpdatePanel(updBotonEnviar, "showSuccessMessage18()");
+                return;
+            }
             if (ddl_TipoComprobante.SelectedValue == "0")
             {
                 Utils.AddScriptClientUpdatePanel(updBotonEnviar, "showSuccessMessage12()");
@@ -416,14 +421,12 @@ namespace WEB
                 Utils.AddScriptClientUpdatePanel(updBotonEnviar, "showSuccessMessage7()");
                 return;
             }
+            int pedido;
+            int montopagado = int.Parse(txtmontopagado.Text);
+            int montototal = int.Parse(txtimporttot.Text);
             if (montopagado < montototal)
             {
                 Utils.AddScriptClientUpdatePanel(updBotonEnviar, "showSuccessMessage14()");
-                return;
-            }
-            if (txtmontopagado.Text == "")
-            {
-                Utils.AddScriptClientUpdatePanel(updBotonEnviar, "showSuccessMessage18()");
                 return;
             }
             try
@@ -813,6 +816,8 @@ namespace WEB
             objdtofac.FK_VU_Dni = txtIdentificadorUsuario.Text;
             objdtofac.VDF_Ruc = TextBox1.Text;
             objCtrDatoFac.RegistrarDatoFatcura(objdtofac);
+           
+
             Utils.AddScriptClientUpdatePanel(updBotonEnviar, "showSuccessMessage15()");
 
         }

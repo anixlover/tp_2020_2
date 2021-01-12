@@ -479,7 +479,7 @@ namespace DAO
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@tipos", objsolicitud.VS_TipoSolicitud);
             command.Parameters.AddWithValue("@cantidad", objsolicitud.IS_Cantidad);
-            command.Parameters.AddWithValue("@desc", objsolicitud.IS_Cantidad);
+            //command.Parameters.AddWithValue("@desc", objsolicitud.IS_Cantidad);
             command.Parameters.AddWithValue("@impt", objsolicitud.DS_ImporteTotal);
             command.Parameters.AddWithValue("@comen", objsolicitud.VS_Comentario);
             command.Parameters.AddWithValue("@epago", objsolicitud.IS_EstadoPago);
