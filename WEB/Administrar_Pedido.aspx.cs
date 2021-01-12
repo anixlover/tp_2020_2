@@ -102,7 +102,7 @@ namespace WEB
             objDtoSolicitud.PK_IS_Cod = int.Parse(id);
             objCtrSolicitud.leerSolicitudTipo(objDtoSolicitud);
             objCtrPago.ExistenciaPago(objDtoPago);
-            return objDtoPago.IP_TipoPago==1 && objDtoSolicitud.FK_ISE_Cod == 11;//esta todo pagado y esta en espado de terminado
+            return objDtoPago.DP_ImporteRestante >0.00 && objDtoPago.IP_TipoPago==1 && objDtoSolicitud.FK_ISE_Cod == 11;//esta todo pagado y esta en espado de terminado
         }
         protected void ddltipo_SelectedIndexChanged(object sender, EventArgs e)
         {
